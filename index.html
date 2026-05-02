@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ═══════════════════════════════════════════════════
+       SEO
+  ═══════════════════════════════════════════════════ -->
+  <title>Porto Peace Haven · Guest Guide</title>
+  <meta name="description" content="Your complete guest guide for Porto Peace Haven – Wi-Fi, house rules, room info, local tips and everything you need for a perfect stay in Porto, Portugal.">
+  <meta name="robots" content="noindex"><!-- guest-facing internal guide -->
+  <meta property="og:title" content="Porto Peace Haven · Guest Guide">
+  <meta property="og:description" content="Everything you need for your stay in Porto.">
+  <meta property="og:type" content="website">
+
+  <!-- ═══════════════════════════════════════════════════
+       FONTS — Cormorant Garamond (display) + DM Sans (body)
+  ═══════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+  <!-- ═══════════════════════════════════════════════════
+       QR Code library (CDN, no backend needed)
+  ═══════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       HEADER — sticky, logo + language switcher + hamburger
+  ═══════════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a href="#home" class="logo" aria-label="Porto Peace Haven – Home">
+        <span class="logo-anchor">⚓</span>
+        <div class="logo-text">
+          <span class="logo-main">Porto Peace Haven</span>
+          <span class="logo-sub" data-i18n="logo_sub">Guest Guide</span>
+        </div>
+      </a>
+      <div class="header-controls">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" id="lang-switcher">
+          <button class="lang-btn" id="lang-btn" aria-label="Change language" aria-expanded="false">
+            <span id="current-lang-flag">🇬🇧</span>
+            <span id="current-lang-code">EN</span>
+            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" id="lang-dropdown" role="menu">
+            <button class="lang-option active" data-lang="en" data-flag="🇬🇧" role="menuitem">🇬🇧 English</button>
+            <button class="lang-option" data-lang="pt" data-flag="🇵🇹" role="menuitem">🇵🇹 Português</button>
+            <button class="lang-option" data-lang="fr" data-flag="🇫🇷" role="menuitem">🇫🇷 Français</button>
+            <button class="lang-option" data-lang="es" data-flag="🇪🇸" role="menuitem">🇪🇸 Español</button>
+            <button class="lang-option" data-lang="de" data-flag="🇩🇪" role="menuitem">🇩🇪 Deutsch</button>
+            <button class="lang-option" data-lang="it" data-flag="🇮🇹" role="menuitem">🇮🇹 Italiano</button>
+          </div>
+        </div>
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════
+       NAV DRAWER — full-screen overlay on mobile
+  ═══════════════════════════════════════════════════ -->
+  <nav class="nav-drawer" id="nav-drawer" aria-hidden="true">
+    <div class="nav-drawer-header">
+      <span class="nav-drawer-logo">Porto Peace Haven</span>
+      <button class="nav-close" id="nav-close" aria-label="Close navigation">✕</button>
+    </div>
+    <ul class="nav-list" role="list">
+      <li><a href="#home" class="nav-link" data-i18n="nav_home">Home</a></li>
+      <li><a href="#essential-info" class="nav-link" data-i18n="nav_info">Essential Info</a></li>
+      <li><a href="#checkin" class="nav-link" data-i18n="nav_checkin">Check-in / Check-out</a></li>
+      <li><a href="#rules" class="nav-link" data-i18n="nav_rules">House Rules</a></li>
+      <li><a href="#guide" class="nav-link" data-i18n="nav_guide">House Guide</a></li>
+      <li><a href="#kitchen" class="nav-link" data-i18n="nav_kitchen">Kitchen Guide</a></li>
+      <li class="nav-group-label" data-i18n="nav_rooms_label">Rooms</li>
+      <li><a href="#ribeira" class="nav-link nav-room" style="color:var(--ribeira)">● Ribeira</a></li>
+      <li><a href="#douro" class="nav-link nav-room" style="color:var(--douro)">● Douro</a></li>
+      <li><a href="#atlantico" class="nav-link nav-room" style="color:var(--atlantico)">● Atlântico</a></li>
+      <li><a href="#bathroom" class="nav-link" data-i18n="nav_bathroom">Bathroom</a></li>
+      <li><a href="#transport" class="nav-link" data-i18n="nav_transport">Transport</a></li>
+      <li><a href="#nearby" class="nav-link" data-i18n="nav_nearby">Nearby Places</a></li>
+      <li><a href="#porto" class="nav-link" data-i18n="nav_porto">Porto Guide</a></li>
+      <li><a href="#emergency" class="nav-link nav-emergency" data-i18n="nav_emergency">🆘 Emergency</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════════════
+       MOBILE BOTTOM NAV — persistent 5-item tab bar
+  ═══════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" aria-label="Quick navigation">
+    <a href="#home" class="bnav-item active" data-section="home">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      <span data-i18n="bnav_home">Home</span>
+    </a>
+    <a href="#essential-info" class="bnav-item" data-section="essential-info">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span data-i18n="bnav_info">Info</span>
+    </a>
+    <a href="#rooms" class="bnav-item" data-section="rooms">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span data-i18n="bnav_rooms">Rooms</span>
+    </a>
+    <a href="#porto" class="bnav-item" data-section="porto">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span data-i18n="bnav_porto">Porto</span>
+    </a>
+    <a href="#emergency" class="bnav-item bnav-emergency" data-section="emergency">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.54 2.74h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.21a16 16 0 0 0 6.03 6.03l1.57-1.57a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
+      <span data-i18n="bnav_help">Help</span>
+    </a>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════
+       MAIN CONTENT
+  ═══════════════════════════════════════════════════ -->
+  <main id="main-content">
+
+    <!-- ─────────────────────────────────────────────────
+         1. HOME — Hero + Quick Actions + Room Preview
+    ───────────────────────────────────────────────── -->
+    <section id="home" class="section hero-section">
+      <div class="hero-bg" aria-hidden="true">
+        <!-- Hero background image: replace with assets/images/hero-porto.jpg -->
+        <!-- <img src="assets/images/hero-porto.jpg" alt="" class="hero-bg-img"> -->
+        <div class="hero-gradient"></div>
+        <div class="hero-tiles" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-badge" data-i18n="hero_badge">Porto · Portugal</div>
+        <h1 class="hero-title">
+          <span class="hero-welcome" data-i18n="hero_welcome">Welcome to</span>
+          <em class="hero-name">Porto Peace Haven</em>
+        </h1>
+        <p class="hero-tagline" data-i18n="hero_tagline">Your peaceful home in the heart of Porto</p>
+
+        <!-- ── Quick Action Buttons ── -->
+        <div class="quick-actions" role="list" aria-label="Quick actions">
+          <a href="#wifi" class="qa-btn qa-wifi" role="listitem">
+            <span class="qa-icon" aria-hidden="true">📶</span>
+            <span data-i18n="qa_wifi">Wi-Fi</span>
+          </a>
+          <a href="#guide" class="qa-btn" role="listitem">
+            <span class="qa-icon" aria-hidden="true">📖</span>
+            <span data-i18n="qa_guide">House Guide</span>
+          </a>
+          <a href="#rules" class="qa-btn" role="listitem">
+            <span class="qa-icon" aria-hidden="true">📋</span>
+            <span data-i18n="qa_rules">House Rules</span>
+          </a>
+          <a href="#contact" class="qa-btn" role="listitem">
+            <span class="qa-icon" aria-hidden="true">💬</span>
+            <span data-i18n="qa_contact">Contact Host</span>
+          </a>
+          <a href="#emergency" class="qa-btn qa-emergency" role="listitem">
+            <span class="qa-icon" aria-hidden="true">🆘</span>
+            <span data-i18n="qa_emergency">Emergency</span>
+          </a>
+          <a href="#porto" class="qa-btn" role="listitem">
+            <span class="qa-icon" aria-hidden="true">🗺️</span>
+            <span data-i18n="qa_explore">Explore Porto</span>
+          </a>
+          <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="qa-btn qa-maps" role="listitem">
+            <span class="qa-icon" aria-hidden="true">📍</span>
+            <span data-i18n="qa_maps">Google Maps</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Room Preview Cards ── -->
+      <div class="rooms-preview">
+        <div class="container">
+          <h2 class="section-title centered" data-i18n="rooms_preview_title">Choose Your Room</h2>
+          <div class="rooms-grid">
+
+            <a href="#ribeira" class="room-card">
+              <div class="room-card-img ribeira-gradient">
+                <!--
+                  REPLACE PLACEHOLDER: <img src="assets/images/ribeira-preview.jpg" alt="Ribeira room">
+                  Suggested free source: Unsplash — search "dark blue bedroom Porto"
+                -->
+                <div class="img-ph"><span>🌉</span></div>
+              </div>
+              <div class="room-card-body ribeira-body">
+                <h3>Ribeira</h3>
+                <p data-i18n="ribeira_mood_short">Elegant · Urban · Spacious</p>
+                <span class="room-link" data-i18n="room_discover">Discover →</span>
+              </div>
+            </a>
+
+            <a href="#douro" class="room-card">
+              <div class="room-card-img douro-gradient">
+                <!--
+                  REPLACE PLACEHOLDER: <img src="assets/images/douro-preview.jpg" alt="Douro room">
+                  Suggested free source: Unsplash — search "warm golden bedroom cosy"
+                -->
+                <div class="img-ph"><span>🌅</span></div>
+              </div>
+              <div class="room-card-body douro-body">
+                <h3>Douro</h3>
+                <p data-i18n="douro_mood_short">Warm · Cosy · Golden</p>
+                <span class="room-link" data-i18n="room_discover">Discover →</span>
+              </div>
+            </a>
+
+            <a href="#atlantico" class="room-card">
+              <div class="room-card-img atlantico-gradient">
+                <!--
+                  REPLACE PLACEHOLDER: <img src="assets/images/atlantico-preview.jpg" alt="Atlântico room">
+                  Suggested free source: Unsplash — search "light blue coastal bedroom airy"
+                -->
+                <div class="img-ph"><span>🌊</span></div>
+              </div>
+              <div class="room-card-body atlantico-body">
+                <h3>Atlântico</h3>
+                <p data-i18n="atlantico_mood_short">Calm · Coastal · Airy</p>
+                <span class="room-link" data-i18n="room_discover">Discover →</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         2. ESSENTIAL INFO
+    ───────────────────────────────────────────────── -->
+    <section id="essential-info" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="info_title">Essential Information</h2>
+        <p class="section-sub" data-i18n="info_subtitle">Everything you need, right here</p>
+
+        <!-- Address -->
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">📍</div>
+          <div class="info-body">
+            <h3 data-i18n="address_title">Address</h3>
+            <address>
+              Rua da Paz, 66 · 3º andar, sala 34<br>
+              Porto · 4050-461 · Portugal
+            </address>
+            <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Wi-Fi -->
+        <div class="info-card" id="wifi">
+          <div class="info-icon" aria-hidden="true">📶</div>
+          <div class="info-body">
+            <h3 data-i18n="wifi_title">Wi-Fi</h3>
+            <div class="wifi-grid">
+              <div class="wifi-row">
+                <span class="wifi-label" data-i18n="wifi_network">Network</span>
+                <button class="wifi-value copy-btn" data-copy="PORTO PEACE HAVEN" aria-label="Copy network name">
+                  PORTO PEACE HAVEN
+                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
+                </button>
+              </div>
+              <div class="wifi-row">
+                <span class="wifi-label" data-i18n="wifi_password">Password</span>
+                <button class="wifi-value copy-btn" data-copy="CAHMCTUM" aria-label="Copy password">
+                  CAHMCTUM
+                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
+                </button>
+              </div>
+            </div>
+            <div class="qr-block">
+              <p class="qr-label" data-i18n="wifi_scan">📷 Scan to connect automatically</p>
+              <!-- QR generated by script.js -->
+              <div id="wifi-qr" class="qr-box" aria-label="Wi-Fi QR code"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contacts -->
+        <div class="info-card" id="contact">
+          <div class="info-icon" aria-hidden="true">💬</div>
+          <div class="info-body">
+            <h3 data-i18n="contact_title">Contact Host</h3>
+            <div class="contact-grid">
+              <!--
+                REPLACE: Change PLACEHOLDER in href to your actual WhatsApp number
+                Format: https://wa.me/351XXXXXXXXX (no spaces, no +)
+              -->
+              <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener" class="contact-btn whatsapp">
+                <span aria-hidden="true">💬</span> WhatsApp
+              </a>
+              <!--
+                REPLACE: Change tel:+351XXXXXXXXX to your urgent line
+              -->
+              <a href="tel:+351XXXXXXXXX" class="contact-btn phone">
+                <span aria-hidden="true">📞</span>
+                <span data-i18n="contact_urgent">Urgent Line</span>
+              </a>
+              <!--
+                REPLACE: Change mailto:your@email.com to your actual email
+              -->
+              <a href="mailto:your@email.com" class="contact-btn email">
+                <span aria-hidden="true">✉️</span> Email
+              </a>
+            </div>
+            <!-- REMOVE this note after adding real contacts: -->
+            <p class="host-note" data-i18n="contact_note">⚠️ Replace contact placeholders in index.html before publishing</p>
+          </div>
+        </div>
+
+        <!-- Guest Guide QR -->
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🔗</div>
+          <div class="info-body">
+            <h3 data-i18n="guide_qr_title">This Guest Guide</h3>
+            <p data-i18n="guide_qr_desc">Share this link with your guests or scan the QR code</p>
+            <div id="website-qr" class="qr-box" aria-label="Guest guide QR code"></div>
+            <!--
+              REPLACE: Update SITE_URL constant in script.js after deployment
+              e.g. const SITE_URL = "https://porto-peace-haven.netlify.app"
+            -->
+            <p class="host-note" data-i18n="guide_qr_note">⚠️ Update SITE_URL in script.js after deploying</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         3. CHECK-IN / CHECK-OUT
+    ───────────────────────────────────────────────── -->
+    <section id="checkin" class="section section-sand">
+      <div class="container">
+        <h2 class="section-title" data-i18n="checkin_title">Check-in & Check-out</h2>
+
+        <div class="two-col">
+
+          <div class="info-card">
+            <div class="info-icon" aria-hidden="true">🗝️</div>
+            <div class="info-body">
+              <h3 data-i18n="checkin_label">Check-in</h3>
+              <ul class="info-list">
+                <!-- REPLACE: Add your actual check-in time -->
+                <li><strong data-i18n="checkin_time_label">From:</strong> <span class="ph">[e.g. 15:00]</span></li>
+                <!-- REPLACE: Add late check-in instructions -->
+                <li><strong data-i18n="checkin_late_label">Late arrival:</strong> <span class="ph">[Your instructions, e.g. key box code]</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon" aria-hidden="true">🚪</div>
+            <div class="info-body">
+              <h3 data-i18n="checkout_label">Check-out</h3>
+              <ul class="info-list">
+                <!-- REPLACE: Add your actual check-out time -->
+                <li><strong data-i18n="checkout_time_label">By:</strong> <span class="ph">[e.g. 11:00]</span></li>
+                <li><strong data-i18n="checkout_late_label">Late check-out:</strong> <span data-i18n="checkout_late_desc">Please ask in advance — we'll do our best!</span></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🔑</div>
+          <div class="info-body">
+            <h3 data-i18n="key_title">Keys & Access</h3>
+            <ul class="info-list">
+              <li data-i18n="key_1">You will receive a key to your room and to the main building entrance.</li>
+              <li data-i18n="key_2">Please keep your key safe and return it on departure.</li>
+              <!-- REPLACE: Add specific key box or entry instructions -->
+              <li><span class="ph">[Add any key box code or specific entry instructions here]</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🔒</div>
+          <div class="info-body">
+            <h3 data-i18n="safe_title">In-Room Safe</h3>
+            <ul class="info-list">
+              <li data-i18n="safe_1">A safe is available in your room — use it for passports, valuables, and cards.</li>
+              <li data-i18n="safe_2">Set your own personal PIN on arrival and reset it on departure.</li>
+              <!-- REPLACE: Add safe brand/reset instructions if needed -->
+              <li><span class="ph">[Add safe brand name and factory reset instructions if applicable]</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         4. HOUSE RULES
+    ───────────────────────────────────────────────── -->
+    <section id="rules" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="rules_title">House Rules</h2>
+        <p class="section-sub" data-i18n="rules_subtitle">We ask all guests to respect these guidelines so everyone enjoys a calm, welcoming stay</p>
+
+        <div class="rules-grid">
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🤫</span>
+            <h4 data-i18n="rule_noise_h">Noise & Quiet Hours</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_n1">Please keep noise to a minimum at all times.</li>
+              <li data-i18n="rule_n2">Be especially considerate on weekdays and during business hours.</li>
+              <li data-i18n="rule_n3">No loud music or raised voices inside the property.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🚭</span>
+            <h4 data-i18n="rule_smoke_h">No Smoking</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_s1">No smoking or vaping anywhere inside the building.</li>
+              <li data-i18n="rule_s2">Smoking is allowed outside the building only.</li>
+              <li data-i18n="rule_s3">Candles and incense are not permitted — smoke detectors are active.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">👥</span>
+            <h4 data-i18n="rule_guests_h">Visitors & Events</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_g1">No unregistered visitors are permitted on the premises.</li>
+              <li data-i18n="rule_g2">Parties and social gatherings are strictly not allowed.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🍽️</span>
+            <h4 data-i18n="rule_kitchen_h">Kitchen & Shared Areas</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_k1">Always wash dishes immediately after use.</li>
+              <li data-i18n="rule_k2">Clean the kitchen surfaces and hob after every use.</li>
+              <li data-i18n="rule_k3">Treat shared areas with care and consideration for others.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">💡</span>
+            <h4 data-i18n="rule_energy_h">Before Leaving Your Room</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_e1">Close all windows before you leave.</li>
+              <li data-i18n="rule_e2">Switch off all lights.</li>
+              <li data-i18n="rule_e3">Turn off all appliances (fan, TV, etc.).</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🚿</span>
+            <h4 data-i18n="rule_bath_h">Bathroom</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_b1">Always verify the toilet flush has stopped completely before leaving.</li>
+              <li data-i18n="rule_b2">Only toilet paper may be flushed — no wipes or other items.</li>
+              <li data-i18n="rule_b3">Leave the bathroom clean and ready for the next guest.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🐾</span>
+            <h4 data-i18n="rule_pets_h">Pets</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_p1">Pets are not permitted at Porto Peace Haven.</li>
+            </ul>
+          </div>
+
+          <div class="rule-card">
+            <span class="rule-icon" aria-hidden="true">🪑</span>
+            <h4 data-i18n="rule_furniture_h">Furniture & Floors</h4>
+            <ul class="rule-list">
+              <li data-i18n="rule_f1">Please do not drag chairs or furniture across the floors.</li>
+              <li data-i18n="rule_f2">Handle all furnishings with care.</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="rules-footer">
+          <p data-i18n="rules_thank">Thank you for helping us keep Porto Peace Haven a peaceful, welcoming space for everyone. 🙏</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         5. HOUSE GUIDE
+    ───────────────────────────────────────────────── -->
+    <section id="guide" class="section section-sand">
+      <div class="container">
+        <h2 class="section-title" data-i18n="guide_title">House Guide</h2>
+        <p class="section-sub" data-i18n="guide_sub">We're delighted to have you here. Everything you need to feel at home.</p>
+
+        <div class="guide-grid">
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">📶</span>
+            <h4 data-i18n="g_wifi_h">Wi-Fi</h4>
+            <p>Network: <strong>PORTO PEACE HAVEN</strong><br>Password: <strong>CAHMCTUM</strong><br>
+            <a href="#wifi" data-i18n="g_wifi_link">See QR code →</a></p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🚿</span>
+            <h4 data-i18n="g_bath_h">Shared Bathroom</h4>
+            <p data-i18n="g_bath_p">The bathroom is shared between guests. Please be thoughtful and leave it spotless after each use.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">✅</span>
+            <h4 data-i18n="g_leave_h">Before You Leave</h4>
+            <ul class="checklist">
+              <li data-i18n="g_c1">✔ Switch off all lights</li>
+              <li data-i18n="g_c2">✔ Close all windows</li>
+              <li data-i18n="g_c3">✔ Turn off all appliances</li>
+              <li data-i18n="g_c4">✔ Check the toilet flush stopped</li>
+              <li data-i18n="g_c5">✔ Return your key at check-out</li>
+            </ul>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🤫</span>
+            <h4 data-i18n="g_quiet_h">Quiet Living</h4>
+            <p data-i18n="g_quiet_p">This is a residential building. Please keep voices and sounds low, especially early mornings and evenings. Your neighbours will thank you.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">📺</span>
+            <h4 data-i18n="g_tv_h">TV & Streaming</h4>
+            <p data-i18n="g_tv_p">Each room has a TV with an Android TV dongle. Use the dongle remote to access Netflix, YouTube, and other apps. Log in with your own accounts — no shared credentials. Full instructions are in your room guide.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">💡</span>
+            <h4 data-i18n="g_lamps_h">LED Mood Lamps</h4>
+            <p data-i18n="g_lamps_p">Your room has LED lamps controllable by remote. Choose your favourite colour, brightness and mood. Instructions vary slightly by room — see your room's guide below.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🔒</span>
+            <h4 data-i18n="g_safety_h">Safety</h4>
+            <ul class="checklist">
+              <li data-i18n="g_sf1">🔥 Smoke detectors: kitchen & entrance</li>
+              <li data-i18n="g_sf2">⚡ Electrical panel: at the entrance</li>
+              <li data-i18n="g_sf3">🚨 Emergency services: <strong>112</strong></li>
+            </ul>
+          </div>
+
+          <div class="guide-card guide-card--report">
+            <span class="g-icon" aria-hidden="true">🛠️</span>
+            <h4 data-i18n="g_problem_h">Something not right?</h4>
+            <p data-i18n="g_problem_p">Please tell us immediately — we prefer to fix things straight away rather than have you deal with any discomfort. We're just a message away.</p>
+            <a href="#contact" class="btn btn-primary btn-sm" data-i18n="g_contact_btn">Contact Host</a>
+          </div>
+
+        </div>
+
+        <!-- Review request -->
+        <div class="review-box">
+          <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+          <h3 data-i18n="review_h">Enjoying your stay?</h3>
+          <p data-i18n="review_p">We pour a great deal of care into every detail of Porto Peace Haven. If we've made your trip that little bit better, a review means the world to us — and helps other travellers discover this little corner of Porto.</p>
+          <!--
+            REPLACE: Update this URL with your actual Google/Airbnb/Booking review link
+          -->
+          <a href="https://g.page/r/PLACEHOLDER/review" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="review_btn">Leave a Review ⭐</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         6. KITCHEN GUIDE
+    ───────────────────────────────────────────────── -->
+    <section id="kitchen" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="kitchen_title">Kitchen Guide</h2>
+        <p class="section-sub" data-i18n="kitchen_sub">How to use everything in the kitchen</p>
+
+        <div class="kitchen-grid">
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">🍳</span>
+            <h4 data-i18n="k_hob_h">Induction Hob</h4>
+            <ol class="steps">
+              <li data-i18n="k_hob1">Place a compatible (magnetic) pan on the hob surface.</li>
+              <li data-i18n="k_hob2">Press the power button to switch on.</li>
+              <li data-i18n="k_hob3">Select your zone and adjust heat with the + / – controls.</li>
+              <li data-i18n="k_hob4">The hob switches itself off automatically after 2 hours.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">💨</span>
+            <h4 data-i18n="k_hood_h">Extractor Hood</h4>
+            <ol class="steps">
+              <li data-i18n="k_hood1">Switch on before cooking to prevent smoke build-up.</li>
+              <li data-i18n="k_hood2">Adjust speed with the button (1 = low · 3 = high).</li>
+              <li data-i18n="k_hood3">Leave running briefly after cooking, then switch off.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">🥐</span>
+            <h4 data-i18n="k_oven_h">Mini Oven</h4>
+            <ol class="steps">
+              <li data-i18n="k_oven1">Place food on the tray or rack provided.</li>
+              <li data-i18n="k_oven2">Set temperature using the left dial.</li>
+              <li data-i18n="k_oven3">Set cooking time using the right dial.</li>
+              <li data-i18n="k_oven4">Oven switches off automatically when timer ends.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">📡</span>
+            <h4 data-i18n="k_micro_h">Microwave</h4>
+            <ol class="steps">
+              <li data-i18n="k_micro1">Use only microwave-safe containers.</li>
+              <li data-i18n="k_micro2">Set time and power, then press start.</li>
+              <li data-i18n="k_micro3">Never use metal containers or foil.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">🫖</span>
+            <h4 data-i18n="k_kettle_h">Kettle</h4>
+            <ol class="steps">
+              <li data-i18n="k_kettle1">Fill with water up to the maximum line indicated inside.</li>
+              <li data-i18n="k_kettle2">Place on the base and press the switch down.</li>
+              <li data-i18n="k_kettle3">It switches off automatically once boiled.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">☕</span>
+            <h4 data-i18n="k_coffee_h">Capsule Coffee Machine</h4>
+            <ol class="steps">
+              <li data-i18n="k_coffee1">Fill the water tank and switch the machine on.</li>
+              <li data-i18n="k_coffee2">Insert a compatible capsule into the holder.</li>
+              <li data-i18n="k_coffee3">Place your cup and press brew.</li>
+              <li data-i18n="k_coffee4">Remove and dispose of used capsule after each use.</li>
+            </ol>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">🍴</span>
+            <h4 data-i18n="k_utensils_h">What's Available</h4>
+            <p data-i18n="k_utensils_p">Plates, bowls, glasses, mugs, cups, cutlery, pots, pans, cutting boards, knives, colander, grater, and cooking utensils.</p>
+          </div>
+
+          <div class="kitchen-card">
+            <span class="k-icon" aria-hidden="true">🧹</span>
+            <h4 data-i18n="k_clean_h">Cleaning Supplies</h4>
+            <p data-i18n="k_clean_p">Bin bags, sponge, cloths, and washing-up liquid are under the sink. Extra supplies are in the storage cabinet near the bathroom.</p>
+          </div>
+
+        </div>
+
+        <div class="kitchen-etiquette">
+          <h4 data-i18n="k_etiquette_h">Kitchen Etiquette</h4>
+          <ul class="info-list">
+            <li data-i18n="k_eq1">🍽️ Wash and dry all dishes immediately after every use.</li>
+            <li data-i18n="k_eq2">🧹 Wipe down the hob, surfaces and sink after use.</li>
+            <li data-i18n="k_eq3">🗑️ Dispose of rubbish in the bin bags provided. Full bags go in the building bins <span class="ph">[location to be added by host]</span>.</li>
+            <li data-i18n="k_eq4">♻️ Separate recycling from general waste <span class="ph">[add local recycling info]</span>.</li>
+            <li data-i18n="k_eq5">🤝 This is a shared kitchen — leave it exactly as you found it.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         7. ROOMS
+    ───────────────────────────────────────────────── -->
+    <section id="rooms" class="section section-sand">
+      <div class="container">
+        <h2 class="section-title" data-i18n="rooms_title">Room Guides</h2>
+
+        <!-- ════════ RIBEIRA ════════ -->
+        <article id="ribeira" class="room-detail" style="--room-color: var(--ribeira); --room-light: var(--ribeira-light);">
+          <div class="room-header ribeira-header">
+            <span class="room-emoji" aria-hidden="true">🌉</span>
+            <div>
+              <h3 class="room-name">Ribeira</h3>
+              <p class="room-tagline" data-i18n="ribeira_tagline">Elegant, spacious and urban — the soul of old Porto</p>
+            </div>
+          </div>
+
+          <!--
+            REPLACE: Add your room photo here
+            <img src="assets/images/ribeira-room.jpg" alt="Ribeira room at Porto Peace Haven" class="room-photo">
+            Suggested source: your own photo. Free alternative: Unsplash "dark blue bedroom elegant"
+          -->
+          <div class="room-photo-ph ribeira-ph">
+            <span aria-hidden="true">🌉</span>
+            <p>Ribeira Room — <em>replace with: assets/images/ribeira-room.jpg</em></p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feat-card">
+              <span aria-hidden="true">📺</span>
+              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
+              <p data-i18n="feat_tv_p">Use the Android dongle remote (black, smaller) to navigate apps. Use the TV remote to switch the input to HDMI if needed. Press Home on the dongle remote to start.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🎮</span>
+              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
+              <p data-i18n="ribeira_remotes_p">You have two remotes: one for the TV and one for the Android dongle. The dongle remote also controls the LED strip behind the TV.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">💡</span>
+              <h5 data-i18n="feat_led_h">LED Lighting</h5>
+              <p data-i18n="ribeira_led_p">The LED remote controls both the bedside lamp and the LED strip behind the TV. Use it to set your preferred colour and brightness.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🪟</span>
+              <h5 data-i18n="ribeira_curtains_h">Curtains & Windows</h5>
+              <p data-i18n="ribeira_curtains_p">Please handle the curtains and window fittings with care. Always close all windows before leaving the room.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🗄️</span>
+              <h5 data-i18n="ribeira_storage_h">Storage & Work Area</h5>
+              <p data-i18n="ribeira_storage_p">Ribeira is the most spacious room with ample storage. The large wall unit doubles as a desk or work area — ideal for remote workers or longer stays.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🌡️</span>
+              <h5 data-i18n="feat_fan_h">Fan</h5>
+              <p data-i18n="feat_fan_p">A fan is available in the room. Adjust the speed and direction as you prefer.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🧊</span>
+              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
+              <p data-i18n="feat_fridge_p">A mini fridge is available for your personal use. Please keep it clean and tidy.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🔌</span>
+              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
+              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports for convenient device charging.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🪞</span>
+              <h5 data-i18n="feat_mirror_h">Mirror</h5>
+              <p data-i18n="feat_mirror_p">A full-length mirror is available in the room.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">👕</span>
+              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
+              <p data-i18n="feat_rail_p">A clothes rail is provided for hanging garments.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🛏️</span>
+              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
+              <p data-i18n="feat_blanket_p">A spare blanket is stored inside the ottoman at the foot of the bed.</p>
+            </div>
+          </div>
+
+          <div class="room-reminder">
+            <p data-i18n="room_reminder">💡 Before leaving: switch off all lights · close all windows · turn off all appliances</p>
+          </div>
+        </article>
+
+
+        <!-- ════════ DOURO ════════ -->
+        <article id="douro" class="room-detail" style="--room-color: var(--douro); --room-light: var(--douro-light);">
+          <div class="room-header douro-header">
+            <span class="room-emoji" aria-hidden="true">🌅</span>
+            <div>
+              <h3 class="room-name">Douro</h3>
+              <p class="room-tagline" data-i18n="douro_tagline">Warm, golden and wonderfully cosy — like a Porto sunset</p>
+            </div>
+          </div>
+
+          <!--
+            REPLACE: <img src="assets/images/douro-room.jpg" alt="Douro room at Porto Peace Haven" class="room-photo">
+          -->
+          <div class="room-photo-ph douro-ph">
+            <span aria-hidden="true">🌅</span>
+            <p>Douro Room — <em>replace with: assets/images/douro-room.jpg</em></p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feat-card">
+              <span aria-hidden="true">📺</span>
+              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
+              <p data-i18n="feat_tv_p">Use the Android dongle remote to navigate streaming apps. TV remote switches input if needed.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🎮</span>
+              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
+              <p data-i18n="douro_remotes_p">Two remotes provided: one for the TV and one for the Android dongle. The LED remote controls your bedside lamp colour and brightness.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">💡</span>
+              <h5 data-i18n="feat_led_h">LED Lighting</h5>
+              <p data-i18n="douro_led_p">Use the LED remote to adjust the colour and brightness of your bedside lamp. Set the perfect warm glow for evenings.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🗄️</span>
+              <h5 data-i18n="douro_storage_h">Storage</h5>
+              <p data-i18n="douro_storage_p">Douro has a dedicated storage area for your belongings. Compact and perfectly organised.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🌡️</span>
+              <h5 data-i18n="feat_fan_h">Fan</h5>
+              <p data-i18n="feat_fan_p">A fan is available in the room for your comfort.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🧊</span>
+              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
+              <p data-i18n="feat_fridge_p">A mini fridge is available for personal use.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🔌</span>
+              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
+              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🪞</span>
+              <h5 data-i18n="feat_mirror_h">Mirror</h5>
+              <p data-i18n="feat_mirror_p">A mirror is available in the room.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">👕</span>
+              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
+              <p data-i18n="feat_rail_p">A clothes rail is available for hanging garments.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🛏️</span>
+              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
+              <p data-i18n="feat_blanket_p">A spare blanket is inside the ottoman at the foot of the bed.</p>
+            </div>
+          </div>
+
+          <div class="room-reminder">
+            <p data-i18n="room_reminder">💡 Before leaving: switch off all lights · close all windows · turn off all appliances</p>
+          </div>
+        </article>
+
+
+        <!-- ════════ ATLÂNTICO ════════ -->
+        <article id="atlantico" class="room-detail" style="--room-color: var(--atlantico); --room-light: var(--atlantico-light);">
+          <div class="room-header atlantico-header">
+            <span class="room-emoji" aria-hidden="true">🌊</span>
+            <div>
+              <h3 class="room-name">Atlântico</h3>
+              <p class="room-tagline" data-i18n="atlantico_tagline">Light, peaceful and airy — your coastal retreat in the city</p>
+            </div>
+          </div>
+
+          <!--
+            REPLACE: <img src="assets/images/atlantico-room.jpg" alt="Atlântico room at Porto Peace Haven" class="room-photo">
+          -->
+          <div class="room-photo-ph atlantico-ph">
+            <span aria-hidden="true">🌊</span>
+            <p>Atlântico Room — <em>replace with: assets/images/atlantico-room.jpg</em></p>
+          </div>
+
+          <div class="features-grid">
+            <div class="feat-card">
+              <span aria-hidden="true">📺</span>
+              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
+              <p data-i18n="feat_tv_p">Use the Android dongle remote for streaming apps. TV remote changes input if needed.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🎮</span>
+              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
+              <p data-i18n="atlantico_remotes_p">Two remotes provided: TV and Android dongle. LED remote controls the bedside lamp.</p>
+            </div>
+            <div class="feat-card feat-card--highlight">
+              <span aria-hidden="true">💡</span>
+              <h5 data-i18n="feat_led_h">LED Lighting — Important Note</h5>
+              <p data-i18n="atlantico_led_p">⚠️ To change only the bedside lamp colour without affecting the TV: first switch the TV off, then point the LED remote directly at the bedside lamp.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">💻</span>
+              <h5 data-i18n="atlantico_desk_h">Desk / Work Area</h5>
+              <p data-i18n="atlantico_desk_p">Atlântico includes a dedicated desk area — perfect for remote work or longer stays in the city.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🌡️</span>
+              <h5 data-i18n="feat_fan_h">Fan</h5>
+              <p data-i18n="feat_fan_p">A fan is available for your comfort.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🧊</span>
+              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
+              <p data-i18n="feat_fridge_p">Mini fridge available for personal use.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🔌</span>
+              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
+              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🪞</span>
+              <h5 data-i18n="feat_mirror_h">Mirror</h5>
+              <p data-i18n="feat_mirror_p">Mirror available in the room.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">👕</span>
+              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
+              <p data-i18n="feat_rail_p">Clothes rail available for hanging garments.</p>
+            </div>
+            <div class="feat-card">
+              <span aria-hidden="true">🛏️</span>
+              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
+              <p data-i18n="feat_blanket_p">Spare blanket inside the ottoman at the foot of the bed.</p>
+            </div>
+          </div>
+
+          <div class="room-reminder">
+            <p data-i18n="room_reminder">💡 Before leaving: switch off all lights · close all windows · turn off all appliances</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         8. BATHROOM GUIDE
+    ───────────────────────────────────────────────── -->
+    <section id="bathroom" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="bath_title">Bathroom Guide</h2>
+
+        <div class="guide-grid">
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🚿</span>
+            <h4 data-i18n="bath_shared_h">Shared Bathroom</h4>
+            <p data-i18n="bath_shared_p">The bathroom is shared between all guests. Please be considerate and leave it clean and ready for the next person after every use.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">⏱️</span>
+            <h4 data-i18n="bath_shower_h">Shower Duration</h4>
+            <p data-i18n="bath_shower_p">Please avoid very long showers, especially during peak morning hours, so all guests have access to hot water.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🚽</span>
+            <h4 data-i18n="bath_toilet_h">Toilet</h4>
+            <ul class="checklist">
+              <li data-i18n="bath_t1">✔ Always wait to confirm the flush has stopped completely.</li>
+              <li data-i18n="bath_t2">✔ Only toilet paper in the toilet — nothing else.</li>
+              <li data-i18n="bath_t3">✘ No wipes, cotton pads, or sanitary items.</li>
+            </ul>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🗄️</span>
+            <h4 data-i18n="bath_cabinet_h">Storage Cabinet</h4>
+            <p data-i18n="bath_cabinet_p">Extra toiletries and cleaning supplies are in the storage cabinet beside the bathroom. Help yourself as needed.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">💇</span>
+            <h4 data-i18n="bath_dryer_h">Hair Dryer</h4>
+            <p data-i18n="bath_dryer_p">A hair dryer is available inside the mirror cabinet in the bathroom. Please return it after use.</p>
+          </div>
+
+          <div class="guide-card">
+            <span class="g-icon" aria-hidden="true">🔌</span>
+            <h4 data-i18n="bath_adapter_h">Universal Plug Adapter</h4>
+            <p data-i18n="bath_adapter_p">A universal plug adapter is inside the mirror cabinet — available for any international guests who need it.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         9. TRANSPORT
+    ───────────────────────────────────────────────── -->
+    <section id="transport" class="section section-sand">
+      <div class="container">
+        <h2 class="section-title" data-i18n="transport_title">Getting Around Porto</h2>
+        <p class="section-sub" data-i18n="transport_sub">Porto is highly walkable and well connected by public transport</p>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🚇</div>
+          <div class="info-body">
+            <h3 data-i18n="tr_metro_h">Nearest Metro Stop</h3>
+            <!-- REPLACE: Add the confirmed metro stop name and walk time -->
+            <p><span class="ph">[Metro stop name — e.g. Bolhão (Line D) — approx X min walk]</span></p>
+            <a href="https://www.metrodoporto.pt/pages/1" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="tr_metro_map">View Metro Map</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🚌</div>
+          <div class="info-body">
+            <h3 data-i18n="tr_bus_h">Bus & Tram</h3>
+            <!-- REPLACE: Add nearest bus/tram stop and line numbers -->
+            <p><span class="ph">[Nearest bus stop + lines — e.g. Linha 200 · 5 min walk]</span></p>
+            <a href="https://www.stcp.pt" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="tr_stcp">STCP Bus Routes</a>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">🚗</div>
+          <div class="info-body">
+            <h3 data-i18n="tr_ride_h">Taxis & Ride Apps</h3>
+            <div class="app-row">
+              <a href="https://www.uber.com" target="_blank" rel="noopener" class="app-pill">🚗 Uber</a>
+              <a href="https://bolt.eu" target="_blank" rel="noopener" class="app-pill">⚡ Bolt</a>
+              <!-- REPLACE: Add local taxi number -->
+              <a href="tel:+351222073900" class="app-pill">🚕 <span data-i18n="tr_taxi">Taxi</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">📍</div>
+          <div class="info-body">
+            <h3 data-i18n="tr_maps_h">Directions from Porto Peace Haven</h3>
+            <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-primary btn-sm" data-i18n="open_maps">Open in Google Maps</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         10. USEFUL PLACES NEARBY
+    ───────────────────────────────────────────────── -->
+    <section id="nearby" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="nearby_title">Useful Places Nearby</h2>
+        <!--
+          REPLACE: Update each card with real local business names, addresses and Google Maps links
+          Suggested images (royalty-free): Unsplash / Pexels
+          Format: assets/images/nearby-supermarket.jpg etc.
+        -->
+        <div class="nearby-grid">
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">🛒</span><!-- <img src="assets/images/nearby-supermarket.jpg" alt="Supermarket"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_supermarket">Supermarket</h4>
+              <p class="ph">[Name & address]</p>
+              <a href="https://maps.google.com/?q=supermarket+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">💊</span><!-- <img src="assets/images/nearby-pharmacy.jpg" alt="Pharmacy"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_pharmacy">Pharmacy</h4>
+              <p class="ph">[Name & address]</p>
+              <a href="https://maps.google.com/?q=farmacia+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">🏥</span><!-- <img src="assets/images/nearby-hospital.jpg" alt="Hospital"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_hospital">Hospital</h4>
+              <p class="ph">[Name & address]</p>
+              <a href="https://maps.google.com/?q=hospital+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">☕</span><!-- <img src="assets/images/nearby-cafe.jpg" alt="Café"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_cafe">Café</h4>
+              <p class="ph">[Name & address]</p>
+              <a href="https://maps.google.com/?q=cafe+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">🚇</span></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_transport">Transport</h4>
+              <p class="ph">[Nearest stop]</p>
+              <a href="#transport" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">🏧</span><!-- <img src="assets/images/nearby-atm.jpg" alt="ATM"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_atm">ATM</h4>
+              <p class="ph">[Location & bank]</p>
+              <a href="https://maps.google.com/?q=caixa+multibanco+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="nearby-card">
+            <div class="nearby-img ph-img"><span aria-hidden="true">👔</span><!-- <img src="assets/images/nearby-laundry.jpg" alt="Laundry"> --></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_laundry">Laundry</h4>
+              <p class="ph">[Name & address]</p>
+              <a href="https://maps.google.com/?q=lavandaria+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         11. WHAT TO DO IN PORTO
+    ───────────────────────────────────────────────── -->
+    <section id="porto" class="section section-sand">
+      <div class="container">
+        <h2 class="section-title" data-i18n="porto_title">What to Do in Porto</h2>
+        <p class="section-sub" data-i18n="porto_sub">Our favourite recommendations for your stay</p>
+        <!--
+          REPLACE placeholder images with royalty-free photos from:
+          - Unsplash.com (free, no attribution required under Unsplash license)
+          - Wikimedia Commons (check license per image)
+          All marked with REPLACE comments below
+        -->
+        <div class="porto-grid">
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">🌅</span>
+              <!-- REPLACE: <img src="assets/images/porto-sunset.jpg" alt="Sunset over Porto and the Douro"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_sunset">🌅 Sunset</span>
+              <h4 data-i18n="porto_sunset_h">Best Sunset Spots</h4>
+              <p data-i18n="porto_sunset_p">Jardim do Morro in Vila Nova de Gaia offers spectacular views over the Douro and Dom Luís Bridge at golden hour. Miradouro da Serra do Pilar is equally breathtaking.</p>
+              <a href="https://maps.google.com/?q=Jardim+do+Morro+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">📸</span>
+              <!-- REPLACE: <img src="assets/images/porto-photo-spots.jpg" alt="Dom Luís Bridge Porto"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_photo">📸 Photography</span>
+              <h4 data-i18n="porto_photo_h">Best Photo Spots</h4>
+              <p data-i18n="porto_photo_p">Dom Luís I Bridge, the iconic Livraria Lello, the Ribeira waterfront, the blue tiles of São Bento Station, and the colourful houses of Bonfim are all unmissable.</p>
+              <a href="https://maps.google.com/?q=Ponte+Luis+I+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">🌧️</span>
+              <!-- REPLACE: <img src="assets/images/porto-rainy.jpg" alt="Livraria Lello Porto"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_rainy">🌧️ Rainy Day</span>
+              <h4 data-i18n="porto_rainy_h">Rainy Day Plan</h4>
+              <p data-i18n="porto_rainy_p">Livraria Lello bookshop, Casa da Música, the Serralves Museum of Contemporary Art, or a long slow lunch at a traditional tasca. Porto's café culture was made for rainy days.</p>
+              <a href="https://maps.google.com/?q=Livraria+Lello+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">🗺️</span>
+              <!-- REPLACE: <img src="assets/images/porto-classic.jpg" alt="Ribeira waterfront Porto"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_classic">🗺️ Classic</span>
+              <h4 data-i18n="porto_classic_h">Classic Porto Itinerary</h4>
+              <p data-i18n="porto_classic_p">São Bento Station → Sé Cathedral → Ribeira waterfront → Dom Luís Bridge → Port wine cellar tasting in Gaia → sunset at Jardim do Morro. A perfect day in one loop.</p>
+              <a href="https://maps.google.com/?q=Estação+São+Bento+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">🍷</span>
+              <!-- REPLACE: <img src="assets/images/porto-food.jpg" alt="Francesinha Porto food"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_food">🍷 Food & Wine</span>
+              <h4 data-i18n="porto_food_h">Food & Wine</h4>
+              <p data-i18n="porto_food_p">A Francesinha at Café Santiago, pastel de nata at a local padaria, bacalhau à Brás, and finish with a port wine tasting at Graham's or Taylor's in Gaia. Porto eats well.</p>
+              <a href="https://maps.google.com/?q=Café+Santiago+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img ph-img-lg">
+              <span aria-hidden="true">🏖️</span>
+              <!-- REPLACE: <img src="assets/images/porto-beach.jpg" alt="Matosinhos beach Porto"> -->
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="tag_beach">🏖️ Beach</span>
+              <h4 data-i18n="porto_beach_h">Coastal & Beach Day</h4>
+              <p data-i18n="porto_beach_p">Matosinhos beach is just 15 minutes by metro — ideal for swimming, fresh seafood at the harbour restaurants, and big Atlantic skies. Foz do Douro is lovely for a riverside walk.</p>
+              <a href="https://maps.google.com/?q=Praia+de+Matosinhos" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ─────────────────────────────────────────────────
+         12. EMERGENCY & SUPPORT
+    ───────────────────────────────────────────────── -->
+    <section id="emergency" class="section emergency-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="em_title">Emergency & Support</h2>
+        <p class="section-sub" data-i18n="em_sub">We hope you never need this — but it's here just in case</p>
+
+        <div class="emergency-grid">
+
+          <div class="em-card em-card--red">
+            <span class="em-icon" aria-hidden="true">🆘</span>
+            <h4 data-i18n="em_112_h">Emergency Services</h4>
+            <p data-i18n="em_112_sub">Police · Fire · Ambulance</p>
+            <a href="tel:112" class="btn btn-emergency">
+              <span data-i18n="em_call">Call</span> 112
+            </a>
+          </div>
+
+          <div class="em-card">
+            <span class="em-icon" aria-hidden="true">💬</span>
+            <h4 data-i18n="em_host_h">Contact Host</h4>
+            <p data-i18n="em_host_sub">For any property issue</p>
+            <!-- REPLACE phone numbers as above -->
+            <div class="em-btns">
+              <a href="https://wa.me/351XXXXXXXXX" target="_blank" rel="noopener" class="btn btn-primary btn-sm">WhatsApp</a>
+              <a href="tel:+351XXXXXXXXX" class="btn btn-outline btn-sm" data-i18n="contact_urgent">Urgent Line</a>
+            </div>
+          </div>
+
+          <div class="em-card">
+            <span class="em-icon" aria-hidden="true">🏥</span>
+            <h4 data-i18n="em_hospital_h">Nearest Hospital</h4>
+            <!-- REPLACE with local hospital -->
+            <p class="ph">[Hospital name & address]</p>
+            <a href="https://maps.google.com/?q=hospital+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
+          </div>
+
+          <div class="em-card">
+            <span class="em-icon" aria-hidden="true">💊</span>
+            <h4 data-i18n="em_pharmacy_h">24h Pharmacy</h4>
+            <!-- REPLACE with nearest 24h pharmacy -->
+            <p class="ph">[Pharmacy name & address]</p>
+            <a href="https://maps.google.com/?q=farmacia+24h+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
+          </div>
+
+          <div class="em-card">
+            <span class="em-icon" aria-hidden="true">🚗</span>
+            <h4 data-i18n="em_ride_h">Uber / Bolt</h4>
+            <div class="em-btns">
+              <a href="https://www.uber.com" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Uber</a>
+              <a href="https://bolt.eu" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Bolt</a>
+            </div>
+          </div>
+
+          <div class="em-card">
+            <span class="em-icon" aria-hidden="true">🚕</span>
+            <h4 data-i18n="em_taxi_h">Taxi</h4>
+            <!-- REPLACE with local taxi number -->
+            <p class="ph">[Local taxi company number]</p>
+            <a href="tel:+351222073900" class="btn btn-outline btn-sm" data-i18n="em_call">Call</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner container">
+      <div class="footer-logo">
+        <span aria-hidden="true">⚓</span>
+        Porto Peace Haven
+      </div>
+      <address class="footer-address">
+        Rua da Paz, 66 · 3º andar, sala 34 · Porto · 4050-461
+      </address>
+      <p class="footer-copy">
+        Made with 🤍 for our guests ·
+        <span data-i18n="footer_rights">All rights reserved</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════
+       TOAST NOTIFICATION (for copy feedback)
+  ═══════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
