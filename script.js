@@ -1816,3 +1816,34 @@ document.addEventListener('DOMContentLoaded', () => {
   applyLanguage(currentLang);
   generateQRCodes();
 });
+
+/* ─────────────────────────────────────────────────────────────
+   DARK MODE TOGGLE
+───────────────────────────────────────────────────────────────── */
+const darkToggle = document.getElementById('dark-toggle');
+
+function applyTheme(dark) {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  localStorage.setItem('pph-theme', dark ? 'dark' : 'light');
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('pph-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : prefersDark);
+}
+
+if (darkToggle) {
+  darkToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    applyTheme(!isDark);
+  });
+}
+
+// System preference change listener
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('pph-theme')) applyTheme(e.matches);
+});
+
+// Run on load
+initTheme();

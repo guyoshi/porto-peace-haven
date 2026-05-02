@@ -143,7 +143,7 @@ strong { color: var(--text); font-weight: 600; }
 }
 
 .section-title {
-  margin-bottom: 0.4rem;
+  margin-bottom: 1rem;
   color: var(--text);
 }
 
@@ -1790,3 +1790,337 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   outline-offset: 3px;
   border-radius: 4px;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   30. DARK MODE
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --white:      #141418;
+  --off-white:  #1A1A20;
+  --sand:       #1E1E26;
+  --beige:      #242430;
+  --border:     #2E2E3A;
+  --text:       #F0EDE8;
+  --text-mid:   #A8A4A0;
+  --text-light: #686460;
+
+  --ribeira:      #4E7AB8;
+  --ribeira-light:#6090CC;
+  --douro:        #D4993A;
+  --douro-light:  #E8B050;
+  --atlantico:    #6AAEC4;
+  --atlantico-light: #80C4DA;
+  --gold:         #D4993A;
+  --shadow-sm:    0 1px 4px rgba(0,0,0,0.3);
+  --shadow-md:    0 4px 20px rgba(0,0,0,0.4);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,0.5);
+}
+
+[data-theme="dark"] .site-header {
+  background: rgba(20, 20, 24, 0.96);
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .bottom-nav {
+  background: rgba(20, 20, 24, 0.97);
+  border-top-color: var(--border);
+}
+
+[data-theme="dark"] .nav-drawer {
+  background: var(--off-white);
+}
+
+[data-theme="dark"] .lang-dropdown {
+  background: var(--off-white);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .lang-btn {
+  background: var(--off-white);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+[data-theme="dark"] .hamburger {
+  background: var(--off-white);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .hamburger span {
+  background: var(--text);
+}
+
+[data-theme="dark"] .info-card,
+[data-theme="dark"] .rule-card,
+[data-theme="dark"] .guide-card,
+[data-theme="dark"] .kitchen-card,
+[data-theme="dark"] .room-detail,
+[data-theme="dark"] .nearby-card,
+[data-theme="dark"] .porto-card,
+[data-theme="dark"] .em-card {
+  background: var(--off-white);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .feat-card {
+  background: var(--sand);
+}
+
+[data-theme="dark"] .feat-card:hover {
+  background: var(--beige);
+}
+
+[data-theme="dark"] .review-box {
+  background: linear-gradient(135deg, #1B3A6A 0%, #2040A0 100%);
+}
+
+[data-theme="dark"] .ribeira-body { background: #1a3060; }
+[data-theme="dark"] .douro-body   { background: #5a3800; }
+[data-theme="dark"] .atlantico-body { background: #1a4060; }
+
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(160deg, #0A1428 0%, #142040 35%, #1E3860 65%, #2A5A70 100%);
+}
+
+[data-theme="dark"] .wifi-value,
+[data-theme="dark"] .copy-btn {
+  background: rgba(78, 122, 184, 0.15);
+  border-color: rgba(78, 122, 184, 0.3);
+}
+
+[data-theme="dark"] .rooms-preview {
+  background: var(--white);
+}
+
+[data-theme="dark"] .kitchen-etiquette,
+[data-theme="dark"] .rules-footer,
+[data-theme="dark"] .room-reminder,
+[data-theme="dark"] .qr-block {
+  background: var(--sand);
+}
+
+[data-theme="dark"] .guide-card--report {
+  background: var(--sand);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--border);
+  color: var(--text-mid);
+}
+
+[data-theme="dark"] .app-pill {
+  background: var(--sand);
+  border-color: var(--border);
+  color: var(--text-mid);
+}
+
+[data-theme="dark"] .nearby-emoji-bg {
+  filter: brightness(0.7);
+}
+
+[data-theme="dark"] .section-sand {
+  background: var(--sand);
+}
+
+[data-theme="dark"] .emergency-section {
+  background: var(--off-white);
+}
+
+[data-theme="dark"] .em-card--red {
+  background: rgba(192, 57, 43, 0.12);
+  border-color: rgba(192, 57, 43, 0.3);
+}
+
+[data-theme="dark"] .site-footer {
+  background: #0A0A10;
+}
+
+/* Dark mode toggle button */
+.dark-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.dark-toggle:hover {
+  border-color: var(--ribeira);
+  color: var(--ribeira);
+}
+
+.icon-moon { display: none; }
+.icon-sun  { display: block; }
+
+[data-theme="dark"] .icon-sun  { display: none; }
+[data-theme="dark"] .icon-moon { display: block; }
+
+[data-theme="dark"] .dark-toggle {
+  background: var(--off-white);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   31. AZULEJO DECORATIVE PATTERNS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Azulejo border — used as a decorative divider */
+.azulejo-divider {
+  height: 12px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--ribeira) 0px, var(--ribeira) 12px,
+    var(--atlantico) 12px, var(--atlantico) 24px,
+    var(--douro) 24px, var(--douro) 36px,
+    var(--sand) 36px, var(--sand) 48px
+  );
+  opacity: 0.25;
+  width: 100%;
+}
+
+/* Azulejo accent under section headings */
+.section-title {
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--ribeira) 0%, var(--atlantico) 50%, var(--douro) 100%);
+}
+
+.section-title.centered::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Azulejo pattern strip above footer */
+.site-footer::before {
+  content: '';
+  display: block;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #1B2A4A 0, #1B2A4A 25%,
+    #4E8FA8 25%, #4E8FA8 50%,
+    #C8922A 50%, #C8922A 75%,
+    #EDE6DC 75%, #EDE6DC 100%
+  );
+  background-size: 80px 8px;
+  opacity: 0.6;
+}
+
+/* Azulejo tile inside room cards (header area) */
+.room-header::after {
+  content: '';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.12) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.12) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.12) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0;
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.room-header {
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   32. ROOM + PORTO GUIDE PHOTO STYLES
+   ═══════════════════════════════════════════════════════════════ */
+.room-photo-wrapper {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.room-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media (min-width: 600px) {
+  .room-photo-wrapper { height: 300px; }
+}
+
+.porto-img-photo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.porto-img {
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   33. NEARBY CARDS — updated style
+   ═══════════════════════════════════════════════════════════════ */
+.nearby-emoji-bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.nearby-body p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--text-mid);
+}
+
+.nearby-body strong {
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   34. HERO BG IMAGE
+   ═══════════════════════════════════════════════════════════════ */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(27, 42, 74, 0.78) 0%,
+    rgba(46, 64, 112, 0.65) 40%,
+    rgba(78, 144, 168, 0.45) 100%
+  );
+}
+

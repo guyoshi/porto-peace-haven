@@ -62,6 +62,11 @@
             <button class="lang-option" data-lang="it" data-flag="🇮🇹" role="menuitem">🇮🇹 Italiano</button>
           </div>
         </div>
+        <!-- Dark Mode Toggle -->
+        <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <!-- Hamburger -->
         <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
           <span></span><span></span><span></span>
@@ -134,8 +139,7 @@
     ───────────────────────────────────────────────── -->
     <section id="home" class="section hero-section">
       <div class="hero-bg" aria-hidden="true">
-        <!-- Hero background image: replace with assets/images/hero-porto.jpg -->
-        <!-- <img src="assets/images/hero-porto.jpg" alt="" class="hero-bg-img"> -->
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1920&q=80&auto=format&fit=crop" alt="" class="hero-bg-img" loading="eager">
         <div class="hero-gradient"></div>
         <div class="hero-tiles" aria-hidden="true"></div>
       </div>
@@ -711,9 +715,8 @@
             <img src="assets/images/ribeira-room.jpg" alt="Ribeira room at Porto Peace Haven" class="room-photo">
             Suggested source: your own photo. Free alternative: Unsplash "dark blue bedroom elegant"
           -->
-          <div class="room-photo-ph ribeira-ph">
-            <span aria-hidden="true">🌉</span>
-            <p>Ribeira Room — <em>replace with: assets/images/ribeira-room.jpg</em></p>
+          <div class="room-photo-wrapper">
+            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80&auto=format&fit=crop" alt="Ribeira room — dark blue elegant bedroom" class="room-photo" loading="lazy">
           </div>
 
           <div class="features-grid">
@@ -790,12 +793,8 @@
             </div>
           </div>
 
-          <!--
-            REPLACE: <img src="assets/images/douro-room.jpg" alt="Douro room at Porto Peace Haven" class="room-photo">
-          -->
-          <div class="room-photo-ph douro-ph">
-            <span aria-hidden="true">🌅</span>
-            <p>Douro Room — <em>replace with: assets/images/douro-room.jpg</em></p>
+          <div class="room-photo-wrapper">
+            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=900&q=80&auto=format&fit=crop" alt="Douro room — warm cosy bedroom" class="room-photo" loading="lazy">
           </div>
 
           <div class="features-grid">
@@ -867,12 +866,8 @@
             </div>
           </div>
 
-          <!--
-            REPLACE: <img src="assets/images/atlantico-room.jpg" alt="Atlântico room at Porto Peace Haven" class="room-photo">
-          -->
-          <div class="room-photo-ph atlantico-ph">
-            <span aria-hidden="true">🌊</span>
-            <p>Atlântico Room — <em>replace with: assets/images/atlantico-room.jpg</em></p>
+          <div class="room-photo-wrapper">
+            <img src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=900&q=80&auto=format&fit=crop" alt="Atlântico room — light airy bedroom" class="room-photo" loading="lazy">
           </div>
 
           <div class="features-grid">
@@ -1003,9 +998,11 @@
           <div class="info-icon" aria-hidden="true">🚇</div>
           <div class="info-body">
             <h3 data-i18n="tr_metro_h">Nearest Metro Stop</h3>
-            <!-- REPLACE: Add the confirmed metro stop name and walk time -->
-            <p><span class="ph">[Metro stop name — e.g. Bolhão (Line D) — approx X min walk]</span></p>
-            <a href="https://www.metrodoporto.pt/pages/1" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="tr_metro_map">View Metro Map</a>
+            <p><strong>Carolina Michaelis</strong> (Linha D · Amarela) — aprox. <strong>12 minutos</strong> a pé</p>
+            <div style="margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Estação+Carolina+Michaelis+Porto" target="_blank" rel="noopener" class="btn btn-primary btn-sm">🗺️ Directions</a>
+              <a href="https://www.metrodoporto.pt/metrodoporto/uploads/document/file/471/mapa_de_rede.pdf" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="tr_metro_map">View Metro Map</a>
+            </div>
           </div>
         </div>
 
@@ -1013,8 +1010,7 @@
           <div class="info-icon" aria-hidden="true">🚌</div>
           <div class="info-body">
             <h3 data-i18n="tr_bus_h">Bus & Tram</h3>
-            <!-- REPLACE: Add nearest bus/tram stop and line numbers -->
-            <p><span class="ph">[Nearest bus stop + lines — e.g. Linha 200 · 5 min walk]</span></p>
+            <p>Paragem <strong>Bonfim / Rua da Paz</strong> — STCP Linhas <strong>200 · 207 · 208</strong> · &lt; 2 min a pé</p>
             <a href="https://www.stcp.pt" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="tr_stcp">STCP Bus Routes</a>
           </div>
         </div>
@@ -1026,9 +1022,10 @@
             <div class="app-row">
               <a href="https://www.uber.com" target="_blank" rel="noopener" class="app-pill">🚗 Uber</a>
               <a href="https://bolt.eu" target="_blank" rel="noopener" class="app-pill">⚡ Bolt</a>
-              <!-- REPLACE: Add local taxi number -->
-              <a href="tel:+351222073900" class="app-pill">🚕 <span data-i18n="tr_taxi">Taxi</span></a>
+              <a href="tel:+351225073900" class="app-pill">🚕 Raditaxis</a>
+              <a href="tel:+351225076400" class="app-pill">🚕 Taxis Invicta</a>
             </div>
+            <p style="font-size:0.8rem;margin-top:0.5rem;color:var(--text-light)">Raditaxis: +351 225 073 900 · Taxis Invicta: +351 225 076 400</p>
           </div>
         </div>
 
@@ -1058,65 +1055,65 @@
         <div class="nearby-grid">
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">🛒</span><!-- <img src="assets/images/nearby-supermarket.jpg" alt="Supermarket"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#e8f4e8,#c5e5c5)"><span aria-hidden="true">🛒</span></div>
             <div class="nearby-body">
               <h4 data-i18n="nb_supermarket">Supermarket</h4>
-              <p class="ph">[Name & address]</p>
-              <a href="https://maps.google.com/?q=supermarket+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <p><strong>Froiz</strong><br>Shopping Cidade do Porto<br>R. do Bom Sucesso 61<br>🕗 9h–22h todos os dias</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Froiz+Shopping+Cidade+Porto+R+Bom+Sucesso+61" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">💊</span><!-- <img src="assets/images/nearby-pharmacy.jpg" alt="Pharmacy"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#fce8f3,#f5b8d8)"><span aria-hidden="true">💊</span></div>
             <div class="nearby-body">
-              <h4 data-i18n="nb_pharmacy">Pharmacy</h4>
-              <p class="ph">[Name & address]</p>
-              <a href="https://maps.google.com/?q=farmacia+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <h4 data-i18n="nb_pharmacy">Farmácia 24h</h4>
+              <p><strong>Farmácia Barreiros</strong><br>R. de Serpa Pinto 12<br>📞 +351 22 834 9150<br>🕛 Aberta 24 horas</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Farmácia+Barreiros+Rua+Serpa+Pinto+12+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">🏥</span><!-- <img src="assets/images/nearby-hospital.jpg" alt="Hospital"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#e8f0ff,#b8ccf5)"><span aria-hidden="true">🏥</span></div>
             <div class="nearby-body">
               <h4 data-i18n="nb_hospital">Hospital</h4>
-              <p class="ph">[Name & address]</p>
-              <a href="https://maps.google.com/?q=hospital+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <p><strong>Hospital Santo António</strong><br>R. Dr. Tiago de Almeida<br>📞 +351 22 207 7500<br>🕛 Urgência 24h</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Hospital+Santo+Antonio+Porto+R+Dr+Tiago+de+Almeida" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">☕</span><!-- <img src="assets/images/nearby-cafe.jpg" alt="Café"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#fdf3e3,#f5d9a8)"><span aria-hidden="true">☕</span></div>
             <div class="nearby-body">
               <h4 data-i18n="nb_cafe">Café</h4>
-              <p class="ph">[Name & address]</p>
-              <a href="https://maps.google.com/?q=cafe+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <p><strong>Apartamento Coffee</strong><br>R. de Cedofeita 607<br>⭐ 4.5 · Brunch & specialty<br>🕗 Seg–Dom 9h–17h</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Apartamento+Coffee+Rua+de+Cedofeita+607+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">🚇</span></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#1B2A4A,#2E4070)"><span aria-hidden="true">🚇</span></div>
             <div class="nearby-body">
-              <h4 data-i18n="nb_transport">Transport</h4>
-              <p class="ph">[Nearest stop]</p>
-              <a href="#transport" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <h4>Metro</h4>
+              <p><strong>Carolina Michaelis</strong><br>Linha D (Amarela)<br>⏱️ ~12 min a pé</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Estação+Carolina+Michaelis+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">🏧</span><!-- <img src="assets/images/nearby-atm.jpg" alt="ATM"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#e8f4e8,#a8d5a8)"><span aria-hidden="true">🏧</span></div>
             <div class="nearby-body">
-              <h4 data-i18n="nb_atm">ATM</h4>
-              <p class="ph">[Location & bank]</p>
-              <a href="https://maps.google.com/?q=caixa+multibanco+near+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <h4 data-i18n="nb_atm">Multibanco</h4>
+              <p><strong>Millennium BCP</strong><br>Pç. Mouzinho de Albuquerque 136<br>Rotunda da Boavista</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Millennium+bcp+Praça+Mouzinho+de+Albuquerque+136+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="nearby-card">
-            <div class="nearby-img ph-img"><span aria-hidden="true">👔</span><!-- <img src="assets/images/nearby-laundry.jpg" alt="Laundry"> --></div>
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#f0e8ff,#cdb8f0)"><span aria-hidden="true">👕</span></div>
             <div class="nearby-body">
-              <h4 data-i18n="nb_laundry">Laundry</h4>
-              <p class="ph">[Name & address]</p>
-              <a href="https://maps.google.com/?q=lavandaria+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <h4 data-i18n="nb_laundry">Lavandaria</h4>
+              <p><strong>Speed Queen Self-Service</strong><br>R. Calouste Gulbenkian 67<br>📞 +351 931 898 200<br>🕗 7h–23h todos os dias</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Lavandaria+Speed+Queen+Rua+Calouste+Gulbenkian+67+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
@@ -1141,9 +1138,8 @@
         <div class="porto-grid">
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">🌅</span>
-              <!-- REPLACE: <img src="assets/images/porto-sunset.jpg" alt="Sunset over Porto and the Douro"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=700&q=80&auto=format&fit=crop" alt="Porto sunset over the Douro river" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_sunset">🌅 Sunset</span>
@@ -1154,9 +1150,8 @@
           </div>
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">📸</span>
-              <!-- REPLACE: <img src="assets/images/porto-photo-spots.jpg" alt="Dom Luís Bridge Porto"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1555399028-e72a13ee5e4e?w=700&q=80&auto=format&fit=crop" alt="Dom Luís Bridge Porto" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_photo">📸 Photography</span>
@@ -1167,9 +1162,8 @@
           </div>
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">🌧️</span>
-              <!-- REPLACE: <img src="assets/images/porto-rainy.jpg" alt="Livraria Lello Porto"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=700&q=80&auto=format&fit=crop" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_rainy">🌧️ Rainy Day</span>
@@ -1180,9 +1174,8 @@
           </div>
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">🗺️</span>
-              <!-- REPLACE: <img src="assets/images/porto-classic.jpg" alt="Ribeira waterfront Porto"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1596621694701-f1c2b3cdb8ea?w=700&q=80&auto=format&fit=crop" alt="Porto Ribeira waterfront classic view" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_classic">🗺️ Classic</span>
@@ -1193,9 +1186,8 @@
           </div>
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">🍷</span>
-              <!-- REPLACE: <img src="assets/images/porto-food.jpg" alt="Francesinha Porto food"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80&auto=format&fit=crop" alt="Porto food and wine" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_food">🍷 Food & Wine</span>
@@ -1206,9 +1198,8 @@
           </div>
 
           <div class="porto-card">
-            <div class="porto-img ph-img-lg">
-              <span aria-hidden="true">🏖️</span>
-              <!-- REPLACE: <img src="assets/images/porto-beach.jpg" alt="Matosinhos beach Porto"> -->
+            <div class="porto-img">
+              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80&auto=format&fit=crop" alt="Matosinhos beach Porto" class="porto-img-photo" loading="lazy">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_beach">🏖️ Beach</span>
@@ -1222,6 +1213,9 @@
       </div>
     </section>
 
+
+    <!-- Azulejo decorative divider -->
+    <div class="azulejo-divider" aria-hidden="true"></div>
 
     <!-- ─────────────────────────────────────────────────
          12. EMERGENCY & SUPPORT
@@ -1256,17 +1250,15 @@
           <div class="em-card">
             <span class="em-icon" aria-hidden="true">🏥</span>
             <h4 data-i18n="em_hospital_h">Nearest Hospital</h4>
-            <!-- REPLACE with local hospital -->
-            <p class="ph">[Hospital name & address]</p>
-            <a href="https://maps.google.com/?q=hospital+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
+            <p><strong>Hospital Santo António</strong><br>R. Dr. Tiago de Almeida<br>+351 22 207 7500 · 24h</p>
+            <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Hospital+Santo+Antonio+Porto+R+Dr+Tiago+de+Almeida" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
           </div>
 
           <div class="em-card">
             <span class="em-icon" aria-hidden="true">💊</span>
             <h4 data-i18n="em_pharmacy_h">24h Pharmacy</h4>
-            <!-- REPLACE with nearest 24h pharmacy -->
-            <p class="ph">[Pharmacy name & address]</p>
-            <a href="https://maps.google.com/?q=farmacia+24h+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
+            <p><strong>Farmácia Barreiros</strong><br>R. de Serpa Pinto 12<br>+351 22 834 9150 · 24h</p>
+            <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Farmácia+Barreiros+Rua+Serpa+Pinto+12+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Maps</a>
           </div>
 
           <div class="em-card">
@@ -1281,9 +1273,11 @@
           <div class="em-card">
             <span class="em-icon" aria-hidden="true">🚕</span>
             <h4 data-i18n="em_taxi_h">Taxi</h4>
-            <!-- REPLACE with local taxi number -->
-            <p class="ph">[Local taxi company number]</p>
-            <a href="tel:+351222073900" class="btn btn-outline btn-sm" data-i18n="em_call">Call</a>
+            <p><strong>Raditaxis:</strong> +351 225 073 900<br><strong>Taxis Invicta:</strong> +351 225 076 400</p>
+            <div class="em-btns">
+              <a href="tel:+351225073900" class="btn btn-outline btn-sm">Raditaxis</a>
+              <a href="tel:+351225076400" class="btn btn-outline btn-sm">Invicta</a>
+            </div>
           </div>
 
         </div>
