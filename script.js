@@ -1640,11 +1640,11 @@ const translations = {
 ───────────────────────────────────────────────────────────────── */
 const guideFiles = {
   en: { file: 'assets/guides/guide-en.docx', label: '⬇ Download Guide (English)' },
-  pt: { file: 'assets/guides/guide-pt.docx', label: '⬇ Descarregar Guia (Português)' },
-  fr: { file: 'assets/guides/guide-fr.docx', label: '⬇ Télécharger le Guide (Français)' },
-  es: { file: 'assets/guides/guide-es.docx', label: '⬇ Descargar Guía (Español)' },
-  de: { file: 'assets/guides/guide-de.docx', label: '⬇ Handbuch herunterladen (Deutsch)' },
-  it: { file: 'assets/guides/guide-it.docx', label: '⬇ Scarica la Guida (Italiano)' },
+  pt: { file: 'assets/guides/guide_pt.docx', label: '⬇ Descarregar Guia (Português)' },
+  fr: { file: 'assets/guides/guide_fr.docx', label: '⬇ Télécharger le Guide (Français)' },
+  es: { file: 'assets/guides/guide_es.docx', label: '⬇ Descargar Guía (Español)' },
+  de: { file: 'assets/guides/guide_de.docx', label: '⬇ Handbuch herunterladen (Deutsch)' },
+  it: { file: 'assets/guides/guide_it.docx', label: '⬇ Scarica la Guida (Italiano)' },
 };
 
 function updateGuideDownload(lang) {
