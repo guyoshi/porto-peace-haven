@@ -2124,3 +2124,134 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   );
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   35. PORTO MAP CARD
+   ═══════════════════════════════════════════════════════════════ */
+.map-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.map-preview-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.map-preview-link {
+  display: block;
+  text-decoration: none;
+}
+
+.map-preview-inner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .map-preview-inner { height: 380px; }
+}
+
+.map-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.map-preview-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.map-preview-placeholder p {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--text);
+  opacity: 0.5;
+}
+
+.map-overlay-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background: rgba(27, 42, 74, 0.55);
+  opacity: 0;
+  transition: opacity 0.25s;
+  z-index: 2;
+}
+
+.map-overlay-icon span {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.map-preview-link:hover .map-overlay-icon,
+.map-preview-link:focus .map-overlay-icon {
+  opacity: 1;
+}
+
+.map-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1.2rem 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   36. ROOM CARD PHOTO STYLE
+   ═══════════════════════════════════════════════════════════════ */
+.room-card-img-wrap {
+  position: relative;
+}
+
+.room-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.img-ph-fallback {
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   37. DARK MODE — MAP
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] .map-card {
+  background: var(--off-white);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .map-preview-inner {
+  background: var(--sand);
+}
+

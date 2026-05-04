@@ -274,6 +274,17 @@ const translations = {
     em_taxi_h: 'Taxi',
     footer_rights: 'All rights reserved',
     copied: '✓ Copied!',
+    nav_mapa: '🗺️ Porto Map',
+    nb_nos: 'NOS Store (SIM Cards)',
+    dl_guide_title: 'Download Offline Guide',
+    dl_guide_desc: 'Save this guide to your device — useful when you have no internet.',
+    dl_guide_btn: '⬇ Download Guide (EN)',
+    map_title: 'Porto City Map',
+    map_sub: 'Official tourist map — tap to open or download',
+    map_open: 'Open Map',
+    map_pdf_label: 'Official Porto Tourist Map',
+    map_open_full: 'Open Full Map',
+    map_download: 'Download PDF',
   },
 
   /* ══════════ PORTUGUÊS ══════════ */
@@ -532,6 +543,17 @@ const translations = {
     em_taxi_h: 'Táxi',
     footer_rights: 'Todos os direitos reservados',
     copied: '✓ Copiado!',
+    nav_mapa: '🗺️ Mapa do Porto',
+    nb_nos: 'Loja NOS (Chips)',
+    dl_guide_title: 'Descarregar Guia Offline',
+    dl_guide_desc: 'Guarda este guia no teu dispositivo — útil sem internet.',
+    dl_guide_btn: '⬇ Descarregar Guia (PT)',
+    map_title: 'Mapa da Cidade do Porto',
+    map_sub: 'Mapa turístico oficial — toque para abrir ou descarregar',
+    map_open: 'Abrir Mapa',
+    map_pdf_label: 'Mapa Turístico Oficial do Porto',
+    map_open_full: 'Abrir Mapa Completo',
+    map_download: 'Descarregar PDF',
   },
 
   /* ══════════ FRANÇAIS ══════════ */
@@ -790,6 +812,17 @@ const translations = {
     em_taxi_h: 'Taxi',
     footer_rights: 'Tous droits réservés',
     copied: '✓ Copié !',
+    nav_mapa: '🗺️ Plan de Porto',
+    nb_nos: 'Boutique NOS (SIM)',
+    dl_guide_title: 'Télécharger le Guide Hors Ligne',
+    dl_guide_desc: 'Enregistrez ce guide sur votre appareil — utile sans internet.',
+    dl_guide_btn: '⬇ Télécharger le Guide (FR)',
+    map_title: 'Plan de la Ville de Porto',
+    map_sub: 'Plan touristique officiel — appuyez pour ouvrir ou télécharger',
+    map_open: 'Ouvrir le Plan',
+    map_pdf_label: 'Plan Touristique Officiel de Porto',
+    map_open_full: 'Ouvrir Plan Complet',
+    map_download: 'Télécharger PDF',
   },
 
   /* ══════════ ESPAÑOL ══════════ */
@@ -1048,6 +1081,17 @@ const translations = {
     em_taxi_h: 'Taxi',
     footer_rights: 'Todos los derechos reservados',
     copied: '✓ ¡Copiado!',
+    nav_mapa: '🗺️ Mapa de Oporto',
+    nb_nos: 'Tienda NOS (SIM)',
+    dl_guide_title: 'Descargar Guía Sin Conexión',
+    dl_guide_desc: 'Guarda esta guía en tu dispositivo — útil sin internet.',
+    dl_guide_btn: '⬇ Descargar Guía (ES)',
+    map_title: 'Mapa de la Ciudad de Oporto',
+    map_sub: 'Mapa turístico oficial — toca para abrir o descargar',
+    map_open: 'Abrir Mapa',
+    map_pdf_label: 'Mapa Turístico Oficial de Porto',
+    map_open_full: 'Abrir Mapa Completo',
+    map_download: 'Descargar PDF',
   },
 
   /* ══════════ DEUTSCH ══════════ */
@@ -1306,6 +1350,17 @@ const translations = {
     em_taxi_h: 'Taxi',
     footer_rights: 'Alle Rechte vorbehalten',
     copied: '✓ Kopiert!',
+    nav_mapa: '🗺️ Porto-Karte',
+    nb_nos: 'NOS Shop (SIM-Karten)',
+    dl_guide_title: 'Offline-Reiseführer herunterladen',
+    dl_guide_desc: 'Speichern Sie diesen Leitfaden auf Ihrem Gerät — nützlich ohne Internet.',
+    dl_guide_btn: '⬇ Handbuch herunterladen (DE)',
+    map_title: 'Stadtplan von Porto',
+    map_sub: 'Offizieller Touristenplan — tippen zum Öffnen oder Herunterladen',
+    map_open: 'Karte öffnen',
+    map_pdf_label: 'Offizieller Touristenkarte von Porto',
+    map_open_full: 'Vollständige Karte öffnen',
+    map_download: 'PDF herunterladen',
   },
 
   /* ══════════ ITALIANO ══════════ */
@@ -1564,8 +1619,42 @@ const translations = {
     em_taxi_h: 'Taxi',
     footer_rights: 'Tutti i diritti riservati',
     copied: '✓ Copiato!',
+    nav_mapa: '🗺️ Mappa di Porto',
+    nb_nos: 'Negozio NOS (SIM)',
+    dl_guide_title: 'Scarica Guida Offline',
+    dl_guide_desc: 'Salva questa guida sul tuo dispositivo — utile senza internet.',
+    dl_guide_btn: '⬇ Scarica la Guida (IT)',
+    map_title: 'Mappa della Città di Porto',
+    map_sub: 'Mappa turistica ufficiale — tocca per aprire o scaricare',
+    map_open: 'Apri Mappa',
+    map_pdf_label: 'Mappa Turistica Ufficiale di Porto',
+    map_open_full: 'Apri Mappa Completa',
+    map_download: 'Scarica PDF',
   },
 };
+
+
+
+/* ─────────────────────────────────────────────────────────────
+   GUIDE DOWNLOAD — language-aware
+───────────────────────────────────────────────────────────────── */
+const guideFiles = {
+  en: { file: 'assets/guides/guide-en.docx', label: '⬇ Download Guide (English)' },
+  pt: { file: 'assets/guides/guide-pt.docx', label: '⬇ Descarregar Guia (Português)' },
+  fr: { file: 'assets/guides/guide-fr.docx', label: '⬇ Télécharger le Guide (Français)' },
+  es: { file: 'assets/guides/guide-es.docx', label: '⬇ Descargar Guía (Español)' },
+  de: { file: 'assets/guides/guide-de.docx', label: '⬇ Handbuch herunterladen (Deutsch)' },
+  it: { file: 'assets/guides/guide-it.docx', label: '⬇ Scarica la Guida (Italiano)' },
+};
+
+function updateGuideDownload(lang) {
+  const btn = document.getElementById('guide-download-btn');
+  if (!btn) return;
+  const g = guideFiles[lang] || guideFiles.en;
+  btn.href = g.file;
+  btn.download = g.file.split('/').pop();
+  btn.textContent = g.label;
+}
 
 /* ─────────────────────────────────────────────────────────────
    LANGUAGE SWITCHER
@@ -1598,6 +1687,9 @@ function applyLanguage(lang) {
   const codeEl = document.getElementById('current-lang-code');
   if (flagEl) flagEl.textContent = flags[lang] || '🇬🇧';
   if (codeEl) codeEl.textContent = codes[lang] || 'EN';
+
+  // Update guide download button
+  updateGuideDownload(lang);
 
   // Update active class on options
   document.querySelectorAll('.lang-option').forEach(btn => {

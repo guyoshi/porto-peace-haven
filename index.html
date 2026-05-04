@@ -98,6 +98,7 @@
       <li><a href="#transport" class="nav-link" data-i18n="nav_transport">Transport</a></li>
       <li><a href="#nearby" class="nav-link" data-i18n="nav_nearby">Nearby Places</a></li>
       <li><a href="#porto" class="nav-link" data-i18n="nav_porto">Porto Guide</a></li>
+      <li><a href="#mapa" class="nav-link" data-i18n="nav_mapa">🗺️ Mapa do Porto</a></li>
       <li><a href="#emergency" class="nav-link nav-emergency" data-i18n="nav_emergency">🆘 Emergency</a></li>
     </ul>
   </nav>
@@ -139,7 +140,7 @@
     ───────────────────────────────────────────────── -->
     <section id="home" class="section hero-section">
       <div class="hero-bg" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1920&q=80&auto=format&fit=crop" alt="" class="hero-bg-img" loading="eager">
+        <img src="assets/images/hero-porto.jpg" alt="" class="hero-bg-img" loading="eager">
         <div class="hero-gradient"></div>
         <div class="hero-tiles" aria-hidden="true"></div>
       </div>
@@ -192,12 +193,9 @@
           <div class="rooms-grid">
 
             <a href="#ribeira" class="room-card">
-              <div class="room-card-img ribeira-gradient">
-                <!--
-                  REPLACE PLACEHOLDER: <img src="assets/images/ribeira-preview.jpg" alt="Ribeira room">
-                  Suggested free source: Unsplash — search "dark blue bedroom Porto"
-                -->
-                <div class="img-ph"><span>🌉</span></div>
+              <div class="room-card-img ribeira-gradient room-card-img-wrap">
+                <img src="assets/images/ribeira-preview.jpg" alt="Ribeira" class="room-card-photo" onerror="this.style.display='none'">
+                <div class="img-ph img-ph-fallback"><span>🌉</span></div>
               </div>
               <div class="room-card-body ribeira-body">
                 <h3>Ribeira</h3>
@@ -207,12 +205,9 @@
             </a>
 
             <a href="#douro" class="room-card">
-              <div class="room-card-img douro-gradient">
-                <!--
-                  REPLACE PLACEHOLDER: <img src="assets/images/douro-preview.jpg" alt="Douro room">
-                  Suggested free source: Unsplash — search "warm golden bedroom cosy"
-                -->
-                <div class="img-ph"><span>🌅</span></div>
+              <div class="room-card-img douro-gradient room-card-img-wrap">
+                <img src="assets/images/douro-preview.jpg" alt="Douro" class="room-card-photo" onerror="this.style.display='none'">
+                <div class="img-ph img-ph-fallback"><span>🌅</span></div>
               </div>
               <div class="room-card-body douro-body">
                 <h3>Douro</h3>
@@ -222,12 +217,9 @@
             </a>
 
             <a href="#atlantico" class="room-card">
-              <div class="room-card-img atlantico-gradient">
-                <!--
-                  REPLACE PLACEHOLDER: <img src="assets/images/atlantico-preview.jpg" alt="Atlântico room">
-                  Suggested free source: Unsplash — search "light blue coastal bedroom airy"
-                -->
-                <div class="img-ph"><span>🌊</span></div>
+              <div class="room-card-img atlantico-gradient room-card-img-wrap">
+                <img src="assets/images/atlantico-preview.jpg" alt="Atlântico" class="room-card-photo" onerror="this.style.display='none'">
+                <div class="img-ph img-ph-fallback"><span>🌊</span></div>
               </div>
               <div class="room-card-body atlantico-body">
                 <h3>Atlântico</h3>
@@ -331,11 +323,17 @@
             <h3 data-i18n="guide_qr_title">This Guest Guide</h3>
             <p data-i18n="guide_qr_desc">Share this link with your guests or scan the QR code</p>
             <div id="website-qr" class="qr-box" aria-label="Guest guide QR code"></div>
-            <!--
-              REPLACE: Update SITE_URL constant in script.js after deployment
-              e.g. const SITE_URL = "https://porto-peace-haven.netlify.app"
-            -->
             <p class="host-note" data-i18n="guide_qr_note">⚠️ Update SITE_URL in script.js after deploying</p>
+          </div>
+        </div>
+
+        <!-- Download Guide -->
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">📥</div>
+          <div class="info-body">
+            <h3 data-i18n="dl_guide_title">Download Offline Guide</h3>
+            <p data-i18n="dl_guide_desc">Save this guide to your device — useful when you have no internet connection.</p>
+            <a id="guide-download-btn" href="assets/guides/guide-en.docx" download class="btn btn-primary btn-sm" data-i18n="dl_guide_btn">⬇ Download Guide (EN)</a>
           </div>
         </div>
 
@@ -392,18 +390,7 @@
           </div>
         </div>
 
-        <div class="info-card">
-          <div class="info-icon" aria-hidden="true">🔒</div>
-          <div class="info-body">
-            <h3 data-i18n="safe_title">In-Room Safe</h3>
-            <ul class="info-list">
-              <li data-i18n="safe_1">A safe is available in your room — use it for passports, valuables, and cards.</li>
-              <li data-i18n="safe_2">Set your own personal PIN on arrival and reset it on departure.</li>
-              <!-- REPLACE: Add safe brand/reset instructions if needed -->
-              <li><span class="ph">[Add safe brand name and factory reset instructions if applicable]</span></li>
-            </ul>
-          </div>
-        </div>
+
 
       </div>
     </section>
@@ -584,7 +571,7 @@
           <!--
             REPLACE: Update this URL with your actual Google/Airbnb/Booking review link
           -->
-          <a href="https://g.page/r/PLACEHOLDER/review" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="review_btn">Leave a Review ⭐</a>
+          <a href="https://www.google.com/maps/place/Porto+Peace+Haven/@41.158,-8.620,17z/data=!4m8!3m7!1s0x0:0x0!8m2!3d41.158!4d-8.620!9m1!1b1" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="review_btn">Leave a Review ⭐</a>
         </div>
 
       </div>
@@ -716,7 +703,7 @@
             Suggested source: your own photo. Free alternative: Unsplash "dark blue bedroom elegant"
           -->
           <div class="room-photo-wrapper">
-            <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=900&q=80&auto=format&fit=crop" alt="Ribeira room — dark blue elegant bedroom" class="room-photo" loading="lazy">
+            <img src="assets/images/ribeira-room.jpg" alt="Quarto Ribeira — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
           </div>
 
           <div class="features-grid">
@@ -726,7 +713,7 @@
               <p data-i18n="feat_tv_p">Use the Android dongle remote (black, smaller) to navigate apps. Use the TV remote to switch the input to HDMI if needed. Press Home on the dongle remote to start.</p>
             </div>
             <div class="feat-card">
-              <span aria-hidden="true">🎮</span>
+              <span aria-hidden="true">🎚️</span>
               <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
               <p data-i18n="ribeira_remotes_p">You have two remotes: one for the TV and one for the Android dongle. The dongle remote also controls the LED strip behind the TV.</p>
             </div>
@@ -770,11 +757,7 @@
               <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
               <p data-i18n="feat_rail_p">A clothes rail is provided for hanging garments.</p>
             </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🛏️</span>
-              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
-              <p data-i18n="feat_blanket_p">A spare blanket is stored inside the ottoman at the foot of the bed.</p>
-            </div>
+
           </div>
 
           <div class="room-reminder">
@@ -794,7 +777,7 @@
           </div>
 
           <div class="room-photo-wrapper">
-            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=900&q=80&auto=format&fit=crop" alt="Douro room — warm cosy bedroom" class="room-photo" loading="lazy">
+            <img src="assets/images/douro-room.jpg" alt="Quarto Douro — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
           </div>
 
           <div class="features-grid">
@@ -804,7 +787,7 @@
               <p data-i18n="feat_tv_p">Use the Android dongle remote to navigate streaming apps. TV remote switches input if needed.</p>
             </div>
             <div class="feat-card">
-              <span aria-hidden="true">🎮</span>
+              <span aria-hidden="true">🎚️</span>
               <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
               <p data-i18n="douro_remotes_p">Two remotes provided: one for the TV and one for the Android dongle. The LED remote controls your bedside lamp colour and brightness.</p>
             </div>
@@ -843,11 +826,7 @@
               <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
               <p data-i18n="feat_rail_p">A clothes rail is available for hanging garments.</p>
             </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🛏️</span>
-              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
-              <p data-i18n="feat_blanket_p">A spare blanket is inside the ottoman at the foot of the bed.</p>
-            </div>
+
           </div>
 
           <div class="room-reminder">
@@ -867,7 +846,7 @@
           </div>
 
           <div class="room-photo-wrapper">
-            <img src="https://images.unsplash.com/photo-1587582423116-ec07293f0395?w=900&q=80&auto=format&fit=crop" alt="Atlântico room — light airy bedroom" class="room-photo" loading="lazy">
+            <img src="assets/images/atlantico-room.jpg" alt="Quarto Atlântico — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
           </div>
 
           <div class="features-grid">
@@ -877,7 +856,7 @@
               <p data-i18n="feat_tv_p">Use the Android dongle remote for streaming apps. TV remote changes input if needed.</p>
             </div>
             <div class="feat-card">
-              <span aria-hidden="true">🎮</span>
+              <span aria-hidden="true">🎚️</span>
               <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
               <p data-i18n="atlantico_remotes_p">Two remotes provided: TV and Android dongle. LED remote controls the bedside lamp.</p>
             </div>
@@ -916,11 +895,7 @@
               <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
               <p data-i18n="feat_rail_p">Clothes rail available for hanging garments.</p>
             </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🛏️</span>
-              <h5 data-i18n="feat_blanket_h">Spare Blanket</h5>
-              <p data-i18n="feat_blanket_p">Spare blanket inside the ottoman at the foot of the bed.</p>
-            </div>
+
           </div>
 
           <div class="room-reminder">
@@ -1115,6 +1090,15 @@
               <p><strong>Speed Queen Self-Service</strong><br>R. Calouste Gulbenkian 67<br>📞 +351 931 898 200<br>🕗 7h–23h todos os dias</p>
               <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Lavandaria+Speed+Queen+Rua+Calouste+Gulbenkian+67+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
+
+
+          <div class="nearby-card">
+            <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#ff6600,#ff9933)"><span aria-hidden="true">📱</span></div>
+            <div class="nearby-body">
+              <h4 data-i18n="nb_nos">Loja NOS</h4>
+              <p><strong>NOS</strong><br>Av. da Boavista 1837<br>📞 800 508 050<br>🕗 Seg–Sáb 9h30–20h</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/NOS+Avenida+da+Boavista+1837+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
           </div>
 
         </div>
@@ -1139,7 +1123,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1577948000111-9c970dfe3743?w=700&q=80&auto=format&fit=crop" alt="Porto sunset over the Douro river" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-sunset.jpg" alt="Porto sunset over the Douro river" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_sunset">🌅 Sunset</span>
@@ -1151,7 +1135,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1555399028-e72a13ee5e4e?w=700&q=80&auto=format&fit=crop" alt="Dom Luís Bridge Porto" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-bridges.jpg" alt="Dom Luís Bridge Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_photo">📸 Photography</span>
@@ -1163,7 +1147,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=700&q=80&auto=format&fit=crop" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_rainy">🌧️ Rainy Day</span>
@@ -1175,7 +1159,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1596621694701-f1c2b3cdb8ea?w=700&q=80&auto=format&fit=crop" alt="Porto Ribeira waterfront classic view" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-ribeira.jpg" alt="Porto Ribeira waterfront classic view" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_classic">🗺️ Classic</span>
@@ -1187,7 +1171,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80&auto=format&fit=crop" alt="Porto food and wine" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-food.jpg" alt="Porto food and wine" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_food">🍷 Food & Wine</span>
@@ -1199,7 +1183,7 @@
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80&auto=format&fit=crop" alt="Matosinhos beach Porto" class="porto-img-photo" loading="lazy">
+              <img src="assets/images/porto-beach.jpg" alt="Matosinhos beach Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
               <span class="ptag" data-i18n="tag_beach">🏖️ Beach</span>
@@ -1213,6 +1197,46 @@
       </div>
     </section>
 
+
+    <!-- ─────────────────────────────────────────────────
+         12b. PORTO MAP
+    ───────────────────────────────────────────────── -->
+    <section id="mapa" class="section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="map_title">Porto City Map</h2>
+        <p class="section-sub" data-i18n="map_sub">Official tourist map of Porto — click to open full screen</p>
+
+        <div class="map-card">
+          <div class="map-preview-wrap">
+            <a href="assets/maps/mapa_porto.pdf" target="_blank" rel="noopener" class="map-preview-link" aria-label="Open Porto map PDF">
+              <div class="map-preview-inner">
+                <div class="map-overlay-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                  <span data-i18n="map_open">Open Map</span>
+                </div>
+                <!-- Map preview image: place assets/images/mapa-preview.jpg (screenshot of the map) -->
+                <img src="assets/images/mapa-preview.jpg" alt="Porto Tourist Map" class="map-preview-img" onerror="this.style.display='none'">
+                <div class="map-preview-placeholder" aria-hidden="true">
+                  <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--ribeira)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                  <p data-i18n="map_pdf_label">Mapa Turístico Oficial do Porto</p>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="map-actions">
+            <a href="assets/maps/mapa_porto.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/></svg>
+              <span data-i18n="map_open_full">Open Full Map</span>
+            </a>
+            <a href="assets/maps/mapa_porto.pdf" download="mapa_porto.pdf" class="btn btn-outline">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span data-i18n="map_download">Download PDF</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
 
     <!-- Azulejo decorative divider -->
     <div class="azulejo-divider" aria-hidden="true"></div>
