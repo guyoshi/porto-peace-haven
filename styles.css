@@ -2474,3 +2474,20 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 }
 .porto-cta { margin-top: 2.4rem; }
 
+/* ═══════════════════════════════════════════════════════════════
+   42. ANTES DE PARTIR
+   ═══════════════════════════════════════════════════════════════ */
+.bye-review { margin-top: 1.6rem; }
+.bye-private { margin: 1rem 0 0; }
+.bye-private a {
+  color: rgba(255, 255, 255, 0.82); font-size: 0.9rem;
+  text-decoration: underline; font-style: italic;
+}
+.bye-private a:hover { color: #fff; }
+
+.em-alt-note {
+  font-size: 0.85rem; margin-top: 0.7rem;
+  color: var(--text-mid); font-style: italic;
+}
+.em-alt-note a { color: var(--ribeira); font-weight: 500; }
+

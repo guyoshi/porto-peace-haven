@@ -1868,6 +1868,7 @@ translations.pt.room_photos = 'Fotos do quarto';
 ───────────────────────────────────────────────────────────────── */
 const PORTO_I18N = {
   en: {
+    nav_porto: 'Get to Know Porto',
     porto_title: 'Get to Know Porto',
     porto_sub: 'Beyond the postcards — the places that make us love living here',
     porto_intro: "Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.",
@@ -1908,6 +1909,7 @@ const PORTO_I18N = {
     porto_cta_btn: 'Leave a review ⭐',
   },
   pt: {
+    nav_porto: 'Conheça o Porto',
     porto_title: 'Conheça o Porto',
     porto_sub: 'Para lá dos postais — os lugares que nos fazem gostar de viver aqui',
     porto_intro: 'O Porto não é uma cidade para riscar de uma lista. Recompensa quem se perde — quem desce a rua mais estreita, quem se senta um bocado nas escadas, quem pede aquilo que não sabe pronunciar. Estes são os sítios para onde mandaríamos um amigo: alguns que toda a gente conhece, e outros por onde a maioria passa ao lado.',
@@ -1952,6 +1954,77 @@ Object.assign(translations.en, PORTO_I18N.en);
 Object.assign(translations.pt, PORTO_I18N.pt);
 ['fr', 'es', 'de', 'it'].forEach(function (l) {
   Object.assign(translations[l], PORTO_I18N.en);
+});
+
+/* ─────────────────────────────────────────────────────────────
+   ANTES DE PARTIR + common-areas gallery — strings
+   EN + PT done; FR/ES/DE/IT fall back to EN until the full
+   translation pass.
+───────────────────────────────────────────────────────────────── */
+const BYE_I18N = {
+  en: {
+    nav_bye: '🧳 Before You Leave',
+    bye_title: 'Before You Leave',
+    bye_sub: 'A short list, a small ask, and a thank you.',
+    bye_checklist_h: 'A small checklist for the room',
+    bye_checklist: '<li>Close the windows — Porto rain finds its way in through the old window frames.</li><li>Switch off all the lights and the LED lamps.</li><li>Wait a few seconds and make sure the toilet flush has stopped.</li><li>Log out of Netflix, HBO Max, Prime Video and Disney+ on the TV — your accounts, your privacy.</li><li>Turn off the fan, the TV and the mini fridge if you used it.</li><li>Leave the key as we agreed.</li>',
+    bye_ask_h: 'Before you go',
+    bye_ask_p: 'If we became part of a good memory of your trip, your review means the world to us — and helps other travellers find their way to this little corner of Porto.',
+    bye_review_btn: 'Leave a review ⭐',
+    bye_note_link: 'Or tell us privately first — what could have been better?',
+    common_photos: 'Our shared spaces',
+  },
+  pt: {
+    nav_bye: '🧳 Antes de Partir',
+    bye_title: 'Antes de Partir',
+    bye_sub: 'Uma pequena lista, um pedido pequeno, e um obrigado.',
+    bye_checklist_h: 'Uma pequena lista para o quarto',
+    bye_checklist: '<li>Feche as janelas — a chuva do Porto entra pelas armações antigas se as deixar abertas.</li><li>Apague todas as luzes e os candeeiros LED.</li><li>Espere uns segundos e confirme que o autoclismo parou.</li><li>Termine sessão em Netflix, HBO Max, Prime Video e Disney+ na TV — as contas são suas, a privacidade também.</li><li>Desligue o ventilador, a TV e o frigorífico se o usou.</li><li>Deixe a chave como combinámos.</li>',
+    bye_ask_h: 'Antes de partir',
+    bye_ask_p: 'Se fizemos parte de uma boa memória da sua viagem, a sua avaliação significa muito para nós — e ajuda outros viajantes a encontrar o caminho até este cantinho do Porto.',
+    bye_review_btn: 'Deixar uma avaliação ⭐',
+    bye_note_link: 'Ou diga-nos em privado primeiro — o que poderia ter sido melhor?',
+    common_photos: 'Os nossos espaços',
+  },
+};
+Object.assign(translations.en, BYE_I18N.en);
+Object.assign(translations.pt, BYE_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], BYE_I18N.en);
+});
+
+/* ─────────────────────────────────────────────────────────────
+   REAL-DATA additions (times, condomínio rule, second pharmacy,
+   backup contact) — EN + PT; FR/ES/DE/IT fall back to EN.
+───────────────────────────────────────────────────────────────── */
+const REAL_I18N = {
+  en: {
+    checkin_late_desc: 'Please message us in advance and we will send you the entry instructions.',
+    rule_condo_h: 'Common Building Areas',
+    rule_c1: 'We rent this space inside a private residential building — please treat the lift, the hall and the corridors with extra care.',
+    rule_c2: 'Keep your voice low in shared building areas, especially early mornings and late evenings — neighbours live behind those doors.',
+    rule_c3: 'This small consideration is what keeps us welcome in the building.',
+    nb_pharmacy_2: 'Pharmacy (until 8pm)',
+    em_alt_note: "If we don't answer right away, try the backup line:",
+    k_eq3: "🗑️ Dispose of rubbish in the bin bags provided. Sealed bags go to the building's waste collection — message us if you would like the exact spot.",
+    k_eq4: '♻️ Please separate recycling — yellow for plastic and metal, blue for paper, green for glass — using the public recycling bins on the street.',
+  },
+  pt: {
+    checkin_late_desc: 'Avise-nos com antecedência e enviamos-lhe as instruções de entrada.',
+    rule_condo_h: 'Áreas Comuns do Prédio',
+    rule_c1: 'Alugamos este espaço dentro de um prédio residencial privado — por favor trate o elevador, o hall e os corredores com um cuidado extra.',
+    rule_c2: 'Mantenha a voz baixa nas áreas comuns do prédio, sobretudo de manhã cedo e à noite — vivem vizinhos atrás daquelas portas.',
+    rule_c3: 'Esta pequena consideração é o que faz com que continuemos bem-vindos no prédio.',
+    nb_pharmacy_2: 'Farmácia (até às 20h)',
+    em_alt_note: 'Se não atendermos de imediato, tente a linha alternativa:',
+    k_eq3: '🗑️ Coloque o lixo nos sacos fornecidos. Sacos fechados vão para o ponto de recolha do prédio — diga-nos se quiser saber o sítio exato.',
+    k_eq4: '♻️ Por favor separe a reciclagem — amarelo para plástico e metal, azul para papel, verde para vidro — usando os ecopontos na rua.',
+  },
+};
+Object.assign(translations.en, REAL_I18N.en);
+Object.assign(translations.pt, REAL_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], REAL_I18N.en);
 });
 
 
@@ -2329,6 +2402,21 @@ initTheme();
   function refreshUrgent() {
     const on = !!(urgentYes && urgentYes.checked);
     if (urgentBox) urgentBox.classList.toggle('show', on);
+
+    /* Contact block (best-way-to-reach + name/number) only matters when help
+       is needed today. When "No" is selected we keep the form short and
+       just let the guest hit Send. */
+    const contactBlock = document.getElementById('av-contact-block');
+    if (contactBlock) contactBlock.hidden = !on;
+    section.querySelectorAll('input[name="contacto_via"]').forEach(function (r) {
+      r.required = on;
+      if (!on) r.checked = false;
+    });
+    if (!on) {
+      const contactoEl = document.getElementById('av-f-contacto');
+      if (contactoEl) contactoEl.value = '';
+    }
+
     if (on && waUrgent) {
       const msg = (translations[currentLang] && translations[currentLang].av_wa_msg) ||
         "Hello! I'm staying at Porto Peace Haven and I need help during my stay.";
