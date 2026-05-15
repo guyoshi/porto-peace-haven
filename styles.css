@@ -2255,3 +2255,222 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   background: var(--sand);
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   38. AVALIAR A ESTADIA — review & feedback funnel
+   ═══════════════════════════════════════════════════════════════ */
+.avaliar-wrap { max-width: 600px; margin: 0 auto; }
+.av-step { display: none; }
+.av-step.active { display: block; animation: avFade 0.35s ease; }
+@keyframes avFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.av-eyebrow {
+  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold); font-weight: 700; margin-bottom: 0.4rem;
+}
+.av-step-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.15;
+  color: var(--ribeira); margin-bottom: 0.5rem;
+}
+.av-lead { color: var(--text-mid); margin-bottom: 1.5rem; }
+
+.av-feelings {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-bottom: 1rem;
+}
+.av-feel {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  padding: 1.1rem 0.6rem; background: var(--white);
+  border: 1.5px solid var(--border); border-radius: var(--r-md);
+  font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  color: var(--text); cursor: pointer; transition: all 0.18s ease;
+}
+.av-feel:hover { border-color: var(--ribeira); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.av-feel[data-path="positive"]:hover { border-color: var(--green); }
+.av-feel[data-path="improve"]:hover { border-color: var(--douro); }
+.av-feel .av-emo { font-size: 1.7rem; }
+.av-hint { font-size: 0.86rem; color: var(--text-light); text-align: center; }
+
+.av-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 1.4rem 1.3rem;
+  box-shadow: var(--shadow-sm); margin-bottom: 1rem;
+}
+.av-q { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--ribeira); }
+.av-btn-row { display: flex; flex-direction: column; gap: 0.6rem; }
+.av-btn-row .btn { width: 100%; }
+
+.av-result { display: none; }
+.av-result.show { display: block; }
+.av-mini-link {
+  display: inline-block; color: rgba(255,255,255,0.8); font-size: 0.85rem;
+  text-decoration: underline; cursor: pointer; margin-top: 0.3rem;
+}
+.av-back {
+  background: none; border: none; color: var(--text-light); font-size: 0.88rem;
+  cursor: pointer; padding: 0.4rem 0; margin-top: 0.6rem;
+  text-decoration: underline; font-family: var(--font-body);
+}
+
+.av-field { margin-bottom: 1.15rem; }
+.av-req { color: var(--danger); }
+.av-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.av-pill { position: relative; cursor: pointer; }
+.av-pill input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.av-pill span {
+  display: block; padding: 0.5rem 0.95rem; border: 1.5px solid var(--border);
+  border-radius: 999px; font-size: 0.88rem; font-weight: 500; transition: all 0.15s ease;
+}
+.av-pill input:checked + span { background: var(--ribeira); border-color: var(--ribeira); color: #fff; }
+.av-pill input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.av-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.av-chk {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.55rem 0.7rem;
+  border: 1.5px solid var(--border); border-radius: var(--r-sm);
+  font-size: 0.88rem; cursor: pointer; transition: all 0.15s ease;
+}
+.av-chk input { accent-color: var(--ribeira); width: 1.05rem; height: 1.05rem; flex-shrink: 0; }
+.av-chk:has(input:checked) { background: var(--sand); border-color: var(--ribeira-light); }
+
+.avaliar-section select,
+.avaliar-section textarea,
+.avaliar-section input[type="text"] {
+  width: 100%; font-family: var(--font-body); font-size: 0.95rem;
+  padding: 0.7rem 0.8rem; border: 1.5px solid var(--border);
+  border-radius: var(--r-sm); background: var(--white); color: var(--text);
+}
+.avaliar-section textarea { min-height: 96px; resize: vertical; }
+.avaliar-section select:focus,
+.avaliar-section textarea:focus,
+.avaliar-section input:focus { outline: none; border-color: var(--ribeira); }
+
+.av-stack { display: flex; flex-direction: column; gap: 0.5rem; }
+.av-radio-line {
+  display: flex; align-items: center; gap: 0.55rem; padding: 0.6rem 0.75rem;
+  border: 1.5px solid var(--border); border-radius: var(--r-sm);
+  font-size: 0.9rem; cursor: pointer;
+}
+.av-radio-line input { accent-color: var(--ribeira); }
+.av-radio-line:has(input:checked) { background: var(--sand); border-color: var(--ribeira-light); }
+
+.av-urgent {
+  display: none; background: rgba(192,57,43,0.07);
+  border: 1.5px solid rgba(192,57,43,0.35); border-radius: var(--r-md);
+  padding: 1rem; margin-top: 0.5rem;
+}
+.av-urgent.show { display: block; }
+.av-urgent p { font-size: 0.86rem; color: var(--danger); margin-bottom: 0.7rem; }
+.av-btn-wa { background: #25D366; color: #fff; }
+.av-btn-wa:hover { background: #1da851; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.av-optional { font-weight: 400; color: var(--text-light); font-size: 0.82rem; }
+.av-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.6rem; text-align: center; }
+.av-thanks-mark { font-size: 2.8rem; text-align: center; margin-bottom: 0.3rem; }
+.av-step--center { text-align: center; }
+.av-step--center .av-step-title { color: var(--ribeira); }
+
+.bnav-item.bnav-avaliar { color: var(--gold); }
+.bnav-item.bnav-avaliar.active { color: var(--gold); }
+.nav-link.nav-avaliar { color: var(--gold); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════════════
+   39. ROOM "FICHA DE CUIDADO"
+   ═══════════════════════════════════════════════════════════════ */
+.ficha { margin-top: 1.6rem; }
+.ficha-intro {
+  font-family: var(--font-display); font-size: 1.3rem; line-height: 1.45;
+  font-style: italic; color: var(--room-color, var(--ribeira));
+  border-left: 3px solid var(--room-color, var(--ribeira));
+  padding-left: 1rem; margin-bottom: 1.8rem;
+}
+.ficha-group { margin-bottom: 1.4rem; }
+.ficha-group h5 {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-size: 1.05rem; color: var(--text); margin-bottom: 0.6rem;
+}
+.ficha-ico { font-size: 1.15rem; line-height: 1; }
+.ficha-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+.ficha-list li {
+  position: relative; padding-left: 1.15rem;
+  color: var(--text-mid); font-size: 0.93rem; line-height: 1.6;
+}
+.ficha-list li::before {
+  content: ''; position: absolute; left: 0; top: 0.62em;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--room-color, var(--ribeira));
+}
+.ficha-curio {
+  background: var(--off-white);
+  border: 1px dashed var(--room-color, var(--ribeira));
+  border-radius: var(--r-md); padding: 1rem 1.1rem;
+  margin: 0.2rem 0 1.4rem; font-size: 0.92rem;
+  line-height: 1.6; color: var(--text-mid);
+}
+.ficha-curio strong { color: var(--room-color, var(--ribeira)); }
+.ficha-cta {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 1.4rem 1.3rem;
+  margin-top: 1.6rem; text-align: center;
+}
+.ficha-cta p {
+  font-family: var(--font-display); font-size: 1.18rem;
+  line-height: 1.5; color: var(--text); margin-bottom: 1.1rem;
+}
+.ficha-cta-btns {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   40. ROOM PHOTO GALLERY + LIGHTBOX
+   ═══════════════════════════════════════════════════════════════ */
+.room-gallery-section { margin: 1.3rem 0 0.4rem; }
+.room-gallery-title {
+  display: flex; align-items: center; gap: 0.45rem;
+  font-size: 1.05rem; color: var(--text); margin-bottom: 0.7rem;
+}
+.room-gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.6rem;
+}
+.room-gallery-item {
+  display: block; aspect-ratio: 4 / 3; border-radius: var(--r-md);
+  overflow: hidden; cursor: zoom-in; background: var(--sand);
+}
+.room-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.35s ease;
+}
+.room-gallery-item:hover img { transform: scale(1.06); }
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, 0.92);
+  display: none; align-items: center; justify-content: center;
+  padding: 1.5rem; z-index: 2000; cursor: zoom-out;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 100%; max-height: 100%;
+  border-radius: var(--r-sm); box-shadow: var(--shadow-lg);
+}
+.lightbox-close {
+  position: absolute; top: 0.8rem; right: 1.1rem;
+  background: none; border: none; color: #fff;
+  font-size: 2.2rem; line-height: 1; cursor: pointer;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   41. CONHEÇA O PORTO
+   ═══════════════════════════════════════════════════════════════ */
+.porto-intro {
+  font-family: var(--font-display); font-size: 1.3rem; line-height: 1.5;
+  color: var(--text-mid); max-width: 640px; margin: 0 0 2rem;
+}
+.porto-group-title {
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 1.55rem; color: var(--ribeira);
+  margin: 2.6rem 0 1.3rem; padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--beige);
+}
+.porto-cta { margin-top: 2.4rem; }
+

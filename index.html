@@ -99,6 +99,7 @@
       <li><a href="#nearby" class="nav-link" data-i18n="nav_nearby">Nearby Places</a></li>
       <li><a href="#porto" class="nav-link" data-i18n="nav_porto">Porto Guide</a></li>
       <li><a href="#mapa" class="nav-link" data-i18n="nav_mapa">🗺️ Mapa do Porto</a></li>
+      <li><a href="#avaliar" class="nav-link nav-avaliar" data-i18n="nav_avaliar">⭐ Review Your Stay</a></li>
       <li><a href="#emergency" class="nav-link nav-emergency" data-i18n="nav_emergency">🆘 Emergency</a></li>
     </ul>
   </nav>
@@ -112,10 +113,6 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       <span data-i18n="bnav_home">Home</span>
     </a>
-    <a href="#essential-info" class="bnav-item" data-section="essential-info">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <span data-i18n="bnav_info">Info</span>
-    </a>
     <a href="#rooms" class="bnav-item" data-section="rooms">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
       <span data-i18n="bnav_rooms">Rooms</span>
@@ -123,6 +120,10 @@
     <a href="#porto" class="bnav-item" data-section="porto">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       <span data-i18n="bnav_porto">Porto</span>
+    </a>
+    <a href="#avaliar" class="bnav-item bnav-avaliar" data-section="avaliar">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      <span data-i18n="bnav_avaliar">Review</span>
     </a>
     <a href="#emergency" class="bnav-item bnav-emergency" data-section="emergency">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.54 2.74h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.21a16 16 0 0 0 6.03 6.03l1.57-1.57a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"/></svg>
@@ -140,7 +141,7 @@
     ───────────────────────────────────────────────── -->
     <section id="home" class="section hero-section">
       <div class="hero-bg" aria-hidden="true">
-        <img src="assets/images/hero-porto.jpg" alt="" class="hero-bg-img" loading="eager">
+        <img src="assets/fotos/hero-porto.jpg" alt="" class="hero-bg-img" loading="eager">
         <div class="hero-gradient"></div>
         <div class="hero-tiles" aria-hidden="true"></div>
       </div>
@@ -194,7 +195,7 @@
 
             <a href="#ribeira" class="room-card">
               <div class="room-card-img ribeira-gradient room-card-img-wrap">
-                <img src="assets/images/ribeira-preview.jpg" alt="Ribeira" class="room-card-photo" onerror="this.style.display='none'">
+                <img src="assets/fotos/ribeira-preview.jpg" alt="Ribeira" class="room-card-photo" onerror="this.style.display='none'">
                 <div class="img-ph img-ph-fallback"><span>🌉</span></div>
               </div>
               <div class="room-card-body ribeira-body">
@@ -206,7 +207,7 @@
 
             <a href="#douro" class="room-card">
               <div class="room-card-img douro-gradient room-card-img-wrap">
-                <img src="assets/images/douro-preview.jpg" alt="Douro" class="room-card-photo" onerror="this.style.display='none'">
+                <img src="assets/fotos/douro-preview.jpg" alt="Douro" class="room-card-photo" onerror="this.style.display='none'">
                 <div class="img-ph img-ph-fallback"><span>🌅</span></div>
               </div>
               <div class="room-card-body douro-body">
@@ -218,7 +219,7 @@
 
             <a href="#atlantico" class="room-card">
               <div class="room-card-img atlantico-gradient room-card-img-wrap">
-                <img src="assets/images/atlantico-preview.jpg" alt="Atlântico" class="room-card-photo" onerror="this.style.display='none'">
+                <img src="assets/fotos/atlantico-preview.jpg" alt="Atlântico" class="room-card-photo" onerror="this.style.display='none'">
                 <div class="img-ph img-ph-fallback"><span>🌊</span></div>
               </div>
               <div class="room-card-body atlantico-body">
@@ -568,10 +569,7 @@
           <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
           <h3 data-i18n="review_h">Enjoying your stay?</h3>
           <p data-i18n="review_p">We pour a great deal of care into every detail of Porto Peace Haven. If we've made your trip that little bit better, a review means the world to us — and helps other travellers discover this little corner of Porto.</p>
-          <!--
-            REPLACE: Update this URL with your actual Google/Airbnb/Booking review link
-          -->
-          <a href="https://www.google.com/maps/place/Porto+Peace+Haven/@41.158,-8.620,17z/data=!4m8!3m7!1s0x0:0x0!8m2!3d41.158!4d-8.620!9m1!1b1" target="_blank" rel="noopener" class="btn btn-gold" data-i18n="review_btn">Leave a Review ⭐</a>
+          <a href="#avaliar" class="btn btn-gold" data-i18n="review_btn">Leave a Review ⭐</a>
         </div>
 
       </div>
@@ -697,67 +695,50 @@
             </div>
           </div>
 
-          <!--
-            REPLACE: Add your room photo here
-            <img src="assets/images/ribeira-room.jpg" alt="Ribeira room at Porto Peace Haven" class="room-photo">
-            Suggested source: your own photo. Free alternative: Unsplash "dark blue bedroom elegant"
-          -->
-          <div class="room-photo-wrapper">
-            <img src="assets/images/ribeira-room.jpg" alt="Quarto Ribeira — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <div class="room-gallery-section">
+            <h5 class="room-gallery-title"><span class="ficha-ico" aria-hidden="true">📷</span> <span data-i18n="room_photos">Room photos</span></h5>
+            <div class="room-gallery">
+              <a class="room-gallery-item" href="assets/fotos/ribeira-room.jpg"><img src="assets/fotos/ribeira-room.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-1.jpg"><img src="assets/fotos/ribeira-1.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-2.jpg"><img src="assets/fotos/ribeira-2.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-3.jpg"><img src="assets/fotos/ribeira-3.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-4.jpg"><img src="assets/fotos/ribeira-4.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-5.jpg"><img src="assets/fotos/ribeira-5.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-6.jpg"><img src="assets/fotos/ribeira-6.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/ribeira-7.jpg"><img src="assets/fotos/ribeira-7.jpg" alt="Quarto Ribeira — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+            </div>
           </div>
 
-          <div class="features-grid">
-            <div class="feat-card">
-              <span aria-hidden="true">📺</span>
-              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
-              <p data-i18n="feat_tv_p">Use the Android dongle remote (black, smaller) to navigate apps. Use the TV remote to switch the input to HDMI if needed. Press Home on the dongle remote to start.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🎚️</span>
-              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
-              <p data-i18n="ribeira_remotes_p">You have two remotes: one for the TV and one for the Android dongle. The dongle remote also controls the LED strip behind the TV.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">💡</span>
-              <h5 data-i18n="feat_led_h">LED Lighting</h5>
-              <p data-i18n="ribeira_led_p">The LED remote controls both the bedside lamp and the LED strip behind the TV. Use it to set your preferred colour and brightness.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🪟</span>
-              <h5 data-i18n="ribeira_curtains_h">Curtains & Windows</h5>
-              <p data-i18n="ribeira_curtains_p">Please handle the curtains and window fittings with care. Always close all windows before leaving the room.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🗄️</span>
-              <h5 data-i18n="ribeira_storage_h">Storage & Work Area</h5>
-              <p data-i18n="ribeira_storage_p">Ribeira is the most spacious room with ample storage. The large wall unit doubles as a desk or work area — ideal for remote workers or longer stays.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🌡️</span>
-              <h5 data-i18n="feat_fan_h">Fan</h5>
-              <p data-i18n="feat_fan_p">A fan is available in the room. Adjust the speed and direction as you prefer.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🧊</span>
-              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
-              <p data-i18n="feat_fridge_p">A mini fridge is available for your personal use. Please keep it clean and tidy.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🔌</span>
-              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
-              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports for convenient device charging.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🪞</span>
-              <h5 data-i18n="feat_mirror_h">Mirror</h5>
-              <p data-i18n="feat_mirror_p">A full-length mirror is available in the room.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">👕</span>
-              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
-              <p data-i18n="feat_rail_p">A clothes rail is provided for hanging garments.</p>
+          <div class="ficha">
+            <p class="ficha-intro" data-i18n="rib_intro">The deep blue of the Douro at dusk. The largest of the three rooms — room to breathe, and room to work without rushing.</p>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🛏️</span> <span data-i18n="ficha_g_comfort">For your comfort</span></h5>
+              <ul class="ficha-list" data-i18n="rib_comfort"><li>A bed dressed with two pillows — one higher, one lower — so you sleep the way that suits you.</li><li>A fan, and windows that open wide to air and cool the room (there is no air conditioning, but Porto comes in nicely).</li><li>A mini fridge for whatever you would like to keep close.</li></ul>
             </div>
 
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">💻</span> <span data-i18n="ficha_g_work">For working</span></h5>
+              <ul class="ficha-list" data-i18n="rib_work"><li>A proper office chair — not a dining chair pretending to be one.</li><li>A wide shelf built into the wall that doubles as a desk — made for remote work and longer stays.</li></ul>
+            </div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">💡</span> <span data-i18n="ficha_g_light">Light, sound &amp; screen</span></h5>
+              <ul class="ficha-list" data-i18n="rib_light"><li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled — set the colour and the mood you feel like tonight.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — just remember to log out before check-out.</li></ul>
+            </div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🧳</span> <span data-i18n="ficha_g_storage">Storage &amp; details</span></h5>
+              <ul class="ficha-list" data-i18n="rib_storage"><li>Generous storage plus a clothes rail, with plenty of room for your suitcase.</li><li>Two framed prints of the Ribeira, chosen with this room in mind.</li><li>Sockets with USB-A and USB-C, and a full-length mirror.</li></ul>
+            </div>
+
+            <div class="ficha-cta">
+              <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
+              <div class="ficha-cta-btns">
+                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
+              </div>
+            </div>
           </div>
 
           <div class="room-reminder">
@@ -776,57 +757,52 @@
             </div>
           </div>
 
-          <div class="room-photo-wrapper">
-            <img src="assets/images/douro-room.jpg" alt="Quarto Douro — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <div class="room-gallery-section">
+            <h5 class="room-gallery-title"><span class="ficha-ico" aria-hidden="true">📷</span> <span data-i18n="room_photos">Room photos</span></h5>
+            <div class="room-gallery">
+              <a class="room-gallery-item" href="assets/fotos/douro-room.jpg"><img src="assets/fotos/douro-room.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-1.jpg"><img src="assets/fotos/douro-1.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-2.jpg"><img src="assets/fotos/douro-2.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-3.jpg"><img src="assets/fotos/douro-3.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-4.jpg"><img src="assets/fotos/douro-4.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-5.jpg"><img src="assets/fotos/douro-5.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-6.jpg"><img src="assets/fotos/douro-6.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/douro-7.jpg"><img src="assets/fotos/douro-7.jpg" alt="Quarto Douro — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+            </div>
           </div>
 
-          <div class="features-grid">
-            <div class="feat-card">
-              <span aria-hidden="true">📺</span>
-              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
-              <p data-i18n="feat_tv_p">Use the Android dongle remote to navigate streaming apps. TV remote switches input if needed.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🎚️</span>
-              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
-              <p data-i18n="douro_remotes_p">Two remotes provided: one for the TV and one for the Android dongle. The LED remote controls your bedside lamp colour and brightness.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">💡</span>
-              <h5 data-i18n="feat_led_h">LED Lighting</h5>
-              <p data-i18n="douro_led_p">Use the LED remote to adjust the colour and brightness of your bedside lamp. Set the perfect warm glow for evenings.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🗄️</span>
-              <h5 data-i18n="douro_storage_h">Storage</h5>
-              <p data-i18n="douro_storage_p">Douro has a dedicated storage area for your belongings. Compact and perfectly organised.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🌡️</span>
-              <h5 data-i18n="feat_fan_h">Fan</h5>
-              <p data-i18n="feat_fan_p">A fan is available in the room for your comfort.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🧊</span>
-              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
-              <p data-i18n="feat_fridge_p">A mini fridge is available for personal use.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🔌</span>
-              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
-              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🪞</span>
-              <h5 data-i18n="feat_mirror_h">Mirror</h5>
-              <p data-i18n="feat_mirror_p">A mirror is available in the room.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">👕</span>
-              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
-              <p data-i18n="feat_rail_p">A clothes rail is available for hanging garments.</p>
+          <div class="ficha">
+            <p class="ficha-intro" data-i18n="dou_intro">The warm gold of a late afternoon over the Douro. The cosiest room — made for slowing down and sleeping well.</p>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🛏️</span> <span data-i18n="ficha_g_comfort">For your comfort</span></h5>
+              <ul class="ficha-list" data-i18n="dou_comfort"><li>A bed dressed with two pillows — one higher, one lower — pick the one you sleep best on.</li><li>A fan, and windows that open to air and cool the room (no air conditioning, but it freshens up well).</li><li>A mini fridge for your personal use.</li></ul>
             </div>
 
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🌙</span> <span data-i18n="ficha_g_rest">For resting</span></h5>
+              <ul class="ficha-list" data-i18n="dou_rest"><li>No desk here, and that is on purpose — Douro is the room to switch off, not to work.</li><li>Warm light, calm air and a soft golden tone, made for the end of the day.</li></ul>
+            </div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">💡</span> <span data-i18n="ficha_g_light">Light, sound &amp; screen</span></h5>
+              <ul class="ficha-list" data-i18n="dou_light"><li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — please log out before check-out.</li></ul>
+            </div>
+
+            <div class="ficha-curio" data-i18n="dou_curio"><strong>A little Douro detail:</strong> the lamp has three light temperatures — amber, white and a mix of the two. Each time you switch it on, it changes. Try turning it on and off a few times and keep the one that feels right.</div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🧳</span> <span data-i18n="ficha_g_storage">Storage &amp; details</span></h5>
+              <ul class="ficha-list" data-i18n="dou_storage"><li>A dedicated storage area and a clothes rail.</li><li>Two framed prints on the room's theme, sockets with USB-A and USB-C, and a mirror.</li></ul>
+            </div>
+
+            <div class="ficha-cta">
+              <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
+              <div class="ficha-cta-btns">
+                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
+              </div>
+            </div>
           </div>
 
           <div class="room-reminder">
@@ -845,57 +821,50 @@
             </div>
           </div>
 
-          <div class="room-photo-wrapper">
-            <img src="assets/images/atlantico-room.jpg" alt="Quarto Atlântico — Porto Peace Haven" class="room-photo" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <div class="room-gallery-section">
+            <h5 class="room-gallery-title"><span class="ficha-ico" aria-hidden="true">📷</span> <span data-i18n="room_photos">Room photos</span></h5>
+            <div class="room-gallery">
+              <a class="room-gallery-item" href="assets/fotos/atlantico-room.jpg"><img src="assets/fotos/atlantico-room.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-1.jpg"><img src="assets/fotos/atlantico-1.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-2.jpg"><img src="assets/fotos/atlantico-2.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-3.jpg"><img src="assets/fotos/atlantico-3.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-4.jpg"><img src="assets/fotos/atlantico-4.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-5.jpg"><img src="assets/fotos/atlantico-5.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-6.jpg"><img src="assets/fotos/atlantico-6.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+              <a class="room-gallery-item" href="assets/fotos/atlantico-7.jpg"><img src="assets/fotos/atlantico-7.jpg" alt="Quarto Atlântico — Porto Peace Haven" loading="lazy" onerror="this.closest('.room-gallery-item').remove()"></a>
+            </div>
           </div>
 
-          <div class="features-grid">
-            <div class="feat-card">
-              <span aria-hidden="true">📺</span>
-              <h5 data-i18n="feat_tv_h">TV & Android Dongle</h5>
-              <p data-i18n="feat_tv_p">Use the Android dongle remote for streaming apps. TV remote changes input if needed.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🎚️</span>
-              <h5 data-i18n="feat_remotes_h">Two Remotes</h5>
-              <p data-i18n="atlantico_remotes_p">Two remotes provided: TV and Android dongle. LED remote controls the bedside lamp.</p>
-            </div>
-            <div class="feat-card feat-card--highlight">
-              <span aria-hidden="true">💡</span>
-              <h5 data-i18n="feat_led_h">LED Lighting — Important Note</h5>
-              <p data-i18n="atlantico_led_p">⚠️ To change only the bedside lamp colour without affecting the TV: first switch the TV off, then point the LED remote directly at the bedside lamp.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">💻</span>
-              <h5 data-i18n="atlantico_desk_h">Desk / Work Area</h5>
-              <p data-i18n="atlantico_desk_p">Atlântico includes a dedicated desk area — perfect for remote work or longer stays in the city.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🌡️</span>
-              <h5 data-i18n="feat_fan_h">Fan</h5>
-              <p data-i18n="feat_fan_p">A fan is available for your comfort.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🧊</span>
-              <h5 data-i18n="feat_fridge_h">Mini Fridge</h5>
-              <p data-i18n="feat_fridge_p">Mini fridge available for personal use.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🔌</span>
-              <h5 data-i18n="feat_sockets_h">Sockets with USB & USB-C</h5>
-              <p data-i18n="feat_sockets_p">All sockets include USB-A and USB-C ports.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">🪞</span>
-              <h5 data-i18n="feat_mirror_h">Mirror</h5>
-              <p data-i18n="feat_mirror_p">Mirror available in the room.</p>
-            </div>
-            <div class="feat-card">
-              <span aria-hidden="true">👕</span>
-              <h5 data-i18n="feat_rail_h">Clothes Rail</h5>
-              <p data-i18n="feat_rail_p">Clothes rail available for hanging garments.</p>
+          <div class="ficha">
+            <p class="ficha-intro" data-i18n="atl_intro">The light blue of the ocean on a clear morning. Airy, bright and serene — for waking up slowly.</p>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🛏️</span> <span data-i18n="ficha_g_comfort">For your comfort</span></h5>
+              <ul class="ficha-list" data-i18n="atl_comfort"><li>A bed dressed with two pillows — one higher, one lower — choose what suits you.</li><li>A fan, and windows that open and air the room beautifully (no air conditioning, but it cools well).</li><li>A mini fridge for your personal use.</li></ul>
             </div>
 
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">💻</span> <span data-i18n="ficha_g_work">For working</span></h5>
+              <ul class="ficha-list" data-i18n="atl_work"><li>An office chair and a small work table — enough to answer a few emails with a calm view.</li></ul>
+            </div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">💡</span> <span data-i18n="ficha_g_light">Light, sound &amp; screen</span></h5>
+              <ul class="ficha-list" data-i18n="atl_light"><li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — please log out before check-out.</li><li><strong>Good to know:</strong> to change only the lamp colour without affecting the TV, switch the TV off first, then point the LED remote straight at the lamp.</li></ul>
+            </div>
+
+            <div class="ficha-group">
+              <h5><span class="ficha-ico" aria-hidden="true">🧳</span> <span data-i18n="ficha_g_storage">Storage &amp; details</span></h5>
+              <ul class="ficha-list" data-i18n="atl_storage"><li>A clothes rail for hanging your things.</li><li>A framed print on the room's theme, sockets with USB-A and USB-C, and a mirror.</li></ul>
+            </div>
+
+            <div class="ficha-cta">
+              <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
+              <div class="ficha-cta-btns">
+                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
+              </div>
+            </div>
           </div>
 
           <div class="room-reminder">
@@ -1025,7 +994,7 @@
         <!--
           REPLACE: Update each card with real local business names, addresses and Google Maps links
           Suggested images (royalty-free): Unsplash / Pexels
-          Format: assets/images/nearby-supermarket.jpg etc.
+          Format: assets/fotos/nearby-supermarket.jpg etc.
         -->
         <div class="nearby-grid">
 
@@ -1111,88 +1080,146 @@
     ───────────────────────────────────────────────── -->
     <section id="porto" class="section section-sand">
       <div class="container">
-        <h2 class="section-title" data-i18n="porto_title">What to Do in Porto</h2>
-        <p class="section-sub" data-i18n="porto_sub">Our favourite recommendations for your stay</p>
-        <!--
-          REPLACE placeholder images with royalty-free photos from:
-          - Unsplash.com (free, no attribution required under Unsplash license)
-          - Wikimedia Commons (check license per image)
-          All marked with REPLACE comments below
-        -->
+        <h2 class="section-title" data-i18n="porto_title">Get to Know Porto</h2>
+        <p class="section-sub" data-i18n="porto_sub">Beyond the postcards — the places that make us love living here</p>
+
+        <p class="porto-intro" data-i18n="porto_intro">Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.</p>
+
+        <h3 class="porto-group-title" data-i18n="porto_g1_title">Porto off the beaten path</h3>
         <div class="porto-grid">
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-sunset.jpg" alt="Porto sunset over the Douro river" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-wondersense.jpg" alt="Wondersense museum Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_sunset">🌅 Sunset</span>
-              <h4 data-i18n="porto_sunset_h">Best Sunset Spots</h4>
-              <p data-i18n="porto_sunset_p">Jardim do Morro in Vila Nova de Gaia offers spectacular views over the Douro and Dom Luís Bridge at golden hour. Miradouro da Serra do Pilar is equally breathtaking.</p>
-              <a href="https://maps.google.com/?q=Jardim+do+Morro+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <span class="ptag" data-i18n="porto_wonder_tag">🌀 Different</span>
+              <h4 data-i18n="porto_wonder_h">Wondersense — the museum of the five senses</h4>
+              <p data-i18n="porto_wonder_p">A few steps from Livraria Lello, five floors of rooms built to be tasted, heard, touched and smelled. Sixteen experiences, no two alike — the kind of hour that makes adults forget to check their phones. Book a time slot ahead.</p>
+              <a href="https://maps.google.com/?q=Wondersense+Rua+das+Carmelitas+130+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-bridges.jpg" alt="Dom Luís Bridge Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-capela-incomum.jpg" alt="Capela Incomum wine bar Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_photo">📸 Photography</span>
-              <h4 data-i18n="porto_photo_h">Best Photo Spots</h4>
-              <p data-i18n="porto_photo_p">Dom Luís I Bridge, the iconic Livraria Lello, the Ribeira waterfront, the blue tiles of São Bento Station, and the colourful houses of Bonfim are all unmissable.</p>
-              <a href="https://maps.google.com/?q=Ponte+Luis+I+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <span class="ptag" data-i18n="porto_capela_tag">🍷 Curious</span>
+              <h4 data-i18n="porto_capela_h">Capela Incomum — wine in a chapel</h4>
+              <p data-i18n="porto_capela_p">A small wine bar inside a former chapel — the altar is still there. Low light, a quiet glass of Douro red, and the strange, lovely feeling of a toast under a vaulted ceiling. Not somewhere you stumble into by accident.</p>
+              <a href="https://maps.google.com/?q=Capela+Incomum+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-virtudes.jpg" alt="Jardim das Virtudes Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_rainy">🌧️ Rainy Day</span>
-              <h4 data-i18n="porto_rainy_h">Rainy Day Plan</h4>
-              <p data-i18n="porto_rainy_p">Livraria Lello bookshop, Casa da Música, the Serralves Museum of Contemporary Art, or a long slow lunch at a traditional tasca. Porto's café culture was made for rainy days.</p>
+              <span class="ptag" data-i18n="porto_virtudes_tag">🌳 Sunset</span>
+              <h4 data-i18n="porto_virtudes_h">Passeio das Virtudes — the local sunset</h4>
+              <p data-i18n="porto_virtudes_p">While everyone crowds Jardim do Morro across the river, locals come here: a garden that tumbles down the hillside in terraces, with the largest ginkgo tree in Portugal and an open view over the Douro. Bring something to drink and stay for the colour of the sky.</p>
+              <a href="https://maps.google.com/?q=Jardim+das+Virtudes+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-guindais.jpg" alt="Escadas dos Guindais Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_guindais_tag">🌉 View</span>
+              <h4 data-i18n="porto_guindais_h">Escadas dos Guindais — under the bridge</h4>
+              <p data-i18n="porto_guindais_p">A steep, narrow staircase that drops down the cliff right beneath the Dom Luís I Bridge. You've seen the bridge in every postcard — here you stand under its iron belly, close enough to hear it. Take it slow on the way down.</p>
+              <a href="https://maps.google.com/?q=Escadas+dos+Guindais+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-almas.jpg" alt="Capela das Almas Porto azulejos" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_almas_tag">🔵 Azulejos</span>
+              <h4 data-i18n="porto_almas_h">Capela das Almas — a chapel of blue tiles</h4>
+              <p data-i18n="porto_almas_p">On busy Rua de Santa Catarina, stop and look up: sixteen thousand blue azulejos wrap the whole outside of this chapel like a story told on the wall. Most people walk past it on the way to the shops. Don't.</p>
+              <a href="https://maps.google.com/?q=Capela+das+Almas+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-fotografia.jpg" alt="Centro Português de Fotografia Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_foto_tag">📷 Free</span>
+              <h4 data-i18n="porto_foto_h">Centro Português de Fotografia — the old prison</h4>
+              <p data-i18n="porto_foto_p">A photography museum housed in a 19th-century prison — you can still see the cell doors and the iron walkways. Free to enter, rarely crowded, and quietly one of the most atmospheric buildings in the city.</p>
+              <a href="https://maps.google.com/?q=Centro+Português+de+Fotografia+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="porto-group-title" data-i18n="porto_g2_title">The classics, taken slowly</h3>
+        <div class="porto-grid">
+
+          <div class="porto-card">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_lello_tag">📚 Classic</span>
+              <h4 data-i18n="porto_lello_h">Livraria Lello — go early</h4>
+              <p data-i18n="porto_lello_p">Yes, it's famous, and yes, there's a queue. Worth it — but buy the timed ticket online and go right at opening or in the last hour, when the carved staircase is almost yours. The ticket price comes off a book.</p>
               <a href="https://maps.google.com/?q=Livraria+Lello+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-ribeira.jpg" alt="Porto Ribeira waterfront classic view" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-morro.jpg" alt="Ponte Dom Luís I and Jardim do Morro Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_classic">🗺️ Classic</span>
-              <h4 data-i18n="porto_classic_h">Classic Porto Itinerary</h4>
-              <p data-i18n="porto_classic_p">São Bento Station → Sé Cathedral → Ribeira waterfront → Dom Luís Bridge → Port wine cellar tasting in Gaia → sunset at Jardim do Morro. A perfect day in one loop.</p>
-              <a href="https://maps.google.com/?q=Estação+São+Bento+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <span class="ptag" data-i18n="porto_morro_tag">🌅 Must-see</span>
+              <h4 data-i18n="porto_morro_h">Cross the bridge on the top deck</h4>
+              <p data-i18n="porto_morro_p">Walk the upper deck of the Dom Luís I Bridge — the metro shares it, but there's room, and the view stops you mid-step. On the Gaia side, Jardim do Morro is the postcard sunset. Go — just go early to find a spot.</p>
+              <a href="https://maps.google.com/?q=Jardim+do+Morro+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-food.jpg" alt="Porto food and wine" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-ribeira.jpg" alt="Ribeira Porto waterfront" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_food">🍷 Food & Wine</span>
-              <h4 data-i18n="porto_food_h">Food & Wine</h4>
-              <p data-i18n="porto_food_p">A Francesinha at Café Santiago, pastel de nata at a local padaria, bacalhau à Brás, and finish with a port wine tasting at Graham's or Taylor's in Gaia. Porto eats well.</p>
-              <a href="https://maps.google.com/?q=Café+Santiago+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <span class="ptag" data-i18n="porto_rib_tag">🏛️ The heart</span>
+              <h4 data-i18n="porto_rib_h">Get lost in the Ribeira</h4>
+              <p data-i18n="porto_rib_p">The oldest part of Porto, right on the water — tilting houses, laundry strung between windows, alleys that lead nowhere and everywhere. Touristy, yes. Still the soul of the city. Go in the morning, before the boats fill up.</p>
+              <a href="https://maps.google.com/?q=Ribeira+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
           <div class="porto-card">
             <div class="porto-img">
-              <img src="assets/images/porto-beach.jpg" alt="Matosinhos beach Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <img src="assets/fotos/porto-gaia.jpg" alt="Port wine cellars Vila Nova de Gaia" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="tag_beach">🏖️ Beach</span>
-              <h4 data-i18n="porto_beach_h">Coastal & Beach Day</h4>
-              <p data-i18n="porto_beach_p">Matosinhos beach is just 15 minutes by metro — ideal for swimming, fresh seafood at the harbour restaurants, and big Atlantic skies. Foz do Douro is lovely for a riverside walk.</p>
-              <a href="https://maps.google.com/?q=Praia+de+Matosinhos" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <span class="ptag" data-i18n="porto_gaia_tag">🍷 Taste</span>
+              <h4 data-i18n="porto_gaia_h">Cross to Gaia for a port tasting</h4>
+              <p data-i18n="porto_gaia_p">The port wine cellars line the Gaia bank, ten minutes' walk over the bridge. Pick one of the smaller houses for an unhurried tasting — they'll explain the difference between a tawny and a ruby, and you'll never forget it.</p>
+              <a href="https://maps.google.com/?q=Caves+Vinho+do+Porto+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
+        </div>
+
+        <div class="review-box porto-cta">
+          <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+          <h3 data-i18n="porto_cta_h">Found a corner you loved?</h3>
+          <p data-i18n="porto_cta_p">If Porto — and our little place in it — became part of a good memory, a review helps the next traveller find their way here too.</p>
+          <a href="#avaliar" class="btn btn-gold" data-i18n="porto_cta_btn">Leave a review ⭐</a>
         </div>
       </div>
     </section>
@@ -1214,8 +1241,8 @@
                   <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
                   <span data-i18n="map_open">Open Map</span>
                 </div>
-                <!-- Map preview image: place assets/images/mapa-preview.jpg (screenshot of the map) -->
-                <img src="assets/images/mapa-preview.jpg" alt="Porto Tourist Map" class="map-preview-img" onerror="this.style.display='none'">
+                <!-- Map preview image: place assets/fotos/mapa-preview.jpg (screenshot of the map) -->
+                <img src="assets/fotos/mapa-preview.jpg" alt="Porto Tourist Map" class="map-preview-img" onerror="this.style.display='none'">
                 <div class="map-preview-placeholder" aria-hidden="true">
                   <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--ribeira)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
                   <p data-i18n="map_pdf_label">Mapa Turístico Oficial do Porto</p>
@@ -1235,6 +1262,166 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────
+         AVALIAR A ESTADIA — review & feedback funnel
+    ───────────────────────────────────────────────── -->
+    <section id="avaliar" class="section section-sand avaliar-section">
+      <div class="container">
+        <h2 class="section-title" data-i18n="av_section_title">Review Your Stay</h2>
+        <p class="section-sub" data-i18n="av_section_sub">Your voice is what shapes everything we do here</p>
+
+        <div class="avaliar-wrap">
+
+          <!-- STEP 1 · feeling check -->
+          <div class="av-step active" id="av-step-feeling">
+            <p class="av-eyebrow" data-i18n="av_eyebrow1">Your opinion</p>
+            <h3 class="av-step-title" data-i18n="av_title1">How is your stay so far?</h3>
+            <p class="av-lead" data-i18n="av_lead1">Your experience is what moves us. Tell us how you feel — it only takes a few seconds.</p>
+            <div class="av-feelings">
+              <button type="button" class="av-feel" data-v="Excelente" data-path="positive"><span class="av-emo" aria-hidden="true">😍</span><span data-i18n="av_feel_excelente">Excellent</span></button>
+              <button type="button" class="av-feel" data-v="Boa" data-path="positive"><span class="av-emo" aria-hidden="true">🙂</span><span data-i18n="av_feel_boa">Good</span></button>
+              <button type="button" class="av-feel" data-v="Regular" data-path="improve"><span class="av-emo" aria-hidden="true">😐</span><span data-i18n="av_feel_regular">Could be better</span></button>
+              <button type="button" class="av-feel" data-v="Ruim" data-path="improve"><span class="av-emo" aria-hidden="true">☹️</span><span data-i18n="av_feel_ruim">Poor</span></button>
+            </div>
+            <p class="av-hint" data-i18n="av_hint1">Booked through Booking? You can still leave your review on Airbnb or Google — it helps us even more.</p>
+          </div>
+
+          <!-- STEP 2 · positive → platform routing -->
+          <div class="av-step" id="av-step-platform">
+            <p class="av-eyebrow" data-i18n="av_eyebrow2">What a joy</p>
+            <h3 class="av-step-title" data-i18n="av_title2">Wonderful to hear 💛</h3>
+            <p class="av-lead" data-i18n="av_lead2">It stays with us. If you'd like, leave a review where you booked — it's what helps other travellers find this little corner of Porto.</p>
+            <div class="av-card">
+              <span class="av-q" data-i18n="av_q_platform">Where did you book your stay?</span>
+              <div class="av-btn-row">
+                <button type="button" class="btn btn-outline" data-plat="airbnb">Airbnb</button>
+                <button type="button" class="btn btn-outline" data-plat="booking">Booking</button>
+                <button type="button" class="btn btn-outline" data-plat="outra"><span data-i18n="av_plat_outra">Another platform</span></button>
+              </div>
+            </div>
+            <div class="av-result review-box" id="av-res-airbnb">
+              <div class="review-stars" aria-hidden="true">★★★★★</div>
+              <h3 data-i18n="av_airbnb_h">A review on Airbnb is worth its weight in gold</h3>
+              <p data-i18n="av_airbnb_p">It's where your words make the biggest difference for us — and it takes less than a minute.</p>
+              <a class="btn btn-gold" id="av-link-airbnb" href="#" target="_blank" rel="noopener"><span data-i18n="av_airbnb_btn">Review on Airbnb</span> ⭐</a>
+              <br><span class="av-mini-link" data-plat="google" data-i18n="av_airbnb_alt">Prefer to review on Google?</span>
+            </div>
+            <div class="av-result review-box" id="av-res-booking">
+              <div class="review-stars" aria-hidden="true">★★★★★</div>
+              <h3 data-i18n="av_booking_h">Thank you for staying with us</h3>
+              <p data-i18n="av_booking_p">On Booking, your review arrives by email after check-out. If you'd like to help us even more right now, a review on Google makes all the difference.</p>
+              <a class="btn btn-gold" id="av-link-google-b" href="#" target="_blank" rel="noopener"><span data-i18n="av_booking_btn">Review on Google</span> ⭐</a>
+              <br><span class="av-mini-link" data-plat="airbnb" data-i18n="av_booking_alt">Have an Airbnb account? You can review there too</span>
+            </div>
+            <div class="av-result review-box" id="av-res-outra">
+              <div class="review-stars" aria-hidden="true">★★★★★</div>
+              <h3 data-i18n="av_outra_h">Your review helps us so much</h3>
+              <p data-i18n="av_outra_p">A review on Google takes less than a minute and helps other travellers discover us.</p>
+              <a class="btn btn-gold" id="av-link-google-o" href="#" target="_blank" rel="noopener"><span data-i18n="av_outra_btn">Review on Google</span> ⭐</a>
+            </div>
+            <button type="button" class="av-back" data-goto="av-step-feeling" data-i18n="av_back">← Back</button>
+          </div>
+
+          <!-- STEP 3 · improve → private suggestion form (Netlify Forms) -->
+          <div class="av-step" id="av-step-form">
+            <p class="av-eyebrow" data-i18n="av_eyebrow3">Tell us</p>
+            <h3 class="av-step-title" data-i18n="av_title3">Thank you for telling us</h3>
+            <p class="av-lead" data-i18n="av_lead3">We want to put it right now — during your stay, not after it. Tell us what's going on and our team acts on it as a priority.</p>
+
+            <form class="av-card" name="sugestoes-quartos" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="av-form" action="/">
+              <input type="hidden" name="form-name" value="sugestoes-quartos">
+              <p hidden><label>Do not fill this in: <input name="bot-field"></label></p>
+              <input type="hidden" name="experiencia" id="av-f-experiencia" value="">
+              <input type="hidden" name="idioma" id="av-f-idioma" value="">
+
+              <div class="av-field">
+                <span class="av-q"><span data-i18n="av_f_room">Which room are you staying in?</span> <span class="av-req">*</span></span>
+                <div class="av-pills">
+                  <label class="av-pill"><input type="radio" name="quarto" value="Ribeira" required><span>Ribeira</span></label>
+                  <label class="av-pill"><input type="radio" name="quarto" value="Douro"><span>Douro</span></label>
+                  <label class="av-pill"><input type="radio" name="quarto" value="Atlântico"><span>Atlântico</span></label>
+                </div>
+              </div>
+
+              <div class="av-field">
+                <label class="av-q" for="av-f-fase"><span data-i18n="av_f_phase">What stage of your stay are you at?</span> <span class="av-req">*</span></label>
+                <select name="fase" id="av-f-fase" required>
+                  <option value="" disabled selected data-i18n="av_phase_select">Select…</option>
+                  <option value="Chegada" data-i18n="av_phase_arrival">Arrival</option>
+                  <option value="Meio da estadia" data-i18n="av_phase_middle">Middle of stay</option>
+                  <option value="Pré-checkout" data-i18n="av_phase_pre">Pre-checkout</option>
+                  <option value="Pós-checkout" data-i18n="av_phase_post">Post-checkout</option>
+                </select>
+              </div>
+
+              <div class="av-field">
+                <span class="av-q"><span data-i18n="av_f_area">What can we improve?</span> <span class="av-req">*</span></span>
+                <div class="av-checks">
+                  <label class="av-chk"><input type="checkbox" name="area" value="Limpeza"><span data-i18n="av_area_cleaning">Cleaning</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Conforto do quarto"><span data-i18n="av_area_comfort">Room comfort</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Wi-Fi"><span data-i18n="av_area_wifi">Wi-Fi</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Casa de banho"><span data-i18n="av_area_bathroom">Bathroom</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Cozinha"><span data-i18n="av_area_kitchen">Kitchen</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Ruído"><span data-i18n="av_area_noise">Noise</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Comunicação"><span data-i18n="av_area_comm">Communication</span></label>
+                  <label class="av-chk"><input type="checkbox" name="area" value="Outro"><span data-i18n="av_area_other">Other</span></label>
+                </div>
+              </div>
+
+              <div class="av-field">
+                <label class="av-q" for="av-f-texto"><span data-i18n="av_f_detail">Tell us in your own words</span> <span class="av-req">*</span></label>
+                <textarea name="detalhe" id="av-f-texto" required data-i18n-ph="av_detail_ph" placeholder="What isn't quite as you expected? The more you tell us, the faster we can fix it."></textarea>
+              </div>
+
+              <div class="av-field">
+                <span class="av-q"><span data-i18n="av_f_urgency">Does this need quick action?</span> <span class="av-req">*</span></span>
+                <div class="av-stack">
+                  <label class="av-radio-line"><input type="radio" name="urgencia" value="Não, é apenas uma sugestão" required><span data-i18n="av_urg_no">No, it's just a suggestion</span></label>
+                  <label class="av-radio-line"><input type="radio" name="urgencia" value="Sim, preciso de ajuda ainda hoje" id="av-f-urgent-yes"><span data-i18n="av_urg_yes">Yes, I need help today</span></label>
+                </div>
+                <div class="av-urgent" id="av-urgent-box">
+                  <p data-i18n="av_urgent_p">For something urgent, talk to us right away — we'll get back to you as fast as we can.</p>
+                  <a class="btn av-btn-wa" id="av-wa-urgent" href="#" target="_blank" rel="noopener" data-i18n="av_urgent_btn">Talk to us now on WhatsApp</a>
+                </div>
+              </div>
+
+              <div class="av-field">
+                <span class="av-q"><span data-i18n="av_f_via">Best way to reach you</span> <span class="av-req">*</span></span>
+                <div class="av-stack">
+                  <label class="av-radio-line"><input type="radio" name="contacto_via" value="WhatsApp" required><span data-i18n="av_via_wa">WhatsApp</span></label>
+                  <label class="av-radio-line"><input type="radio" name="contacto_via" value="Telefone"><span data-i18n="av_via_phone">Phone</span></label>
+                </div>
+              </div>
+
+              <div class="av-field">
+                <label class="av-q" for="av-f-contacto"><span data-i18n="av_f_contact">Name or contact number</span> <span class="av-optional" data-i18n="av_contact_opt">(optional — it helps us reply to you)</span></label>
+                <input type="text" name="contacto" id="av-f-contacto" data-i18n-ph="av_contact_ph" placeholder="E.g.: Maria · +351 9XX XXX XXX">
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="av_submit">Send suggestion</button>
+              <p class="av-note" data-i18n="av_form_note">Your message goes straight to our team. It is never made public.</p>
+            </form>
+
+            <button type="button" class="av-back" data-goto="av-step-feeling" data-i18n="av_back">← Back</button>
+          </div>
+
+          <!-- STEP 4 · thank you -->
+          <div class="av-step av-step--center" id="av-step-thanks">
+            <div class="av-thanks-mark" aria-hidden="true">🤍</div>
+            <h3 class="av-step-title" data-i18n="av_thanks_title">We've received your message</h3>
+            <p class="av-lead" data-i18n="av_thanks_lead">We'll act on this as a priority. Thank you for giving us the chance to make your stay better.</p>
+            <div class="review-box">
+              <h3 data-i18n="av_thanks_box_h">When everything feels the way it should…</h3>
+              <p data-i18n="av_thanks_box_p">…we'd love to hear from you. But only when it feels right for you — let us put things right first.</p>
+              <a class="btn btn-gold" id="av-link-google-t" href="#" target="_blank" rel="noopener"><span data-i18n="av_thanks_btn">Leave a review</span> ⭐</a>
+            </div>
+            <button type="button" class="av-back" data-goto="av-step-feeling" data-i18n="av_thanks_back">← Start over</button>
+          </div>
+
+        </div>
       </div>
     </section>
 

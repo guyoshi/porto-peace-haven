@@ -1633,6 +1633,327 @@ const translations = {
   },
 };
 
+/* ─────────────────────────────────────────────────────────────
+   AVALIAR A ESTADIA — review funnel strings
+   EN + PT done; FR/ES/DE/IT fall back to EN until the full
+   translation pass (see task: "Translate all new content").
+───────────────────────────────────────────────────────────────── */
+const AV_I18N = {
+  en: {
+    nav_avaliar: '⭐ Review Your Stay',
+    bnav_avaliar: 'Review',
+    av_section_title: 'Review Your Stay',
+    av_section_sub: 'Your voice is what shapes everything we do here',
+    av_eyebrow1: 'Your opinion',
+    av_title1: 'How is your stay so far?',
+    av_lead1: 'Your experience is what moves us. Tell us how you feel — it only takes a few seconds.',
+    av_feel_excelente: 'Excellent',
+    av_feel_boa: 'Good',
+    av_feel_regular: 'Could be better',
+    av_feel_ruim: 'Poor',
+    av_hint1: 'Booked through Booking? You can still leave your review on Airbnb or Google — it helps us even more.',
+    av_eyebrow2: 'What a joy',
+    av_title2: 'Wonderful to hear 💛',
+    av_lead2: "It stays with us. If you'd like, leave a review where you booked — it's what helps other travellers find this little corner of Porto.",
+    av_q_platform: 'Where did you book your stay?',
+    av_plat_outra: 'Another platform',
+    av_airbnb_h: 'A review on Airbnb is worth its weight in gold',
+    av_airbnb_p: "It's where your words make the biggest difference for us — and it takes less than a minute.",
+    av_airbnb_btn: 'Review on Airbnb',
+    av_airbnb_alt: 'Prefer to review on Google?',
+    av_booking_h: 'Thank you for staying with us',
+    av_booking_p: "On Booking, your review arrives by email after check-out. If you'd like to help us even more right now, a review on Google makes all the difference.",
+    av_booking_btn: 'Review on Google',
+    av_booking_alt: 'Have an Airbnb account? You can review there too',
+    av_outra_h: 'Your review helps us so much',
+    av_outra_p: 'A review on Google takes less than a minute and helps other travellers discover us.',
+    av_outra_btn: 'Review on Google',
+    av_back: '← Back',
+    av_eyebrow3: 'Tell us',
+    av_title3: 'Thank you for telling us',
+    av_lead3: "We want to put it right now — during your stay, not after it. Tell us what's going on and our team acts on it as a priority.",
+    av_f_room: 'Which room are you staying in?',
+    av_f_phase: 'What stage of your stay are you at?',
+    av_phase_select: 'Select…',
+    av_phase_arrival: 'Arrival',
+    av_phase_middle: 'Middle of stay',
+    av_phase_pre: 'Pre-checkout',
+    av_phase_post: 'Post-checkout',
+    av_f_area: 'What can we improve?',
+    av_area_cleaning: 'Cleaning',
+    av_area_comfort: 'Room comfort',
+    av_area_wifi: 'Wi-Fi',
+    av_area_bathroom: 'Bathroom',
+    av_area_kitchen: 'Kitchen',
+    av_area_noise: 'Noise',
+    av_area_comm: 'Communication',
+    av_area_other: 'Other',
+    av_f_detail: 'Tell us in your own words',
+    av_detail_ph: "What isn't quite as you expected? The more you tell us, the faster we can fix it.",
+    av_f_urgency: 'Does this need quick action?',
+    av_urg_no: "No, it's just a suggestion",
+    av_urg_yes: 'Yes, I need help today',
+    av_urgent_p: "For something urgent, talk to us right away — we'll get back to you as fast as we can.",
+    av_urgent_btn: 'Talk to us now on WhatsApp',
+    av_f_via: 'Best way to reach you',
+    av_via_wa: 'WhatsApp',
+    av_via_phone: 'Phone',
+    av_f_contact: 'Name or contact number',
+    av_contact_opt: '(optional — it helps us reply to you)',
+    av_contact_ph: 'E.g.: Maria · +351 9XX XXX XXX',
+    av_submit: 'Send suggestion',
+    av_form_note: 'Your message goes straight to our team. It is never made public.',
+    av_thanks_title: "We've received your message",
+    av_thanks_lead: "We'll act on this as a priority. Thank you for giving us the chance to make your stay better.",
+    av_thanks_box_h: 'When everything feels the way it should…',
+    av_thanks_box_p: "…we'd love to hear from you. But only when it feels right for you — let us put things right first.",
+    av_thanks_btn: 'Leave a review',
+    av_thanks_back: '← Start over',
+    av_alert_areas: 'Please choose at least one area we can improve.',
+    av_wa_msg: "Hello! I'm staying at Porto Peace Haven and I need help with something during my stay.",
+  },
+  pt: {
+    nav_avaliar: '⭐ Avaliar a Estadia',
+    bnav_avaliar: 'Avaliar',
+    av_section_title: 'Avaliar a Estadia',
+    av_section_sub: 'A sua voz é o que dá forma a tudo o que fazemos aqui',
+    av_eyebrow1: 'A sua opinião',
+    av_title1: 'Como está a sua estadia?',
+    av_lead1: 'A sua experiência é o que nos move. Conte-nos como se sente — leva apenas alguns segundos.',
+    av_feel_excelente: 'Excelente',
+    av_feel_boa: 'Boa',
+    av_feel_regular: 'Pode melhorar',
+    av_feel_ruim: 'Má',
+    av_hint1: 'Reservou pelo Booking? Pode na mesma deixar a sua avaliação no Airbnb ou no Google — ajuda-nos ainda mais.',
+    av_eyebrow2: 'Que alegria',
+    av_title2: 'Que bom saber 💛',
+    av_lead2: 'Fica connosco. Se quiser, deixe uma avaliação onde reservou — é o que ajuda outros viajantes a encontrar este cantinho do Porto.',
+    av_q_platform: 'Onde reservou a sua estadia?',
+    av_plat_outra: 'Outra plataforma',
+    av_airbnb_h: 'Uma avaliação no Airbnb vale ouro',
+    av_airbnb_p: 'É onde as suas palavras fazem maior diferença para nós — e leva menos de um minuto.',
+    av_airbnb_btn: 'Avaliar no Airbnb',
+    av_airbnb_alt: 'Prefere avaliar no Google?',
+    av_booking_h: 'Obrigado por ficar connosco',
+    av_booking_p: 'No Booking, a avaliação chega por email depois do check-out. Se quiser ajudar-nos ainda mais agora, uma avaliação no Google faz toda a diferença.',
+    av_booking_btn: 'Avaliar no Google',
+    av_booking_alt: 'Tem conta no Airbnb? Também pode avaliar por lá',
+    av_outra_h: 'A sua avaliação ajuda-nos imenso',
+    av_outra_p: 'Uma avaliação no Google leva menos de um minuto e ajuda outros viajantes a descobrir-nos.',
+    av_outra_btn: 'Avaliar no Google',
+    av_back: '← Voltar',
+    av_eyebrow3: 'Conte-nos',
+    av_title3: 'Obrigado por nos dizer',
+    av_lead3: 'Queremos corrigir agora — durante a sua estadia, não depois dela. Conte-nos o que se passa e a nossa equipa age com prioridade.',
+    av_f_room: 'Em que quarto está hospedado?',
+    av_f_phase: 'Em que fase da estadia está?',
+    av_phase_select: 'Selecionar…',
+    av_phase_arrival: 'Chegada',
+    av_phase_middle: 'Meio da estadia',
+    av_phase_pre: 'Pré-checkout',
+    av_phase_post: 'Pós-checkout',
+    av_f_area: 'O que podemos melhorar?',
+    av_area_cleaning: 'Limpeza',
+    av_area_comfort: 'Conforto do quarto',
+    av_area_wifi: 'Wi-Fi',
+    av_area_bathroom: 'Casa de banho',
+    av_area_kitchen: 'Cozinha',
+    av_area_noise: 'Ruído',
+    av_area_comm: 'Comunicação',
+    av_area_other: 'Outro',
+    av_f_detail: 'Conte-nos com as suas palavras',
+    av_detail_ph: 'O que não está como esperava? Quanto mais nos contar, mais rápido conseguimos resolver.',
+    av_f_urgency: 'Isto precisa de ação rápida?',
+    av_urg_no: 'Não, é apenas uma sugestão',
+    av_urg_yes: 'Sim, preciso de ajuda ainda hoje',
+    av_urgent_p: 'Para algo urgente, fale connosco já — respondemos o mais rápido possível.',
+    av_urgent_btn: 'Falar connosco agora no WhatsApp',
+    av_f_via: 'Melhor forma de o contactarmos',
+    av_via_wa: 'WhatsApp',
+    av_via_phone: 'Telefone',
+    av_f_contact: 'Nome ou nº de contacto',
+    av_contact_opt: '(opcional — ajuda-nos a responder-lhe)',
+    av_contact_ph: 'Ex.: Maria · +351 9XX XXX XXX',
+    av_submit: 'Enviar sugestão',
+    av_form_note: 'A sua mensagem chega diretamente à nossa equipa. Nunca é tornada pública.',
+    av_thanks_title: 'Recebemos a sua mensagem',
+    av_thanks_lead: 'Vamos agir nisto com prioridade. Obrigado por nos dar a oportunidade de melhorar a sua estadia.',
+    av_thanks_box_h: 'Quando sentir que está tudo como merece…',
+    av_thanks_box_p: '…adoraríamos ouvir de si. Mas só quando fizer sentido para si — deixe-nos resolver primeiro.',
+    av_thanks_btn: 'Deixar uma avaliação',
+    av_thanks_back: '← Recomeçar',
+    av_alert_areas: 'Por favor, escolha pelo menos uma área que possamos melhorar.',
+    av_wa_msg: 'Olá! Estou hospedado no Porto Peace Haven e preciso de ajuda com algo durante a minha estadia.',
+  },
+};
+Object.assign(translations.en, AV_I18N.en);
+Object.assign(translations.pt, AV_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], AV_I18N.en);
+});
+
+/* ─────────────────────────────────────────────────────────────
+   ROOM "FICHA DE CUIDADO" — strings
+   EN + PT done; FR/ES/DE/IT fall back to EN until the full
+   translation pass.
+───────────────────────────────────────────────────────────────── */
+const ROOMS_I18N = {
+  en: {
+    ficha_g_comfort: 'For your comfort',
+    ficha_g_work: 'For working',
+    ficha_g_rest: 'For resting',
+    ficha_g_light: 'Light, sound &amp; screen',
+    ficha_g_storage: 'Storage &amp; details',
+    ficha_cta_p: 'We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.',
+    ficha_cta_suggest: 'Could something here be better?',
+    ficha_cta_review: 'Review my stay ⭐',
+    rib_intro: 'The deep blue of the Douro at dusk. The largest of the three rooms — room to breathe, and room to work without rushing.',
+    rib_comfort: '<li>A bed dressed with two pillows — one higher, one lower — so you sleep the way that suits you.</li><li>A fan, and windows that open wide to air and cool the room (there is no air conditioning, but Porto comes in nicely).</li><li>A mini fridge for whatever you would like to keep close.</li>',
+    rib_work: '<li>A proper office chair — not a dining chair pretending to be one.</li><li>A wide shelf built into the wall that doubles as a desk — made for remote work and longer stays.</li>',
+    rib_light: '<li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled — set the colour and the mood you feel like tonight.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — just remember to log out before check-out.</li>',
+    rib_storage: '<li>Generous storage plus a clothes rail, with plenty of room for your suitcase.</li><li>Two framed prints of the Ribeira, chosen with this room in mind.</li><li>Sockets with USB-A and USB-C, and a full-length mirror.</li>',
+    dou_intro: 'The warm gold of a late afternoon over the Douro. The cosiest room — made for slowing down and sleeping well.',
+    dou_comfort: '<li>A bed dressed with two pillows — one higher, one lower — pick the one you sleep best on.</li><li>A fan, and windows that open to air and cool the room (no air conditioning, but it freshens up well).</li><li>A mini fridge for your personal use.</li>',
+    dou_rest: '<li>No desk here, and that is on purpose — Douro is the room to switch off, not to work.</li><li>Warm light, calm air and a soft golden tone, made for the end of the day.</li>',
+    dou_light: '<li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — please log out before check-out.</li>',
+    dou_curio: '<strong>A little Douro detail:</strong> the lamp has three light temperatures — amber, white and a mix of the two. Each time you switch it on, it changes. Try turning it on and off a few times and keep the one that feels right.',
+    dou_storage: "<li>A dedicated storage area and a clothes rail.</li><li>Two framed prints on the room's theme, sockets with USB-A and USB-C, and a mirror.</li>",
+    atl_intro: 'The light blue of the ocean on a clear morning. Airy, bright and serene — for waking up slowly.',
+    atl_comfort: '<li>A bed dressed with two pillows — one higher, one lower — choose what suits you.</li><li>A fan, and windows that open and air the room beautifully (no air conditioning, but it cools well).</li><li>A mini fridge for your personal use.</li>',
+    atl_work: '<li>An office chair and a small work table — enough to answer a few emails with a calm view.</li>',
+    atl_light: '<li>Two RGB LED lamps plus an LED strip behind the TV, all remote-controlled.</li><li>A TV with an Android player: Netflix, HBO Max, Prime Video, Disney+ with your own accounts — please log out before check-out.</li><li><strong>Good to know:</strong> to change only the lamp colour without affecting the TV, switch the TV off first, then point the LED remote straight at the lamp.</li>',
+    atl_storage: "<li>A clothes rail for hanging your things.</li><li>A framed print on the room's theme, sockets with USB-A and USB-C, and a mirror.</li>",
+  },
+  pt: {
+    ficha_g_comfort: 'Para o seu conforto',
+    ficha_g_work: 'Para trabalhar',
+    ficha_g_rest: 'Para descansar',
+    ficha_g_light: 'Luz, som e imagem',
+    ficha_g_storage: 'Arrumação e detalhes',
+    ficha_cta_p: 'Preparámos este quarto ao pormenor, para que descansasse melhor. Se algo não estiver como esperava, diga-nos agora — preferimos corrigir durante a sua estadia, não depois dela.',
+    ficha_cta_suggest: 'Algo pode melhorar neste quarto?',
+    ficha_cta_review: 'Avaliar a minha estadia ⭐',
+    rib_intro: 'O azul profundo do Douro ao anoitecer. O maior dos três quartos — espaço para respirar, e para trabalhar sem pressa.',
+    rib_comfort: '<li>Cama preparada com duas almofadas — uma mais alta, uma mais baixa — para dormir como lhe assenta melhor.</li><li>Ventilador, e janelas que abrem de par em par para arejar e refrescar o quarto (não há ar condicionado, mas o Porto entra bem).</li><li>Um frigorífico para o que quiser manter por perto.</li>',
+    rib_work: '<li>Uma verdadeira cadeira de escritório — não uma cadeira de sala a fingir que é.</li><li>Uma prateleira larga integrada na parede que serve de secretária — pensada para trabalho remoto e estadias mais longas.</li>',
+    rib_light: '<li>Dois candeeiros LED RGB e uma fita LED atrás da TV, todos com comando — escolha a cor e o ambiente que lhe apetecer esta noite.</li><li>TV com aparelho Android: Netflix, HBO Max, Prime Video, Disney+ com as suas próprias contas — lembre-se apenas de terminar sessão antes do check-out.</li>',
+    rib_storage: '<li>Arrumação ampla e cabideiro, com espaço à vontade para a mala.</li><li>Duas telas com imagens da Ribeira, escolhidas a pensar neste quarto.</li><li>Tomadas com USB-A e USB-C, e um espelho de corpo inteiro.</li>',
+    dou_intro: 'O dourado quente de um fim de tarde sobre o Douro. O quarto mais aconchegante — feito para abrandar e dormir bem.',
+    dou_comfort: '<li>Cama preparada com duas almofadas — uma mais alta, uma mais baixa — escolha aquela em que dorme melhor.</li><li>Ventilador, e janelas que abrem para arejar e refrescar o quarto (sem ar condicionado, mas refresca bem).</li><li>Um frigorífico para uso pessoal.</li>',
+    dou_rest: '<li>Aqui não há secretária, e é de propósito — o Douro é o quarto para desligar, não para trabalhar.</li><li>Luz quente, ambiente calmo e um tom dourado suave, feito para o fim do dia.</li>',
+    dou_light: '<li>Dois candeeiros LED RGB e uma fita LED atrás da TV, todos com comando.</li><li>TV com aparelho Android: Netflix, HBO Max, Prime Video, Disney+ com as suas contas — por favor termine sessão antes do check-out.</li>',
+    dou_curio: '<strong>Um pormenor do Douro:</strong> o candeeiro tem três temperaturas de luz — amarela, branca e uma mistura das duas. Cada vez que o acende, muda. Experimente acender e apagar algumas vezes e fique com a que lhe apetecer.',
+    dou_storage: '<li>Uma zona de arrumação dedicada e um cabideiro.</li><li>Duas telas com imagens do tema do quarto, tomadas com USB-A e USB-C, e um espelho.</li>',
+    atl_intro: 'O azul claro do oceano numa manhã limpa. Arejado, luminoso e sereno — para acordar sem pressa.',
+    atl_comfort: '<li>Cama preparada com duas almofadas — uma mais alta, uma mais baixa — escolha a que lhe assenta melhor.</li><li>Ventilador, e janelas que abrem e arejam o quarto lindamente (sem ar condicionado, mas refresca bem).</li><li>Um frigorífico para uso pessoal.</li>',
+    atl_work: '<li>Uma cadeira de escritório e uma pequena mesa de trabalho — o suficiente para responder a uns emails com uma vista tranquila.</li>',
+    atl_light: '<li>Dois candeeiros LED RGB e uma fita LED atrás da TV, todos com comando.</li><li>TV com aparelho Android: Netflix, HBO Max, Prime Video, Disney+ com as suas contas — por favor termine sessão antes do check-out.</li><li><strong>Bom saber:</strong> para mudar só a cor do candeeiro sem afetar a TV, desligue primeiro a TV e aponte o comando LED diretamente ao candeeiro.</li>',
+    atl_storage: '<li>Um cabideiro para pendurar as suas coisas.</li><li>Uma tela com imagem do tema do quarto, tomadas com USB-A e USB-C, e um espelho.</li>',
+  },
+};
+Object.assign(translations.en, ROOMS_I18N.en);
+Object.assign(translations.pt, ROOMS_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], ROOMS_I18N.en);
+});
+translations.pt.room_photos = 'Fotos do quarto';
+['en', 'fr', 'es', 'de', 'it'].forEach(function (l) {
+  translations[l].room_photos = 'Room photos';
+});
+
+/* ─────────────────────────────────────────────────────────────
+   CONHEÇA O PORTO — strings
+   EN + PT done; FR/ES/DE/IT fall back to EN until the full
+   translation pass.
+───────────────────────────────────────────────────────────────── */
+const PORTO_I18N = {
+  en: {
+    porto_title: 'Get to Know Porto',
+    porto_sub: 'Beyond the postcards — the places that make us love living here',
+    porto_intro: "Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.",
+    porto_g1_title: 'Porto off the beaten path',
+    porto_g2_title: 'The classics, taken slowly',
+    porto_wonder_tag: '🌀 Different',
+    porto_wonder_h: 'Wondersense — the museum of the five senses',
+    porto_wonder_p: 'A few steps from Livraria Lello, five floors of rooms built to be tasted, heard, touched and smelled. Sixteen experiences, no two alike — the kind of hour that makes adults forget to check their phones. Book a time slot ahead.',
+    porto_capela_tag: '🍷 Curious',
+    porto_capela_h: 'Capela Incomum — wine in a chapel',
+    porto_capela_p: 'A small wine bar inside a former chapel — the altar is still there. Low light, a quiet glass of Douro red, and the strange, lovely feeling of a toast under a vaulted ceiling. Not somewhere you stumble into by accident.',
+    porto_virtudes_tag: '🌳 Sunset',
+    porto_virtudes_h: 'Passeio das Virtudes — the local sunset',
+    porto_virtudes_p: 'While everyone crowds Jardim do Morro across the river, locals come here: a garden that tumbles down the hillside in terraces, with the largest ginkgo tree in Portugal and an open view over the Douro. Bring something to drink and stay for the colour of the sky.',
+    porto_guindais_tag: '🌉 View',
+    porto_guindais_h: 'Escadas dos Guindais — under the bridge',
+    porto_guindais_p: "A steep, narrow staircase that drops down the cliff right beneath the Dom Luís I Bridge. You've seen the bridge in every postcard — here you stand under its iron belly, close enough to hear it. Take it slow on the way down.",
+    porto_almas_tag: '🔵 Azulejos',
+    porto_almas_h: 'Capela das Almas — a chapel of blue tiles',
+    porto_almas_p: "On busy Rua de Santa Catarina, stop and look up: sixteen thousand blue azulejos wrap the whole outside of this chapel like a story told on the wall. Most people walk past it on the way to the shops. Don't.",
+    porto_foto_tag: '📷 Free',
+    porto_foto_h: 'Centro Português de Fotografia — the old prison',
+    porto_foto_p: 'A photography museum housed in a 19th-century prison — you can still see the cell doors and the iron walkways. Free to enter, rarely crowded, and quietly one of the most atmospheric buildings in the city.',
+    porto_lello_tag: '📚 Classic',
+    porto_lello_h: 'Livraria Lello — go early',
+    porto_lello_p: "Yes, it's famous, and yes, there's a queue. Worth it — but buy the timed ticket online and go right at opening or in the last hour, when the carved staircase is almost yours. The ticket price comes off a book.",
+    porto_morro_tag: '🌅 Must-see',
+    porto_morro_h: 'Cross the bridge on the top deck',
+    porto_morro_p: "Walk the upper deck of the Dom Luís I Bridge — the metro shares it, but there's room, and the view stops you mid-step. On the Gaia side, Jardim do Morro is the postcard sunset. Go — just go early to find a spot.",
+    porto_rib_tag: '🏛️ The heart',
+    porto_rib_h: 'Get lost in the Ribeira',
+    porto_rib_p: 'The oldest part of Porto, right on the water — tilting houses, laundry strung between windows, alleys that lead nowhere and everywhere. Touristy, yes. Still the soul of the city. Go in the morning, before the boats fill up.',
+    porto_gaia_tag: '🍷 Taste',
+    porto_gaia_h: 'Cross to Gaia for a port tasting',
+    porto_gaia_p: "The port wine cellars line the Gaia bank, ten minutes' walk over the bridge. Pick one of the smaller houses for an unhurried tasting — they'll explain the difference between a tawny and a ruby, and you'll never forget it.",
+    porto_cta_h: 'Found a corner you loved?',
+    porto_cta_p: 'If Porto — and our little place in it — became part of a good memory, a review helps the next traveller find their way here too.',
+    porto_cta_btn: 'Leave a review ⭐',
+  },
+  pt: {
+    porto_title: 'Conheça o Porto',
+    porto_sub: 'Para lá dos postais — os lugares que nos fazem gostar de viver aqui',
+    porto_intro: 'O Porto não é uma cidade para riscar de uma lista. Recompensa quem se perde — quem desce a rua mais estreita, quem se senta um bocado nas escadas, quem pede aquilo que não sabe pronunciar. Estes são os sítios para onde mandaríamos um amigo: alguns que toda a gente conhece, e outros por onde a maioria passa ao lado.',
+    porto_g1_title: 'O Porto fora do roteiro',
+    porto_g2_title: 'Os clássicos, sem pressa',
+    porto_wonder_tag: '🌀 Diferente',
+    porto_wonder_h: 'Wondersense — o museu dos cinco sentidos',
+    porto_wonder_p: 'A poucos passos da Livraria Lello, cinco pisos de salas feitas para serem provadas, ouvidas, tocadas e cheiradas. Dezasseis experiências, todas diferentes — daquelas horas que fazem os adultos esquecerem-se do telemóvel. Reserve um horário com antecedência.',
+    porto_capela_tag: '🍷 Curioso',
+    porto_capela_h: 'Capela Incomum — vinho numa capela',
+    porto_capela_p: 'Um pequeno bar de vinhos dentro de uma antiga capela — o altar ainda lá está. Luz baixa, um copo tranquilo de tinto do Douro, e a sensação estranha e bonita de um brinde sob um teto abobadado. Não é sítio onde se entre por acaso.',
+    porto_virtudes_tag: '🌳 Pôr do sol',
+    porto_virtudes_h: 'Passeio das Virtudes — o pôr do sol dos locais',
+    porto_virtudes_p: 'Enquanto toda a gente se junta no Jardim do Morro do outro lado do rio, os portuenses vêm aqui: um jardim que desce a encosta em socalcos, com a maior árvore ginkgo de Portugal e uma vista aberta sobre o Douro. Leve algo para beber e fique para a cor do céu.',
+    porto_guindais_tag: '🌉 Vista',
+    porto_guindais_h: 'Escadas dos Guindais — debaixo da ponte',
+    porto_guindais_p: 'Uma escadaria estreita e íngreme que desce o penhasco mesmo por baixo da Ponte Dom Luís I. Já viu a ponte em todos os postais — aqui fica debaixo da sua barriga de ferro, perto o suficiente para a ouvir. Desça com calma.',
+    porto_almas_tag: '🔵 Azulejos',
+    porto_almas_h: 'Capela das Almas — uma capela de azulejos azuis',
+    porto_almas_p: 'Na movimentada Rua de Santa Catarina, pare e olhe para cima: dezasseis mil azulejos azuis cobrem todo o exterior desta capela como uma história contada na parede. A maioria passa por ela a caminho das lojas. Não faça o mesmo.',
+    porto_foto_tag: '📷 Grátis',
+    porto_foto_h: 'Centro Português de Fotografia — a antiga prisão',
+    porto_foto_p: 'Um museu de fotografia instalado numa prisão do século XIX — ainda se veem as portas das celas e as varandas de ferro. Entrada gratuita, raramente cheio, e um dos edifícios com mais atmosfera da cidade.',
+    porto_lello_tag: '📚 Clássico',
+    porto_lello_h: 'Livraria Lello — vá cedo',
+    porto_lello_p: 'Sim, é famosa, e sim, há fila. Vale a pena — mas compre o bilhete com hora marcada online e vá logo à abertura ou na última hora, quando a escadaria esculpida é quase só sua. O valor do bilhete é descontado num livro.',
+    porto_morro_tag: '🌅 Imperdível',
+    porto_morro_h: 'Atravesse a ponte pelo tabuleiro de cima',
+    porto_morro_p: 'Atravesse o tabuleiro superior da Ponte Dom Luís I — o metro partilha-o, mas há espaço, e a vista pára-o a meio do passo. Do lado de Gaia, o Jardim do Morro é o pôr do sol de postal. Vá — mas vá cedo para apanhar lugar.',
+    porto_rib_tag: '🏛️ O coração',
+    porto_rib_h: 'Perca-se na Ribeira',
+    porto_rib_p: 'A parte mais antiga do Porto, mesmo à beira-rio — casas tortas, roupa estendida entre janelas, becos que não levam a lado nenhum e a todo o lado. Turística, sim. Continua a ser a alma da cidade. Vá de manhã, antes de os barcos encherem.',
+    porto_gaia_tag: '🍷 Provar',
+    porto_gaia_h: 'Atravesse para Gaia para uma prova de vinho do Porto',
+    porto_gaia_p: 'As caves de vinho do Porto alinham-se na margem de Gaia, a dez minutos a pé pela ponte. Escolha uma das casas mais pequenas para uma prova sem pressa — explicam-lhe a diferença entre um tawny e um ruby, e nunca mais se esquece.',
+    porto_cta_h: 'Encontrou um canto de que gostou?',
+    porto_cta_p: 'Se o Porto — e o nosso cantinho nele — entrou numa boa memória, uma avaliação ajuda o próximo viajante a encontrar também o caminho até aqui.',
+    porto_cta_btn: 'Deixar uma avaliação ⭐',
+  },
+};
+Object.assign(translations.en, PORTO_I18N.en);
+Object.assign(translations.pt, PORTO_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], PORTO_I18N.en);
+});
+
 
 
 /* ─────────────────────────────────────────────────────────────
@@ -1778,7 +2099,7 @@ const bnavItems = document.querySelectorAll('.bnav-item');
 function updateBottomNav() {
   const scrollY = window.scrollY + window.innerHeight / 3;
 
-  const sections = ['home', 'essential-info', 'rooms', 'porto', 'emergency'];
+  const sections = ['home', 'rooms', 'porto', 'avaliar', 'emergency'];
   let activeSection = 'home';
 
   sections.forEach(id => {
@@ -1939,3 +2260,170 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
 
 // Run on load
 initTheme();
+
+/* ─────────────────────────────────────────────────────────────
+   AVALIAR A ESTADIA — review & feedback funnel
+───────────────────────────────────────────────────────────────── */
+(function () {
+  const section = document.getElementById('avaliar');
+  if (!section) return;
+
+  /* CONFIG — ▶ replace with the real review links before going live.
+     Airbnb: Filipa's listing is not published yet.
+     Google: paste the Google Business "write a review" link. */
+  const REVIEW_LINKS = {
+    airbnb: 'COLAR_LINK_AIRBNB',
+    google: 'COLAR_LINK_GOOGLE',
+  };
+  const WHATSAPP_URGENTE = '351913874921';
+
+  function show(stepId) {
+    section.querySelectorAll('.av-step').forEach(function (s) {
+      s.classList.toggle('active', s.id === stepId);
+    });
+    const header = document.getElementById('site-header');
+    const offset = (header ? header.offsetHeight : 60) + 8;
+    const top = section.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  /* Step 1 — the feeling chosen decides the path */
+  section.querySelectorAll('.av-feel').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const expEl = document.getElementById('av-f-experiencia');
+      if (expEl) expEl.value = btn.dataset.v;
+      show(btn.dataset.path === 'positive' ? 'av-step-platform' : 'av-step-form');
+    });
+  });
+
+  /* Step 2 — the platform chosen reveals the right call to action */
+  function pickPlatform(plat) {
+    ['airbnb', 'booking', 'outra'].forEach(function (p) {
+      const el = document.getElementById('av-res-' + p);
+      if (el) el.classList.toggle('show', p === plat);
+    });
+  }
+  section.querySelectorAll('[data-plat]').forEach(function (el) {
+    el.addEventListener('click', function () { pickPlatform(el.dataset.plat); });
+  });
+
+  /* back / restart buttons */
+  section.querySelectorAll('[data-goto]').forEach(function (b) {
+    b.addEventListener('click', function () { show(b.dataset.goto); });
+  });
+
+  /* apply the real review links */
+  function setLink(id, url) {
+    const el = document.getElementById(id);
+    if (el) el.href = url || '#';
+  }
+  setLink('av-link-airbnb', REVIEW_LINKS.airbnb);
+  setLink('av-link-google-b', REVIEW_LINKS.google);
+  setLink('av-link-google-o', REVIEW_LINKS.google);
+  setLink('av-link-google-t', REVIEW_LINKS.google);
+
+  /* urgency — reveal the WhatsApp shortcut with a message in the active language */
+  const urgentBox = document.getElementById('av-urgent-box');
+  const urgentYes = document.getElementById('av-f-urgent-yes');
+  const waUrgent = document.getElementById('av-wa-urgent');
+  function refreshUrgent() {
+    const on = !!(urgentYes && urgentYes.checked);
+    if (urgentBox) urgentBox.classList.toggle('show', on);
+    if (on && waUrgent) {
+      const msg = (translations[currentLang] && translations[currentLang].av_wa_msg) ||
+        "Hello! I'm staying at Porto Peace Haven and I need help during my stay.";
+      waUrgent.href = 'https://wa.me/' + WHATSAPP_URGENTE + '?text=' + encodeURIComponent(msg);
+    }
+  }
+  section.querySelectorAll('input[name="urgencia"]').forEach(function (r) {
+    r.addEventListener('change', refreshUrgent);
+  });
+
+  /* translated placeholders — applyLanguage only handles innerHTML, not placeholders */
+  function applyAvaliarPlaceholders() {
+    section.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+      const v = translations[currentLang] && translations[currentLang][el.getAttribute('data-i18n-ph')];
+      if (v) el.setAttribute('placeholder', v);
+    });
+  }
+  const _applyLanguage = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLanguage(lang);
+    const idEl = document.getElementById('av-f-idioma');
+    if (idEl) idEl.value = currentLang;
+    applyAvaliarPlaceholders();
+  };
+  applyAvaliarPlaceholders();
+  const idiomaEl = document.getElementById('av-f-idioma');
+  if (idiomaEl) idiomaEl.value = currentLang;
+
+  /* submit — on Netlify this is captured in the Forms dashboard;
+     opened locally the POST fails harmlessly and we still confirm. */
+  const form = document.getElementById('av-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const areas = form.querySelectorAll('input[name="area"]:checked');
+      if (areas.length === 0) {
+        alert((translations[currentLang] && translations[currentLang].av_alert_areas) ||
+          'Please choose at least one area we can improve.');
+        return;
+      }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(function () { show('av-step-thanks'); })
+        .catch(function () { show('av-step-thanks'); });
+    });
+  }
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   ROOM PHOTO GALLERIES + LIGHTBOX
+───────────────────────────────────────────────────────────────── */
+(function () {
+  const galleries = document.querySelectorAll('.room-gallery');
+  if (!galleries.length) return;
+
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-label', 'Photo viewer');
+  lb.innerHTML = '<button class="lightbox-close" aria-label="Close">×</button><img alt="">';
+  document.body.appendChild(lb);
+  const lbImg = lb.querySelector('img');
+
+  function openLb(src) {
+    lbImg.src = src;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    lbImg.src = '';
+  }
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLb();
+  });
+
+  document.querySelectorAll('.room-gallery-item').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openLb(a.getAttribute('href'));
+    });
+  });
+
+  /* If every photo in a gallery failed to load, hide that section */
+  window.addEventListener('load', function () {
+    galleries.forEach(function (g) {
+      if (!g.querySelector('.room-gallery-item')) {
+        const sec = g.closest('.room-gallery-section');
+        if (sec) sec.style.display = 'none';
+      }
+    });
+  });
+})();
