@@ -2483,6 +2483,90 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 .ppx-dim { opacity: 0.22; }
 
 /* ═══════════════════════════════════════════════════════════════
+   43. APP-LIKE SCREENS · HOME HUB
+   ═══════════════════════════════════════════════════════════════ */
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* Compact home so the button hub is above the fold */
+#home.hero-section {
+  min-height: auto;
+  padding-top: 1.5rem;
+  padding-bottom: 1rem;
+}
+#home .hero-content { padding-bottom: 0.5rem; }
+
+.home-hub-wrap {
+  padding: 1.2rem 1rem 1.6rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.home-hub {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7rem;
+}
+.home-hub-btn {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px;
+  padding: 1.2rem 0.8rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  text-align: center;
+  transition: all 0.18s ease;
+  min-height: 94px;
+}
+.home-hub-btn:hover {
+  border-color: var(--ribeira);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.home-hub-btn .icon { font-size: 1.8rem; line-height: 1; }
+.home-hub-btn.featured {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, var(--gold) 0%, #b3811f 100%);
+  color: #fff;
+  border: none;
+  min-height: 72px;
+  font-weight: 600;
+}
+.home-hub-btn.featured:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.home-hub-btn.help {
+  color: var(--danger);
+  border-color: rgba(192,57,43,0.3);
+}
+.home-hub-btn.help:hover { border-color: var(--danger); }
+
+/* Back-to-home affordance at the top of non-home screens */
+.screen-back {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 1rem;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+  font-size: 0.88rem;
+  font-family: var(--font-body);
+  text-decoration: none;
+  position: sticky;
+  top: var(--header-h);
+  z-index: 10;
+}
+.screen-back:hover { color: var(--ribeira); }
+.screen:not(#home).active .screen-back { display: flex; }
+
+/* ═══════════════════════════════════════════════════════════════
    42. ANTES DE PARTIR
    ═══════════════════════════════════════════════════════════════ */
 .bye-review { margin-top: 1.6rem; }

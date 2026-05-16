@@ -140,7 +140,7 @@
     <!-- ─────────────────────────────────────────────────
          1. HOME — Hero + Quick Actions + Room Preview
     ───────────────────────────────────────────────── -->
-    <section id="home" class="section hero-section">
+    <section id="home" class="section hero-section screen active">
       <div class="hero-bg" aria-hidden="true">
         <img src="assets/fotos/hero-porto.jpg" alt="" class="hero-bg-img" loading="eager">
         <div class="hero-gradient"></div>
@@ -155,35 +155,50 @@
         </h1>
         <p class="hero-tagline" data-i18n="hero_tagline">Your peaceful home in the heart of Porto</p>
 
-        <!-- ── Quick Action Buttons ── -->
-        <div class="quick-actions" role="list" aria-label="Quick actions">
-          <a href="#wifi" class="qa-btn qa-wifi" role="listitem">
-            <span class="qa-icon" aria-hidden="true">📶</span>
-            <span data-i18n="qa_wifi">Wi-Fi</span>
+      </div>
+
+      <!-- ── Home Button Hub — app-style navigation ── -->
+      <div class="home-hub-wrap">
+        <div class="home-hub">
+          <a href="#avaliar" class="home-hub-btn featured">
+            <span class="icon" aria-hidden="true">⭐</span>
+            <span data-i18n="hub_review">Leave a Review</span>
           </a>
-          <a href="#guide" class="qa-btn" role="listitem">
-            <span class="qa-icon" aria-hidden="true">📖</span>
-            <span data-i18n="qa_guide">House Guide</span>
+          <a href="#essential-info" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">📶</span>
+            <span data-i18n="hub_wifi">Wi-Fi</span>
           </a>
-          <a href="#rules" class="qa-btn" role="listitem">
-            <span class="qa-icon" aria-hidden="true">📋</span>
-            <span data-i18n="qa_rules">House Rules</span>
+          <a href="#checkin" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🔑</span>
+            <span data-i18n="hub_checkin">Check-in / out</span>
           </a>
-          <a href="#contact" class="qa-btn" role="listitem">
-            <span class="qa-icon" aria-hidden="true">💬</span>
-            <span data-i18n="qa_contact">Contact Host</span>
+          <a href="#rooms" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🛏️</span>
+            <span data-i18n="hub_room">My Room</span>
           </a>
-          <a href="#emergency" class="qa-btn qa-emergency" role="listitem">
-            <span class="qa-icon" aria-hidden="true">🆘</span>
-            <span data-i18n="qa_emergency">Emergency</span>
+          <a href="#kitchen" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🍳</span>
+            <span data-i18n="hub_kitchen">Kitchen</span>
           </a>
-          <a href="#porto" class="qa-btn" role="listitem">
-            <span class="qa-icon" aria-hidden="true">🗺️</span>
-            <span data-i18n="qa_explore">Explore Porto</span>
+          <a href="#bathroom" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🚿</span>
+            <span data-i18n="hub_bathroom">Bathroom</span>
           </a>
-          <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="qa-btn qa-maps" role="listitem">
-            <span class="qa-icon" aria-hidden="true">📍</span>
-            <span data-i18n="qa_maps">Google Maps</span>
+          <a href="#rules" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">📋</span>
+            <span data-i18n="hub_rules">House Rules</span>
+          </a>
+          <a href="#porto" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🗺️</span>
+            <span data-i18n="hub_porto">Explore Porto</span>
+          </a>
+          <a href="#antes-partir" class="home-hub-btn">
+            <span class="icon" aria-hidden="true">🧳</span>
+            <span data-i18n="hub_bye">Before You Leave</span>
+          </a>
+          <a href="#emergency" class="home-hub-btn help">
+            <span class="icon" aria-hidden="true">🆘</span>
+            <span data-i18n="hub_help">Help</span>
           </a>
         </div>
       </div>
@@ -236,7 +251,8 @@
     <!-- ─────────────────────────────────────────────────
          7. ROOMS
     ───────────────────────────────────────────────── -->
-    <section id="rooms" class="section section-sand">
+    <section id="rooms" class="section section-sand screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="rooms_title">Room Guides</h2>
 
@@ -434,7 +450,8 @@
     <!-- ─────────────────────────────────────────────────
          2. ESSENTIAL INFO
     ───────────────────────────────────────────────── -->
-    <section id="essential-info" class="section">
+    <section id="essential-info" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="info_title">Essential Information</h2>
         <p class="section-sub" data-i18n="info_subtitle">Everything you need, right here</p>
@@ -525,7 +542,8 @@
     <!-- ─────────────────────────────────────────────────
          3. CHECK-IN / CHECK-OUT
     ───────────────────────────────────────────────── -->
-    <section id="checkin" class="section section-sand">
+    <section id="checkin" class="section section-sand screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="checkin_title">Check-in & Check-out</h2>
 
@@ -560,8 +578,9 @@
           <div class="info-body">
             <h3 data-i18n="key_title">Keys & Access</h3>
             <ul class="info-list">
-              <li data-i18n="key_1">You will receive a key to your room and to the main building entrance.</li>
-              <li data-i18n="key_2">Please keep your key safe and return it on departure.</li>
+              <li data-i18n="key_1">The entrance key is in the external safe — use the code we sent you with your check-in instructions.</li>
+              <li data-i18n="key_2">Your room key waits for you in the small safe right outside your room door — same code we sent you.</li>
+              <li data-i18n="key_3">Please return both keys to their safes on departure.</li>
             </ul>
           </div>
         </div>
@@ -575,7 +594,8 @@
     <!-- ─────────────────────────────────────────────────
          5. HOUSE GUIDE
     ───────────────────────────────────────────────── -->
-    <section id="guide" class="section section-sand">
+    <section id="guide" class="section section-sand screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="guide_title">House Guide</h2>
         <p class="section-sub" data-i18n="guide_sub">We're delighted to have you here. Everything you need to feel at home.</p>
@@ -673,7 +693,8 @@
     <!-- ─────────────────────────────────────────────────
          6. KITCHEN GUIDE
     ───────────────────────────────────────────────── -->
-    <section id="kitchen" class="section">
+    <section id="kitchen" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="kitchen_title">Kitchen Guide</h2>
         <p class="section-sub" data-i18n="kitchen_sub">How to use everything in the kitchen</p>
@@ -775,7 +796,8 @@
     <!-- ─────────────────────────────────────────────────
          8. BATHROOM GUIDE
     ───────────────────────────────────────────────── -->
-    <section id="bathroom" class="section">
+    <section id="bathroom" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="bath_title">Bathroom Guide</h2>
 
@@ -829,7 +851,8 @@
     <!-- ─────────────────────────────────────────────────
          4. HOUSE RULES
     ───────────────────────────────────────────────── -->
-    <section id="rules" class="section">
+    <section id="rules" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="rules_title">House Rules</h2>
         <p class="section-sub" data-i18n="rules_subtitle">We ask all guests to respect these guidelines so everyone enjoys a calm, welcoming stay</p>
@@ -934,7 +957,8 @@
     <!-- ─────────────────────────────────────────────────
          9. TRANSPORT
     ───────────────────────────────────────────────── -->
-    <section id="transport" class="section section-sand">
+    <section id="transport" class="section section-sand screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="transport_title">Getting Around Porto</h2>
         <p class="section-sub" data-i18n="transport_sub">Porto is highly walkable and well connected by public transport</p>
@@ -989,7 +1013,8 @@
     <!-- ─────────────────────────────────────────────────
          10. USEFUL PLACES NEARBY
     ───────────────────────────────────────────────── -->
-    <section id="nearby" class="section">
+    <section id="nearby" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="nearby_title">Useful Places Nearby</h2>
         <!--
@@ -1088,7 +1113,8 @@
     <!-- ─────────────────────────────────────────────────
          11. WHAT TO DO IN PORTO
     ───────────────────────────────────────────────── -->
-    <section id="porto" class="section section-sand">
+    <section id="porto" class="section section-sand screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="porto_title">Get to Know Porto</h2>
         <p class="section-sub" data-i18n="porto_sub">Beyond the postcards — the places that make us love living here</p>
@@ -1238,7 +1264,8 @@
     <!-- ─────────────────────────────────────────────────
          12b. PORTO MAP
     ───────────────────────────────────────────────── -->
-    <section id="mapa" class="section">
+    <section id="mapa" class="section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="map_title">Porto City Map</h2>
         <p class="section-sub" data-i18n="map_sub">Official tourist map of Porto — click to open full screen</p>
@@ -1278,7 +1305,8 @@
     <!-- ─────────────────────────────────────────────────
          ANTES DE PARTIR — checkout checklist + review ask
     ───────────────────────────────────────────────── -->
-    <section id="antes-partir" class="section bye-section">
+    <section id="antes-partir" class="section bye-section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="bye_title">Before You Leave</h2>
         <p class="section-sub" data-i18n="bye_sub">A short list, a small ask, and a thank you.</p>
@@ -1304,7 +1332,8 @@
     <!-- ─────────────────────────────────────────────────
          AVALIAR A ESTADIA — review & feedback funnel
     ───────────────────────────────────────────────── -->
-    <section id="avaliar" class="section section-sand avaliar-section">
+    <section id="avaliar" class="section section-sand avaliar-section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="av_section_title">Review Your Stay</h2>
         <p class="section-sub" data-i18n="av_section_sub">Your voice is what shapes everything we do here</p>
@@ -1469,7 +1498,8 @@
     <!-- ─────────────────────────────────────────────────
          12. EMERGENCY & SUPPORT
     ───────────────────────────────────────────────── -->
-    <section id="emergency" class="section emergency-section">
+    <section id="emergency" class="section emergency-section screen">
+      <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="em_title">Emergency & Support</h2>
         <p class="section-sub" data-i18n="em_sub">We hope you never need this — but it's here just in case</p>
