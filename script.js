@@ -1861,6 +1861,11 @@ translations.pt.room_photos = 'Fotos do quarto';
   translations[l].room_photos = 'Room photos';
 });
 
+translations.pt.wa_msg_contact = 'Olá! Estou hospedado no Porto Peace Haven — pode ajudar-me com uma coisa?';
+['en', 'fr', 'es', 'de', 'it'].forEach(function (l) {
+  translations[l].wa_msg_contact = "Hello! I'm staying at Porto Peace Haven — could you help me with something?";
+});
+
 /* ─────────────────────────────────────────────────────────────
    CONHEÇA O PORTO — strings
    EN + PT done; FR/ES/DE/IT fall back to EN until the full
@@ -2514,4 +2519,69 @@ initTheme();
       }
     });
   });
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   QR ENTRY PARAMETERS + WHATSAPP LOCALISATION
+   ?src=X       → tracking tag (Cloudflare Web Analytics picks
+                  the URL up automatically; appears as /?src=X
+                  in the "Top pages" view).
+   ?platform=X  → pre-routes the Avaliar funnel straight to the
+                  platform-review CTA for X (airbnb|booking|outra).
+                  Use on the printed "leave a review" QR codes so
+                  the guest lands one tap away from reviewing.
+───────────────────────────────────────────────────────────────── */
+(function () {
+  const PHONE = '351913874921';
+
+  /* Localised WhatsApp link for the Contact Host and Emergency host
+     buttons. The Avaliar urgent button (#av-wa-urgent) manages its
+     own urgency-specific message and is left alone. */
+  function refreshContactWa() {
+    const msg = (translations[currentLang] && translations[currentLang].wa_msg_contact) ||
+      "Hello! I'm staying at Porto Peace Haven — could you help me with something?";
+    const url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+    document.querySelectorAll('a[href*="wa.me/' + PHONE + '"]').forEach(function (a) {
+      if (a.id === 'av-wa-urgent') return;
+      a.href = url;
+    });
+  }
+  const _applyLang = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLang(lang);
+    refreshContactWa();
+  };
+  refreshContactWa();
+
+  /* Read URL params on entry */
+  const params = new URLSearchParams(location.search);
+  const src = params.get('src');
+  const platform = params.get('platform');
+
+  if (src) {
+    try { sessionStorage.setItem('pph-src', src); } catch (e) { /* private mode */ }
+  }
+
+  if (platform && ['airbnb', 'booking', 'outra'].indexOf(platform) >= 0) {
+    function route() {
+      const avaliar = document.getElementById('avaliar');
+      if (!avaliar) { setTimeout(route, 80); return; }
+      const expEl = document.getElementById('av-f-experiencia');
+      if (expEl) expEl.value = 'Excelente';
+      avaliar.querySelectorAll('.av-step').forEach(function (s) {
+        s.classList.remove('active');
+      });
+      const platStep = document.getElementById('av-step-platform');
+      if (platStep) platStep.classList.add('active');
+      ['airbnb', 'booking', 'outra'].forEach(function (p) {
+        const el = document.getElementById('av-res-' + p);
+        if (el) el.classList.toggle('show', p === platform);
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', route);
+    } else {
+      route();
+    }
+  }
 })();

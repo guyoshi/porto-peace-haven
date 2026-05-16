@@ -2474,6 +2474,14 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 }
 .porto-cta { margin-top: 2.4rem; }
 
+.ppx {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  font-weight: 700; color: var(--green);
+  font-size: 0.82rem; letter-spacing: 0.08em;
+  margin-left: 0.4rem; user-select: none;
+}
+.ppx-dim { opacity: 0.22; }
+
 /* ═══════════════════════════════════════════════════════════════
    42. ANTES DE PARTIR
    ═══════════════════════════════════════════════════════════════ */
