@@ -37,7 +37,20 @@
   <header class="site-header" id="site-header">
     <div class="header-inner">
       <a href="#home" class="logo" aria-label="Porto Peace Haven – Home">
-        <span class="logo-anchor">⚓</span>
+        <svg class="logo-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#1B2A4A"/>
+          <circle cx="9" cy="9" r="2.5" fill="#C8922A" opacity="0.55"/>
+          <circle cx="55" cy="9" r="2.5" fill="#C8922A" opacity="0.55"/>
+          <circle cx="9" cy="55" r="2.5" fill="#C8922A" opacity="0.55"/>
+          <circle cx="55" cy="55" r="2.5" fill="#C8922A" opacity="0.55"/>
+          <g stroke="#C8922A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none">
+            <path d="M 14 30 L 32 16 L 50 30"/>
+            <path d="M 17 30 L 17 50 L 47 50 L 47 30"/>
+          </g>
+          <rect x="22" y="33" width="7" height="7" rx="1" fill="#F5C76A"/>
+          <rect x="35" y="33" width="7" height="7" rx="1" fill="#F5C76A"/>
+          <rect x="29" y="42" width="6" height="8" rx="1" fill="#C8922A"/>
+        </svg>
         <div class="logo-text">
           <span class="logo-main">Porto Peace Haven</span>
           <span class="logo-sub" data-i18n="logo_sub">Guest Guide</span>
@@ -157,58 +170,79 @@
 
       </div>
 
-      <!-- ── Home Button Hub — app-style navigation ── -->
-      <div class="home-hub-wrap">
-        <div class="home-hub">
-          <a href="#avaliar" class="home-hub-btn featured">
-            <span class="icon" aria-hidden="true">⭐</span>
-            <span data-i18n="hub_review">Leave a Review</span>
-          </a>
-          <a href="#essential-info" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">📶</span>
-            <span data-i18n="hub_wifi">Wi-Fi</span>
-          </a>
-          <a href="#checkin" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🔑</span>
-            <span data-i18n="hub_checkin">Check-in / out</span>
-          </a>
-          <a href="#rooms" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🛏️</span>
-            <span data-i18n="hub_room">My Room</span>
-          </a>
-          <a href="#kitchen" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🍳</span>
-            <span data-i18n="hub_kitchen">Kitchen</span>
-          </a>
-          <a href="#bathroom" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🚿</span>
-            <span data-i18n="hub_bathroom">Bathroom</span>
-          </a>
-          <a href="#rules" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">📋</span>
-            <span data-i18n="hub_rules">House Rules</span>
-          </a>
-          <a href="#porto" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🗺️</span>
-            <span data-i18n="hub_porto">Explore Porto</span>
-          </a>
-          <a href="#antes-partir" class="home-hub-btn">
-            <span class="icon" aria-hidden="true">🧳</span>
-            <span data-i18n="hub_bye">Before You Leave</span>
-          </a>
-          <a href="#emergency" class="home-hub-btn help">
-            <span class="icon" aria-hidden="true">🆘</span>
-            <span data-i18n="hub_help">Help</span>
-          </a>
-        </div>
-      </div>
+      <!-- ── HOME FEED — condensed view, each block opens its full guide ── -->
+      <div class="container home-feed">
 
-      <!-- ── Room Preview Cards ── -->
-      <div class="rooms-preview">
-        <div class="container">
+        <!-- Featured: Review CTA (the primary conversion goal — top of home) -->
+        <a href="#avaliar" class="home-review-cta">
+          <div class="hrc-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+          <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
+          <p data-i18n="home_review_p">Your review means the world to us — and it only takes a minute.</p>
+          <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
+        </a>
+
+        <!-- Wi-Fi (full info on home — quick essential) -->
+        <div class="info-card" id="wifi">
+          <div class="info-icon" aria-hidden="true">📶</div>
+          <div class="info-body">
+            <h3 data-i18n="wifi_title">Wi-Fi</h3>
+            <div class="wifi-grid">
+              <div class="wifi-row">
+                <span class="wifi-label" data-i18n="wifi_network">Network</span>
+                <button class="wifi-value copy-btn" data-copy="PORTO PEACE HAVEN" aria-label="Copy network name">
+                  PORTO PEACE HAVEN
+                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
+                </button>
+              </div>
+              <div class="wifi-row">
+                <span class="wifi-label" data-i18n="wifi_password">Password</span>
+                <button class="wifi-value copy-btn" data-copy="CAHMCTUM" aria-label="Copy password">
+                  CAHMCTUM
+                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
+                </button>
+              </div>
+            </div>
+            <div class="qr-block">
+              <p class="qr-label" data-i18n="wifi_scan">📷 Scan to connect automatically</p>
+              <img src="assets/fotos/QR-wifi.png" alt="Wi-Fi QR code" class="qr-img" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Host -->
+        <div class="info-card" id="contact">
+          <div class="info-icon" aria-hidden="true">💬</div>
+          <div class="info-body">
+            <h3 data-i18n="contact_title">Contact Host</h3>
+            <div class="contact-grid">
+              <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="contact-btn whatsapp">
+                <span aria-hidden="true">💬</span> WhatsApp
+              </a>
+              <a href="tel:+351913874921" class="contact-btn phone">
+                <span aria-hidden="true">📞</span>
+                <span data-i18n="contact_urgent">Urgent Line</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="info-card">
+          <div class="info-icon" aria-hidden="true">📍</div>
+          <div class="info-body">
+            <h3 data-i18n="address_title">Address</h3>
+            <address>
+              Rua da Paz, 66 · 3º andar, sala 34<br>
+              Porto · 4050-461 · Portugal
+            </address>
+            <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Choose Your Room — preview cards (each card opens its room) -->
+        <div class="rooms-preview">
           <h2 class="section-title centered" data-i18n="rooms_preview_title">Choose Your Room</h2>
           <div class="rooms-grid">
-
             <a href="#ribeira" class="room-card">
               <div class="room-card-img ribeira-gradient room-card-img-wrap">
                 <img src="assets/fotos/ribeira-preview.jpg" alt="Ribeira" class="room-card-photo" onerror="this.style.display='none'">
@@ -219,7 +253,6 @@
                 <span class="room-link" data-i18n="room_discover">Discover →</span>
               </div>
             </a>
-
             <a href="#douro" class="room-card">
               <div class="room-card-img douro-gradient room-card-img-wrap">
                 <img src="assets/fotos/douro-preview.jpg" alt="Douro" class="room-card-photo" onerror="this.style.display='none'">
@@ -230,7 +263,6 @@
                 <span class="room-link" data-i18n="room_discover">Discover →</span>
               </div>
             </a>
-
             <a href="#atlantico" class="room-card">
               <div class="room-card-img atlantico-gradient room-card-img-wrap">
                 <img src="assets/fotos/atlantico-preview.jpg" alt="Atlântico" class="room-card-photo" onerror="this.style.display='none'">
@@ -241,9 +273,155 @@
                 <span class="room-link" data-i18n="room_discover">Discover →</span>
               </div>
             </a>
-
           </div>
         </div>
+
+        <!-- Check-in & Check-out entry -->
+        <a href="#checkin" class="entry-card">
+          <div class="entry-icon" aria-hidden="true">🔑</div>
+          <div class="entry-body">
+            <h3 data-i18n="entry_checkin_h">Check-in &amp; Check-out</h3>
+            <p data-i18n="entry_checkin_p">Check-in from 16:00 · Check-out by 11:00. Keys in external safes.</p>
+          </div>
+          <div class="entry-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <!-- Kitchen entry -->
+        <a href="#kitchen" class="entry-card">
+          <div class="entry-icon" aria-hidden="true">🍳</div>
+          <div class="entry-body">
+            <h3 data-i18n="entry_kitchen_h">Kitchen Guide</h3>
+            <p data-i18n="entry_kitchen_p">Everything you need to cook safely and use the shared kitchen.</p>
+          </div>
+          <div class="entry-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <!-- Bathroom entry -->
+        <a href="#bathroom" class="entry-card">
+          <div class="entry-icon" aria-hidden="true">🚿</div>
+          <div class="entry-body">
+            <h3 data-i18n="entry_bathroom_h">Bathroom Guide</h3>
+            <p data-i18n="entry_bathroom_p">How to use the shared bathroom, the hair dryer and the universal adapter.</p>
+          </div>
+          <div class="entry-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <!-- House Rules entry -->
+        <a href="#rules" class="entry-card">
+          <div class="entry-icon" aria-hidden="true">📋</div>
+          <div class="entry-body">
+            <h3 data-i18n="entry_rules_h">House Rules</h3>
+            <p data-i18n="entry_rules_p">Quiet hours, no smoking, and the small respect we owe the building.</p>
+          </div>
+          <div class="entry-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <!-- Conheça o Porto preview — 3 of 10 places, Ver mais opens the full screen -->
+        <div class="home-porto-preview">
+          <h2 class="section-title centered" data-i18n="porto_title">Get to Know Porto</h2>
+          <p class="section-sub home-porto-sub" data-i18n="porto_sub">Beyond the postcards — the places that make us love living here</p>
+          <div class="home-porto-grid">
+
+            <!-- 1. Lello — the well-known classic -->
+            <div class="porto-card">
+              <div class="porto-img">
+                <img src="assets/fotos/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              </div>
+              <div class="porto-body">
+                <span class="ptag" data-i18n="porto_lello_tag">📚 Classic</span> <span class="ppx" aria-label="Price level 2 of 5">$$<span class="ppx-dim">$$$</span></span>
+                <h4 data-i18n="porto_lello_h">Livraria Lello — go early</h4>
+                <p data-i18n="porto_lello_p">Yes, it's famous, and yes, there's a queue. Worth it — buy the timed ticket online and go right at opening.</p>
+                <a href="https://maps.google.com/?q=Livraria+Lello+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+            </div>
+
+            <!-- 2. Wondersense — the different one -->
+            <div class="porto-card">
+              <div class="porto-img">
+                <img src="assets/fotos/porto-wondersense.jpg" alt="Wondersense museum Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              </div>
+              <div class="porto-body">
+                <span class="ptag" data-i18n="porto_wonder_tag">🌀 Different</span> <span class="ppx" aria-label="Price level 2 of 5">$$<span class="ppx-dim">$$$</span></span>
+                <h4 data-i18n="porto_wonder_h">Wondersense — the museum of the five senses</h4>
+                <p data-i18n="porto_wonder_p">A few steps from Livraria Lello, five floors of rooms built to be tasted, heard, touched and smelled.</p>
+                <a href="https://maps.google.com/?q=Wondersense+Rua+das+Carmelitas+130+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+            </div>
+
+            <!-- 3. Ponte + Morro — the must-see sunset (free) -->
+            <div class="porto-card">
+              <div class="porto-img">
+                <img src="assets/fotos/porto-morro.jpg" alt="Ponte Dom Luís I and Jardim do Morro Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              </div>
+              <div class="porto-body">
+                <span class="ptag" data-i18n="porto_morro_tag">🌅 Must-see</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
+                <h4 data-i18n="porto_morro_h">Cross the bridge on the top deck</h4>
+                <p data-i18n="porto_morro_p">Walk the upper deck of the Dom Luís I Bridge — the view stops you mid-step. On the Gaia side, the postcard sunset.</p>
+                <a href="https://maps.google.com/?q=Jardim+do+Morro+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+            </div>
+
+            <!-- 4. Caves de Vinho do Porto — defining Porto experience -->
+            <div class="porto-card">
+              <div class="porto-img">
+                <img src="assets/fotos/porto-gaia.jpg" alt="Port wine cellars Vila Nova de Gaia" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              </div>
+              <div class="porto-body">
+                <span class="ptag" data-i18n="porto_gaia_tag">🍷 Taste</span> <span class="ppx" aria-label="Price level 3 of 5">$$$<span class="ppx-dim">$$</span></span>
+                <h4 data-i18n="porto_gaia_h">Cross to Gaia for a port tasting</h4>
+                <p data-i18n="porto_gaia_p">The port wine cellars line the Gaia bank, ten minutes' walk over the bridge. Pick a smaller house for an unhurried tasting.</p>
+                <a href="https://maps.google.com/?q=Caves+Vinho+do+Porto+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+            </div>
+
+          </div>
+          <a href="#porto" class="ver-mais-btn" data-i18n="see_all_porto">See all 10 places →</a>
+        </div>
+
+        <!-- Porto city map preview — taps to open the full PDF -->
+        <a href="assets/maps/mapa_porto.pdf" target="_blank" rel="noopener" class="home-map">
+          <div class="home-map-img">
+            <img src="assets/fotos/mapa-preview.jpg" alt="Porto tourist map preview">
+            <div class="home-map-overlay" data-i18n="map_open">Open Map</div>
+          </div>
+          <div class="home-map-body">
+            <span aria-hidden="true">🗺️</span>
+            <h3 data-i18n="home_map_h">Porto tourist map (PDF)</h3>
+            <span class="entry-arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <!-- Before You Leave entry -->
+        <a href="#antes-partir" class="entry-card">
+          <div class="entry-icon" aria-hidden="true">🧳</div>
+          <div class="entry-body">
+            <h3 data-i18n="entry_bye_h">Before You Leave</h3>
+            <p data-i18n="entry_bye_p">A small checklist for the room and a quiet moment to say thanks.</p>
+          </div>
+          <div class="entry-arrow" aria-hidden="true">→</div>
+        </a>
+
+        <!-- Second Review nudge (always guide to the goal) -->
+        <a href="#avaliar" class="home-review-cta home-review-cta--soft">
+          <h3 data-i18n="home_review2_h">One last thing</h3>
+          <p data-i18n="home_review2_p">If we made your trip a little better, a review helps the next traveller find us. Thank you.</p>
+          <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
+        </a>
+
+        <!-- Help / Emergency at the bottom — important -->
+        <div class="home-help">
+          <div class="hh-head">
+            <span class="hh-icon" aria-hidden="true">🆘</span>
+            <h3 data-i18n="home_help_h">Need help?</h3>
+          </div>
+          <p data-i18n="home_help_p">We are one tap away. For real emergencies, dial 112.</p>
+          <div class="home-help-btns">
+            <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="btn btn-primary btn-sm">💬 WhatsApp</a>
+            <a href="tel:112" class="btn btn-emergency btn-sm">📞 112</a>
+            <a href="#emergency" class="btn btn-outline btn-sm" data-i18n="home_help_more">All emergency info →</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -456,64 +634,8 @@
         <h2 class="section-title" data-i18n="info_title">Essential Information</h2>
         <p class="section-sub" data-i18n="info_subtitle">Everything you need, right here</p>
 
-        <!-- Address -->
-        <div class="info-card">
-          <div class="info-icon" aria-hidden="true">📍</div>
-          <div class="info-body">
-            <h3 data-i18n="address_title">Address</h3>
-            <address>
-              Rua da Paz, 66 · 3º andar, sala 34<br>
-              Porto · 4050-461 · Portugal
-            </address>
-            <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps">Open in Google Maps</a>
-          </div>
-        </div>
-
-        <!-- Wi-Fi -->
-        <div class="info-card" id="wifi">
-          <div class="info-icon" aria-hidden="true">📶</div>
-          <div class="info-body">
-            <h3 data-i18n="wifi_title">Wi-Fi</h3>
-            <div class="wifi-grid">
-              <div class="wifi-row">
-                <span class="wifi-label" data-i18n="wifi_network">Network</span>
-                <button class="wifi-value copy-btn" data-copy="PORTO PEACE HAVEN" aria-label="Copy network name">
-                  PORTO PEACE HAVEN
-                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
-                </button>
-              </div>
-              <div class="wifi-row">
-                <span class="wifi-label" data-i18n="wifi_password">Password</span>
-                <button class="wifi-value copy-btn" data-copy="CAHMCTUM" aria-label="Copy password">
-                  CAHMCTUM
-                  <span class="copy-hint" data-i18n="tap_copy">tap to copy</span>
-                </button>
-              </div>
-            </div>
-            <div class="qr-block">
-              <p class="qr-label" data-i18n="wifi_scan">📷 Scan to connect automatically</p>
-              <!-- QR generated by script.js -->
-              <div id="wifi-qr" class="qr-box" aria-label="Wi-Fi QR code"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contacts -->
-        <div class="info-card" id="contact">
-          <div class="info-icon" aria-hidden="true">💬</div>
-          <div class="info-body">
-            <h3 data-i18n="contact_title">Contact Host</h3>
-            <div class="contact-grid">
-              <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="contact-btn whatsapp">
-                <span aria-hidden="true">💬</span> WhatsApp
-              </a>
-              <a href="tel:+351913874921" class="contact-btn phone">
-                <span aria-hidden="true">📞</span>
-                <span data-i18n="contact_urgent">Urgent Line</span>
-              </a>
-            </div>
-          </div>
-        </div>
+        <!-- Wi-Fi, Contact, Address live on the home feed now —
+             essential-info keeps just the host-utility cards below. -->
 
         <!-- Guest Guide QR -->
         <div class="info-card">
@@ -699,9 +821,9 @@
         <h2 class="section-title" data-i18n="kitchen_title">Kitchen Guide</h2>
         <p class="section-sub" data-i18n="kitchen_sub">How to use everything in the kitchen</p>
 
-        <div class="kitchen-grid">
+        <div class="kitchen-grid collapsible">
 
-          <div class="kitchen-card">
+          <div class="kitchen-card item-hidden">
             <span class="k-icon" aria-hidden="true">🍳</span>
             <h4 data-i18n="k_hob_h">Induction Hob</h4>
             <ol class="steps">
@@ -712,7 +834,7 @@
             </ol>
           </div>
 
-          <div class="kitchen-card">
+          <div class="kitchen-card item-hidden">
             <span class="k-icon" aria-hidden="true">💨</span>
             <h4 data-i18n="k_hood_h">Extractor Hood</h4>
             <ol class="steps">
@@ -722,7 +844,7 @@
             </ol>
           </div>
 
-          <div class="kitchen-card">
+          <div class="kitchen-card item-hidden">
             <span class="k-icon" aria-hidden="true">🥐</span>
             <h4 data-i18n="k_oven_h">Mini Oven</h4>
             <ol class="steps">
@@ -733,7 +855,7 @@
             </ol>
           </div>
 
-          <div class="kitchen-card">
+          <div class="kitchen-card item-hidden">
             <span class="k-icon" aria-hidden="true">📡</span>
             <h4 data-i18n="k_micro_h">Microwave</h4>
             <ol class="steps">
@@ -1122,7 +1244,7 @@
         <p class="porto-intro" data-i18n="porto_intro">Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.</p>
 
         <h3 class="porto-group-title" data-i18n="porto_g1_title">Porto off the beaten path</h3>
-        <div class="porto-grid">
+        <div class="porto-grid collapsible">
 
           <div class="porto-card">
             <div class="porto-img">
@@ -1153,7 +1275,7 @@
               <img src="assets/fotos/porto-virtudes.jpg" alt="Jardim das Virtudes Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_virtudes_tag">🌳 Sunset</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_virtudes_tag">🌳 Sunset</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_virtudes_h">Passeio das Virtudes — the local sunset</h4>
               <p data-i18n="porto_virtudes_p">While everyone crowds Jardim do Morro across the river, locals come here: a garden that tumbles down the hillside in terraces, with the largest ginkgo tree in Portugal and an open view over the Douro. Bring something to drink and stay for the colour of the sky.</p>
               <a href="https://maps.google.com/?q=Jardim+das+Virtudes+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
@@ -1165,7 +1287,7 @@
               <img src="assets/fotos/porto-guindais.jpg" alt="Escadas dos Guindais Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_guindais_tag">🌉 View</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_guindais_tag">🌉 View</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_guindais_h">Escadas dos Guindais — under the bridge</h4>
               <p data-i18n="porto_guindais_p">A steep, narrow staircase that drops down the cliff right beneath the Dom Luís I Bridge. You've seen the bridge in every postcard — here you stand under its iron belly, close enough to hear it. Take it slow on the way down.</p>
               <a href="https://maps.google.com/?q=Escadas+dos+Guindais+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
@@ -1177,7 +1299,7 @@
               <img src="assets/fotos/porto-almas.jpg" alt="Capela das Almas Porto azulejos" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_almas_tag">🔵 Azulejos</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_almas_tag">🔵 Azulejos</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_almas_h">Capela das Almas — a chapel of blue tiles</h4>
               <p data-i18n="porto_almas_p">On busy Rua de Santa Catarina, stop and look up: sixteen thousand blue azulejos wrap the whole outside of this chapel like a story told on the wall. Most people walk past it on the way to the shops. Don't.</p>
               <a href="https://maps.google.com/?q=Capela+das+Almas+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
@@ -1189,7 +1311,7 @@
               <img src="assets/fotos/porto-fotografia.jpg" alt="Centro Português de Fotografia Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_foto_tag">📷 Free</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_foto_tag">📷 Free</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_foto_h">Centro Português de Fotografia — the old prison</h4>
               <p data-i18n="porto_foto_p">A photography museum housed in a 19th-century prison — you can still see the cell doors and the iron walkways. Free to enter, rarely crowded, and quietly one of the most atmospheric buildings in the city.</p>
               <a href="https://maps.google.com/?q=Centro+Português+de+Fotografia+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
@@ -1199,7 +1321,7 @@
         </div>
 
         <h3 class="porto-group-title" data-i18n="porto_g2_title">The classics, taken slowly</h3>
-        <div class="porto-grid">
+        <div class="porto-grid collapsible">
 
           <div class="porto-card">
             <div class="porto-img">
@@ -1218,7 +1340,7 @@
               <img src="assets/fotos/porto-morro.jpg" alt="Ponte Dom Luís I and Jardim do Morro Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_morro_tag">🌅 Must-see</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_morro_tag">🌅 Must-see</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_morro_h">Cross the bridge on the top deck</h4>
               <p data-i18n="porto_morro_p">Walk the upper deck of the Dom Luís I Bridge — the metro shares it, but there's room, and the view stops you mid-step. On the Gaia side, Jardim do Morro is the postcard sunset. Go — just go early to find a spot.</p>
               <a href="https://maps.google.com/?q=Jardim+do+Morro+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
@@ -1230,7 +1352,7 @@
               <img src="assets/fotos/porto-ribeira.jpg" alt="Ribeira Porto waterfront" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
             <div class="porto-body">
-              <span class="ptag" data-i18n="porto_rib_tag">🏛️ The heart</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <span class="ptag" data-i18n="porto_rib_tag">🏛️ The heart</span> <span class="ppx ppx-free" data-i18n="ppx_free">FREE</span>
               <h4 data-i18n="porto_rib_h">Get lost in the Ribeira</h4>
               <p data-i18n="porto_rib_p">The oldest part of Porto, right on the water — tilting houses, laundry strung between windows, alleys that lead nowhere and everywhere. Touristy, yes. Still the soul of the city. Go in the morning, before the boats fill up.</p>
               <a href="https://maps.google.com/?q=Ribeira+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>

@@ -1879,7 +1879,12 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 [data-theme="dark"] .atlantico-body { background: #1a4060; }
 
 [data-theme="dark"] .hero-gradient {
-  background: linear-gradient(160deg, #0A1428 0%, #142040 35%, #1E3860 65%, #2A5A70 100%);
+  background: linear-gradient(
+    160deg,
+    rgba(10, 20, 40, 0.72) 0%,
+    rgba(20, 32, 64, 0.6) 40%,
+    rgba(42, 90, 112, 0.4) 100%
+  );
 }
 
 [data-theme="dark"] .wifi-value,
@@ -2481,6 +2486,92 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   margin-left: 0.4rem; user-select: none;
 }
 .ppx-dim { opacity: 0.22; }
+.ppx-free {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--green);
+  background: rgba(45, 122, 95, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+}
+
+/* Header logo mark (SVG replacement for the ⚓ emoji) */
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+/* Wi-Fi QR image (from file, not auto-generated) */
+.qr-img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: var(--r-sm);
+}
+
+/* Home map preview card */
+.home-map {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--text);
+  display: block;
+  transition: all 0.18s ease;
+}
+.home-map:hover {
+  border-color: var(--ribeira);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.home-map-img {
+  position: relative;
+  background: var(--sand);
+}
+.home-map-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.home-map-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(27, 42, 74, 0.25);
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.home-map:hover .home-map-overlay { opacity: 1; }
+.home-map-body {
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.home-map-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin: 0;
+  flex: 1;
+}
+.home-map-body .entry-arrow {
+  color: var(--text-light);
+  font-size: 1.3rem;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    43. APP-LIKE SCREENS · HOME HUB
@@ -2565,6 +2656,236 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 }
 .screen-back:hover { color: var(--ribeira); }
 .screen:not(#home).active .screen-back { display: flex; }
+
+/* ── Collapsible "See more" pattern (Conheça o Porto, Cozinha) ── */
+.collapsible:not(.expanded) > .item-hidden { display: none; }
+.see-more-btn {
+  display: block;
+  margin: 1.2rem auto 0;
+  padding: 0.7rem 1.4rem;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.see-more-btn:hover {
+  border-color: var(--ribeira);
+  color: var(--ribeira);
+}
+.see-more-btn .count {
+  color: var(--text-light);
+  margin-left: 0.25rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   44. HOME FEED — condensed app-style home
+   ═══════════════════════════════════════════════════════════════ */
+.home-feed {
+  position: relative;
+  z-index: 1;
+  background: var(--off-white);
+  padding: 1.5rem 1rem 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+}
+.home-feed > .info-card,
+.home-feed > .entry-card,
+.home-feed > .home-review-cta,
+.home-feed > .home-porto-preview,
+.home-feed > .home-help,
+.home-feed > .rooms-preview {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.home-feed > * { margin-bottom: 1.1rem; }
+.home-feed > *:last-child { margin-bottom: 0; }
+
+/* Featured review CTA — gold gradient, top + middle of feed */
+.home-review-cta {
+  display: block;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--douro) 100%);
+  color: #fff;
+  border-radius: var(--r-xl);
+  padding: 1.6rem 1.4rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  margin-top: 1.4rem;
+}
+.home-review-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.home-review-cta .hrc-stars {
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+.home-review-cta h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.home-review-cta p {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.home-review-cta .hrc-btn {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  border: 1.5px solid rgba(255,255,255,0.5);
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--r-md);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.home-review-cta--soft {
+  background: linear-gradient(135deg, var(--ribeira) 0%, var(--ribeira-light) 100%);
+}
+
+/* Entry card — guide-entry row (Kitchen, Bathroom, Rules, Check-in, Bye) */
+.entry-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.18s ease;
+  box-shadow: var(--shadow-sm);
+}
+.entry-card:hover {
+  border-color: var(--ribeira);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.entry-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.entry-body { flex: 1; min-width: 0; }
+.entry-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+}
+.entry-body p {
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.45;
+  margin: 0;
+}
+.entry-arrow {
+  font-size: 1.4rem;
+  color: var(--text-light);
+  flex-shrink: 0;
+  transition: transform 0.2s, color 0.2s;
+}
+.entry-card:hover .entry-arrow {
+  color: var(--ribeira);
+  transform: translateX(3px);
+}
+
+/* Porto preview block — 3 cards + "Ver mais" */
+.home-porto-preview {
+  background: var(--off-white);
+  padding: 1.5rem 1rem;
+  border-radius: var(--r-lg);
+}
+.home-porto-preview .section-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.4rem;
+}
+.home-porto-sub {
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.home-porto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 540px) {
+  .home-porto-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* "Ver mais" navigation button (preview → full screen) */
+.ver-mais-btn {
+  display: block;
+  text-align: center;
+  padding: 0.85rem 1.4rem;
+  background: var(--ribeira);
+  color: #fff;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.18s ease;
+}
+.ver-mais-btn:hover {
+  background: var(--ribeira-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Help block at home bottom */
+.home-help {
+  background: linear-gradient(135deg, #fbeae8, #fdf3f1);
+  border: 1px solid rgba(192,57,43,0.25);
+  border-radius: var(--r-lg);
+  padding: 1.3rem 1.2rem;
+  text-align: center;
+}
+[data-theme="dark"] .home-help {
+  background: rgba(192,57,43,0.12);
+  border-color: rgba(192,57,43,0.4);
+}
+.home-help .hh-head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+.home-help .hh-icon { font-size: 1.5rem; }
+.home-help h3 {
+  font-family: var(--font-display);
+  color: var(--danger);
+  font-size: 1.35rem;
+  margin: 0;
+}
+.home-help p {
+  color: var(--text-mid);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+}
+.home-help-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 480px) {
+  .home-help-btns {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    42. ANTES DE PARTIR

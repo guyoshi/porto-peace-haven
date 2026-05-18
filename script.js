@@ -3367,3 +3367,210 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
     routeFromHash();
   }
 })();
+
+/* ═══════════════════════════════════════════════════════════════
+   SEE MORE / SEE LESS — collapsible grids
+═══════════════════════════════════════════════════════════════ */
+const SEE_I18N = {
+  en: { see_more: 'See more', see_less: 'See less' },
+  pt: { see_more: 'Ver mais', see_less: 'Ver menos' },
+  fr: { see_more: 'Voir plus', see_less: 'Voir moins' },
+  es: { see_more: 'Ver más',  see_less: 'Ver menos' },
+  de: { see_more: 'Mehr anzeigen', see_less: 'Weniger anzeigen' },
+  it: { see_more: 'Vedi altro', see_less: 'Vedi meno' },
+};
+Object.keys(SEE_I18N).forEach(function (l) {
+  Object.assign(translations[l], SEE_I18N[l]);
+});
+
+(function () {
+  function build() {
+    document.querySelectorAll('.collapsible').forEach(function (grid) {
+      if (grid.nextElementSibling && grid.nextElementSibling.classList.contains('see-more-btn')) return;
+      const hidden = grid.querySelectorAll('.item-hidden');
+      if (!hidden.length) return;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'see-more-btn';
+      const label = document.createElement('span');
+      label.setAttribute('data-i18n', 'see_more');
+      const count = document.createElement('span');
+      count.className = 'count';
+      count.textContent = '(' + hidden.length + ')';
+      btn.appendChild(label);
+      btn.appendChild(document.createTextNode(' '));
+      btn.appendChild(count);
+
+      function refreshLabel() {
+        const key = grid.classList.contains('expanded') ? 'see_less' : 'see_more';
+        label.setAttribute('data-i18n', key);
+        label.textContent = (translations[currentLang] && translations[currentLang][key]) ||
+          (key === 'see_less' ? 'See less' : 'See more');
+        count.style.display = grid.classList.contains('expanded') ? 'none' : '';
+      }
+
+      btn.addEventListener('click', function () {
+        grid.classList.toggle('expanded');
+        refreshLabel();
+      });
+
+      grid.parentNode.insertBefore(btn, grid.nextSibling);
+      refreshLabel();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', build);
+  } else {
+    build();
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   HOME FEED — copy for the new condensed home blocks
+═══════════════════════════════════════════════════════════════ */
+const HOME_FEED_I18N = {
+  en: {
+    home_review_h: 'Enjoying your stay?',
+    home_review_p: 'Your review means the world to us — and it only takes a minute.',
+    home_review_btn: 'Leave a Review →',
+    home_review2_h: 'One last thing',
+    home_review2_p: 'If we made your trip a little better, a review helps the next traveller find us. Thank you.',
+    entry_checkin_h: 'Check-in &amp; Check-out',
+    entry_checkin_p: 'Check-in from 16:00 · Check-out by 11:00. Keys in external safes.',
+    entry_kitchen_h: 'Kitchen Guide',
+    entry_kitchen_p: 'Everything you need to cook safely and use the shared kitchen.',
+    entry_bathroom_h: 'Bathroom Guide',
+    entry_bathroom_p: 'How to use the shared bathroom, the hair dryer and the universal adapter.',
+    entry_rules_h: 'House Rules',
+    entry_rules_p: 'Quiet hours, no smoking, and the small respect we owe the building.',
+    entry_bye_h: 'Before You Leave',
+    entry_bye_p: 'A small checklist for the room and a quiet moment to say thanks.',
+    see_all_porto: 'See all 10 places →',
+    home_help_h: 'Need help?',
+    home_help_p: 'We are one tap away. For real emergencies, dial 112.',
+    home_help_more: 'All emergency info →',
+  },
+  pt: {
+    home_review_h: 'A gostar da estadia?',
+    home_review_p: 'A sua avaliação significa muito para nós — e leva menos de um minuto.',
+    home_review_btn: 'Avaliar →',
+    home_review2_h: 'Uma última coisa',
+    home_review2_p: 'Se fizemos a sua viagem um pouco melhor, uma avaliação ajuda o próximo viajante a encontrar-nos. Obrigado.',
+    entry_checkin_h: 'Check-in &amp; Check-out',
+    entry_checkin_p: 'Check-in a partir das 16:00 · Check-out até às 11:00. Chaves nos cofres externos.',
+    entry_kitchen_h: 'Guia da Cozinha',
+    entry_kitchen_p: 'Tudo o que precisa para cozinhar em segurança e usar a cozinha partilhada.',
+    entry_bathroom_h: 'Guia da Casa de Banho',
+    entry_bathroom_p: 'Como usar a casa de banho partilhada, o secador e o adaptador universal.',
+    entry_rules_h: 'Regras da Casa',
+    entry_rules_p: 'Horas de silêncio, sem fumar, e o pequeno respeito que devemos ao prédio.',
+    entry_bye_h: 'Antes de Partir',
+    entry_bye_p: 'Uma pequena lista para o quarto e um momento tranquilo para agradecer.',
+    see_all_porto: 'Ver os 10 lugares →',
+    home_help_h: 'Precisa de ajuda?',
+    home_help_p: 'Estamos a um toque de distância. Para emergências reais, ligue 112.',
+    home_help_more: 'Toda a info de emergência →',
+  },
+  fr: {
+    home_review_h: 'Vous appréciez votre séjour ?',
+    home_review_p: "Votre avis compte énormément pour nous — et cela ne prend qu'une minute.",
+    home_review_btn: 'Laisser un avis →',
+    home_review2_h: 'Une dernière chose',
+    home_review2_p: 'Si nous avons rendu votre voyage un peu meilleur, un avis aide le prochain voyageur à nous trouver. Merci.',
+    entry_checkin_h: 'Arrivée &amp; Départ',
+    entry_checkin_p: 'Arrivée à partir de 16h00 · Départ avant 11h00. Clés dans les coffres extérieurs.',
+    entry_kitchen_h: 'Guide de la cuisine',
+    entry_kitchen_p: "Tout ce qu'il vous faut pour cuisiner en toute sécurité et utiliser la cuisine partagée.",
+    entry_bathroom_h: 'Guide de la salle de bain',
+    entry_bathroom_p: "Comment utiliser la salle de bain partagée, le sèche-cheveux et l'adaptateur universel.",
+    entry_rules_h: 'Règles de la maison',
+    entry_rules_p: "Heures calmes, non-fumeur, et le petit respect dû à l'immeuble.",
+    entry_bye_h: 'Avant de partir',
+    entry_bye_p: 'Une petite liste pour la chambre et un moment tranquille pour dire merci.',
+    see_all_porto: 'Voir les 10 lieux →',
+    home_help_h: "Besoin d'aide ?",
+    home_help_p: 'Nous sommes à un appui de distance. Pour de vraies urgences, composez le 112.',
+    home_help_more: "Toutes les infos d'urgence →",
+  },
+  es: {
+    home_review_h: '¿Disfrutas tu estancia?',
+    home_review_p: 'Tu reseña significa muchísimo para nosotros — y solo lleva un minuto.',
+    home_review_btn: 'Dejar reseña →',
+    home_review2_h: 'Una última cosa',
+    home_review2_p: 'Si hicimos tu viaje un poco mejor, una reseña ayuda al próximo viajero a encontrarnos. Gracias.',
+    entry_checkin_h: 'Check-in &amp; Check-out',
+    entry_checkin_p: 'Check-in desde las 16:00 · Check-out hasta las 11:00. Llaves en cajas fuertes exteriores.',
+    entry_kitchen_h: 'Guía de la cocina',
+    entry_kitchen_p: 'Todo lo que necesitas para cocinar con seguridad y usar la cocina compartida.',
+    entry_bathroom_h: 'Guía del baño',
+    entry_bathroom_p: 'Cómo usar el baño compartido, el secador y el adaptador universal.',
+    entry_rules_h: 'Normas de la casa',
+    entry_rules_p: 'Horas de silencio, prohibido fumar, y el pequeño respeto que debemos al edificio.',
+    entry_bye_h: 'Antes de irte',
+    entry_bye_p: 'Una pequeña lista para la habitación y un momento tranquilo para agradecer.',
+    see_all_porto: 'Ver los 10 lugares →',
+    home_help_h: '¿Necesitas ayuda?',
+    home_help_p: 'Estamos a un toque. Para emergencias reales, llama al 112.',
+    home_help_more: 'Toda la información de emergencia →',
+  },
+  de: {
+    home_review_h: 'Genießen Sie Ihren Aufenthalt?',
+    home_review_p: 'Ihre Bewertung bedeutet uns die Welt — und dauert nur eine Minute.',
+    home_review_btn: 'Bewertung abgeben →',
+    home_review2_h: 'Eine letzte Sache',
+    home_review2_p: 'Wenn wir Ihre Reise ein wenig schöner gemacht haben, hilft eine Bewertung dem nächsten Reisenden, uns zu finden. Danke.',
+    entry_checkin_h: 'Check-in &amp; Check-out',
+    entry_checkin_p: 'Check-in ab 16:00 · Check-out bis 11:00. Schlüssel in externen Safes.',
+    entry_kitchen_h: 'Küchen-Anleitung',
+    entry_kitchen_p: 'Alles, was Sie zum sicheren Kochen und für die gemeinsame Küche brauchen.',
+    entry_bathroom_h: 'Bad-Anleitung',
+    entry_bathroom_p: 'Wie Sie das gemeinsame Bad, den Föhn und den Universaladapter benutzen.',
+    entry_rules_h: 'Hausregeln',
+    entry_rules_p: 'Ruhezeiten, Nichtraucher und der kleine Respekt, den wir dem Gebäude schulden.',
+    entry_bye_h: 'Vor der Abreise',
+    entry_bye_p: 'Eine kleine Liste für das Zimmer und ein ruhiger Moment zum Danken.',
+    see_all_porto: 'Alle 10 Orte ansehen →',
+    home_help_h: 'Brauchen Sie Hilfe?',
+    home_help_p: 'Wir sind einen Tipper entfernt. Im Notfall wählen Sie 112.',
+    home_help_more: 'Alle Notfall-Infos →',
+  },
+  it: {
+    home_review_h: 'Ti sta piacendo il soggiorno?',
+    home_review_p: 'La tua recensione significa moltissimo per noi — e basta un minuto.',
+    home_review_btn: 'Lascia una recensione →',
+    home_review2_h: "Un'ultima cosa",
+    home_review2_p: "Se abbiamo reso il tuo viaggio un po' migliore, una recensione aiuta il prossimo viaggiatore a trovarci. Grazie.",
+    entry_checkin_h: 'Check-in &amp; Check-out',
+    entry_checkin_p: 'Check-in dalle 16:00 · Check-out entro le 11:00. Chiavi nelle casseforti esterne.',
+    entry_kitchen_h: 'Guida della cucina',
+    entry_kitchen_p: 'Tutto ciò che ti serve per cucinare in sicurezza e usare la cucina condivisa.',
+    entry_bathroom_h: 'Guida del bagno',
+    entry_bathroom_p: "Come usare il bagno condiviso, il phon e l'adattatore universale.",
+    entry_rules_h: 'Regole della casa',
+    entry_rules_p: "Orari di silenzio, vietato fumare, e il piccolo rispetto dovuto all'edificio.",
+    entry_bye_h: 'Prima di partire',
+    entry_bye_p: 'Una piccola lista per la camera e un momento tranquillo per ringraziare.',
+    see_all_porto: 'Vedi tutti i 10 posti →',
+    home_help_h: 'Hai bisogno di aiuto?',
+    home_help_p: 'Siamo a un tocco. Per emergenze reali, chiama il 112.',
+    home_help_more: 'Tutte le info di emergenza →',
+  },
+};
+Object.keys(HOME_FEED_I18N).forEach(function (l) {
+  Object.assign(translations[l], HOME_FEED_I18N[l]);
+});
+
+/* ── FREE price label + map preview title ── */
+const FREE_MAP_I18N = {
+  en: { ppx_free: 'FREE', home_map_h: 'Porto tourist map (PDF)' },
+  pt: { ppx_free: 'GRÁTIS', home_map_h: 'Mapa turístico do Porto (PDF)' },
+  fr: { ppx_free: 'GRATUIT', home_map_h: 'Carte touristique de Porto (PDF)' },
+  es: { ppx_free: 'GRATIS', home_map_h: 'Mapa turístico de Oporto (PDF)' },
+  de: { ppx_free: 'GRATIS', home_map_h: 'Porto Touristenkarte (PDF)' },
+  it: { ppx_free: 'GRATIS', home_map_h: 'Mappa turistica di Porto (PDF)' },
+};
+Object.keys(FREE_MAP_I18N).forEach(function (l) {
+  Object.assign(translations[l], FREE_MAP_I18N[l]);
+});
