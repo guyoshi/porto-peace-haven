@@ -112,7 +112,7 @@
       <li><a href="#nearby" class="nav-link" data-i18n="nav_nearby">Nearby Places</a></li>
       <li><a href="#porto" class="nav-link" data-i18n="nav_porto">Get to Know Porto</a></li>
       <li><a href="#mapa" class="nav-link" data-i18n="nav_mapa">🗺️ Mapa do Porto</a></li>
-      <li><a href="#antes-partir" class="nav-link" data-i18n="nav_bye">🧳 Before You Leave</a></li>
+      <li><a href="#checkout" class="nav-link" data-i18n="nav_bye">🧳 Before You Leave</a></li>
       <li><a href="#avaliar" class="nav-link nav-avaliar" data-i18n="nav_avaliar">⭐ Review Your Stay</a></li>
       <li><a href="#emergency" class="nav-link nav-emergency" data-i18n="nav_emergency">🆘 Emergency</a></li>
     </ul>
@@ -392,7 +392,7 @@
         </a>
 
         <!-- Before You Leave entry -->
-        <a href="#antes-partir" class="entry-card">
+        <a href="#checkout" class="entry-card">
           <div class="entry-icon" aria-hidden="true">🧳</div>
           <div class="entry-body">
             <h3 data-i18n="entry_bye_h">Before You Leave</h3>
@@ -1427,11 +1427,21 @@
     <!-- ─────────────────────────────────────────────────
          ANTES DE PARTIR — checkout checklist + review ask
     ───────────────────────────────────────────────── -->
-    <section id="antes-partir" class="section bye-section screen">
+    <section id="checkout" class="section bye-section screen">
       <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="bye_title">Before You Leave</h2>
         <p class="section-sub" data-i18n="bye_sub">A short list, a small ask, and a thank you.</p>
+
+        <!-- Step 1 of checkout: let Filipa know -->
+        <div class="info-card checkout-notify">
+          <div class="info-icon" aria-hidden="true">🧳</div>
+          <div class="info-body">
+            <h3 data-i18n="co_notify_h">Let us know you're heading out</h3>
+            <p data-i18n="co_notify_p">A quick message so we know the room is ready to be turned around — and so we can wish you a great trip back.</p>
+            <a id="co-wa-notify" class="btn av-btn-wa" href="#" target="_blank" rel="noopener" data-i18n="co_notify_btn">📩 Notify by WhatsApp</a>
+          </div>
+        </div>
 
         <div class="info-card">
           <div class="info-icon" aria-hidden="true">✅</div>
@@ -1493,8 +1503,22 @@
               <div class="review-stars" aria-hidden="true">★★★★★</div>
               <h3 data-i18n="av_airbnb_h">A review on Airbnb is worth its weight in gold</h3>
               <p data-i18n="av_airbnb_p">It's where your words make the biggest difference for us — and it takes less than a minute.</p>
-              <a class="btn btn-gold" id="av-link-airbnb" href="#" target="_blank" rel="noopener"><span data-i18n="av_airbnb_btn">Review on Airbnb</span> ⭐</a>
-              <br><span class="av-mini-link" data-plat="google" data-i18n="av_airbnb_alt">Prefer to review on Google?</span>
+
+              <!-- Room picker — shown when we don't yet know which room the guest is in -->
+              <div class="av-room-picker" id="av-room-picker" hidden>
+                <p class="av-rp-q" data-i18n="av_which_room">Which room are you in?</p>
+                <div class="av-rp-btns">
+                  <button type="button" class="av-rp-btn" data-room="ribeira">Ribeira</button>
+                  <button type="button" class="av-rp-btn" data-room="douro">Douro</button>
+                  <button type="button" class="av-rp-btn" data-room="atlantico">Atlântico</button>
+                </div>
+              </div>
+
+              <!-- CTA — shown once the room is known (room-specific Airbnb listing URL) -->
+              <div id="av-airbnb-cta">
+                <a class="btn btn-gold" id="av-link-airbnb" href="#" target="_blank" rel="noopener"><span data-i18n="av_airbnb_btn">Review on Airbnb</span> ⭐</a>
+                <br><span class="av-mini-link" data-plat="google" data-i18n="av_airbnb_alt">Prefer to review on Google?</span>
+              </div>
             </div>
             <div class="av-result review-box" id="av-res-booking">
               <div class="review-stars" aria-hidden="true">★★★★★</div>
@@ -1709,6 +1733,108 @@
   <!-- ═══════════════════════════════════════════════════
        TOAST NOTIFICATION (for copy feedback)
   ═══════════════════════════════════════════════════ -->
+  <!-- Phase modal — centered popup, asks where the guest is in their stay -->
+  <div id="phase-modal" class="pph-modal" hidden>
+    <div class="pph-modal-card pph-modal-card--narrow">
+      <button class="wm-close" id="pm-close" aria-label="Close">✕</button>
+      <h2 class="pm-q" data-i18n="phase_q">Where are you in your stay?</h2>
+      <div class="pm-btns">
+        <button type="button" class="pm-btn" data-phase="checkin">
+          <span class="pm-ico" aria-hidden="true">👋</span>
+          <span data-i18n="phase_checkin">Just arrived</span>
+        </button>
+        <button type="button" class="pm-btn" data-phase="mid">
+          <span class="pm-ico" aria-hidden="true">🏠</span>
+          <span data-i18n="phase_mid">Mid stay</span>
+        </button>
+        <button type="button" class="pm-btn" data-phase="checkout">
+          <span class="pm-ico" aria-hidden="true">🧳</span>
+          <span data-i18n="phase_checkout">Checking out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome modal — shown after picking "Just arrived": quick tour to the 3 most valuable things -->
+  <div id="welcome-modal" class="pph-modal" hidden>
+    <div class="pph-modal-card">
+      <button class="wm-close" id="wm-close" aria-label="Close">✕</button>
+      <div class="wm-mark" aria-hidden="true">💛</div>
+      <h2 data-i18n="welcome_h">Welcome to Porto Peace Haven</h2>
+      <p data-i18n="welcome_p">A quick tour of what you can do here:</p>
+
+      <div class="wm-quick">
+        <div class="wm-quick-h"><span aria-hidden="true">📶</span> <span data-i18n="wifi_title">Wi-Fi</span></div>
+        <div class="wm-row">
+          <span class="wm-label" data-i18n="wifi_network">Network</span>
+          <span class="wm-val">PORTO PEACE HAVEN</span>
+        </div>
+        <div class="wm-row">
+          <span class="wm-label" data-i18n="wifi_password">Password</span>
+          <span class="wm-val">CAHMCTUM</span>
+        </div>
+      </div>
+
+      <a href="#rules" class="wm-link" id="wm-rules">
+        <span class="wm-link-ico" aria-hidden="true">📋</span>
+        <div class="wm-link-body">
+          <strong data-i18n="welcome_rules_h">House rules</strong>
+          <span data-i18n="welcome_rules_p">A 30-second read — keeps everyone happy in the building.</span>
+        </div>
+        <span class="wm-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="#porto" class="wm-link" id="wm-porto">
+        <span class="wm-link-ico" aria-hidden="true">🗺️</span>
+        <div class="wm-link-body">
+          <strong data-i18n="welcome_porto_h">Discover Porto</strong>
+          <span data-i18n="welcome_porto_p">Curated places off the tourist track + classics worth your time.</span>
+        </div>
+        <span class="wm-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <button class="btn btn-primary" id="wm-go" data-i18n="welcome_go">Got it — explore the guide →</button>
+    </div>
+  </div>
+
+  <!-- Floating action button: Review · Suggestion · Urgent help (all screens) -->
+  <div class="fab-wrap">
+    <button class="fab" id="fab-toggle" aria-label="Quick actions" aria-expanded="false">
+      <span class="fab-icon" aria-hidden="true">💬</span>
+    </button>
+    <div class="fab-panel" id="fab-panel" hidden>
+      <button type="button" class="fab-opt fab-opt--review" id="fab-review">
+        <span aria-hidden="true">⭐</span>
+        <span data-i18n="fab_review">Leave a review</span>
+      </button>
+      <button type="button" class="fab-opt" id="fab-suggest">
+        <span aria-hidden="true">💬</span>
+        <span data-i18n="fab_suggest">Send a suggestion</span>
+      </button>
+      <button type="button" class="fab-opt fab-opt--urgent" id="fab-help">
+        <span aria-hidden="true">🆘</span>
+        <span data-i18n="fab_help">Urgent help on WhatsApp</span>
+      </button>
+
+      <!-- Inline mini-form (revealed when Suggestion is clicked) -->
+      <form class="fab-form" id="fab-form" hidden name="sugestoes-rapidas" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
+        <input type="hidden" name="form-name" value="sugestoes-rapidas">
+        <p hidden><label>Do not fill: <input name="bot-field"></label></p>
+        <input type="hidden" name="quarto" id="fab-room-h" value="">
+        <input type="hidden" name="origem" value="fab">
+        <input type="hidden" name="pagina" id="fab-page-h" value="">
+        <input type="hidden" name="idioma" id="fab-lang-h" value="">
+        <textarea name="detalhe" id="fab-msg" required rows="3" data-i18n-ph="fab_ph" placeholder="Quick note about your stay…"></textarea>
+        <button type="submit" class="btn btn-primary btn-sm" data-i18n="fab_send">Send</button>
+      </form>
+
+      <div class="fab-thanks" id="fab-thanks" hidden>
+        <span aria-hidden="true">🤍</span>
+        <p data-i18n="fab_thanks">Got it — thank you.</p>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
 
   <!-- ═══════════════════════════════════════════════════════════════

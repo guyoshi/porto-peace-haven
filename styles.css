@@ -2370,6 +2370,225 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 .av-btn-wa { background: #25D366; color: #fff; }
 .av-btn-wa:hover { background: #1da851; transform: translateY(-1px); box-shadow: var(--shadow-md); }
 
+/* Per-room Airbnb picker (inside #av-res-airbnb, on dark gold gradient) */
+.av-room-picker { margin-bottom: 0.9rem; }
+.av-room-picker .av-rp-q {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 0.7rem;
+  font-weight: 500;
+}
+.av-rp-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.av-rp-btn {
+  padding: 0.55rem 1.1rem;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--r-md);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.av-rp-btn:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   45. PHASE BANNER + WELCOME MODAL
+   ═══════════════════════════════════════════════════════════════ */
+/* Generic centered modal (phase modal + welcome modal share this) */
+.pph-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  z-index: 2500;
+  animation: wmFade 0.25s ease;
+}
+@keyframes wmFade { from { opacity: 0; } to { opacity: 1; } }
+.pph-modal[hidden] { display: none; }
+.pph-modal-card {
+  background: var(--white);
+  border-radius: var(--r-xl);
+  padding: 2rem 1.5rem 1.5rem;
+  max-width: 480px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  animation: wmPop 0.3s ease;
+}
+.pph-modal-card--narrow { max-width: 360px; }
+
+/* Phase modal (the "where are you in your stay?" question) */
+.pm-q {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--ribeira);
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.pm-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.pm-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0.95rem 1.2rem;
+  background: var(--off-white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+.pm-btn:hover {
+  border-color: var(--ribeira);
+  background: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.pm-ico { font-size: 1.4rem; line-height: 1; }
+
+/* Welcome modal — quick tour after "just arrived" */
+.wm-quick {
+  background: var(--off-white);
+  border-radius: var(--r-md);
+  padding: 0.85rem 1.1rem 0.6rem;
+  margin-bottom: 0.9rem;
+}
+.wm-quick-h {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ribeira);
+  margin-bottom: 0.4rem;
+}
+.wm-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.95rem 1rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+  transition: all 0.15s ease;
+}
+.wm-link:hover {
+  border-color: var(--ribeira);
+  background: var(--white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.wm-link-ico { font-size: 1.5rem; flex-shrink: 0; line-height: 1; }
+.wm-link-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.wm-link-body strong {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ribeira);
+}
+.wm-link-body span {
+  font-size: 0.85rem;
+  color: var(--text-mid);
+  line-height: 1.4;
+}
+.wm-arrow {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+@keyframes wmPop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: none; }
+}
+.wm-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+.wm-close:hover { color: var(--text); }
+.wm-mark {
+  font-size: 2.6rem;
+  text-align: center;
+  margin-bottom: 0.4rem;
+  line-height: 1;
+}
+.pph-modal-card h2 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  color: var(--ribeira);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.pph-modal-card > p {
+  text-align: center;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+}
+.wm-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+}
+.wm-row:last-of-type {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.2rem;
+}
+.wm-label {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  flex-shrink: 0;
+}
+.wm-val {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 600;
+  text-align: right;
+  color: var(--text);
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+.wm-val--text {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+}
+.pph-modal-card .btn { width: 100%; }
+
 .av-optional { font-weight: 400; color: var(--text-light); font-size: 0.82rem; }
 .av-note { font-size: 0.82rem; color: var(--text-light); margin-top: 0.6rem; text-align: center; }
 .av-thanks-mark { font-size: 2.8rem; text-align: center; margin-bottom: 0.3rem; }

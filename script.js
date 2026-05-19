@@ -2346,14 +2346,51 @@ initTheme();
   const section = document.getElementById('avaliar');
   if (!section) return;
 
-  /* CONFIG — ▶ replace with the real review links before going live.
-     Airbnb: Filipa's listing is not published yet.
+  /* CONFIG — Airbnb is per-room (each room is a separate listing).
      Google: paste the Google Business "write a review" link. */
   const REVIEW_LINKS = {
-    airbnb: 'COLAR_LINK_AIRBNB',
+    airbnb: {
+      ribeira:   'COLAR_LINK_AIRBNB_RIBEIRA',
+      douro:     'https://www.airbnb.pt/rooms/1684934509981187232',
+      atlantico: 'https://www.airbnb.com.br/rooms/1684880628111075712',
+    },
     google: 'COLAR_LINK_GOOGLE',
   };
   const WHATSAPP_URGENTE = '351913874921';
+
+  /* Room detection — order of precedence: URL ?room=X, localStorage,
+     room hash visited (set by tracker below), fallback to picker. */
+  function getRoom() {
+    try { return localStorage.getItem('pph-room'); } catch (e) { return null; }
+  }
+  function setRoom(r) {
+    try { localStorage.setItem('pph-room', r); } catch (e) {}
+  }
+  function applyAirbnbForRoom() {
+    const room = getRoom();
+    const picker = document.getElementById('av-room-picker');
+    const cta = document.getElementById('av-airbnb-cta');
+    const link = document.getElementById('av-link-airbnb');
+    const url = (room && REVIEW_LINKS.airbnb[room]) || '';
+    if (url) {
+      if (picker) picker.hidden = true;
+      if (cta)    cta.hidden = false;
+      if (link)   link.href = url;
+    } else {
+      if (picker) picker.hidden = false;
+      if (cta)    cta.hidden = true;
+    }
+  }
+  window.__pphApplyAirbnbForRoom = applyAirbnbForRoom; // for QR-param IIFE
+
+  // Pre-fill the suggestion form's room radio when we know it
+  (function prefillRoom() {
+    const r = getRoom();
+    if (!r) return;
+    const labels = { ribeira: 'Ribeira', douro: 'Douro', atlantico: 'Atlântico' };
+    const radio = section.querySelector('input[name="quarto"][value="' + labels[r] + '"]');
+    if (radio) radio.checked = true;
+  })();
 
   function show(stepId) {
     section.querySelectorAll('.av-step').forEach(function (s) {
@@ -2380,9 +2417,18 @@ initTheme();
       const el = document.getElementById('av-res-' + p);
       if (el) el.classList.toggle('show', p === plat);
     });
+    if (plat === 'airbnb') applyAirbnbForRoom();
   }
   section.querySelectorAll('[data-plat]').forEach(function (el) {
     el.addEventListener('click', function () { pickPlatform(el.dataset.plat); });
+  });
+
+  /* Room picker (inside #av-res-airbnb, shown when room unknown) */
+  section.querySelectorAll('[data-room]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      setRoom(b.dataset.room);
+      applyAirbnbForRoom();
+    });
   });
 
   /* back / restart buttons */
@@ -2390,15 +2436,15 @@ initTheme();
     b.addEventListener('click', function () { show(b.dataset.goto); });
   });
 
-  /* apply the real review links */
+  /* apply the real review links (Airbnb is set per-room by applyAirbnbForRoom) */
   function setLink(id, url) {
     const el = document.getElementById(id);
     if (el) el.href = url || '#';
   }
-  setLink('av-link-airbnb', REVIEW_LINKS.airbnb);
   setLink('av-link-google-b', REVIEW_LINKS.google);
   setLink('av-link-google-o', REVIEW_LINKS.google);
   setLink('av-link-google-t', REVIEW_LINKS.google);
+  applyAirbnbForRoom();
 
   /* urgency — reveal the WhatsApp shortcut with a message in the active language */
   const urgentBox = document.getElementById('av-urgent-box');
@@ -2557,10 +2603,25 @@ initTheme();
   const params = new URLSearchParams(location.search);
   const src = params.get('src');
   const platform = params.get('platform');
+  const roomParam = params.get('room');
 
   if (src) {
     try { sessionStorage.setItem('pph-src', src); } catch (e) { /* private mode */ }
   }
+
+  /* Room detection: URL param wins; then track navigation to a room hash */
+  const ROOMS = ['ribeira', 'douro', 'atlantico'];
+  if (roomParam && ROOMS.indexOf(roomParam) >= 0) {
+    try { localStorage.setItem('pph-room', roomParam); } catch (e) {}
+  }
+  function trackRoomFromHash() {
+    const h = location.hash.replace('#', '');
+    if (ROOMS.indexOf(h) >= 0) {
+      try { localStorage.setItem('pph-room', h); } catch (e) {}
+    }
+  }
+  window.addEventListener('hashchange', trackRoomFromHash);
+  trackRoomFromHash();
 
   if (platform && ['airbnb', 'booking', 'outra'].indexOf(platform) >= 0) {
     function route() {
@@ -2577,6 +2638,10 @@ initTheme();
         const el = document.getElementById('av-res-' + p);
         if (el) el.classList.toggle('show', p === platform);
       });
+      // For Airbnb, apply the right per-room URL (or show the picker)
+      if (platform === 'airbnb' && typeof window.__pphApplyAirbnbForRoom === 'function') {
+        window.__pphApplyAirbnbForRoom();
+      }
     }
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', route);
@@ -3303,7 +3368,7 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
    scroll to that sub-element.
 ═══════════════════════════════════════════════════════════════ */
 (function () {
-  const SCREENS = ['home','rooms','essential-info','checkin','guide','kitchen','bathroom','rules','transport','nearby','porto','mapa','antes-partir','avaliar','emergency'];
+  const SCREENS = ['home','rooms','essential-info','checkin','guide','kitchen','bathroom','rules','transport','nearby','porto','mapa','checkout','avaliar','emergency'];
 
   function setActiveTab(screenId) {
     document.querySelectorAll('.bnav-item').forEach(function (it) {
@@ -3574,3 +3639,328 @@ const FREE_MAP_I18N = {
 Object.keys(FREE_MAP_I18N).forEach(function (l) {
   Object.assign(translations[l], FREE_MAP_I18N[l]);
 });
+
+/* "Which room are you in?" for the per-room Airbnb picker */
+const AV_ROOM_PICK_I18N = {
+  en: 'Which room are you in?',
+  pt: 'Em que quarto está?',
+  fr: 'Dans quelle chambre êtes-vous ?',
+  es: '¿En qué habitación estás?',
+  de: 'In welchem Zimmer wohnen Sie?',
+  it: 'In quale camera sei?',
+};
+Object.keys(AV_ROOM_PICK_I18N).forEach(function (l) {
+  translations[l].av_which_room = AV_ROOM_PICK_I18N[l];
+});
+
+/* Checkout flow — "Notify host" copy + pre-filled WhatsApp message */
+const CO_NOTIFY_I18N = {
+  en: {
+    co_notify_h: "Let us know you're heading out",
+    co_notify_p: 'A quick message so we know the room is ready to be turned around — and so we can wish you a great trip back.',
+    co_notify_btn: '📩 Notify by WhatsApp',
+    co_wa_msg: "Hello! I'm checking out of room {room} now. Everything is in place. Thank you for the stay 💛",
+  },
+  pt: {
+    co_notify_h: 'Diga-nos que vai a caminho',
+    co_notify_p: 'Uma mensagem rápida para sabermos que o quarto está pronto a ser preparado — e para lhe desejarmos uma boa viagem de volta.',
+    co_notify_btn: '📩 Avisar por WhatsApp',
+    co_wa_msg: 'Olá! Estou a fazer checkout do quarto {room}. Está tudo no sítio. Obrigado pela hospedagem 💛',
+  },
+  fr: {
+    co_notify_h: 'Dites-nous que vous partez',
+    co_notify_p: "Un petit message pour qu'on sache que la chambre est prête à être préparée — et pour vous souhaiter un bon retour.",
+    co_notify_btn: '📩 Prévenir par WhatsApp',
+    co_wa_msg: 'Bonjour ! Je libère la chambre {room} maintenant. Tout est en ordre. Merci pour le séjour 💛',
+  },
+  es: {
+    co_notify_h: 'Avísanos que ya te vas',
+    co_notify_p: 'Un mensaje rápido para que sepamos que la habitación está lista para ser preparada — y para desearte buen viaje de vuelta.',
+    co_notify_btn: '📩 Avisar por WhatsApp',
+    co_wa_msg: '¡Hola! Estoy haciendo check-out de la habitación {room}. Todo está en su sitio. Gracias por la estancia 💛',
+  },
+  de: {
+    co_notify_h: 'Sagen Sie uns Bescheid, dass Sie gehen',
+    co_notify_p: 'Eine kurze Nachricht, damit wir wissen, dass das Zimmer für die Vorbereitung bereit ist — und damit wir Ihnen eine gute Rückreise wünschen können.',
+    co_notify_btn: '📩 Per WhatsApp benachrichtigen',
+    co_wa_msg: 'Hallo! Ich checke jetzt aus Zimmer {room} aus. Alles ist an seinem Platz. Danke für den Aufenthalt 💛',
+  },
+  it: {
+    co_notify_h: 'Facci sapere che stai uscendo',
+    co_notify_p: 'Un messaggio rapido per sapere che la camera è pronta per essere preparata — e per augurarti un buon viaggio di ritorno.',
+    co_notify_btn: '📩 Avvisa via WhatsApp',
+    co_wa_msg: 'Ciao! Sto facendo il check-out dalla camera {room}. È tutto a posto. Grazie per il soggiorno 💛',
+  },
+};
+Object.keys(CO_NOTIFY_I18N).forEach(function (l) {
+  Object.assign(translations[l], CO_NOTIFY_I18N[l]);
+});
+
+/* Wire the "Notify by WhatsApp" link with the localised message
+   and the current room substituted, refreshed on language change. */
+(function () {
+  const PHONE = '351913874921';
+  const ROOM_LABELS = { ribeira: 'Ribeira', douro: 'Douro', atlantico: 'Atlântico' };
+  function refreshCheckoutWa() {
+    const a = document.getElementById('co-wa-notify');
+    if (!a) return;
+    let room = '';
+    try { room = localStorage.getItem('pph-room') || ''; } catch (e) {}
+    const roomLabel = ROOM_LABELS[room] || '—';
+    const tmpl = (translations[currentLang] && translations[currentLang].co_wa_msg) ||
+      "Hello! I'm checking out of room {room} now. Everything is in place. Thank you 💛";
+    const msg = tmpl.replace('{room}', roomLabel);
+    a.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+  }
+  const _apply = applyLanguage;
+  applyLanguage = function (lang) {
+    _apply(lang);
+    refreshCheckoutWa();
+  };
+  refreshCheckoutWa();
+})();
+
+/* Deep-link support: ?checkout=1 (or ?phase=checkout) goes straight
+   to the checkout screen. Lets a printed plasticised-sheet QR encode
+   site.com/?checkout=1 and land the guest one tap from notify+review. */
+(function () {
+  const p = new URLSearchParams(location.search);
+  if (p.get('checkout') === '1' || p.get('phase') === 'checkout') {
+    if (location.hash !== '#checkout') location.hash = '#checkout';
+  }
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   PHASE AWARENESS — banner + welcome modal
+   Detects which moment of the stay the guest is in (check-in /
+   mid-stay / checkout) via URL param ?phase=X, stored answer,
+   or a discreet banner on the home. Acts on the answer.
+═══════════════════════════════════════════════════════════════ */
+const PHASE_I18N = {
+  en: {
+    phase_q: 'Where are you in your stay?',
+    phase_checkin: 'Just arrived',
+    phase_mid: 'Mid stay',
+    phase_checkout: 'Checking out',
+    welcome_h: 'Welcome to Porto Peace Haven',
+    welcome_p: 'A quick tour of what you can do here:',
+    welcome_rules_h: 'House rules',
+    welcome_rules_p: 'A 30-second read — keeps everyone happy in the building.',
+    welcome_porto_h: 'Discover Porto',
+    welcome_porto_p: 'Curated places off the tourist track + classics worth your time.',
+    welcome_go: 'Got it — explore the guide →',
+  },
+  pt: {
+    phase_q: 'Em que momento da estadia está?',
+    phase_checkin: 'Acabei de chegar',
+    phase_mid: 'A meio',
+    phase_checkout: 'A fazer checkout',
+    welcome_h: 'Bem-vindo ao Porto Peace Haven',
+    welcome_p: 'Uma volta rápida pelo que pode fazer aqui:',
+    welcome_rules_h: 'Regras da casa',
+    welcome_rules_p: 'Leitura de 30 segundos — mantém toda a gente feliz no prédio.',
+    welcome_porto_h: 'Descobrir o Porto',
+    welcome_porto_p: 'Lugares com curadoria, fora do roteiro turístico, e os clássicos que valem o tempo.',
+    welcome_go: 'Entendido — explorar o guia →',
+  },
+  fr: {
+    phase_q: 'Où en êtes-vous dans votre séjour ?',
+    phase_checkin: "Je viens d'arriver",
+    phase_mid: 'Au milieu',
+    phase_checkout: 'Je pars',
+    welcome_h: 'Bienvenue à Porto Peace Haven',
+    welcome_p: 'Un petit tour de ce que vous pouvez faire ici :',
+    welcome_rules_h: 'Règles de la maison',
+    welcome_rules_p: '30 secondes de lecture — tout le monde reste content dans l\'immeuble.',
+    welcome_porto_h: 'Découvrir Porto',
+    welcome_porto_p: 'Lieux choisis hors des sentiers battus + les classiques qui valent votre temps.',
+    welcome_go: 'Compris — explorer le guide →',
+  },
+  es: {
+    phase_q: '¿En qué momento de tu estancia estás?',
+    phase_checkin: 'Acabo de llegar',
+    phase_mid: 'A mitad',
+    phase_checkout: 'Haciendo check-out',
+    welcome_h: 'Bienvenido a Porto Peace Haven',
+    welcome_p: 'Un repaso rápido de lo que puedes hacer aquí:',
+    welcome_rules_h: 'Normas de la casa',
+    welcome_rules_p: 'Lectura de 30 segundos — todos contentos en el edificio.',
+    welcome_porto_h: 'Descubrir Oporto',
+    welcome_porto_p: 'Lugares con curaduría, fuera de la ruta turística, y los clásicos que valen tu tiempo.',
+    welcome_go: 'Entendido — explorar la guía →',
+  },
+  de: {
+    phase_q: 'Wo sind Sie gerade in Ihrem Aufenthalt?',
+    phase_checkin: 'Gerade angekommen',
+    phase_mid: 'Mittendrin',
+    phase_checkout: 'Beim Auschecken',
+    welcome_h: 'Willkommen im Porto Peace Haven',
+    welcome_p: 'Eine kurze Tour, was Sie hier tun können:',
+    welcome_rules_h: 'Hausregeln',
+    welcome_rules_p: '30 Sekunden Lesen — alle bleiben im Gebäude zufrieden.',
+    welcome_porto_h: 'Porto entdecken',
+    welcome_porto_p: 'Ausgewählte Orte abseits der Touristenpfade + Klassiker, die Ihre Zeit wert sind.',
+    welcome_go: 'Verstanden — die Anleitung entdecken →',
+  },
+  it: {
+    phase_q: 'In che momento del soggiorno sei?',
+    phase_checkin: 'Sono appena arrivato',
+    phase_mid: 'A metà',
+    phase_checkout: 'Sto facendo il check-out',
+    welcome_h: 'Benvenuto al Porto Peace Haven',
+    welcome_p: 'Un giro veloce di cosa puoi fare qui:',
+    welcome_rules_h: 'Regole della casa',
+    welcome_rules_p: '30 secondi di lettura — tutti contenti nel palazzo.',
+    welcome_porto_h: 'Scoprire Porto',
+    welcome_porto_p: 'Luoghi curati fuori dal circuito turistico + i classici che valgono il tuo tempo.',
+    welcome_go: 'Capito — esplorare la guida →',
+  },
+};
+Object.keys(PHASE_I18N).forEach(function (l) {
+  Object.assign(translations[l], PHASE_I18N[l]);
+});
+
+(function () {
+  const VALID = ['checkin', 'mid', 'checkout'];
+  const DAY = 24 * 3600 * 1000;
+  const WELCOME_COOLDOWN = 8 * 3600 * 1000;
+
+  function getPhase() {
+    try {
+      const raw = localStorage.getItem('pph-phase');
+      if (!raw) return null;
+      const o = JSON.parse(raw);
+      if (Date.now() - o.ts > DAY) return null;
+      return o.phase;
+    } catch (e) { return null; }
+  }
+  function setPhase(p) {
+    try { localStorage.setItem('pph-phase', JSON.stringify({ phase: p, ts: Date.now() })); } catch (e) {}
+  }
+  function bannerDismissedRecently() {
+    try {
+      const t = parseInt(localStorage.getItem('pph-phase-dismissed') || '0', 10);
+      return (Date.now() - t) < DAY;
+    } catch (e) { return false; }
+  }
+  function dismissBanner24h() {
+    try { localStorage.setItem('pph-phase-dismissed', String(Date.now())); } catch (e) {}
+  }
+  function bumpVisits() {
+    try {
+      const n = parseInt(localStorage.getItem('pph-visits') || '0', 10) + 1;
+      localStorage.setItem('pph-visits', String(n));
+      return n;
+    } catch (e) { return 1; }
+  }
+
+  const phaseModal = document.getElementById('phase-modal');
+  const modal = document.getElementById('welcome-modal');
+
+  function showPhaseModal() {
+    if (!phaseModal) return;
+    phaseModal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function hidePhaseModal() {
+    if (!phaseModal) return;
+    phaseModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+  function showWelcome() {
+    if (!modal) return;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function hideWelcome() {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function applyPhase(phase) {
+    if (phase === 'checkin') {
+      try {
+        const last = parseInt(localStorage.getItem('pph-welcome-shown') || '0', 10);
+        if (Date.now() - last > WELCOME_COOLDOWN) {
+          showWelcome();
+          localStorage.setItem('pph-welcome-shown', String(Date.now()));
+        }
+      } catch (e) { showWelcome(); }
+    } else if (phase === 'checkout') {
+      if (location.hash !== '#checkout') location.hash = '#checkout';
+    }
+    // mid: silent
+  }
+
+  // Phase modal — button clicks
+  document.querySelectorAll('[data-phase]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      const phase = b.dataset.phase;
+      if (VALID.indexOf(phase) < 0) return;
+      setPhase(phase);
+      hidePhaseModal();
+      applyPhase(phase);
+    });
+  });
+
+  // Phase modal — close (dismiss for 24h)
+  const pmClose = document.getElementById('pm-close');
+  if (pmClose) pmClose.addEventListener('click', function () {
+    hidePhaseModal();
+    dismissBanner24h();
+  });
+  if (phaseModal) phaseModal.addEventListener('click', function (e) {
+    if (e.target === phaseModal) {
+      hidePhaseModal();
+      dismissBanner24h();
+    }
+  });
+
+  // Welcome modal — close + auto-close on inner navigation links
+  const wmClose = document.getElementById('wm-close');
+  const wmGo = document.getElementById('wm-go');
+  if (wmClose) wmClose.addEventListener('click', hideWelcome);
+  if (wmGo) wmGo.addEventListener('click', hideWelcome);
+  ['wm-rules', 'wm-porto'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', hideWelcome);
+  });
+  if (modal) modal.addEventListener('click', function (e) {
+    if (e.target === modal) hideWelcome();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (modal && !modal.hidden) hideWelcome();
+      if (phaseModal && !phaseModal.hidden) hidePhaseModal();
+    }
+  });
+
+  // INIT
+  function init() {
+    const visits = bumpVisits();
+
+    // URL param wins
+    const p = new URLSearchParams(location.search);
+    const urlPhase = p.get('phase');
+    if (urlPhase && VALID.indexOf(urlPhase) >= 0) {
+      setPhase(urlPhase);
+      applyPhase(urlPhase);
+      return;
+    }
+
+    // Stored phase: respect it but don't re-trigger applyPhase
+    const stored = getPhase();
+    if (stored) return;
+
+    // Phase modal: appears after 5s on first visit, 1.5s from 2nd visit on
+    if (bannerDismissedRecently()) return;
+    const delay = visits >= 2 ? 1500 : 5000;
+    setTimeout(showPhaseModal, delay);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
