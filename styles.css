@@ -2522,6 +2522,269 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   font-size: 1.2rem;
   flex-shrink: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   46. FLOATING ACTION BUTTON (Review · Suggestion · Urgent help)
+   ═══════════════════════════════════════════════════════════════ */
+.fab-wrap {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-h) + 16px);
+  right: 16px;
+  z-index: 1500;
+}
+.fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  font-size: 1.65rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.fab:hover {
+  transform: translateY(-2px) scale(1.04);
+  background: #b3811f;
+}
+.fab .fab-icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+.fab.open .fab-icon {
+  transform: rotate(45deg);
+}
+
+.fab-panel {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 0.75rem;
+  width: 290px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  animation: fabSlide 0.2s ease;
+}
+[data-theme="dark"] .fab-panel { background: var(--off-white); }
+@keyframes fabSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.fab-panel[hidden] { display: none; }
+
+.fab-opt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.7rem 0.9rem;
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+[data-theme="dark"] .fab-opt { background: var(--white); }
+.fab-opt:hover {
+  border-color: var(--ribeira);
+  transform: translateX(2px);
+}
+.fab-opt--review {
+  background: linear-gradient(135deg, var(--gold) 0%, #b3811f 100%);
+  color: #fff;
+  border-color: transparent;
+}
+.fab-opt--review:hover {
+  border-color: transparent;
+  filter: brightness(1.05);
+}
+.fab-opt--urgent { color: var(--danger); border-color: rgba(192,57,43,0.3); }
+.fab-opt--urgent:hover { border-color: var(--danger); }
+.fab-opt > span:first-child {
+  font-size: 1.15rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.fab-form {
+  padding: 0.75rem;
+  background: var(--off-white);
+  border-radius: var(--r-md);
+  margin-top: 0.3rem;
+}
+[data-theme="dark"] .fab-form { background: var(--white); }
+.fab-form textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--white);
+  color: var(--text);
+  resize: vertical;
+  min-height: 70px;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+.fab-form .btn { width: 100%; }
+
+.fab-thanks {
+  padding: 0.9rem 0.6rem;
+  background: var(--off-white);
+  border-radius: var(--r-md);
+  margin-top: 0.3rem;
+  text-align: center;
+}
+.fab-thanks > span {
+  font-size: 1.7rem;
+  display: block;
+  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+.fab-thanks > p {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--text-mid);
+}
+
+/* Social-proof line near review CTAs */
+.review-proof {
+  font-size: 0.84rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 0.7rem 0 0;
+  color: var(--text-mid);
+}
+.review-proof:empty { display: none; }
+.review-proof--light { color: rgba(255, 255, 255, 0.92); }
+
+/* ═══════════════════════════════════════════════════════════════
+   47. PLACE DETAIL PAGE + CAROUSEL
+   ═══════════════════════════════════════════════════════════════ */
+.place-carousel { margin-bottom: 1.1rem; }
+.place-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.place-track::-webkit-scrollbar { display: none; }
+.place-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  scroll-snap-align: center;
+  border-radius: var(--r-lg);
+  background: var(--sand);
+  display: block;
+}
+.place-track .place-ph {
+  flex: 0 0 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, var(--ribeira), var(--atlantico));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+}
+.place-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+.place-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s ease;
+}
+.place-dot.active { background: var(--ribeira); }
+
+.place-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+.place-rating {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-mid);
+}
+.place-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 5vw, 1.9rem);
+  color: var(--ribeira);
+  margin-bottom: 0.5rem;
+  line-height: 1.15;
+}
+.place-intro {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+.place-desc {
+  color: var(--text-mid);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.place-tips { margin-bottom: 1.4rem; }
+.place-tips h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 0.6rem;
+}
+.place-info {
+  background: var(--off-white);
+  border-radius: var(--r-md);
+  padding: 0.4rem 1.1rem;
+  margin-bottom: 1.3rem;
+}
+.place-info-row {
+  display: flex;
+  gap: 10px;
+  padding: 0.7rem 0;
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border);
+  align-items: baseline;
+}
+.place-info-row:first-child { border-top: none; }
+.place-info-ico { flex-shrink: 0; }
+.place-info-row a { color: var(--ribeira); font-weight: 500; word-break: break-word; }
+.place-transport {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.place-transport span { white-space: nowrap; }
+.place-review { margin-top: 1.6rem; }
+.porto-card { cursor: pointer; }
 @keyframes wmPop {
   from { opacity: 0; transform: scale(0.94); }
   to { opacity: 1; transform: none; }
@@ -3122,4 +3385,175 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   color: var(--text-mid); font-style: italic;
 }
 .em-alt-note a { color: var(--ribeira); font-weight: 500; }
+
+/* ═══════════════════════════════════════════════════════════════
+   48. PORTO CARD META — rating · transport · category chips
+   ═══════════════════════════════════════════════════════════════ */
+.pcard-meta-wrap { margin: 0 0 0.85rem; }
+
+.pcard-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-bottom: 0.5rem;
+}
+
+.pcard-rating {
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+.pcard-star { color: var(--gold); margin-right: 0.12rem; }
+.pcard-rating-count {
+  font-weight: 400;
+  color: var(--text-light);
+  margin-left: 0.2rem;
+}
+
+.pcard-trans {
+  color: var(--text-mid);
+  white-space: nowrap;
+}
+
+.pcard-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.pcard-cat {
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.16rem 0.55rem;
+  border-radius: 999px;
+  background: var(--sand);
+  color: var(--text-mid);
+  border: 1px solid var(--border);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   49. CHECK-OUT CTA — quick entry into the check-out funnel
+   ═══════════════════════════════════════════════════════════════ */
+.checkout-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.15rem;
+  margin: 0.4rem 0 0.9rem;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--ribeira), var(--ribeira-light));
+  color: #fff;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.checkout-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.checkout-cta-screen {
+  margin: 1.4rem 0 0;
+}
+.checkout-cta-ico {
+  font-size: 1.55rem;
+  flex-shrink: 0;
+}
+.checkout-cta-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  line-height: 1.35;
+}
+.checkout-cta-text strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+.checkout-cta-text span {
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+.checkout-cta-arrow {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   50. INTERACTIVE MAP — Leaflet + OpenStreetMap
+   ═══════════════════════════════════════════════════════════════ */
+.map-interactive {
+  margin: 0 0 1.6rem;
+}
+#porto-map {
+  height: 380px;
+  width: 100%;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  background: var(--sand);
+  z-index: 1;
+}
+.map-pins-note {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  font-style: italic;
+  margin: 0.55rem 0.2rem 0;
+}
+.map-pdf-h {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--text);
+  margin: 0 0 0.7rem;
+}
+
+/* Custom emoji pins (no external marker images needed) */
+.map-pin { background: transparent; border: none; }
+.map-pin span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--white);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.map-pin-home span {
+  width: 40px;
+  height: 40px;
+  border-color: var(--ribeira);
+  border-width: 3px;
+  font-size: 1.2rem;
+}
+.leaflet-popup-content {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+.leaflet-popup-content a {
+  color: var(--ribeira);
+  font-weight: 600;
+}
+.map-popup-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+  font-size: 0.82rem;
+}
+.map-popup-links a { text-decoration: none; }
+.map-popup-go {
+  display: inline-block;
+  background: var(--gold);
+  color: #fff !important;
+  padding: 0.34rem 0.6rem;
+  border-radius: var(--r-sm);
+  text-align: center;
+}
+.map-popup-go:hover { filter: brightness(1.07); }
+[data-theme="dark"] #porto-map { filter: brightness(0.85) contrast(1.05); }
 

@@ -2058,7 +2058,27 @@ function updateGuideDownload(lang) {
 /* ─────────────────────────────────────────────────────────────
    LANGUAGE SWITCHER
 ───────────────────────────────────────────────────────────────── */
-let currentLang = localStorage.getItem('pph-lang') || 'en';
+/* Pick the starting language:
+   1. a previously stored choice (manual switch or earlier detection) wins;
+   2. otherwise detect it from the browser (navigator.languages);
+   3. fall back to English when there is no match.
+   ▶ When a new language is added (e.g. 'nl'), add it to AVAILABLE_LANGS. */
+const AVAILABLE_LANGS = ['en', 'pt', 'fr', 'es', 'de', 'it', 'nl'];
+function detectInitialLang() {
+  try {
+    const stored = localStorage.getItem('pph-lang');
+    if (stored && AVAILABLE_LANGS.indexOf(stored) >= 0) return stored;
+  } catch (e) { /* private mode */ }
+  const navLangs = (navigator.languages && navigator.languages.length)
+    ? navigator.languages
+    : [navigator.language || navigator.userLanguage || 'en'];
+  for (let i = 0; i < navLangs.length; i++) {
+    const base = String(navLangs[i] || '').toLowerCase().split('-')[0];
+    if (AVAILABLE_LANGS.indexOf(base) >= 0) return base;
+  }
+  return 'en';
+}
+let currentLang = detectInitialLang();
 
 function applyLanguage(lang) {
   const t = translations[lang];
@@ -2080,8 +2100,8 @@ function applyLanguage(lang) {
   document.documentElement.lang = lang;
 
   // Update language button display
-  const flags = { en: '🇬🇧', pt: '🇵🇹', fr: '🇫🇷', es: '🇪🇸', de: '🇩🇪', it: '🇮🇹' };
-  const codes = { en: 'EN', pt: 'PT', fr: 'FR', es: 'ES', de: 'DE', it: 'IT' };
+  const flags = { en: '🇬🇧', pt: '🇵🇹', fr: '🇫🇷', es: '🇪🇸', de: '🇩🇪', it: '🇮🇹', nl: '🇳🇱' };
+  const codes = { en: 'EN', pt: 'PT', fr: 'FR', es: 'ES', de: 'DE', it: 'IT', nl: 'NL' };
   const flagEl = document.getElementById('current-lang-flag');
   const codeEl = document.getElementById('current-lang-code');
   if (flagEl) flagEl.textContent = flags[lang] || '🇬🇧';
@@ -3368,7 +3388,7 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
    scroll to that sub-element.
 ═══════════════════════════════════════════════════════════════ */
 (function () {
-  const SCREENS = ['home','rooms','essential-info','checkin','guide','kitchen','bathroom','rules','transport','nearby','porto','mapa','checkout','avaliar','emergency'];
+  const SCREENS = ['home','rooms','essential-info','checkin','guide','kitchen','bathroom','rules','transport','nearby','porto','place','mapa','checkout','avaliar','emergency'];
 
   function setActiveTab(screenId) {
     document.querySelectorAll('.bnav-item').forEach(function (it) {
@@ -3398,6 +3418,12 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
   function routeFromHash() {
     const raw = location.hash.replace(/^#/, '');
     if (!raw) { showScreen('home'); return; }
+    // Place detail pages: #place-<id> renders the shared #place screen.
+    if (raw.indexOf('place-') === 0) {
+      const ok = window.__pphRenderPlace && window.__pphRenderPlace(raw.slice(6));
+      showScreen(ok ? 'place' : 'porto');
+      return;
+    }
     if (SCREENS.includes(raw)) { showScreen(raw); return; }
     // Sub-id: find element, route to its parent screen, scroll to it.
     const el = document.getElementById(raw);
@@ -3512,7 +3538,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: 'Quiet hours, no smoking, and the small respect we owe the building.',
     entry_bye_h: 'Before You Leave',
     entry_bye_p: 'A small checklist for the room and a quiet moment to say thanks.',
-    see_all_porto: 'See all 10 places →',
+    see_all_porto: 'See all 14 places →',
     home_help_h: 'Need help?',
     home_help_p: 'We are one tap away. For real emergencies, dial 112.',
     home_help_more: 'All emergency info →',
@@ -3533,7 +3559,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: 'Horas de silêncio, sem fumar, e o pequeno respeito que devemos ao prédio.',
     entry_bye_h: 'Antes de Partir',
     entry_bye_p: 'Uma pequena lista para o quarto e um momento tranquilo para agradecer.',
-    see_all_porto: 'Ver os 10 lugares →',
+    see_all_porto: 'Ver os 14 lugares →',
     home_help_h: 'Precisa de ajuda?',
     home_help_p: 'Estamos a um toque de distância. Para emergências reais, ligue 112.',
     home_help_more: 'Toda a info de emergência →',
@@ -3554,7 +3580,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: "Heures calmes, non-fumeur, et le petit respect dû à l'immeuble.",
     entry_bye_h: 'Avant de partir',
     entry_bye_p: 'Une petite liste pour la chambre et un moment tranquille pour dire merci.',
-    see_all_porto: 'Voir les 10 lieux →',
+    see_all_porto: 'Voir les 14 lieux →',
     home_help_h: "Besoin d'aide ?",
     home_help_p: 'Nous sommes à un appui de distance. Pour de vraies urgences, composez le 112.',
     home_help_more: "Toutes les infos d'urgence →",
@@ -3575,7 +3601,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: 'Horas de silencio, prohibido fumar, y el pequeño respeto que debemos al edificio.',
     entry_bye_h: 'Antes de irte',
     entry_bye_p: 'Una pequeña lista para la habitación y un momento tranquilo para agradecer.',
-    see_all_porto: 'Ver los 10 lugares →',
+    see_all_porto: 'Ver los 14 lugares →',
     home_help_h: '¿Necesitas ayuda?',
     home_help_p: 'Estamos a un toque. Para emergencias reales, llama al 112.',
     home_help_more: 'Toda la información de emergencia →',
@@ -3596,7 +3622,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: 'Ruhezeiten, Nichtraucher und der kleine Respekt, den wir dem Gebäude schulden.',
     entry_bye_h: 'Vor der Abreise',
     entry_bye_p: 'Eine kleine Liste für das Zimmer und ein ruhiger Moment zum Danken.',
-    see_all_porto: 'Alle 10 Orte ansehen →',
+    see_all_porto: 'Alle 14 Orte ansehen →',
     home_help_h: 'Brauchen Sie Hilfe?',
     home_help_p: 'Wir sind einen Tipper entfernt. Im Notfall wählen Sie 112.',
     home_help_more: 'Alle Notfall-Infos →',
@@ -3617,7 +3643,7 @@ const HOME_FEED_I18N = {
     entry_rules_p: "Orari di silenzio, vietato fumare, e il piccolo rispetto dovuto all'edificio.",
     entry_bye_h: 'Prima di partire',
     entry_bye_p: 'Una piccola lista per la camera e un momento tranquillo per ringraziare.',
-    see_all_porto: 'Vedi tutti i 10 posti →',
+    see_all_porto: 'Vedi tutti i 14 posti →',
     home_help_h: 'Hai bisogno di aiuto?',
     home_help_p: 'Siamo a un tocco. Per emergenze reali, chiama il 112.',
     home_help_more: 'Tutte le info di emergenza →',
@@ -3629,12 +3655,12 @@ Object.keys(HOME_FEED_I18N).forEach(function (l) {
 
 /* ── FREE price label + map preview title ── */
 const FREE_MAP_I18N = {
-  en: { ppx_free: 'FREE', home_map_h: 'Porto tourist map (PDF)' },
-  pt: { ppx_free: 'GRÁTIS', home_map_h: 'Mapa turístico do Porto (PDF)' },
-  fr: { ppx_free: 'GRATUIT', home_map_h: 'Carte touristique de Porto (PDF)' },
-  es: { ppx_free: 'GRATIS', home_map_h: 'Mapa turístico de Oporto (PDF)' },
-  de: { ppx_free: 'GRATIS', home_map_h: 'Porto Touristenkarte (PDF)' },
-  it: { ppx_free: 'GRATIS', home_map_h: 'Mappa turistica di Porto (PDF)' },
+  en: { ppx_free: 'FREE', home_map_h: 'Explore Porto on the map' },
+  pt: { ppx_free: 'GRÁTIS', home_map_h: 'Explore o Porto no mapa' },
+  fr: { ppx_free: 'GRATUIT', home_map_h: 'Explorez Porto sur la carte' },
+  es: { ppx_free: 'GRATIS', home_map_h: 'Explora Oporto en el mapa' },
+  de: { ppx_free: 'GRATIS', home_map_h: 'Porto auf der Karte entdecken' },
+  it: { ppx_free: 'GRATIS', home_map_h: 'Esplora Porto sulla mappa' },
 };
 Object.keys(FREE_MAP_I18N).forEach(function (l) {
   Object.assign(translations[l], FREE_MAP_I18N[l]);
@@ -3964,3 +3990,1480 @@ Object.keys(PHASE_I18N).forEach(function (l) {
     init();
   }
 })();
+
+/* ═══════════════════════════════════════════════════════════════
+   FLOATING ACTION BUTTON — Review · Suggestion · Urgent help
+═══════════════════════════════════════════════════════════════ */
+const FAB_I18N = {
+  en: { fab_review: 'Leave a review', fab_suggest: 'Send a suggestion', fab_help: 'Urgent help on WhatsApp', fab_send: 'Send', fab_thanks: 'Got it — thank you.', fab_ph: 'Quick note about your stay…' },
+  pt: { fab_review: 'Deixar avaliação', fab_suggest: 'Enviar sugestão', fab_help: 'Ajuda urgente no WhatsApp', fab_send: 'Enviar', fab_thanks: 'Recebido — obrigado.', fab_ph: 'Uma nota rápida sobre a sua estadia…' },
+  fr: { fab_review: 'Laisser un avis', fab_suggest: 'Envoyer une suggestion', fab_help: 'Aide urgente sur WhatsApp', fab_send: 'Envoyer', fab_thanks: 'Bien reçu — merci.', fab_ph: 'Une note rapide sur votre séjour…' },
+  es: { fab_review: 'Dejar reseña', fab_suggest: 'Enviar sugerencia', fab_help: 'Ayuda urgente por WhatsApp', fab_send: 'Enviar', fab_thanks: 'Recibido — gracias.', fab_ph: 'Una nota rápida sobre tu estancia…' },
+  de: { fab_review: 'Bewertung abgeben', fab_suggest: 'Vorschlag senden', fab_help: 'Dringende Hilfe per WhatsApp', fab_send: 'Senden', fab_thanks: 'Erhalten — danke.', fab_ph: 'Eine kurze Notiz zu Ihrem Aufenthalt…' },
+  it: { fab_review: 'Lascia una recensione', fab_suggest: 'Invia un suggerimento', fab_help: 'Aiuto urgente su WhatsApp', fab_send: 'Invia', fab_thanks: 'Ricevuto — grazie.', fab_ph: 'Una nota veloce sul tuo soggiorno…' },
+};
+Object.keys(FAB_I18N).forEach(function (l) {
+  Object.assign(translations[l], FAB_I18N[l]);
+});
+
+(function () {
+  const toggle = document.getElementById('fab-toggle');
+  const panel = document.getElementById('fab-panel');
+  const wrap = document.querySelector('.fab-wrap');
+  if (!toggle || !panel || !wrap) return;
+
+  const form = document.getElementById('fab-form');
+  const thanks = document.getElementById('fab-thanks');
+
+  function openPanel() {
+    panel.hidden = false;
+    toggle.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+  }
+  function closePanel() {
+    panel.hidden = true;
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    if (form) form.hidden = true;
+    if (thanks) thanks.hidden = true;
+  }
+
+  toggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (panel.hidden) openPanel(); else closePanel();
+  });
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target) && !panel.hidden) closePanel();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !panel.hidden) closePanel();
+  });
+
+  /* Review → Avaliar screen */
+  const review = document.getElementById('fab-review');
+  if (review) review.addEventListener('click', function () {
+    location.hash = '#avaliar';
+    closePanel();
+  });
+
+  /* Urgent help → WhatsApp with localised message + room context */
+  const help = document.getElementById('fab-help');
+  if (help) help.addEventListener('click', function () {
+    const ROOM_LABELS = { ribeira: 'Ribeira', douro: 'Douro', atlantico: 'Atlântico' };
+    let room = '';
+    try { room = localStorage.getItem('pph-room') || ''; } catch (e) {}
+    let msg = (translations[currentLang] && translations[currentLang].wa_msg_contact) ||
+      "Hello! I'm staying at Porto Peace Haven and I need help.";
+    if (ROOM_LABELS[room]) msg += ' (' + ROOM_LABELS[room] + ')';
+    window.open('https://wa.me/351913874921?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    closePanel();
+  });
+
+  /* Suggestion → reveal the inline mini-form */
+  const suggest = document.getElementById('fab-suggest');
+  if (suggest && form) {
+    suggest.addEventListener('click', function () {
+      form.hidden = false;
+      if (thanks) thanks.hidden = true;
+      try {
+        const rEl = document.getElementById('fab-room-h');
+        if (rEl) rEl.value = localStorage.getItem('pph-room') || '';
+      } catch (e) {}
+      const pEl = document.getElementById('fab-page-h');
+      if (pEl) pEl.value = (location.hash.replace('#', '') || 'home');
+      const lEl = document.getElementById('fab-lang-h');
+      if (lEl) lEl.value = currentLang;
+      const msgEl = document.getElementById('fab-msg');
+      if (msgEl) msgEl.focus();
+    });
+  }
+
+  /* Mini-form submit → Netlify Forms (sugestoes-rapidas) */
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const msgEl = document.getElementById('fab-msg');
+      if (!msgEl || !msgEl.value.trim()) return;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(showThanks)
+        .catch(showThanks);
+    });
+  }
+  function showThanks() {
+    if (form) { form.hidden = true; form.reset(); }
+    if (thanks) thanks.hidden = false;
+    setTimeout(closePanel, 2800);
+  }
+
+  /* Localised placeholder for the mini-form textarea */
+  function refreshFabPh() {
+    const msgEl = document.getElementById('fab-msg');
+    if (!msgEl) return;
+    const tr = translations[currentLang];
+    if (tr && tr.fab_ph) msgEl.setAttribute('placeholder', tr.fab_ph);
+  }
+  const _applyLang = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLang(lang);
+    refreshFabPh();
+  };
+  refreshFabPh();
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   SOCIAL PROOF — guest review stats near the review CTAs
+   ▶ EDIT MONTHLY: update REVIEW_STATS.count with the real number
+═══════════════════════════════════════════════════════════════ */
+const REVIEW_STATS = { count: 47 };
+const REVIEW_PROOF_I18N = {
+  en: '⭐ {count} guests left 5 stars in the last month',
+  pt: '⭐ {count} hóspedes deixaram 5 estrelas no último mês',
+  fr: '⭐ {count} voyageurs ont laissé 5 étoiles le mois dernier',
+  es: '⭐ {count} huéspedes dejaron 5 estrellas el último mes',
+  de: '⭐ {count} Gäste haben letzten Monat 5 Sterne vergeben',
+  it: '⭐ {count} ospiti hanno lasciato 5 stelle nell’ultimo mese',
+};
+Object.keys(REVIEW_PROOF_I18N).forEach(function (l) {
+  translations[l].review_proof = REVIEW_PROOF_I18N[l];
+});
+
+(function () {
+  function applyReviewProof() {
+    const tr = translations[currentLang];
+    const tmpl = (tr && tr.review_proof) || '⭐ {count} guests left 5 stars last month';
+    const txt = tmpl.replace('{count}', REVIEW_STATS.count);
+    document.querySelectorAll('[data-review-proof]').forEach(function (el) {
+      el.textContent = txt;
+    });
+  }
+  const _applyLang = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLang(lang);
+    applyReviewProof();
+  };
+  applyReviewProof();
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   PLACE DETAIL PAGES — data-driven (#place-<id>)
+   PLACES = structured data; editorial text lives in translations
+   (porto_<slug>_intro / _tips; reuses porto_<slug>_h and _p).
+   FR/ES/DE/IT fall back to EN until the translation audit.
+═══════════════════════════════════════════════════════════════ */
+const PLACES = {
+  lello: {
+    slug: 'lello', emoji: '📚',
+    tagKey: 'porto_lello_tag', titleKey: 'porto_lello_h', descKey: 'porto_lello_p',
+    price: 2, rating: { avg: '4.5', count: '55k' }, cats: ['solo', 'family'], photos: 3,
+    address: 'Rua das Carmelitas 144, 4050-161 Porto',
+    hours: '09:30–19:00',
+    website: 'https://www.livrarialello.pt',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Livraria+Lello+Porto',
+    walk: 24, transit: 16, ride: 6,
+  },
+  wondersense: {
+    slug: 'wondersense', emoji: '🌀',
+    tagKey: 'porto_wonder_tag', titleKey: 'porto_wonder_h', descKey: 'porto_wonder_p',
+    price: 2, rating: { avg: '4.7', count: '320' }, cats: ['family', 'couple'], photos: 3,
+    address: 'Rua das Carmelitas 130, 4050-161 Porto',
+    hours: '10:00–19:00',
+    website: 'https://wondersensemuseum.com',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Wondersense+Rua+das+Carmelitas+130+Porto',
+    walk: 24, transit: 16, ride: 6,
+  },
+  morro: {
+    slug: 'morro', emoji: '🌅',
+    tagKey: 'porto_morro_tag', titleKey: 'porto_morro_h', descKey: 'porto_morro_p',
+    price: 1, free: true, rating: { avg: '4.7', count: '41k' }, cats: ['couple', 'relax', 'group'], photos: 3,
+    address: 'Jardim do Morro, Vila Nova de Gaia',
+    hours: '',
+    website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Jardim+do+Morro+Vila+Nova+de+Gaia',
+    walk: 38, transit: 22, ride: 9,
+  },
+  gaia: {
+    slug: 'gaia', emoji: '🍷',
+    tagKey: 'porto_gaia_tag', titleKey: 'porto_gaia_h', descKey: 'porto_gaia_p',
+    price: 3, rating: { avg: '4.6', count: '30k' }, cats: ['couple', 'group'], photos: 3,
+    address: 'Cais de Gaia, Vila Nova de Gaia',
+    hours: 'Most cellars 10:00–18:00',
+    website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Caves+Vinho+do+Porto+Vila+Nova+de+Gaia',
+    walk: 40, transit: 24, ride: 9,
+  },
+};
+
+const PLACE_I18N = {
+  en: {
+    place_tips_h: 'Good to know',
+    place_go: 'Get directions from Porto Peace Haven',
+    place_hours_always: 'Open at any time',
+    place_review_h: 'Enjoying Porto?',
+    place_review_p: 'If our little guide made your day better, a review helps the next traveller find us too.',
+    place_review_btn: 'Leave a review ⭐',
+    back_porto: '← Get to Know Porto',
+    porto_lello_intro: "We could describe the staircase. We won't — some things you have to climb yourself.",
+    porto_lello_tips: '<li>Buy the timed ticket online; the walk-up queue is brutal.</li><li>Go right at opening or in the last hour for near-empty photos.</li><li>The ticket price comes off any book you buy.</li>',
+    porto_wondersense_intro: "A museum you taste, hear and touch. We won't spoil a single room — you genuinely have to go.",
+    porto_wondersense_tips: '<li>Book a time slot in advance — entry is in small timed groups.</li><li>Allow at least an hour; it spans five floors.</li><li>A perfect plan for a rainy afternoon.</li>',
+    porto_morro_intro: 'Everyone says it has the best sunset in Porto. For once, everyone is right.',
+    porto_morro_tips: '<li>Cross on the upper deck of the bridge — the view stops you mid-step.</li><li>Arrive 30–40 min before sunset for a spot on the grass.</li><li>Bring something to drink; there are kiosks nearby.</li>',
+    porto_gaia_intro: 'Port wine has aged on this riverbank for 300 years. Spend an hour finding out why.',
+    porto_gaia_tips: '<li>Pick a smaller house for an unhurried, personal tasting.</li><li>Book ahead in summer — the famous cellars fill up.</li><li>Ask the difference between a tawny and a ruby; you will never forget it.</li>',
+  },
+  pt: {
+    place_tips_h: 'Bom saber',
+    place_go: 'Como chegar a partir do Porto Peace Haven',
+    place_hours_always: 'Aberto a qualquer hora',
+    place_review_h: 'A gostar do Porto?',
+    place_review_p: 'Se o nosso guia tornou o seu dia melhor, uma avaliação ajuda o próximo viajante a encontrar-nos também.',
+    place_review_btn: 'Deixar avaliação ⭐',
+    back_porto: '← Conheça o Porto',
+    porto_lello_intro: 'Podíamos descrever a escadaria. Não vamos — há coisas que se têm de subir com os próprios pés.',
+    porto_lello_tips: '<li>Compre o bilhete com hora online; a fila de quem chega sem bilhete é brutal.</li><li>Vá logo à abertura ou na última hora para fotos quase sem ninguém.</li><li>O valor do bilhete é descontado em qualquer livro que compre.</li>',
+    porto_wondersense_intro: 'Um museu que se prova, se ouve e se toca. Não vamos estragar uma única sala — tem mesmo de ir.',
+    porto_wondersense_tips: '<li>Reserve um horário com antecedência — a entrada é em pequenos grupos com hora marcada.</li><li>Conte pelo menos uma hora; são cinco pisos.</li><li>Um plano perfeito para uma tarde de chuva.</li>',
+    porto_morro_intro: 'Toda a gente diz que tem o melhor pôr do sol do Porto. Por uma vez, toda a gente tem razão.',
+    porto_morro_tips: '<li>Atravesse pelo tabuleiro de cima da ponte — a vista pára-o a meio do passo.</li><li>Chegue 30–40 min antes do pôr do sol para apanhar lugar na relva.</li><li>Leve algo para beber; há quiosques por perto.</li>',
+    porto_gaia_intro: 'O vinho do Porto envelhece nesta margem há 300 anos. Passe uma hora a descobrir porquê.',
+    porto_gaia_tips: '<li>Escolha uma casa mais pequena para uma prova sem pressa e pessoal.</li><li>Reserve com antecedência no verão — as caves famosas enchem.</li><li>Pergunte a diferença entre um tawny e um ruby; nunca mais se esquece.</li>',
+  },
+};
+Object.assign(translations.en, PLACE_I18N.en);
+Object.assign(translations.pt, PLACE_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], PLACE_I18N.en);
+});
+
+(function () {
+  let currentPlaceId = null;
+
+  function t(key) {
+    const tr = translations[currentLang] || translations.en;
+    return tr[key] || (translations.en && translations.en[key]) || '';
+  }
+
+  function renderPlace(id) {
+    const pl = PLACES[id];
+    if (!pl) return false;
+    currentPlaceId = id;
+
+    // Carousel
+    const track = document.getElementById('place-track');
+    const dots = document.getElementById('place-dots');
+    if (!track || !dots) return false;
+    track.innerHTML = '';
+    dots.innerHTML = '';
+    const n = pl.photos || 1;
+    for (let i = 1; i <= n; i++) {
+      const img = document.createElement('img');
+      img.src = 'assets/fotos/porto-' + pl.slug + '-' + i + '.jpg';
+      img.alt = t(pl.titleKey);
+      img.loading = 'lazy';
+      img.onerror = function () {
+        const ph = document.createElement('div');
+        ph.className = 'place-ph';
+        ph.textContent = pl.emoji;
+        if (this.parentNode) this.replaceWith(ph);
+      };
+      track.appendChild(img);
+      const dot = document.createElement('span');
+      dot.className = 'place-dot' + (i === 1 ? ' active' : '');
+      dots.appendChild(dot);
+    }
+    track.onscroll = function () {
+      const idx = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+      dots.querySelectorAll('.place-dot').forEach(function (d, di) {
+        d.classList.toggle('active', di === idx);
+      });
+    };
+
+    // Header
+    document.getElementById('place-tag').textContent = t(pl.tagKey);
+    const priceEl = document.getElementById('place-price');
+    if (pl.free) {
+      priceEl.className = 'ppx ppx-free';
+      priceEl.textContent = t('ppx_free');
+    } else {
+      priceEl.className = 'ppx';
+      priceEl.innerHTML = '$'.repeat(pl.price) +
+        '<span class="ppx-dim">' + '$'.repeat(5 - pl.price) + '</span>';
+    }
+    document.getElementById('place-rating').textContent =
+      pl.rating ? ('★ ' + pl.rating.avg + ' · ' + pl.rating.count) : '';
+
+    document.getElementById('place-title').textContent = t(pl.titleKey);
+    document.getElementById('place-intro').textContent = t('porto_' + pl.slug + '_intro');
+    document.getElementById('place-desc').textContent = t(pl.descKey);
+    document.getElementById('place-tips').innerHTML = t('porto_' + pl.slug + '_tips');
+
+    // Info block
+    let rows = '';
+    rows += '<div class="place-info-row"><span class="place-info-ico" aria-hidden="true">📍</span><span>' + pl.address + '</span></div>';
+    rows += '<div class="place-info-row"><span class="place-info-ico" aria-hidden="true">🕒</span><span>' +
+      (pl.hours ? pl.hours : t('place_hours_always')) + '</span></div>';
+    let trans = '<div class="place-transport">';
+    trans += '<span>🚶 ' + pl.walk + ' min</span>';
+    if (pl.transit) trans += '<span>🚇 ' + pl.transit + ' min</span>';
+    if (pl.ride) trans += '<span>🚖 ~' + pl.ride + '€</span>';
+    trans += '</div>';
+    rows += '<div class="place-info-row"><span class="place-info-ico" aria-hidden="true">🧭</span>' + trans + '</div>';
+    if (pl.website) {
+      rows += '<div class="place-info-row"><span class="place-info-ico" aria-hidden="true">🔗</span><a href="' +
+        pl.website + '" target="_blank" rel="noopener">' +
+        pl.website.replace(/^https?:\/\//, '') + '</a></div>';
+    }
+    document.getElementById('place-info').innerHTML = rows;
+    document.getElementById('place-go').href = pl.maps;
+    return true;
+  }
+  window.__pphRenderPlace = renderPlace;
+
+  // Make Porto cards open their detail page (click anywhere except a link)
+  document.querySelectorAll('.porto-card[data-place]').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      location.hash = '#place-' + card.dataset.place;
+    });
+  });
+
+  // Re-render the open place page when the language changes
+  const _applyLang = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLang(lang);
+    const placeScreen = document.getElementById('place');
+    if (currentPlaceId && placeScreen && placeScreen.classList.contains('active')) {
+      renderPlace(currentPlaceId);
+    }
+  };
+})();
+
+/* PLACE DETAIL — remaining 6 Porto places */
+Object.assign(PLACES, {
+  capela: {
+    slug: 'capela', emoji: '🍷',
+    tagKey: 'porto_capela_tag', titleKey: 'porto_capela_h', descKey: 'porto_capela_p',
+    price: 2, rating: { avg: '4.6', count: '850' }, cats: ['couple', 'solo'], photos: 3,
+    address: 'Tv. do Carregal 77-81, 4050-167 Porto', hours: 'Late afternoon & evening', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Capela+Incomum+Tv+do+Carregal+Porto',
+    walk: 22, transit: 16, ride: 6,
+  },
+  virtudes: {
+    slug: 'virtudes', emoji: '🌳',
+    tagKey: 'porto_virtudes_tag', titleKey: 'porto_virtudes_h', descKey: 'porto_virtudes_p',
+    price: 1, free: true, rating: { avg: '4.6', count: '3k' }, cats: ['couple', 'relax', 'solo'], photos: 3,
+    address: 'Passeio das Virtudes, Porto', hours: '', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Jardim+das+Virtudes+Porto',
+    walk: 20, transit: 14, ride: 6,
+  },
+  guindais: {
+    slug: 'guindais', emoji: '🌉',
+    tagKey: 'porto_guindais_tag', titleKey: 'porto_guindais_h', descKey: 'porto_guindais_p',
+    price: 1, free: true, rating: { avg: '4.6', count: '2k' }, cats: ['solo', 'relax'], photos: 3,
+    address: 'Escadas dos Guindais, Porto', hours: '', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Escadas+dos+Guindais+Porto',
+    walk: 34, transit: 20, ride: 8,
+  },
+  almas: {
+    slug: 'almas', emoji: '🔵',
+    tagKey: 'porto_almas_tag', titleKey: 'porto_almas_h', descKey: 'porto_almas_p',
+    price: 1, free: true, rating: { avg: '4.6', count: '5k' }, cats: ['solo', 'family'], photos: 3,
+    address: 'Rua de Santa Catarina 428, 4000-124 Porto', hours: '07:30–18:00', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Capela+das+Almas+Porto',
+    walk: 30, transit: 20, ride: 7,
+  },
+  foto: {
+    slug: 'foto', emoji: '📷',
+    tagKey: 'porto_foto_tag', titleKey: 'porto_foto_h', descKey: 'porto_foto_p',
+    price: 1, free: true, rating: { avg: '4.6', count: '6k' }, cats: ['solo', 'family', 'relax'], photos: 3,
+    address: 'Largo Amor de Perdição, 4050-008 Porto',
+    hours: 'Tue–Fri 10:00–18:00 · Sat–Sun 15:00–19:00', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Centro+Português+de+Fotografia+Porto',
+    walk: 26, transit: 18, ride: 7,
+  },
+  rib: {
+    slug: 'rib', emoji: '🏛️',
+    tagKey: 'porto_rib_tag', titleKey: 'porto_rib_h', descKey: 'porto_rib_p',
+    price: 1, free: true, rating: { avg: '4.7', count: '50k' }, cats: ['couple', 'family', 'relax'], photos: 3,
+    address: 'Cais da Ribeira, Porto', hours: '', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Ribeira+Porto',
+    walk: 32, transit: 20, ride: 8,
+  },
+});
+
+const PLACE_I18N_2 = {
+  en: {
+    porto_capela_intro: "A wine bar inside a real former chapel. We'll just say this: order a glass and look up.",
+    porto_capela_tips: '<li>Go for a quiet glass, not a big night out — it is small and intimate.</li><li>Portuguese wines by the glass; ask the staff to guide you.</li><li>Best earlier in the evening, before it fills up.</li>',
+    porto_virtudes_intro: 'The sunset the locals keep for themselves. Now you know it too.',
+    porto_virtudes_tips: '<li>Bring a drink and something to sit on — it is a grassy terraced slope.</li><li>Arrive about 30 minutes before sunset for the best light.</li><li>Quieter than Jardim do Morro across the river.</li>',
+    porto_guindais_intro: 'A staircase, not a monument — but it hands you the Dom Luís bridge like nothing else.',
+    porto_guindais_tips: '<li>It is steep — wear comfy shoes and take your time.</li><li>Pair it with a walk along the Ribeira waterfront below.</li><li>There is a funicular nearby if you would rather not climb back up.</li>',
+    porto_almas_intro: "Sixteen thousand blue tiles, in the middle of the busiest shopping street. Most people miss it. You won't.",
+    porto_almas_tips: '<li>Look up — the whole exterior is the artwork.</li><li>Early morning light makes the blue tiles glow.</li><li>It is on Rua de Santa Catarina — pair it with a coffee at a classic café.</li>',
+    porto_foto_intro: 'A photography museum inside a 19th-century prison. Yes, you can see the old cells. Yes, it is free.',
+    porto_foto_tips: '<li>Free entry — one of the best-value hours in Porto.</li><li>The building itself is half the visit; look for the cell doors.</li><li>Rarely crowded — a calm pick for a hot or rainy afternoon.</li>',
+    porto_rib_intro: 'Touristy? A little. The soul of Porto? Completely. Go early and let yourself get lost.',
+    porto_rib_tips: '<li>Go in the morning, before the crowds and the boat tours.</li><li>Wander the tiny alleys behind the waterfront — that is the real Ribeira.</li><li>A great starting point for crossing the bridge to Gaia.</li>',
+  },
+  pt: {
+    porto_capela_intro: 'Um bar de vinhos dentro de uma antiga capela a sério. Só dizemos isto: peça um copo e olhe para cima.',
+    porto_capela_tips: '<li>Vá para um copo tranquilo, não para uma noitada — é pequeno e intimista.</li><li>Vinhos portugueses a copo; peça ao staff que o oriente.</li><li>Melhor no início da noite, antes de encher.</li>',
+    porto_virtudes_intro: 'O pôr do sol que os portuenses guardam para si. Agora também o conhece.',
+    porto_virtudes_tips: '<li>Leve uma bebida e algo para se sentar — é uma encosta de relva em socalcos.</li><li>Chegue cerca de 30 minutos antes do pôr do sol para a melhor luz.</li><li>Mais calmo do que o Jardim do Morro do outro lado do rio.</li>',
+    porto_guindais_intro: 'Uma escadaria, não um monumento — mas entrega-lhe a ponte Dom Luís como mais nada.',
+    porto_guindais_tips: '<li>É íngreme — calce sapatos confortáveis e vá com calma.</li><li>Combine com um passeio pela Ribeira em baixo.</li><li>Há um funicular ali perto se não quiser subir a pé.</li>',
+    porto_almas_intro: 'Dezasseis mil azulejos azuis, no meio da rua de compras mais movimentada. A maioria não repara. Você vai.',
+    porto_almas_tips: '<li>Olhe para cima — todo o exterior é a obra de arte.</li><li>A luz da manhã faz os azulejos azuis brilhar.</li><li>É na Rua de Santa Catarina — combine com um café numa casa clássica.</li>',
+    porto_foto_intro: 'Um museu de fotografia dentro de uma prisão do século XIX. Sim, dá para ver as antigas celas. Sim, é grátis.',
+    porto_foto_tips: '<li>Entrada gratuita — uma das melhores horas do Porto pela relação qualidade-preço.</li><li>O próprio edifício é metade da visita; procure as portas das celas.</li><li>Raramente cheio — uma escolha calma para uma tarde quente ou de chuva.</li>',
+    porto_rib_intro: 'Turística? Um pouco. A alma do Porto? Por completo. Vá cedo e deixe-se perder.',
+    porto_rib_tips: '<li>Vá de manhã, antes das multidões e dos passeios de barco.</li><li>Perca-se nos becos estreitos atrás do cais — é a Ribeira verdadeira.</li><li>Óptimo ponto de partida para atravessar a ponte para Gaia.</li>',
+  },
+};
+Object.assign(translations.en, PLACE_I18N_2.en);
+Object.assign(translations.pt, PLACE_I18N_2.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], PLACE_I18N_2.en);
+});
+
+/* RESTAURANTS — 4 curated picks (cheap · near · mid · premium) */
+Object.assign(PLACES, {
+  conga: {
+    slug: 'conga', emoji: '🥪',
+    tagKey: 'porto_conga_tag', titleKey: 'porto_conga_h', descKey: 'porto_conga_p',
+    price: 1, rating: { avg: '4.4', count: '9k' }, cats: ['solo', 'group'], photos: 3,
+    address: 'Rua do Bonjardim 318, 4000-115 Porto', hours: 'Mon–Sat 10:00–22:00', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Conga+Casa+das+Bifanas+Porto',
+    walk: 28, transit: 16, ride: 7,
+  },
+  capanegra: {
+    slug: 'capanegra', emoji: '🍽️',
+    tagKey: 'porto_capanegra_tag', titleKey: 'porto_capanegra_h', descKey: 'porto_capanegra_p',
+    price: 2, rating: { avg: '4.3', count: '7k' }, cats: ['family', 'couple'], photos: 3,
+    address: 'Rua do Campo Alegre 191, 4150-177 Porto', hours: 'Daily 12:00–23:00', website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Capa+Negra+II+Porto',
+    walk: 12, transit: 8, ride: 4,
+  },
+  tapabento: {
+    slug: 'tapabento', emoji: '🍷',
+    tagKey: 'porto_tapabento_tag', titleKey: 'porto_tapabento_h', descKey: 'porto_tapabento_p',
+    price: 3, rating: { avg: '4.6', count: '4k' }, cats: ['couple', 'solo'], photos: 3,
+    address: 'Rua da Madeira 221, 4000-330 Porto', hours: 'Wed–Sun 12:30–15:00 & 19:00–23:00 · closed Mon–Tue', website: 'https://tapabento.com',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Tapabento+Porto',
+    walk: 30, transit: 18, ride: 7,
+  },
+  antiqvvm: {
+    slug: 'antiqvvm', emoji: '✨',
+    tagKey: 'porto_antiqvvm_tag', titleKey: 'porto_antiqvvm_h', descKey: 'porto_antiqvvm_p',
+    price: 4, rating: { avg: '4.7', count: '950' }, cats: ['couple'], photos: 3,
+    address: 'Rua de Entre-Quintas 220, Porto', hours: 'Tue–Sat dinner (lunch Tue & Sat) · closed Sun–Mon',
+    website: 'https://www.antiqvvm.pt',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Antiqvvm+Restaurante+Porto',
+    walk: 16, transit: 12, ride: 5,
+  },
+});
+
+/* ───────────────────────────────────────────────────────────────
+   PLACE COORDINATES — [lat, lng] for the interactive Leaflet map.
+   These are approximate pins for well-known Porto landmarks, taken
+   from public map data. HOST: feel free to fine-tune any pin —
+   open Google Maps, right-click the spot, click the lat/long to
+   copy it, and paste it here. A place set to null is simply
+   skipped on the map (no marker) until a coordinate is added.
+─────────────────────────────────────────────────────────────── */
+const PLACE_COORDS = {
+  lello:       [41.1473, -8.6149],
+  wondersense: [41.1471, -8.6152],
+  morro:       [41.1378, -8.6092],
+  gaia:        [41.1385, -8.6112],
+  capela:      [41.1462, -8.6181],
+  virtudes:    [41.1458, -8.6191],
+  guindais:    [41.1410, -8.6076],
+  almas:       [41.1487, -8.6063],
+  foto:        [41.1460, -8.6166],
+  rib:         [41.1407, -8.6131],
+  conga:       [41.1499, -8.6082],
+  capanegra:   [41.1535, -8.6330],
+  tapabento:   [41.1455, -8.6092],
+  antiqvvm:    [41.1471, -8.6228],
+};
+Object.keys(PLACE_COORDS).forEach(function (k) {
+  if (PLACES[k]) PLACES[k].coords = PLACE_COORDS[k];
+});
+
+const REST_I18N = {
+  en: {
+    porto_g3_title: 'Where to eat',
+    porto_conga_tag: '🥪 Cheap eats',
+    porto_conga_h: 'Conga — the legendary bifana',
+    porto_conga_p: 'A tiny, no-frills institution since 1976. The bifana — slow-cooked pork in a soft roll — is one of the cheapest great meals in Porto.',
+    porto_conga_intro: 'A pork sandwich so good it has been famous for almost 50 years. Order a bifana and a cold drink — that is the whole plan.',
+    porto_conga_tips: '<li>Do not expect decor — expect flavour.</li><li>Perfect for a fast, very cheap lunch.</li><li>Busy at peak hours, but it moves quickly.</li>',
+    porto_capanegra_tag: '🍽️ Near & traditional',
+    porto_capanegra_h: 'Capa Negra II — dinner near your door',
+    porto_capanegra_p: 'A reliable, busy local restaurant a short walk from the apartment. Grilled meats, fish, and a serious francesinha.',
+    porto_capanegra_intro: 'The closest proper Portuguese dinner to your door — and yes, they do a serious francesinha.',
+    porto_capanegra_tips: '<li>The francesinha is huge — consider sharing.</li><li>Busy at weekends; go a little earlier.</li><li>An easy walk from the apartment.</li>',
+    porto_tapabento_tag: '🍷 Mid-range gem',
+    porto_tapabento_h: 'Tapabento — small place, big reputation',
+    porto_tapabento_p: 'Modern Portuguese cooking and petiscos done with real care. Small, warm, and consistently excellent.',
+    porto_tapabento_intro: 'Right behind São Bento station, a tiny place locals book days ahead. There is a reason.',
+    porto_tapabento_tips: '<li>Book ahead — it is small and very popular.</li><li>Great for a special-but-relaxed dinner.</li><li>Steps from São Bento station.</li>',
+    porto_antiqvvm_tag: '✨ Special occasion',
+    porto_antiqvvm_h: 'Antiqvvm — a two-Michelin-star evening',
+    porto_antiqvvm_p: 'Fine-dining Portuguese cuisine in a romantic 19th-century house with a Douro view. A genuine occasion.',
+    porto_antiqvvm_intro: 'Two Michelin stars, a 19th-century house, a view over the Douro. For the night you want to remember.',
+    porto_antiqvvm_tips: '<li>Reserve well in advance.</li><li>The tasting menu is the way to go.</li><li>Smart-casual — it is an occasion.</li>',
+  },
+  pt: {
+    porto_g3_title: 'Onde comer',
+    porto_conga_tag: '🥪 Comer barato',
+    porto_conga_h: 'Conga — a bifana lendária',
+    porto_conga_p: 'Uma instituição minúscula e sem luxo desde 1976. A bifana — porco estufado num pão macio — é uma das melhores refeições baratas do Porto.',
+    porto_conga_intro: 'Uma sande de porco tão boa que é famosa há quase 50 anos. Peça uma bifana e uma bebida fresca — é esse o plano todo.',
+    porto_conga_tips: '<li>Não espere decoração — espere sabor.</li><li>Perfeito para um almoço rápido e muito barato.</li><li>Cheio às horas de ponta, mas anda depressa.</li>',
+    porto_capanegra_tag: '🍽️ Perto e tradicional',
+    porto_capanegra_h: 'Capa Negra II — jantar perto de casa',
+    porto_capanegra_p: 'Um restaurante local fiável e movimentado, a poucos passos do apartamento. Carnes grelhadas, peixe e uma francesinha a sério.',
+    porto_capanegra_intro: 'O jantar português a sério mais perto da sua porta — e sim, fazem uma francesinha a sério.',
+    porto_capanegra_tips: '<li>A francesinha é enorme — considere partilhar.</li><li>Cheio aos fins de semana; vá um pouco mais cedo.</li><li>Vai-se a pé facilmente do apartamento.</li>',
+    porto_tapabento_tag: '🍷 Jóia intermédia',
+    porto_tapabento_h: 'Tapabento — sítio pequeno, grande fama',
+    porto_tapabento_p: 'Cozinha portuguesa moderna e petiscos feitos com verdadeiro cuidado. Pequeno, acolhedor e sempre excelente.',
+    porto_tapabento_intro: 'Mesmo atrás da estação de São Bento, um sítio minúsculo que os locais reservam com dias de antecedência. Há uma razão.',
+    porto_tapabento_tips: '<li>Reserve com antecedência — é pequeno e muito procurado.</li><li>Óptimo para um jantar especial mas descontraído.</li><li>A poucos passos da estação de São Bento.</li>',
+    porto_antiqvvm_tag: '✨ Ocasião especial',
+    porto_antiqvvm_h: 'Antiqvvm — uma noite com duas estrelas Michelin',
+    porto_antiqvvm_p: 'Alta cozinha portuguesa numa romântica casa do século XIX com vista para o Douro. Uma verdadeira ocasião.',
+    porto_antiqvvm_intro: 'Duas estrelas Michelin, uma casa do século XIX, uma vista sobre o Douro. Para a noite que quer recordar.',
+    porto_antiqvvm_tips: '<li>Reserve com bastante antecedência.</li><li>O menu de degustação é o caminho.</li><li>Traje cuidado — é uma ocasião.</li>',
+  },
+};
+Object.assign(translations.en, REST_I18N.en);
+Object.assign(translations.pt, REST_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], REST_I18N.en);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   PORTO CARD META — rating + transport badges + category chips
+   Injects a meta block into every .porto-card[data-place] from PLACES.
+   Covers: transport times (🚶/🚇), Google ratings (★), category chips.
+═══════════════════════════════════════════════════════════════ */
+const CAT_I18N = {
+  en: { cat_solo: 'Solo', cat_couple: 'Couple', cat_family: 'Family', cat_group: 'Group', cat_relax: 'Relax', meta_min: 'min' },
+  pt: { cat_solo: 'Sozinho', cat_couple: 'A dois', cat_family: 'Família', cat_group: 'Grupo', cat_relax: 'Relaxar', meta_min: 'min' },
+  fr: { cat_solo: 'Solo', cat_couple: 'En couple', cat_family: 'Famille', cat_group: 'Groupe', cat_relax: 'Détente', meta_min: 'min' },
+  es: { cat_solo: 'Solo', cat_couple: 'En pareja', cat_family: 'Familia', cat_group: 'Grupo', cat_relax: 'Relax', meta_min: 'min' },
+  de: { cat_solo: 'Solo', cat_couple: 'Zu zweit', cat_family: 'Familie', cat_group: 'Gruppe', cat_relax: 'Entspannen', meta_min: 'Min.' },
+  it: { cat_solo: 'Da soli', cat_couple: 'In coppia', cat_family: 'Famiglia', cat_group: 'Gruppo', cat_relax: 'Relax', meta_min: 'min' },
+};
+['en', 'pt', 'fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], CAT_I18N[l]);
+});
+
+(function () {
+  function tr(key) {
+    var d = translations[currentLang] || translations.en;
+    return d[key] || translations.en[key] || key;
+  }
+
+  function decorateCard(card) {
+    var pl = PLACES[card.dataset.place];
+    if (!pl) return;
+    var body = card.querySelector('.porto-body');
+    if (!body) return;
+
+    // Idempotent: drop any previous injection before re-rendering
+    var old = body.querySelector('.pcard-meta-wrap');
+    if (old) old.remove();
+
+    var wrap = document.createElement('div');
+    wrap.className = 'pcard-meta-wrap';
+
+    // Rating + transport row
+    var meta = document.createElement('div');
+    meta.className = 'pcard-meta';
+    var html = '';
+    if (pl.rating && pl.rating.avg) {
+      html += '<span class="pcard-rating"><span class="pcard-star">★</span>' +
+        pl.rating.avg + '<span class="pcard-rating-count">(' +
+        pl.rating.count + ')</span></span>';
+    }
+    var tbits = [];
+    if (pl.walk) tbits.push('🚶 ' + pl.walk);
+    if (pl.transit) tbits.push('🚇 ' + pl.transit);
+    if (tbits.length) {
+      html += '<span class="pcard-trans">' + tbits.join(' · ') + ' ' + tr('meta_min') + '</span>';
+    }
+    meta.innerHTML = html;
+    if (html) wrap.appendChild(meta);
+
+    // Category chips
+    if (pl.cats && pl.cats.length) {
+      var cats = document.createElement('div');
+      cats.className = 'pcard-cats';
+      pl.cats.forEach(function (c) {
+        var chip = document.createElement('span');
+        chip.className = 'pcard-cat';
+        chip.textContent = tr('cat_' + c);
+        cats.appendChild(chip);
+      });
+      wrap.appendChild(cats);
+    }
+
+    if (!wrap.children.length) return;
+
+    // Insert just above the "Go" button so the CTA stays last
+    var btn = body.querySelector('.btn-sm, .btn');
+    if (btn) body.insertBefore(wrap, btn);
+    else body.appendChild(wrap);
+  }
+
+  function decorateAll() {
+    document.querySelectorAll('.porto-card[data-place]').forEach(decorateCard);
+  }
+
+  decorateAll();
+
+  // Re-render chips when the language changes
+  var _applyLangMeta = applyLanguage;
+  applyLanguage = function (lang) {
+    _applyLangMeta(lang);
+    decorateAll();
+  };
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   CHECK-OUT CTA i18n — quick check-out buttons (home + check-in screen)
+═══════════════════════════════════════════════════════════════ */
+const CHECKOUT_CTA_I18N = {
+  en: { checkout_cta_h: 'Checking out?', checkout_cta_p: 'Start your check-out — it only takes a minute' },
+  pt: { checkout_cta_h: 'Vai fazer check-out?', checkout_cta_p: 'Comece o seu check-out — leva só um minuto' },
+  fr: { checkout_cta_h: 'Vous partez ?', checkout_cta_p: 'Commencez votre check-out — ça ne prend qu\'une minute' },
+  es: { checkout_cta_h: '¿Te marchas?', checkout_cta_p: 'Empieza tu check-out — solo te llevará un minuto' },
+  de: { checkout_cta_h: 'Reisen Sie ab?', checkout_cta_p: 'Starten Sie Ihren Check-out — es dauert nur eine Minute' },
+  it: { checkout_cta_h: 'In partenza?', checkout_cta_p: 'Inizia il tuo check-out — bastano un paio di minuti' },
+};
+['en', 'pt', 'fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], CHECKOUT_CTA_I18N[l]);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIVE MAP i18n
+═══════════════════════════════════════════════════════════════ */
+const MAP_I18N = {
+  en: { map_pins_note: 'Tap a pin to open the place and get directions. Pin positions are approximate.', map_pdf_h: 'Official tourist map (PDF)', map_see_place: 'See details', map_home_pin: 'Porto Peace Haven · your stay' },
+  pt: { map_pins_note: 'Toque num pin para abrir o lugar e ver como chegar. As posições dos pins são aproximadas.', map_pdf_h: 'Mapa turístico oficial (PDF)', map_see_place: 'Ver detalhes', map_home_pin: 'Porto Peace Haven · a sua estadia' },
+  fr: { map_pins_note: 'Touchez un repère pour ouvrir le lieu et obtenir l\'itinéraire. Les positions sont approximatives.', map_pdf_h: 'Carte touristique officielle (PDF)', map_see_place: 'Voir les détails', map_home_pin: 'Porto Peace Haven · votre séjour' },
+  es: { map_pins_note: 'Toca un pin para abrir el lugar y ver cómo llegar. Las posiciones son aproximadas.', map_pdf_h: 'Mapa turístico oficial (PDF)', map_see_place: 'Ver detalles', map_home_pin: 'Porto Peace Haven · tu estancia' },
+  de: { map_pins_note: 'Tippen Sie auf eine Markierung, um den Ort zu öffnen und die Route zu sehen. Positionen sind ungefähr.', map_pdf_h: 'Offizielle Touristenkarte (PDF)', map_see_place: 'Details ansehen', map_home_pin: 'Porto Peace Haven · Ihr Aufenthalt' },
+  it: { map_pins_note: 'Tocca un segnaposto per aprire il luogo e ottenere le indicazioni. Le posizioni sono approssimative.', map_pdf_h: 'Mappa turistica ufficiale (PDF)', map_see_place: 'Vedi dettagli', map_home_pin: 'Porto Peace Haven · il tuo soggiorno' },
+};
+['en', 'pt', 'fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], MAP_I18N[l]);
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   INTERACTIVE MAP — Leaflet + OpenStreetMap (free · no API key)
+   Renders on the #mapa screen. Markers come from PLACES[].coords.
+   Built lazily (and size-recalculated) once #mapa becomes visible,
+   because Leaflet cannot measure a screen that is display:none.
+═══════════════════════════════════════════════════════════════ */
+(function () {
+  /* ── CONFIG ──────────────────────────────────────────────────
+     TODO (host): the apartment's exact coordinates.
+     How to get them: open Google Maps, right-click the building at
+     Rua da Paz 66, Porto, then click the lat/long shown to copy it.
+     Paste it below as [lat, lng] — e.g. [41.1570, -8.6380].
+     While this stays null, the map centres on Porto and the
+     "home" marker is simply skipped (nothing is invented).        */
+  var APARTMENT_COORDS = null;
+
+  var PORTO_CENTER = [41.1455, -8.6110]; // central Porto fallback
+
+  function tr(key) {
+    var d = translations[currentLang] || translations.en;
+    return d[key] || translations.en[key] || key;
+  }
+
+  var map = null;
+  var built = false;
+
+  function buildMap() {
+    if (built) return;
+    var mapEl = document.getElementById('porto-map');
+    if (!mapEl || typeof L === 'undefined') return; // Leaflet not ready yet
+    built = true;
+
+    var start = APARTMENT_COORDS || PORTO_CENTER;
+    map = L.map('porto-map', { scrollWheelZoom: false }).setView(start, 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    var bounds = [];
+
+    // Apartment marker — the main pin (shown once APARTMENT_COORDS is set)
+    if (APARTMENT_COORDS) {
+      var homeIcon = L.divIcon({
+        className: 'map-pin map-pin-home',
+        html: '<span>🏠</span>',
+        iconSize: [46, 46], iconAnchor: [23, 23],
+      });
+      var homePopup = '<strong>' + tr('map_home_pin') + '</strong>' +
+        '<span class="map-popup-links">Rua da Paz 66, 3º · 4050-461 Porto' +
+        '<a href="https://www.google.com/maps/dir/?api=1&destination=Rua+da+Paz+66+4050-461+Porto" target="_blank" rel="noopener">' +
+        tr('go_btn') + '</a></span>';
+      L.marker(APARTMENT_COORDS, { icon: homeIcon, zIndexOffset: 1000 })
+        .addTo(map).bindPopup(homePopup);
+      bounds.push(APARTMENT_COORDS);
+    }
+
+    // Place markers — skipped cleanly if a place has no coords.
+    // Each popup offers "see details" + a one-tap directions button.
+    Object.keys(PLACES).forEach(function (id) {
+      var pl = PLACES[id];
+      if (!pl || !pl.coords) return;
+      var icon = L.divIcon({
+        className: 'map-pin',
+        html: '<span>' + (pl.emoji || '📍') + '</span>',
+        iconSize: [34, 34], iconAnchor: [17, 17],
+      });
+      var popup = '<strong>' + tr(pl.titleKey) + '</strong>' +
+        '<span class="map-popup-links">' +
+        '<a href="#place-' + pl.slug + '">' + tr('map_see_place') + '</a>' +
+        '<a class="map-popup-go" href="' + pl.maps + '" target="_blank" rel="noopener">📍 ' +
+        tr('go_btn') + '</a></span>';
+      L.marker(pl.coords, { icon: icon }).addTo(map).bindPopup(popup);
+      bounds.push(pl.coords);
+    });
+
+    // Opening view: centred on the apartment when we know where it is,
+    // otherwise framed to show every place pin.
+    if (APARTMENT_COORDS) {
+      map.setView(APARTMENT_COORDS, 15);
+    } else if (bounds.length > 1) {
+      map.fitBounds(bounds, { padding: [38, 38] });
+    }
+    setTimeout(function () { if (map) map.invalidateSize(); }, 220);
+  }
+
+  // Build (and re-measure) when the #mapa screen becomes active.
+  // If Leaflet is still downloading, keep retrying until it is ready.
+  function maybeBuild() {
+    if (location.hash !== '#mapa') return;
+    if (typeof L === 'undefined') {
+      setTimeout(maybeBuild, 200); // Leaflet not loaded yet — try again
+      return;
+    }
+    buildMap();
+    if (map) {
+      setTimeout(function () { map.invalidateSize(); }, 160);
+      setTimeout(function () { map.invalidateSize(); }, 500);
+    }
+  }
+  window.addEventListener('hashchange', maybeBuild);
+  document.addEventListener('DOMContentLoaded', maybeBuild);
+  window.addEventListener('load', maybeBuild);
+  maybeBuild();
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   NEDERLANDS (Dutch) — task #12
+   nl starts as a full copy of EN (so no key is ever missing), then
+   the real Dutch strings are layered on top.
+═══════════════════════════════════════════════════════════════ */
+translations.nl = Object.assign({}, translations.en);
+Object.assign(translations.nl, {
+  logo_sub: 'Gastengids',
+  nav_home: 'Start', nav_info: 'Essentiële info', nav_checkin: 'Check-in / Check-out',
+  nav_rules: 'Huisregels', nav_guide: 'Huisgids', nav_kitchen: 'Keukengids',
+  nav_rooms_label: 'Kamers', nav_bathroom: 'Badkamer', nav_transport: 'Vervoer',
+  nav_nearby: 'In de buurt', nav_porto: 'Ontdek Porto', nav_emergency: '🆘 Noodgeval',
+  bnav_home: 'Start', bnav_info: 'Info', bnav_rooms: 'Kamers', bnav_porto: 'Porto', bnav_help: 'Hulp',
+  hero_badge: 'Porto · Portugal', hero_welcome: 'Welkom bij',
+  hero_tagline: 'Uw rustige thuis in het hart van Porto',
+  rooms_preview_title: 'Kies uw kamer',
+  ribeira_mood_short: 'Elegant · Stedelijk · Ruim',
+  douro_mood_short: 'Warm · Knus · Goudkleurig',
+  atlantico_mood_short: 'Kalm · Kustsfeer · Licht',
+  room_discover: 'Ontdek →',
+  info_title: 'Essentiële informatie', info_subtitle: 'Alles wat u nodig heeft, hier bij elkaar',
+  address_title: 'Adres', open_maps: 'Openen in Google Maps',
+  wifi_title: 'Wi-Fi', wifi_network: 'Netwerk', wifi_password: 'Wachtwoord',
+  tap_copy: 'tik om te kopiëren', wifi_scan: '📷 Scan om automatisch verbinding te maken',
+  contact_title: 'Contact met de gastheer', contact_urgent: 'Spoedlijn',
+  guide_qr_title: 'Deze gastengids',
+  guide_qr_desc: 'Deel deze link met uw gasten of scan de QR-code',
+  checkin_title: 'Check-in & Check-out', checkin_label: 'Check-in',
+  checkin_time_label: 'Vanaf:', checkin_late_label: 'Late aankomst:',
+  checkout_label: 'Check-out', checkout_time_label: 'Vóór:', checkout_late_label: 'Late check-out:',
+  checkout_late_desc: 'Vraag het ons vooraf — we doen ons best!',
+  key_title: 'Sleutels & toegang',
+  key_1: 'De toegangssleutel ligt in de externe kluis — gebruik de code die we u met uw check-in-instructies hebben gestuurd.',
+  key_2: 'Uw kamersleutel ligt klaar in het kleine kluisje direct buiten uw kamerdeur — dezelfde code die we u hebben gestuurd.',
+  key_3: 'Leg bij vertrek beide sleutels terug in hun kluisjes.',
+  safe_title: 'Kluis op de kamer',
+  safe_1: 'Op uw kamer is een kluis aanwezig — gebruik die voor paspoorten, waardevolle spullen en pasjes.',
+  safe_2: 'Stel bij aankomst uw eigen pincode in en wis die weer bij vertrek.',
+  rules_title: 'Huisregels',
+  rules_subtitle: 'We vragen alle gasten deze richtlijnen te respecteren, zodat iedereen geniet van een rustig en gastvrij verblijf',
+  rule_noise_h: 'Geluid & rusttijden',
+  rule_n1: 'Houd geluid te allen tijde tot een minimum beperkt.',
+  rule_n2: 'Wees vooral op weekdagen en tijdens kantooruren extra attent.',
+  rule_n3: 'Geen luide muziek of verheven stemmen in het pand.',
+  rule_smoke_h: 'Niet roken',
+  rule_s1: 'Roken of vapen is nergens binnen het gebouw toegestaan.',
+  rule_s2: 'Roken mag uitsluitend buiten het gebouw.',
+  rule_s3: 'Kaarsen en wierook zijn niet toegestaan — de rookmelders zijn actief.',
+  rule_guests_h: 'Bezoek & evenementen',
+  rule_g1: 'Niet-geregistreerde bezoekers zijn niet toegestaan in het pand.',
+  rule_g2: 'Feesten en sociale bijeenkomsten zijn strikt verboden.',
+  rule_kitchen_h: 'Keuken & gedeelde ruimtes',
+  rule_k1: 'Was de afwas altijd direct na gebruik.',
+  rule_k2: 'Maak na elk gebruik het aanrecht en de kookplaat schoon.',
+  rule_k3: 'Behandel gedeelde ruimtes met zorg en aandacht voor anderen.',
+  rule_energy_h: 'Voordat u uw kamer verlaat',
+  rule_e1: 'Sluit alle ramen voordat u vertrekt.',
+  rule_e2: 'Doe alle lichten uit.',
+  rule_e3: 'Schakel alle apparaten uit (ventilator, tv, enz.).',
+  rule_bath_h: 'Badkamer',
+  rule_b1: 'Controleer altijd of het doorspoelen van het toilet volledig is gestopt voordat u weggaat.',
+  rule_b2: 'Alleen toiletpapier mag worden doorgespoeld — geen doekjes of andere zaken.',
+  rule_b3: 'Laat de badkamer schoon en klaar achter voor de volgende gast.',
+  rule_pets_h: 'Huisdieren',
+  rule_p1: 'Huisdieren zijn niet toegestaan in Porto Peace Haven.',
+  rule_furniture_h: 'Meubels & vloeren',
+  rule_f1: 'Sleep stoelen of meubels niet over de vloer.',
+  rule_f2: 'Behandel alle meubels met zorg.',
+  rules_thank: 'Dank u dat u ons helpt Porto Peace Haven een rustige, gastvrije plek voor iedereen te houden. 🙏',
+  guide_title: 'Huisgids',
+  guide_sub: 'Wat fijn dat u er bent. Alles wat u nodig heeft om u thuis te voelen.',
+  g_wifi_h: 'Wi-Fi', g_wifi_link: 'Bekijk QR-code →',
+  g_bath_h: 'Gedeelde badkamer',
+  g_bath_p: 'De badkamer wordt gedeeld tussen gasten. Wees attent en laat hem na elk gebruik brandschoon achter.',
+  g_leave_h: 'Voordat u vertrekt',
+  g_c1: '✔ Doe alle lichten uit', g_c2: '✔ Sluit alle ramen',
+  g_c3: '✔ Schakel alle apparaten uit', g_c4: '✔ Controleer of het toilet is uitgespoeld',
+  g_c5: '✔ Lever uw sleutel in bij check-out',
+  g_quiet_h: 'Rustig samenleven',
+  g_quiet_p: 'Dit is een woongebouw. Houd stemmen en geluiden zacht, vooral vroeg in de ochtend en ’s avonds. Uw buren zullen u dankbaar zijn.',
+  g_tv_h: 'Tv & streaming',
+  g_tv_p: 'Elke kamer heeft een tv met een Android TV-dongle. Gebruik de afstandsbediening van de dongle om Netflix, YouTube en andere apps te openen. Log in met uw eigen accounts — geen gedeelde inloggegevens. Volledige instructies vindt u in uw kamergids.',
+  g_lamps_h: 'LED-sfeerlampen',
+  g_lamps_p: 'Uw kamer heeft LED-lampen die u met een afstandsbediening bedient. Kies uw favoriete kleur, helderheid en sfeer. De instructies verschillen licht per kamer — zie de kamergids hieronder.',
+  g_safety_h: 'Veiligheid',
+  g_sf1: '🔥 Rookmelders: keuken & entree',
+  g_sf2: '⚡ Elektriciteitskast: bij de entree',
+  g_sf3: '🚨 Hulpdiensten: <strong>112</strong>',
+  g_problem_h: 'Iets niet in orde?',
+  g_problem_p: 'Laat het ons meteen weten — we lossen dingen liever direct op dan dat u ergens last van heeft. We zijn maar één bericht verwijderd.',
+  g_contact_btn: 'Contact met de gastheer',
+  review_h: 'Geniet u van uw verblijf?',
+  review_p: 'We steken veel zorg in elk detail van Porto Peace Haven. Als we uw reis een beetje mooier hebben gemaakt, betekent een review de wereld voor ons — en helpt het andere reizigers dit hoekje van Porto te ontdekken.',
+  review_btn: 'Laat een review achter ⭐',
+  kitchen_title: 'Keukengids', kitchen_sub: 'Hoe u alles in de keuken gebruikt',
+  k_hob_h: 'Inductiekookplaat',
+  k_hob1: 'Plaats een geschikte (magnetische) pan op de kookplaat.',
+  k_hob2: 'Druk op de aan-knop om in te schakelen.',
+  k_hob3: 'Kies uw zone en regel de hitte met de + / – knoppen.',
+  k_hob4: 'De kookplaat schakelt zichzelf na 2 uur automatisch uit.',
+  k_hood_h: 'Afzuigkap',
+  k_hood1: 'Zet hem aan vóór het koken om rookophoping te voorkomen.',
+  k_hood2: 'Regel de snelheid met de knop (1 = laag · 3 = hoog).',
+  k_hood3: 'Laat hem na het koken nog even draaien en schakel hem dan uit.',
+  k_oven_h: 'Mini-oven',
+  k_oven1: 'Leg het eten op de meegeleverde plaat of het rooster.',
+  k_oven2: 'Stel de temperatuur in met de linkerknop.',
+  k_oven3: 'Stel de kooktijd in met de rechterknop.',
+  k_oven4: 'De oven schakelt automatisch uit als de timer afloopt.',
+  k_micro_h: 'Magnetron',
+  k_micro1: 'Gebruik uitsluitend magnetronbestendige bakjes.',
+  k_micro2: 'Stel tijd en vermogen in en druk op start.',
+  k_micro3: 'Gebruik nooit metalen bakjes of folie.',
+  k_kettle_h: 'Waterkoker',
+  k_kettle1: 'Vul met water tot aan de maximumlijn aan de binnenkant.',
+  k_kettle2: 'Plaats hem op de voet en druk de schakelaar omlaag.',
+  k_kettle3: 'Hij schakelt automatisch uit zodra het water kookt.',
+  k_coffee_h: 'Koffiemachine met capsules',
+  k_coffee1: 'Vul het waterreservoir en zet de machine aan.',
+  k_coffee2: 'Plaats een geschikte capsule in de houder.',
+  k_coffee3: 'Zet uw kopje klaar en druk op zetten.',
+  k_coffee4: 'Verwijder en gooi de gebruikte capsule na elk gebruik weg.',
+  k_utensils_h: 'Wat aanwezig is',
+  k_utensils_p: 'Borden, kommen, glazen, mokken, kopjes, bestek, potten, pannen, snijplanken, messen, vergiet, rasp en keukengerei.',
+  k_clean_h: 'Schoonmaakmiddelen',
+  k_clean_p: 'Vuilniszakken, spons, doekjes en afwasmiddel liggen onder de gootsteen. Extra voorraad ligt in de bergkast bij de badkamer.',
+  k_etiquette_h: 'Keuken-etiquette',
+  k_eq1: '🍽️ Was en droog alle vaat direct na elk gebruik.',
+  k_eq2: '🧹 Veeg de kookplaat, het aanrecht en de gootsteen na gebruik schoon.',
+  k_eq3: '🗑️ Gooi afval in de meegeleverde vuilniszakken. Dichtgeknoopte zakken gaan naar de afvalinzameling van het gebouw — stuur ons een bericht als u de exacte plek wilt weten.',
+  k_eq4: '♻️ Scheid uw afval — geel voor plastic en metaal, blauw voor papier, groen voor glas — via de openbare recyclingbakken op straat.',
+  k_eq5: '🤝 Dit is een gedeelde keuken — laat hem precies zo achter als u hem aantrof.',
+  rooms_title: 'Kamergidsen',
+  ribeira_tagline: 'Elegant, ruim en stedelijk — de ziel van het oude Porto',
+  feat_tv_h: 'Tv & Android-dongle',
+  feat_tv_p: 'Gebruik de afstandsbediening van de Android-dongle (zwart, kleiner) om door apps te navigeren. Gebruik de tv-afstandsbediening om indien nodig naar de HDMI-ingang te schakelen. Druk op Home op de dongle-afstandsbediening om te beginnen.',
+  feat_remotes_h: 'Twee afstandsbedieningen',
+  ribeira_remotes_p: 'U heeft twee afstandsbedieningen: één voor de tv en één voor de Android-dongle. De dongle-afstandsbediening bedient ook de LED-strip achter de tv.',
+  feat_led_h: 'LED-verlichting',
+  ribeira_led_p: 'De LED-afstandsbediening bedient zowel de bedlamp als de LED-strip achter de tv. Stel er uw favoriete kleur en helderheid mee in.',
+  ribeira_curtains_h: 'Gordijnen & ramen',
+  ribeira_curtains_p: 'Behandel de gordijnen en het raambeslag voorzichtig. Sluit altijd alle ramen voordat u de kamer verlaat.',
+  ribeira_storage_h: 'Opbergruimte & werkplek',
+  ribeira_storage_p: 'Ribeira is de ruimste kamer met volop opbergruimte. De grote wandkast doet ook dienst als bureau of werkplek — ideaal voor thuiswerkers of langere verblijven.',
+  feat_fan_h: 'Ventilator',
+  feat_fan_p: 'In de kamer is een ventilator aanwezig. Pas de snelheid en richting naar wens aan.',
+  feat_fridge_h: 'Mini-koelkast',
+  feat_fridge_p: 'Er is een mini-koelkast voor uw persoonlijk gebruik. Houd hem schoon en netjes.',
+  feat_sockets_h: 'Stopcontacten met USB & USB-C',
+  feat_sockets_p: 'Alle stopcontacten hebben USB-A- en USB-C-poorten om uw apparaten gemakkelijk op te laden.',
+  feat_mirror_h: 'Spiegel', feat_mirror_p: 'In de kamer is een passpiegel aanwezig.',
+  feat_rail_h: 'Kledingrek', feat_rail_p: 'Er is een kledingrek om kleding op te hangen.',
+  feat_blanket_h: 'Extra deken',
+  feat_blanket_p: 'Een extra deken ligt opgeborgen in de poef aan het voeteneinde van het bed.',
+  room_reminder: '💡 Voor vertrek: doe alle lichten uit · sluit alle ramen · schakel alle apparaten uit',
+  douro_tagline: 'Warm, goudkleurig en heerlijk knus — als een zonsondergang in Porto',
+  douro_remotes_p: 'Twee afstandsbedieningen aanwezig: één voor de tv en één voor de Android-dongle. De LED-afstandsbediening bedient de kleur en helderheid van uw bedlamp.',
+  douro_led_p: 'Gebruik de LED-afstandsbediening om de kleur en helderheid van uw bedlamp aan te passen. Stel de perfecte warme gloed in voor de avond.',
+  douro_storage_h: 'Opbergruimte',
+  douro_storage_p: 'Douro heeft een eigen opbergruimte voor uw spullen. Compact en perfect georganiseerd.',
+  atlantico_tagline: 'Licht, rustig en luchtig — uw kustretraite in de stad',
+  atlantico_remotes_p: 'Twee afstandsbedieningen aanwezig: tv en Android-dongle. De LED-afstandsbediening bedient de bedlamp.',
+  atlantico_led_p: '⚠️ Om alleen de kleur van de bedlamp te wijzigen zonder de tv te beïnvloeden: zet eerst de tv uit en richt daarna de LED-afstandsbediening rechtstreeks op de bedlamp.',
+  atlantico_desk_h: 'Bureau / werkplek',
+  atlantico_desk_p: 'Atlântico heeft een eigen bureauruimte — perfect voor thuiswerk of langere verblijven in de stad.',
+  bath_title: 'Badkamergids', bath_shared_h: 'Gedeelde badkamer',
+  bath_shared_p: 'De badkamer wordt door alle gasten gedeeld. Wees attent en laat hem na elk gebruik schoon en klaar achter voor de volgende persoon.',
+  bath_shower_h: 'Doucheduur',
+  bath_shower_p: 'Vermijd zeer lange douches, vooral tijdens de drukke ochtenduren, zodat alle gasten warm water hebben.',
+  bath_toilet_h: 'Toilet',
+  bath_t1: '✔ Wacht altijd tot u zeker weet dat het doorspoelen volledig is gestopt.',
+  bath_t2: '✔ Alleen toiletpapier in het toilet — niets anders.',
+  bath_t3: '✘ Geen doekjes, wattenschijfjes of maandverband.',
+  bath_cabinet_h: 'Bergkast',
+  bath_cabinet_p: 'Extra toiletartikelen en schoonmaakmiddelen liggen in de bergkast naast de badkamer. Neem gerust wat u nodig heeft.',
+  bath_dryer_h: 'Föhn',
+  bath_dryer_p: 'In het spiegelkastje in de badkamer ligt een föhn. Leg hem na gebruik terug.',
+  bath_adapter_h: 'Universele stekkeradapter',
+  bath_adapter_p: 'In het spiegelkastje ligt een universele stekkeradapter — beschikbaar voor internationale gasten die er een nodig hebben.',
+  transport_title: 'Porto verkennen',
+  transport_sub: 'Porto is heel goed te belopen en goed verbonden met het openbaar vervoer',
+  tr_metro_h: 'Dichtstbijzijnde metrohalte', tr_metro_map: 'Bekijk metrokaart',
+  tr_bus_h: 'Bus & tram', tr_stcp: 'STCP-buslijnen',
+  tr_ride_h: 'Taxi’s & ride-apps', tr_taxi: 'Taxi',
+  tr_maps_h: 'Routebeschrijving vanaf Porto Peace Haven',
+  nearby_title: 'Handige plekken in de buurt',
+  nb_supermarket: 'Supermarkt', nb_pharmacy: 'Apotheek', nb_hospital: 'Ziekenhuis',
+  nb_cafe: 'Restaurants', nb_transport: 'Vervoer', nb_atm: 'Geldautomaat', nb_laundry: 'Wasserette',
+  go_btn: 'Ga →',
+  porto_title: 'Ontdek Porto',
+  porto_sub: 'Voorbij de ansichtkaarten — de plekken waardoor we hier graag wonen',
+  tag_sunset: '🌅 Zonsondergang', porto_sunset_h: 'Beste plekken voor de zonsondergang',
+  porto_sunset_p: 'Jardim do Morro in Vila Nova de Gaia biedt op het gouden uur spectaculaire uitzichten over de Douro en de Dom Luís-brug. Miradouro da Serra do Pilar is al even adembenemend.',
+  tag_photo: '📸 Fotografie', porto_photo_h: 'Beste fotoplekken',
+  porto_photo_p: 'De Dom Luís I-brug, de iconische Livraria Lello, de Ribeira-kade, de blauwe tegels van station São Bento en de kleurrijke huizen van Bonfim zijn allemaal niet te missen.',
+  tag_rainy: '🌧️ Regendag', porto_rainy_h: 'Plan voor een regendag',
+  porto_rainy_p: 'Boekhandel Livraria Lello, Casa da Música, het Serralves-museum voor hedendaagse kunst, of een lange, trage lunch in een traditionele tasca. De cafécultuur van Porto is gemaakt voor regendagen.',
+  tag_classic: '🗺️ Klassiek', porto_classic_h: 'Klassieke route door Porto',
+  porto_classic_p: 'Station São Bento → kathedraal Sé → Ribeira-kade → Dom Luís-brug → portwijnproeverij in een kelder in Gaia → zonsondergang bij Jardim do Morro. Een perfecte dag in één lus.',
+  tag_food: '🍷 Eten & wijn', porto_food_h: 'Eten & wijn',
+  porto_food_p: 'Een Francesinha bij Café Santiago, een pastel de nata bij een lokale padaria, bacalhau à Brás, en sluit af met een portwijnproeverij bij Graham’s of Taylor’s in Gaia. In Porto eet u goed.',
+  tag_beach: '🏖️ Strand', porto_beach_h: 'Kust- & stranddag',
+  porto_beach_p: 'Het strand van Matosinhos ligt op slechts 15 minuten met de metro — ideaal om te zwemmen, verse vis te eten bij de haventerrassen en te genieten van weidse Atlantische luchten. Foz do Douro is heerlijk voor een wandeling langs de rivier.',
+  em_title: 'Noodgevallen & ondersteuning',
+  em_sub: 'We hopen dat u dit nooit nodig heeft — maar het staat hier voor de zekerheid',
+  em_112_h: 'Hulpdiensten', em_112_sub: 'Politie · Brandweer · Ambulance', em_call: 'Bel',
+  em_host_h: 'Contact met de gastheer', em_host_sub: 'Voor elk probleem met de woning',
+  em_hospital_h: 'Dichtstbijzijnde ziekenhuis', em_pharmacy_h: 'Apotheek 24 uur',
+  em_ride_h: 'Uber / Bolt', em_taxi_h: 'Taxi',
+  footer_rights: 'Alle rechten voorbehouden', copied: '✓ Gekopieerd!',
+  nav_mapa: '🗺️ Kaart van Porto', nb_nos: 'NOS-winkel (simkaarten)',
+  dl_guide_title: 'Offline gids downloaden',
+  dl_guide_desc: 'Bewaar deze gids op uw apparaat — handig als u geen internet heeft.',
+  dl_guide_btn: '⬇ Gids downloaden (EN)',
+  map_title: 'Stadsplattegrond van Porto',
+  map_sub: 'Onze favoriete plekken op de kaart — tik op een speld voor details en route',
+  map_open: 'Open kaart', map_pdf_label: 'Officiële toeristische kaart van Porto',
+  map_open_full: 'Open volledige kaart', map_download: 'Download PDF',
+  nav_avaliar: '⭐ Beoordeel uw verblijf', bnav_avaliar: 'Review',
+  av_section_title: 'Beoordeel uw verblijf',
+  av_section_sub: 'Uw stem bepaalt alles wat we hier doen',
+  av_eyebrow1: 'Uw mening', av_title1: 'Hoe bevalt uw verblijf tot nu toe?',
+  av_lead1: 'Uw ervaring is wat ons drijft. Vertel ons hoe u zich voelt — het kost maar een paar seconden.',
+  av_feel_excelente: 'Uitstekend', av_feel_boa: 'Goed', av_feel_regular: 'Kan beter', av_feel_ruim: 'Slecht',
+  av_hint1: 'Geboekt via Booking? U kunt uw review nog steeds op Airbnb of Google achterlaten — dat helpt ons nog meer.',
+  av_eyebrow2: 'Wat fijn', av_title2: 'Heerlijk om te horen 💛',
+  av_lead2: 'Het blijft ons bij. Laat, als u wilt, een review achter waar u heeft geboekt — dat helpt andere reizigers dit hoekje van Porto te vinden.',
+  av_q_platform: 'Waar heeft u uw verblijf geboekt?', av_plat_outra: 'Een ander platform',
+  av_airbnb_h: 'Een review op Airbnb is goud waard',
+  av_airbnb_p: 'Daar maken uw woorden het grootste verschil voor ons — en het kost minder dan een minuut.',
+  av_airbnb_btn: 'Review op Airbnb', av_airbnb_alt: 'Liever een review op Google?',
+  av_booking_h: 'Bedankt dat u bij ons verbleef',
+  av_booking_p: 'Op Booking ontvangt u na check-out per e-mail een verzoek om een review. Wilt u ons nu al nog meer helpen, dan maakt een review op Google echt het verschil.',
+  av_booking_btn: 'Review op Google',
+  av_booking_alt: 'Heeft u een Airbnb-account? U kunt daar ook een review plaatsen',
+  av_outra_h: 'Uw review helpt ons enorm',
+  av_outra_p: 'Een review op Google kost minder dan een minuut en helpt andere reizigers ons te ontdekken.',
+  av_outra_btn: 'Review op Google', av_back: '← Terug',
+  av_eyebrow3: 'Vertel het ons', av_title3: 'Bedankt dat u het ons vertelt',
+  av_lead3: 'We willen het meteen rechtzetten — tijdens uw verblijf, niet erna. Vertel ons wat er speelt en ons team pakt het met voorrang op.',
+  av_f_room: 'In welke kamer verblijft u?',
+  av_f_phase: 'In welke fase van uw verblijf bent u?',
+  av_phase_select: 'Kies…', av_phase_arrival: 'Aankomst', av_phase_middle: 'Midden in het verblijf',
+  av_phase_pre: 'Vóór check-out', av_phase_post: 'Na check-out',
+  av_f_area: 'Wat kunnen we verbeteren?',
+  av_area_cleaning: 'Schoonmaak', av_area_comfort: 'Comfort van de kamer', av_area_wifi: 'Wi-Fi',
+  av_area_bathroom: 'Badkamer', av_area_kitchen: 'Keuken', av_area_noise: 'Geluid',
+  av_area_comm: 'Communicatie', av_area_other: 'Anders',
+  av_f_detail: 'Vertel het ons in uw eigen woorden',
+  av_detail_ph: 'Wat is niet helemaal zoals u had verwacht? Hoe meer u ons vertelt, hoe sneller we het kunnen oplossen.',
+  av_f_urgency: 'Vereist dit snelle actie?',
+  av_urg_no: 'Nee, het is gewoon een suggestie', av_urg_yes: 'Ja, ik heb vandaag hulp nodig',
+  av_urgent_p: 'Voor iets dringends, neem meteen contact met ons op — we reageren zo snel als we kunnen.',
+  av_urgent_btn: 'Praat nu met ons via WhatsApp',
+  av_f_via: 'Hoe kunnen we u het best bereiken', av_via_wa: 'WhatsApp', av_via_phone: 'Telefoon',
+  av_f_contact: 'Naam of telefoonnummer',
+  av_contact_opt: '(optioneel — het helpt ons u te antwoorden)',
+  av_contact_ph: 'Bijv.: Maria · +351 9XX XXX XXX',
+  av_submit: 'Verstuur suggestie',
+  av_form_note: 'Uw bericht gaat rechtstreeks naar ons team. Het wordt nooit openbaar gemaakt.',
+  av_thanks_title: 'We hebben uw bericht ontvangen',
+  av_thanks_lead: 'We pakken dit met voorrang op. Bedankt dat u ons de kans geeft uw verblijf beter te maken.',
+  av_thanks_box_h: 'Wanneer alles voelt zoals het hoort…',
+  av_thanks_box_p: '…horen we graag van u. Maar alleen wanneer het goed voelt voor u — laat ons het eerst rechtzetten.',
+  av_thanks_btn: 'Laat een review achter', av_thanks_back: '← Opnieuw beginnen',
+  av_alert_areas: 'Kies minstens één gebied dat we kunnen verbeteren.',
+  av_wa_msg: 'Hallo! Ik verblijf in Porto Peace Haven en ik heb ergens hulp bij nodig tijdens mijn verblijf.',
+  ficha_g_comfort: 'Voor uw comfort', ficha_g_work: 'Om te werken', ficha_g_rest: 'Om te rusten',
+  ficha_g_light: 'Licht, geluid &amp; scherm', ficha_g_storage: 'Opbergruimte &amp; details',
+  ficha_cta_p: 'We hebben deze kamer tot in het kleinste detail voorbereid, zodat u beter uitrust. Als iets niet is zoals u hoopte, zeg het ons nu — we zetten het liever recht tijdens uw verblijf dan erna.',
+  ficha_cta_suggest: 'Kan hier iets beter?', ficha_cta_review: 'Beoordeel mijn verblijf ⭐',
+  rib_intro: 'Het diepe blauw van de Douro in de schemering. De grootste van de drie kamers — ruimte om te ademen, en ruimte om zonder haast te werken.',
+  rib_comfort: '<li>Een bed met twee kussens — één hoger, één lager — zodat u slaapt zoals het u bevalt.</li><li>Een ventilator, en ramen die wijd opengaan om de kamer te luchten en te verkoelen (er is geen airco, maar Porto komt prettig naar binnen).</li><li>Een mini-koelkast voor alles wat u dichtbij wilt houden.</li>',
+  rib_work: '<li>Een echte bureaustoel — geen eetkamerstoel die zich voordoet als bureaustoel.</li><li>Een brede, in de muur ingebouwde plank die ook dienstdoet als bureau — gemaakt voor thuiswerk en langere verblijven.</li>',
+  rib_light: '<li>Twee RGB-LED-lampen plus een LED-strip achter de tv, allemaal met afstandsbediening — kies de kleur en de sfeer waar u vanavond zin in heeft.</li><li>Een tv met een Android-speler: Netflix, HBO Max, Prime Video, Disney+ met uw eigen accounts — vergeet niet uit te loggen vóór check-out.</li>',
+  rib_storage: '<li>Ruime opbergruimte plus een kledingrek, met volop plek voor uw koffer.</li><li>Twee ingelijste prenten van de Ribeira, gekozen met deze kamer in gedachten.</li><li>Stopcontacten met USB-A en USB-C, en een passpiegel.</li>',
+  dou_intro: 'Het warme goud van een late namiddag boven de Douro. De knusste kamer — gemaakt om te vertragen en goed te slapen.',
+  dou_comfort: '<li>Een bed met twee kussens — één hoger, één lager — kies degene waarop u het best slaapt.</li><li>Een ventilator, en ramen die opengaan om de kamer te luchten en te verkoelen (geen airco, maar het frist goed op).</li><li>Een mini-koelkast voor uw persoonlijk gebruik.</li>',
+  dou_rest: '<li>Hier geen bureau, en dat is met opzet — Douro is de kamer om af te schakelen, niet om te werken.</li><li>Warm licht, kalme lucht en een zachte gouden toon, gemaakt voor het einde van de dag.</li>',
+  dou_light: '<li>Twee RGB-LED-lampen plus een LED-strip achter de tv, allemaal met afstandsbediening.</li><li>Een tv met een Android-speler: Netflix, HBO Max, Prime Video, Disney+ met uw eigen accounts — log uit vóór check-out.</li>',
+  dou_curio: '<strong>Een klein Douro-detail:</strong> de lamp heeft drie lichttemperaturen — amber, wit en een mix van beide. Elke keer dat u hem aanzet, verandert hij. Zet hem een paar keer aan en uit en houd degene die goed voelt.',
+  dou_storage: '<li>Een eigen opbergruimte en een kledingrek.</li><li>Twee ingelijste prenten passend bij het thema van de kamer, stopcontacten met USB-A en USB-C, en een spiegel.</li>',
+  atl_intro: 'Het lichtblauw van de oceaan op een heldere ochtend. Luchtig, licht en sereen — om langzaam wakker te worden.',
+  atl_comfort: '<li>Een bed met twee kussens — één hoger, één lager — kies wat u bevalt.</li><li>Een ventilator, en ramen die opengaan en de kamer prachtig luchten (geen airco, maar het verkoelt goed).</li><li>Een mini-koelkast voor uw persoonlijk gebruik.</li>',
+  atl_work: '<li>Een bureaustoel en een klein werktafeltje — genoeg om met een rustig uitzicht een paar e-mails te beantwoorden.</li>',
+  atl_light: '<li>Twee RGB-LED-lampen plus een LED-strip achter de tv, allemaal met afstandsbediening.</li><li>Een tv met een Android-speler: Netflix, HBO Max, Prime Video, Disney+ met uw eigen accounts — log uit vóór check-out.</li><li><strong>Goed om te weten:</strong> om alleen de lampkleur te wijzigen zonder de tv te beïnvloeden, zet u eerst de tv uit en richt u daarna de LED-afstandsbediening recht op de lamp.</li>',
+  atl_storage: '<li>Een kledingrek om uw spullen op te hangen.</li><li>Een ingelijste prent passend bij het thema van de kamer, stopcontacten met USB-A en USB-C, en een spiegel.</li>',
+  room_photos: 'Foto’s van de kamer',
+  wa_msg_contact: 'Hallo! Ik verblijf in Porto Peace Haven — kunt u me ergens mee helpen?',
+  porto_intro: 'Porto is geen stad die u van een lijstje afvinkt. Het beloont de slenteraars — zij die de smalle straat inslaan, die even op de trap gaan zitten, die bestellen wat ze niet kunnen uitspreken. Hier zijn de plekken waar we een vriend naartoe zouden sturen: een paar die iedereen kent, en een paar waar de meeste bezoekers straal voorbijlopen.',
+  porto_g1_title: 'Porto buiten de gebaande paden',
+  porto_g2_title: 'De klassiekers, op uw gemak',
+  porto_wonder_tag: '🌀 Anders',
+  porto_wonder_h: 'Wondersense — het museum van de vijf zintuigen',
+  porto_wonder_p: 'Een paar passen van Livraria Lello, vijf verdiepingen met ruimtes gebouwd om te proeven, te horen, aan te raken en te ruiken. Zestien ervaringen, geen twee hetzelfde — het soort uur waarin volwassenen vergeten op hun telefoon te kijken. Reserveer vooraf een tijdslot.',
+  porto_capela_tag: '🍷 Bijzonder',
+  porto_capela_h: 'Capela Incomum — wijn in een kapel',
+  porto_capela_p: 'Een kleine wijnbar in een voormalige kapel — het altaar staat er nog. Gedempt licht, een rustig glas rode Douro, en het vreemde, mooie gevoel van een toost onder een gewelfd plafond. Niet iets waar u per ongeluk binnenloopt.',
+  porto_virtudes_tag: '🌳 Zonsondergang',
+  porto_virtudes_h: 'Passeio das Virtudes — de zonsondergang van de locals',
+  porto_virtudes_p: 'Terwijl iedereen zich verdringt bij Jardim do Morro aan de overkant, komen de locals hier: een tuin die in terrassen langs de heuvel naar beneden tuimelt, met de grootste ginkgoboom van Portugal en een vrij uitzicht over de Douro. Neem iets te drinken mee en blijf voor de kleur van de lucht.',
+  porto_guindais_tag: '🌉 Uitzicht',
+  porto_guindais_h: 'Escadas dos Guindais — onder de brug',
+  porto_guindais_p: 'Een steile, smalle trap die langs de rots naar beneden duikt, vlak onder de Dom Luís I-brug. U heeft de brug op elke ansichtkaart gezien — hier staat u onder zijn ijzeren buik, dichtbij genoeg om hem te horen. Doe het rustig aan op de weg naar beneden.',
+  porto_almas_tag: '🔵 Azulejos',
+  porto_almas_h: 'Capela das Almas — een kapel van blauwe tegels',
+  porto_almas_p: 'Sta in de drukke Rua de Santa Catarina even stil en kijk omhoog: zestienduizend blauwe azulejos omhullen de hele buitenkant van deze kapel als een verhaal verteld op de muur. De meeste mensen lopen er onderweg naar de winkels langs. Doe dat niet.',
+  porto_foto_tag: '📷 Gratis',
+  porto_foto_h: 'Centro Português de Fotografia — de oude gevangenis',
+  porto_foto_p: 'Een fotografiemuseum gevestigd in een 19e-eeuwse gevangenis — u ziet nog de celdeuren en de ijzeren loopbruggen. Gratis toegang, zelden druk, en stilletjes een van de meest sfeervolle gebouwen van de stad.',
+  porto_lello_tag: '📚 Klassiek',
+  porto_lello_h: 'Livraria Lello — ga vroeg',
+  porto_lello_p: 'Ja, hij is beroemd, en ja, er is een rij. De moeite waard — maar koop het tijdslotticket online en ga precies bij opening of in het laatste uur, wanneer de uitgesneden trap bijna van u alleen is. De ticketprijs gaat van de prijs van een boek af.',
+  porto_morro_tag: '🌅 Niet te missen',
+  porto_morro_h: 'Steek de brug over op het bovendek',
+  porto_morro_p: 'Loop over het bovendek van de Dom Luís I-brug — de metro deelt het, maar er is plek, en het uitzicht doet u midden in uw stap stoppen. Aan de kant van Gaia is Jardim do Morro de zonsondergang van de ansichtkaart. Ga — ga alleen vroeg om een plekje te vinden.',
+  porto_rib_tag: '🏛️ Het hart',
+  porto_rib_h: 'Verdwaal in de Ribeira',
+  porto_rib_p: 'Het oudste deel van Porto, pal aan het water — scheve huizen, was tussen de ramen gespannen, steegjes die nergens en overal heen leiden. Toeristisch, ja. Nog steeds de ziel van de stad. Ga in de ochtend, voordat de boten vollopen.',
+  porto_gaia_tag: '🍷 Proeven',
+  porto_gaia_h: 'Steek over naar Gaia voor een portproeverij',
+  porto_gaia_p: 'De portwijnkelders staan op een rij langs de oever van Gaia, tien minuten lopen over de brug. Kies een van de kleinere huizen voor een ongehaaste proeverij — ze leggen het verschil uit tussen een tawny en een ruby, en dat vergeet u nooit meer.',
+  porto_cta_h: 'Een hoekje gevonden waar u van hield?',
+  porto_cta_p: 'Als Porto — en ons kleine plekje erin — deel werd van een mooie herinnering, helpt een review de volgende reiziger ook de weg hierheen te vinden.',
+  porto_cta_btn: 'Laat een review achter ⭐',
+  nav_bye: '🧳 Voordat u vertrekt', bye_title: 'Voordat u vertrekt',
+  bye_sub: 'Een kort lijstje, een klein verzoek, en een dankjewel.',
+  bye_checklist_h: 'Een klein checklijstje voor de kamer',
+  bye_checklist: '<li>Sluit de ramen — Porto-regen vindt zijn weg naar binnen via de oude raamkozijnen.</li><li>Doe alle lichten en de LED-lampen uit.</li><li>Wacht een paar seconden en controleer of het toilet is uitgespoeld.</li><li>Log uit bij Netflix, HBO Max, Prime Video en Disney+ op de tv — uw accounts, uw privacy.</li><li>Zet de ventilator, de tv en de mini-koelkast uit als u die heeft gebruikt.</li><li>Laat de sleutel achter zoals afgesproken.</li>',
+  bye_ask_h: 'Voordat u gaat',
+  bye_ask_p: 'Als we deel werden van een mooie herinnering aan uw reis, betekent uw review de wereld voor ons — en helpt het andere reizigers de weg te vinden naar dit hoekje van Porto.',
+  bye_review_btn: 'Laat een review achter ⭐',
+  bye_note_link: 'Of vertel het ons eerst privé — wat had beter gekund?',
+  common_photos: 'Onze gedeelde ruimtes',
+  checkin_late_desc: 'Stuur ons vooraf een bericht, dan sturen we u de toegangsinstructies.',
+  rule_condo_h: 'Gemeenschappelijke ruimtes van het gebouw',
+  rule_c1: 'We huren deze ruimte in een particulier woongebouw — behandel de lift, de hal en de gangen met extra zorg.',
+  rule_c2: 'Houd uw stem zacht in de gedeelde ruimtes van het gebouw, vooral vroeg in de ochtend en laat op de avond — achter die deuren wonen buren.',
+  rule_c3: 'Deze kleine attentheid is wat ons welkom houdt in het gebouw.',
+  nb_pharmacy_2: 'Apotheek (tot 20.00 uur)',
+  em_alt_note: 'Als we niet meteen opnemen, probeer dan de reservelijn:',
+  back_home: '← Start',
+  hub_review: 'Laat een review achter', hub_wifi: 'Wi-Fi', hub_checkin: 'Check-in / out',
+  hub_room: 'Mijn kamer', hub_kitchen: 'Keuken', hub_bathroom: 'Badkamer',
+  hub_rules: 'Huisregels', hub_porto: 'Verken Porto', hub_bye: 'Voordat u vertrekt', hub_help: 'Hulp',
+  see_more: 'Meer tonen', see_less: 'Minder tonen',
+  home_review_h: 'Geniet u van uw verblijf?',
+  home_review_p: 'Uw review betekent de wereld voor ons — en het kost maar een minuut.',
+  home_review_btn: 'Laat een review achter →',
+  home_review2_h: 'Nog één ding',
+  home_review2_p: 'Als we uw reis een beetje mooier hebben gemaakt, helpt een review de volgende reiziger ons te vinden. Dank u wel.',
+  entry_checkin_h: 'Check-in &amp; Check-out',
+  entry_checkin_p: 'Check-in vanaf 16:00 · Check-out vóór 11:00. Sleutels in externe kluisjes.',
+  entry_kitchen_h: 'Keukengids',
+  entry_kitchen_p: 'Alles wat u nodig heeft om veilig te koken en de gedeelde keuken te gebruiken.',
+  entry_bathroom_h: 'Badkamergids',
+  entry_bathroom_p: 'Hoe u de gedeelde badkamer, de föhn en de universele adapter gebruikt.',
+  entry_rules_h: 'Huisregels',
+  entry_rules_p: 'Rusttijden, niet roken, en het kleine respect dat we het gebouw verschuldigd zijn.',
+  entry_bye_h: 'Voordat u vertrekt',
+  entry_bye_p: 'Een klein checklijstje voor de kamer en een rustig moment om dank u te zeggen.',
+  see_all_porto: 'Bekijk alle 14 plekken →',
+  home_help_h: 'Hulp nodig?',
+  home_help_p: 'We zijn één tik verwijderd. Voor echte noodgevallen belt u 112.',
+  home_help_more: 'Alle noodinformatie →',
+  ppx_free: 'GRATIS', home_map_h: 'Ontdek Porto op de kaart',
+  av_which_room: 'In welke kamer verblijft u?',
+  co_notify_h: 'Laat ons weten dat u vertrekt',
+  co_notify_p: 'Een kort bericht zodat we weten dat de kamer klaar is om gereedgemaakt te worden — en zodat we u een goede terugreis kunnen wensen.',
+  co_notify_btn: '📩 Laat het weten via WhatsApp',
+  co_wa_msg: 'Hallo! Ik check nu uit van kamer {room}. Alles is in orde. Bedankt voor het verblijf 💛',
+  phase_q: 'Waar bent u in uw verblijf?',
+  phase_checkin: 'Net aangekomen', phase_mid: 'Midden in verblijf', phase_checkout: 'Aan het uitchecken',
+  welcome_h: 'Welkom bij Porto Peace Haven',
+  welcome_p: 'Een korte rondleiding langs wat u hier kunt doen:',
+  welcome_rules_h: 'Huisregels',
+  welcome_rules_p: 'Een leesbeurt van 30 seconden — houdt iedereen in het gebouw blij.',
+  welcome_porto_h: 'Ontdek Porto',
+  welcome_porto_p: 'Zorgvuldig gekozen plekken buiten de toeristenroute + klassiekers die uw tijd waard zijn.',
+  welcome_go: 'Begrepen — verken de gids →',
+  fab_review: 'Laat een review achter', fab_suggest: 'Stuur een suggestie',
+  fab_help: 'Dringende hulp via WhatsApp', fab_send: 'Verstuur',
+  fab_thanks: 'Begrepen — dank u wel.', fab_ph: 'Korte notitie over uw verblijf…',
+  review_proof: '⭐ {count} gasten gaven afgelopen maand 5 sterren',
+  place_tips_h: 'Goed om te weten',
+  place_go: 'Routebeschrijving vanaf Porto Peace Haven',
+  place_hours_always: 'Altijd open',
+  place_review_h: 'Geniet u van Porto?',
+  place_review_p: 'Als ons kleine gidsje uw dag mooier maakte, helpt een review de volgende reiziger ons ook te vinden.',
+  place_review_btn: 'Laat een review achter ⭐',
+  back_porto: '← Ontdek Porto',
+  porto_lello_intro: 'We zouden de trap kunnen beschrijven. We doen het niet — sommige dingen moet u zelf beklimmen.',
+  porto_lello_tips: '<li>Koop het tijdslotticket online; de rij voor de deur is bruut.</li><li>Ga precies bij opening of in het laatste uur voor bijna lege foto’s.</li><li>De ticketprijs gaat af van elk boek dat u koopt.</li>',
+  porto_wondersense_intro: 'Een museum dat u proeft, hoort en aanraakt. We verklappen geen enkele ruimte — u moet er echt heen.',
+  porto_wondersense_tips: '<li>Reserveer vooraf een tijdslot — toegang gebeurt in kleine groepjes met een vast tijdstip.</li><li>Reken minstens een uur; het beslaat vijf verdiepingen.</li><li>Een perfect plan voor een regenachtige middag.</li>',
+  porto_morro_intro: 'Iedereen zegt dat hier de mooiste zonsondergang van Porto is. Voor één keer heeft iedereen gelijk.',
+  porto_morro_tips: '<li>Steek over op het bovendek van de brug — het uitzicht doet u midden in uw stap stoppen.</li><li>Kom 30–40 min vóór zonsondergang voor een plekje op het gras.</li><li>Neem iets te drinken mee; er zijn kiosken in de buurt.</li>',
+  porto_gaia_intro: 'Portwijn rijpt al 300 jaar op deze rivieroever. Besteed een uur om te ontdekken waarom.',
+  porto_gaia_tips: '<li>Kies een kleiner huis voor een ongehaaste, persoonlijke proeverij.</li><li>Reserveer vooraf in de zomer — de beroemde kelders lopen vol.</li><li>Vraag het verschil tussen een tawny en een ruby; dat vergeet u nooit meer.</li>',
+  porto_capela_intro: 'Een wijnbar in een echte voormalige kapel. We zeggen alleen dit: bestel een glas en kijk omhoog.',
+  porto_capela_tips: '<li>Ga voor een rustig glas, niet voor een groot avondje uit — hij is klein en intiem.</li><li>Portugese wijnen per glas; vraag het personeel u te begeleiden.</li><li>Het best vroeg op de avond, voordat het vol loopt.</li>',
+  porto_virtudes_intro: 'De zonsondergang die de locals voor zichzelf houden. Nu kent u hem ook.',
+  porto_virtudes_tips: '<li>Neem een drankje en iets om op te zitten mee — het is een grazige, terrasvormige helling.</li><li>Kom ongeveer 30 minuten vóór zonsondergang voor het beste licht.</li><li>Rustiger dan Jardim do Morro aan de overkant.</li>',
+  porto_guindais_intro: 'Een trap, geen monument — maar hij reikt u de Dom Luís-brug aan als niets anders.',
+  porto_guindais_tips: '<li>Hij is steil — draag comfortabele schoenen en neem de tijd.</li><li>Combineer hem met een wandeling langs de Ribeira-kade beneden.</li><li>Er is een kabelbaan in de buurt als u liever niet terug omhoog klimt.</li>',
+  porto_almas_intro: 'Zestienduizend blauwe tegels, midden in de drukste winkelstraat. De meeste mensen missen ze. U niet.',
+  porto_almas_tips: '<li>Kijk omhoog — de hele buitenkant is het kunstwerk.</li><li>Ochtendlicht laat de blauwe tegels gloeien.</li><li>Hij staat in de Rua de Santa Catarina — combineer hem met een koffie in een klassiek café.</li>',
+  porto_foto_intro: 'Een fotografiemuseum in een 19e-eeuwse gevangenis. Ja, u kunt de oude cellen zien. Ja, het is gratis.',
+  porto_foto_tips: '<li>Gratis toegang — een van de best bestede uurtjes in Porto.</li><li>Het gebouw zelf is het halve bezoek; let op de celdeuren.</li><li>Zelden druk — een rustige keuze voor een hete of regenachtige middag.</li>',
+  porto_rib_intro: 'Toeristisch? Een beetje. De ziel van Porto? Volledig. Ga vroeg en laat uzelf verdwalen.',
+  porto_rib_tips: '<li>Ga in de ochtend, voor de drukte en de boottochten.</li><li>Dwaal door de kleine steegjes achter de kade — dat is de echte Ribeira.</li><li>Een mooi startpunt om de brug naar Gaia over te steken.</li>',
+  porto_g3_title: 'Waar te eten',
+  porto_conga_tag: '🥪 Goedkoop eten',
+  porto_conga_h: 'Conga — de legendarische bifana',
+  porto_conga_p: 'Een piepklein, onopgesmukt instituut sinds 1976. De bifana — langzaam gegaard varkensvlees in een zacht broodje — is een van de goedkoopste topmaaltijden in Porto.',
+  porto_conga_intro: 'Een varkensbroodje zo lekker dat het al bijna 50 jaar beroemd is. Bestel een bifana en een koud drankje — dat is het hele plan.',
+  porto_conga_tips: '<li>Verwacht geen decor — verwacht smaak.</li><li>Perfect voor een snelle, heel goedkope lunch.</li><li>Druk op piekuren, maar het gaat snel.</li>',
+  porto_capanegra_tag: '🍽️ Dichtbij & traditioneel',
+  porto_capanegra_h: 'Capa Negra II — dineren vlak bij uw deur',
+  porto_capanegra_p: 'Een betrouwbaar, druk lokaal restaurant op loopafstand van het appartement. Gegrild vlees, vis, en een serieuze francesinha.',
+  porto_capanegra_intro: 'Het dichtstbijzijnde echte Portugese diner bij uw deur — en ja, ze maken een serieuze francesinha.',
+  porto_capanegra_tips: '<li>De francesinha is enorm — overweeg te delen.</li><li>Druk in het weekend; ga wat eerder.</li><li>Een makkelijke wandeling vanaf het appartement.</li>',
+  porto_tapabento_tag: '🍷 Parel in het middensegment',
+  porto_tapabento_h: 'Tapabento — kleine plek, grote reputatie',
+  porto_tapabento_p: 'Moderne Portugese keuken en petiscos, met echte zorg bereid. Klein, warm en steevast uitstekend.',
+  porto_tapabento_intro: 'Pal achter station São Bento, een piepklein plekje dat locals dagen vooruit reserveren. Daar is een reden voor.',
+  porto_tapabento_tips: '<li>Reserveer vooraf — het is klein en heel populair.</li><li>Geweldig voor een bijzonder maar ontspannen diner.</li><li>Op een paar passen van station São Bento.</li>',
+  porto_antiqvvm_tag: '✨ Bijzondere gelegenheid',
+  porto_antiqvvm_h: 'Antiqvvm — een avond met twee Michelinsterren',
+  porto_antiqvvm_p: 'Verfijnde Portugese keuken in een romantisch 19e-eeuws huis met uitzicht op de Douro. Een echte gelegenheid.',
+  porto_antiqvvm_intro: 'Twee Michelinsterren, een 19e-eeuws huis, een uitzicht over de Douro. Voor de avond die u zich wilt herinneren.',
+  porto_antiqvvm_tips: '<li>Reserveer ruim van tevoren.</li><li>Het proefmenu is de manier.</li><li>Verzorgd-casual — het is een gelegenheid.</li>',
+  cat_solo: 'Solo', cat_couple: 'Samen', cat_family: 'Gezin', cat_group: 'Groep', cat_relax: 'Ontspannen',
+  meta_min: 'min',
+  checkout_cta_h: 'Aan het uitchecken?',
+  checkout_cta_p: 'Begin uw check-out — het kost maar een minuut',
+  map_pins_note: 'Tik op een speld om de plek te openen en de route te krijgen. De posities van de spelden zijn bij benadering.',
+  map_pdf_h: 'Officiële toeristische kaart (PDF)',
+  map_see_place: 'Bekijk details',
+  map_home_pin: 'Porto Peace Haven · uw verblijf',
+});
+
+/* ═══════════════════════════════════════════════════════════════
+   TRANSLATION AUDIT — task #12
+   Fills the FR / ES / DE / IT gaps the audit found: place pages,
+   restaurants and recently-added keys that were falling back to EN.
+═══════════════════════════════════════════════════════════════ */
+Object.assign(translations.fr, {
+  checkin_late_desc: 'Envoyez-nous un message à l\'avance et nous vous enverrons les instructions d\'entrée.',
+  rule_condo_h: 'Parties communes de l\'immeuble',
+  rule_c1: 'Nous louons cet espace dans un immeuble résidentiel privé — merci de traiter l\'ascenseur, le hall et les couloirs avec un soin particulier.',
+  rule_c2: 'Parlez doucement dans les espaces partagés de l\'immeuble, surtout tôt le matin et tard le soir — des voisins vivent derrière ces portes.',
+  rule_c3: 'C\'est cette petite attention qui nous garde les bienvenus dans l\'immeuble.',
+  nb_pharmacy_2: 'Pharmacie (jusqu\'à 20h)',
+  em_alt_note: 'Si nous ne répondons pas tout de suite, essayez la ligne de secours :',
+  back_porto: '← Découvrir Porto',
+  tr_bus_h: 'Bus & tramway',
+  k_eq3: '🗑️ Jetez les déchets dans les sacs poubelle fournis. Les sacs fermés vont à la collecte des déchets de l\'immeuble — écrivez-nous si vous voulez l\'emplacement exact.',
+  k_eq4: '♻️ Merci de trier les déchets — jaune pour le plastique et le métal, bleu pour le papier, vert pour le verre — dans les conteneurs de recyclage publics dans la rue.',
+  place_tips_h: 'Bon à savoir',
+  place_go: 'Itinéraire depuis Porto Peace Haven',
+  place_hours_always: 'Ouvert à tout moment',
+  place_review_h: 'Vous aimez Porto ?',
+  place_review_p: 'Si notre petit guide a rendu votre journée meilleure, un avis aide le prochain voyageur à nous trouver aussi.',
+  place_review_btn: 'Laisser un avis ⭐',
+  porto_g3_title: 'Où manger',
+  porto_lello_intro: 'Nous pourrions décrire l\'escalier. Nous ne le ferons pas — certaines choses, il faut les gravir soi-même.',
+  porto_lello_tips: '<li>Achetez le billet horodaté en ligne ; la file d\'attente sur place est rude.</li><li>Allez dès l\'ouverture ou à la dernière heure pour des photos presque vides.</li><li>Le prix du billet est déduit de tout livre acheté.</li>',
+  porto_wondersense_intro: 'Un musée qui se goûte, s\'écoute et se touche. Nous ne dévoilerons pas une seule salle — il faut vraiment y aller.',
+  porto_wondersense_tips: '<li>Réservez un créneau à l\'avance — l\'entrée se fait en petits groupes horodatés.</li><li>Comptez au moins une heure ; le musée s\'étend sur cinq étages.</li><li>Un plan parfait pour un après-midi pluvieux.</li>',
+  porto_morro_intro: 'Tout le monde dit que c\'est le plus beau coucher de soleil de Porto. Pour une fois, tout le monde a raison.',
+  porto_morro_tips: '<li>Traversez par le tablier supérieur du pont — la vue vous arrête net.</li><li>Arrivez 30 à 40 min avant le coucher du soleil pour une place sur l\'herbe.</li><li>Apportez de quoi boire ; il y a des kiosques à proximité.</li>',
+  porto_gaia_intro: 'Le porto vieillit sur cette rive depuis 300 ans. Passez une heure à découvrir pourquoi.',
+  porto_gaia_tips: '<li>Choisissez une maison plus petite pour une dégustation tranquille et personnelle.</li><li>Réservez à l\'avance en été — les caves célèbres se remplissent.</li><li>Demandez la différence entre un tawny et un ruby ; vous ne l\'oublierez jamais.</li>',
+  porto_capela_intro: 'Un bar à vin dans une ancienne chapelle, une vraie. Nous dirons juste ceci : commandez un verre et levez les yeux.',
+  porto_capela_tips: '<li>Venez pour un verre tranquille, pas pour une grande soirée — c\'est petit et intime.</li><li>Des vins portugais au verre ; demandez au personnel de vous guider.</li><li>Mieux vaut tôt dans la soirée, avant que ça se remplisse.</li>',
+  porto_virtudes_intro: 'Le coucher de soleil que les habitants gardent pour eux. Maintenant, vous le connaissez aussi.',
+  porto_virtudes_tips: '<li>Apportez une boisson et de quoi vous asseoir — c\'est une pente herbeuse en terrasses.</li><li>Arrivez environ 30 minutes avant le coucher du soleil pour la plus belle lumière.</li><li>Plus calme que le Jardim do Morro de l\'autre côté du fleuve.</li>',
+  porto_guindais_intro: 'Un escalier, pas un monument — mais il vous offre le pont Dom Luís comme nul autre.',
+  porto_guindais_tips: '<li>C\'est raide — portez des chaussures confortables et prenez votre temps.</li><li>Associez-le à une promenade le long des quais de la Ribeira en contrebas.</li><li>Il y a un funiculaire à proximité si vous préférez ne pas remonter à pied.</li>',
+  porto_almas_intro: 'Seize mille carreaux bleus, au milieu de la rue commerçante la plus animée. La plupart des gens passent à côté. Pas vous.',
+  porto_almas_tips: '<li>Levez les yeux — toute la façade est l\'œuvre d\'art.</li><li>La lumière du matin fait briller les azulejos bleus.</li><li>C\'est sur la Rua de Santa Catarina — associez la visite à un café dans un établissement classique.</li>',
+  porto_foto_intro: 'Un musée de la photographie dans une prison du XIXe siècle. Oui, on voit les anciennes cellules. Oui, c\'est gratuit.',
+  porto_foto_tips: '<li>Entrée gratuite — l\'une des meilleures heures de Porto pour le prix.</li><li>Le bâtiment lui-même fait la moitié de la visite ; cherchez les portes de cellules.</li><li>Rarement bondé — un choix tranquille pour un après-midi chaud ou pluvieux.</li>',
+  porto_rib_intro: 'Touristique ? Un peu. L\'âme de Porto ? Totalement. Allez-y tôt et laissez-vous perdre.',
+  porto_rib_tips: '<li>Allez-y le matin, avant la foule et les excursions en bateau.</li><li>Promenez-vous dans les ruelles derrière les quais — c\'est la vraie Ribeira.</li><li>Un excellent point de départ pour traverser le pont vers Gaia.</li>',
+  porto_conga_tag: '🥪 Manger pas cher',
+  porto_conga_h: 'Conga — la bifana légendaire',
+  porto_conga_p: 'Une institution minuscule et sans chichis depuis 1976. La bifana — du porc mijoté dans un pain moelleux — est l\'un des meilleurs repas bon marché de Porto.',
+  porto_conga_intro: 'Un sandwich au porc si bon qu\'il est célèbre depuis presque 50 ans. Commandez une bifana et une boisson fraîche — c\'est tout le programme.',
+  porto_conga_tips: '<li>N\'attendez pas de décor — attendez de la saveur.</li><li>Parfait pour un déjeuner rapide et très bon marché.</li><li>Bondé aux heures de pointe, mais ça avance vite.</li>',
+  porto_capanegra_tag: '🍽️ Proche et traditionnel',
+  porto_capanegra_h: 'Capa Negra II — dîner près de chez vous',
+  porto_capanegra_p: 'Un restaurant local fiable et animé, à quelques pas de l\'appartement. Viandes grillées, poisson, et une vraie francesinha.',
+  porto_capanegra_intro: 'Le dîner portugais authentique le plus proche de votre porte — et oui, ils font une vraie francesinha.',
+  porto_capanegra_tips: '<li>La francesinha est énorme — pensez à la partager.</li><li>Bondé le week-end ; allez-y un peu plus tôt.</li><li>Une promenade facile depuis l\'appartement.</li>',
+  porto_tapabento_tag: '🍷 Pépite milieu de gamme',
+  porto_tapabento_h: 'Tapabento — petit lieu, grande réputation',
+  porto_tapabento_p: 'Cuisine portugaise moderne et petiscos préparés avec un vrai soin. Petit, chaleureux et toujours excellent.',
+  porto_tapabento_intro: 'Juste derrière la gare de São Bento, un lieu minuscule que les habitants réservent des jours à l\'avance. Il y a une raison.',
+  porto_tapabento_tips: '<li>Réservez à l\'avance — c\'est petit et très prisé.</li><li>Idéal pour un dîner spécial mais détendu.</li><li>À quelques pas de la gare de São Bento.</li>',
+  porto_antiqvvm_tag: '✨ Occasion spéciale',
+  porto_antiqvvm_h: 'Antiqvvm — une soirée deux étoiles Michelin',
+  porto_antiqvvm_p: 'Cuisine portugaise gastronomique dans une romantique maison du XIXe siècle avec vue sur le Douro. Une véritable occasion.',
+  porto_antiqvvm_intro: 'Deux étoiles Michelin, une maison du XIXe siècle, une vue sur le Douro. Pour la soirée dont vous voulez vous souvenir.',
+  porto_antiqvvm_tips: '<li>Réservez bien à l\'avance.</li><li>Le menu dégustation est la voie à suivre.</li><li>Tenue élégante décontractée — c\'est une occasion.</li>',
+});
+
+Object.assign(translations.es, {
+  checkin_late_desc: 'Envíenos un mensaje con antelación y le enviaremos las instrucciones de entrada.',
+  rule_condo_h: 'Zonas comunes del edificio',
+  rule_c1: 'Alquilamos este espacio dentro de un edificio residencial privado — trate el ascensor, el portal y los pasillos con especial cuidado.',
+  rule_c2: 'Hable en voz baja en las zonas comunes del edificio, sobre todo a primera hora de la mañana y por la noche — detrás de esas puertas viven vecinos.',
+  rule_c3: 'Esta pequeña consideración es lo que nos mantiene bienvenidos en el edificio.',
+  nb_pharmacy_2: 'Farmacia (hasta las 20h)',
+  em_alt_note: 'Si no respondemos enseguida, pruebe la línea alternativa:',
+  back_porto: '← Descubrir Oporto',
+  k_eq3: '🗑️ Tire la basura en las bolsas proporcionadas. Las bolsas cerradas van a la recogida de residuos del edificio — escríbanos si quiere saber el lugar exacto.',
+  k_eq4: '♻️ Separe el reciclaje — amarillo para plástico y metal, azul para papel, verde para vidrio — usando los contenedores públicos de la calle.',
+  place_tips_h: 'Bueno saber',
+  place_go: 'Cómo llegar desde Porto Peace Haven',
+  place_hours_always: 'Abierto a cualquier hora',
+  place_review_h: '¿Disfrutando de Oporto?',
+  place_review_p: 'Si nuestra pequeña guía mejoró su día, una reseña ayuda al próximo viajero a encontrarnos también.',
+  place_review_btn: 'Dejar una reseña ⭐',
+  porto_g3_title: 'Dónde comer',
+  porto_lello_intro: 'Podríamos describir la escalera. No lo haremos — algunas cosas hay que subirlas uno mismo.',
+  porto_lello_tips: '<li>Compre la entrada con hora online; la cola en la puerta es brutal.</li><li>Vaya justo a la apertura o en la última hora para fotos casi vacías.</li><li>El precio de la entrada se descuenta de cualquier libro que compre.</li>',
+  porto_wondersense_intro: 'Un museo que se saborea, se escucha y se toca. No revelaremos ni una sala — de verdad hay que ir.',
+  porto_wondersense_tips: '<li>Reserve una franja horaria con antelación — la entrada es en grupos pequeños con hora asignada.</li><li>Calcule al menos una hora; abarca cinco plantas.</li><li>Un plan perfecto para una tarde de lluvia.</li>',
+  porto_morro_intro: 'Todos dicen que tiene la mejor puesta de sol de Oporto. Por una vez, todos tienen razón.',
+  porto_morro_tips: '<li>Cruce por el tablero superior del puente — las vistas le dejan sin palabras.</li><li>Llegue 30–40 min antes del atardecer para un sitio en la hierba.</li><li>Lleve algo de beber; hay quioscos cerca.</li>',
+  porto_gaia_intro: 'El vino de Oporto envejece en esta orilla desde hace 300 años. Dedique una hora a descubrir por qué.',
+  porto_gaia_tips: '<li>Elija una bodega más pequeña para una cata tranquila y personal.</li><li>Reserve con antelación en verano — las bodegas famosas se llenan.</li><li>Pregunte la diferencia entre un tawny y un ruby; no la olvidará nunca.</li>',
+  porto_capela_intro: 'Un bar de vinos dentro de una antigua capilla de verdad. Solo diremos esto: pida una copa y mire hacia arriba.',
+  porto_capela_tips: '<li>Vaya a tomar una copa tranquila, no a una gran noche — es pequeño e íntimo.</li><li>Vinos portugueses por copa; pida al personal que le oriente.</li><li>Mejor temprano por la noche, antes de que se llene.</li>',
+  porto_virtudes_intro: 'La puesta de sol que los locales se guardan para ellos. Ahora usted también la conoce.',
+  porto_virtudes_tips: '<li>Lleve una bebida y algo para sentarse — es una ladera de césped en terrazas.</li><li>Llegue unos 30 minutos antes del atardecer para la mejor luz.</li><li>Más tranquilo que el Jardim do Morro al otro lado del río.</li>',
+  porto_guindais_intro: 'Una escalera, no un monumento — pero le entrega el puente Dom Luís como ninguna otra cosa.',
+  porto_guindais_tips: '<li>Es empinada — lleve calzado cómodo y vaya con calma.</li><li>Combínela con un paseo por el muelle de la Ribeira de abajo.</li><li>Hay un funicular cerca si prefiere no subir a pie.</li>',
+  porto_almas_intro: 'Dieciséis mil azulejos azules, en mitad de la calle comercial más concurrida. La mayoría pasa de largo. Usted no.',
+  porto_almas_tips: '<li>Mire hacia arriba — toda la fachada es la obra de arte.</li><li>La luz de la mañana hace brillar los azulejos azules.</li><li>Está en la Rua de Santa Catarina — combínela con un café en un local clásico.</li>',
+  porto_foto_intro: 'Un museo de fotografía dentro de una cárcel del siglo XIX. Sí, se ven las antiguas celdas. Sí, es gratis.',
+  porto_foto_tips: '<li>Entrada gratuita — una de las mejores horas de Oporto por su precio.</li><li>El edificio en sí es media visita; busque las puertas de las celdas.</li><li>Rara vez concurrido — una opción tranquila para una tarde calurosa o lluviosa.</li>',
+  porto_rib_intro: '¿Turístico? Un poco. ¿El alma de Oporto? Por completo. Vaya temprano y déjese perder.',
+  porto_rib_tips: '<li>Vaya por la mañana, antes de las multitudes y los tours en barco.</li><li>Piérdase por los callejones detrás del muelle — esa es la Ribeira de verdad.</li><li>Un gran punto de partida para cruzar el puente hacia Gaia.</li>',
+  porto_conga_tag: '🥪 Comer barato',
+  porto_conga_h: 'Conga — la bifana legendaria',
+  porto_conga_p: 'Una institución diminuta y sin lujos desde 1976. La bifana — cerdo guisado en un pan blando — es una de las mejores comidas baratas de Oporto.',
+  porto_conga_intro: 'Un bocadillo de cerdo tan bueno que lleva casi 50 años siendo famoso. Pida una bifana y una bebida fría — ese es todo el plan.',
+  porto_conga_tips: '<li>No espere decoración — espere sabor.</li><li>Perfecto para un almuerzo rápido y muy barato.</li><li>Lleno en horas punta, pero va rápido.</li>',
+  porto_capanegra_tag: '🍽️ Cerca y tradicional',
+  porto_capanegra_h: 'Capa Negra II — cenar cerca de casa',
+  porto_capanegra_p: 'Un restaurante local fiable y concurrido, a pocos pasos del apartamento. Carnes a la brasa, pescado y una francesinha en condiciones.',
+  porto_capanegra_intro: 'La cena portuguesa de verdad más cercana a su puerta — y sí, hacen una francesinha en condiciones.',
+  porto_capanegra_tips: '<li>La francesinha es enorme — considere compartirla.</li><li>Lleno los fines de semana; vaya algo antes.</li><li>Un paseo fácil desde el apartamento.</li>',
+  porto_tapabento_tag: '🍷 Joya de gama media',
+  porto_tapabento_h: 'Tapabento — sitio pequeño, gran reputación',
+  porto_tapabento_p: 'Cocina portuguesa moderna y petiscos hechos con verdadero cuidado. Pequeño, acogedor y siempre excelente.',
+  porto_tapabento_intro: 'Justo detrás de la estación de São Bento, un sitio diminuto que los locales reservan con días de antelación. Hay una razón.',
+  porto_tapabento_tips: '<li>Reserve con antelación — es pequeño y muy solicitado.</li><li>Ideal para una cena especial pero relajada.</li><li>A pocos pasos de la estación de São Bento.</li>',
+  porto_antiqvvm_tag: '✨ Ocasión especial',
+  porto_antiqvvm_h: 'Antiqvvm — una noche de dos estrellas Michelin',
+  porto_antiqvvm_p: 'Alta cocina portuguesa en una romántica casa del siglo XIX con vistas al Duero. Una verdadera ocasión.',
+  porto_antiqvvm_intro: 'Dos estrellas Michelin, una casa del siglo XIX, una vista sobre el Duero. Para la noche que quiere recordar.',
+  porto_antiqvvm_tips: '<li>Reserve con bastante antelación.</li><li>El menú degustación es el camino.</li><li>Elegante informal — es una ocasión.</li>',
+});
+
+Object.assign(translations.de, {
+  checkin_late_desc: 'Schreiben Sie uns vorab eine Nachricht, dann senden wir Ihnen die Zugangsanweisungen.',
+  rule_condo_h: 'Gemeinschaftsbereiche des Gebäudes',
+  rule_c1: 'Wir mieten diesen Raum in einem privaten Wohngebäude — bitte behandeln Sie den Aufzug, den Flur und die Gänge mit besonderer Sorgfalt.',
+  rule_c2: 'Sprechen Sie in den Gemeinschaftsbereichen leise, besonders früh am Morgen und spät am Abend — hinter diesen Türen wohnen Nachbarn.',
+  rule_c3: 'Diese kleine Rücksichtnahme sorgt dafür, dass wir im Gebäude willkommen bleiben.',
+  nb_pharmacy_2: 'Apotheke (bis 20 Uhr)',
+  em_alt_note: 'Wenn wir nicht sofort antworten, versuchen Sie die Ersatznummer:',
+  back_porto: '← Porto entdecken',
+  feat_tv_h: 'TV & Android-Dongle',
+  nav_transport: 'Verkehrsmittel',
+  nb_transport: 'Verkehrsmittel',
+  k_eq3: '🗑️ Entsorgen Sie Abfall in den bereitgestellten Müllbeuteln. Verschlossene Beutel kommen zur Abfallsammlung des Gebäudes — schreiben Sie uns, wenn Sie den genauen Ort wissen möchten.',
+  k_eq4: '♻️ Bitte trennen Sie den Müll — gelb für Plastik und Metall, blau für Papier, grün für Glas — über die öffentlichen Recyclingbehälter auf der Straße.',
+  place_tips_h: 'Gut zu wissen',
+  place_go: 'Route ab Porto Peace Haven',
+  place_hours_always: 'Jederzeit geöffnet',
+  place_review_h: 'Gefällt Ihnen Porto?',
+  place_review_p: 'Wenn unser kleiner Guide Ihren Tag schöner gemacht hat, hilft eine Bewertung dem nächsten Reisenden, uns ebenfalls zu finden.',
+  place_review_btn: 'Bewertung abgeben ⭐',
+  porto_g3_title: 'Wo man isst',
+  porto_lello_intro: 'Wir könnten die Treppe beschreiben. Wir tun es nicht — manche Dinge muss man selbst erklimmen.',
+  porto_lello_tips: '<li>Kaufen Sie das Zeitfenster-Ticket online; die Schlange vor der Tür ist brutal.</li><li>Gehen Sie direkt zur Öffnung oder in der letzten Stunde für fast leere Fotos.</li><li>Der Ticketpreis wird von jedem gekauften Buch abgezogen.</li>',
+  porto_wondersense_intro: 'Ein Museum, das man schmeckt, hört und berührt. Wir verraten keinen einzigen Raum — Sie müssen wirklich hin.',
+  porto_wondersense_tips: '<li>Buchen Sie vorab ein Zeitfenster — der Einlass erfolgt in kleinen Gruppen zu festen Zeiten.</li><li>Planen Sie mindestens eine Stunde ein; es erstreckt sich über fünf Etagen.</li><li>Ein perfekter Plan für einen regnerischen Nachmittag.</li>',
+  porto_morro_intro: 'Alle sagen, hier sei der schönste Sonnenuntergang Portos. Diesmal haben alle recht.',
+  porto_morro_tips: '<li>Überqueren Sie die obere Ebene der Brücke — die Aussicht lässt Sie mitten im Schritt innehalten.</li><li>Kommen Sie 30–40 Min. vor Sonnenuntergang für einen Platz auf der Wiese.</li><li>Bringen Sie etwas zu trinken mit; es gibt Kioske in der Nähe.</li>',
+  porto_gaia_intro: 'Portwein reift seit 300 Jahren an diesem Flussufer. Verbringen Sie eine Stunde damit, herauszufinden, warum.',
+  porto_gaia_tips: '<li>Wählen Sie ein kleineres Haus für eine entspannte, persönliche Verkostung.</li><li>Buchen Sie im Sommer vorab — die berühmten Keller füllen sich.</li><li>Fragen Sie nach dem Unterschied zwischen einem Tawny und einem Ruby; Sie werden ihn nie vergessen.</li>',
+  porto_capela_intro: 'Eine Weinbar in einer echten ehemaligen Kapelle. Wir sagen nur dies: Bestellen Sie ein Glas und schauen Sie nach oben.',
+  porto_capela_tips: '<li>Kommen Sie für ein ruhiges Glas, nicht für einen großen Abend — es ist klein und intim.</li><li>Portugiesische Weine glasweise; lassen Sie sich vom Personal beraten.</li><li>Am besten früh am Abend, bevor es voll wird.</li>',
+  porto_virtudes_intro: 'Der Sonnenuntergang, den die Einheimischen für sich behalten. Jetzt kennen Sie ihn auch.',
+  porto_virtudes_tips: '<li>Bringen Sie ein Getränk und etwas zum Sitzen mit — es ist ein grasbewachsener, terrassierter Hang.</li><li>Kommen Sie etwa 30 Minuten vor Sonnenuntergang für das beste Licht.</li><li>Ruhiger als der Jardim do Morro auf der anderen Flussseite.</li>',
+  porto_guindais_intro: 'Eine Treppe, kein Monument — aber sie reicht Ihnen die Dom-Luís-Brücke wie nichts anderes.',
+  porto_guindais_tips: '<li>Sie ist steil — tragen Sie bequeme Schuhe und nehmen Sie sich Zeit.</li><li>Verbinden Sie sie mit einem Spaziergang entlang der Ribeira-Promenade darunter.</li><li>In der Nähe gibt es eine Standseilbahn, falls Sie nicht zu Fuß zurück hochsteigen möchten.</li>',
+  porto_almas_intro: 'Sechzehntausend blaue Fliesen, mitten in der belebtesten Einkaufsstraße. Die meisten gehen vorbei. Sie nicht.',
+  porto_almas_tips: '<li>Schauen Sie nach oben — die gesamte Fassade ist das Kunstwerk.</li><li>Das Morgenlicht lässt die blauen Azulejos leuchten.</li><li>Sie liegt an der Rua de Santa Catarina — verbinden Sie sie mit einem Kaffee in einem klassischen Café.</li>',
+  porto_foto_intro: 'Ein Fotografiemuseum in einem Gefängnis aus dem 19. Jahrhundert. Ja, man sieht die alten Zellen. Ja, es ist kostenlos.',
+  porto_foto_tips: '<li>Kostenloser Eintritt — eine der besten Stunden in Porto für das Geld.</li><li>Das Gebäude selbst ist der halbe Besuch; achten Sie auf die Zellentüren.</li><li>Selten überfüllt — eine ruhige Wahl für einen heißen oder regnerischen Nachmittag.</li>',
+  porto_rib_intro: 'Touristisch? Ein wenig. Die Seele Portos? Vollkommen. Gehen Sie früh und lassen Sie sich treiben.',
+  porto_rib_tips: '<li>Gehen Sie morgens, vor den Menschenmengen und den Bootstouren.</li><li>Schlendern Sie durch die kleinen Gassen hinter der Promenade — das ist die echte Ribeira.</li><li>Ein guter Ausgangspunkt, um die Brücke nach Gaia zu überqueren.</li>',
+  porto_conga_tag: '🥪 Günstig essen',
+  porto_conga_h: 'Conga — die legendäre Bifana',
+  porto_conga_p: 'Eine winzige, schnörkellose Institution seit 1976. Die Bifana — langsam geschmortes Schweinefleisch in einem weichen Brötchen — ist eine der günstigsten Top-Mahlzeiten in Porto.',
+  porto_conga_intro: 'Ein Schweinefleisch-Sandwich, so gut, dass es seit fast 50 Jahren berühmt ist. Bestellen Sie eine Bifana und ein kaltes Getränk — das ist der ganze Plan.',
+  porto_conga_tips: '<li>Erwarten Sie kein Dekor — erwarten Sie Geschmack.</li><li>Perfekt für ein schnelles, sehr günstiges Mittagessen.</li><li>Zu Stoßzeiten voll, aber es geht schnell.</li>',
+  porto_capanegra_tag: '🍽️ Nah & traditionell',
+  porto_capanegra_h: 'Capa Negra II — Abendessen direkt um die Ecke',
+  porto_capanegra_p: 'Ein zuverlässiges, gut besuchtes lokales Restaurant nur wenige Schritte von der Wohnung entfernt. Gegrilltes Fleisch, Fisch und eine echte Francesinha.',
+  porto_capanegra_intro: 'Das nächste richtige portugiesische Abendessen vor Ihrer Tür — und ja, sie machen eine echte Francesinha.',
+  porto_capanegra_tips: '<li>Die Francesinha ist riesig — überlegen Sie, sie zu teilen.</li><li>Am Wochenende voll; gehen Sie etwas früher.</li><li>Ein einfacher Spaziergang von der Wohnung.</li>',
+  porto_tapabento_tag: '🍷 Mittelklasse-Juwel',
+  porto_tapabento_h: 'Tapabento — kleiner Ort, großer Ruf',
+  porto_tapabento_p: 'Moderne portugiesische Küche und Petiscos, mit echter Sorgfalt zubereitet. Klein, warm und durchweg ausgezeichnet.',
+  porto_tapabento_intro: 'Direkt hinter dem Bahnhof São Bento, ein winziger Ort, den Einheimische Tage im Voraus reservieren. Es gibt einen Grund.',
+  porto_tapabento_tips: '<li>Reservieren Sie vorab — es ist klein und sehr beliebt.</li><li>Großartig für ein besonderes, aber entspanntes Abendessen.</li><li>Wenige Schritte vom Bahnhof São Bento.</li>',
+  porto_antiqvvm_tag: '✨ Besonderer Anlass',
+  porto_antiqvvm_h: 'Antiqvvm — ein Abend mit zwei Michelin-Sternen',
+  porto_antiqvvm_p: 'Gehobene portugiesische Küche in einem romantischen Haus aus dem 19. Jahrhundert mit Blick auf den Douro. Ein echter Anlass.',
+  porto_antiqvvm_intro: 'Zwei Michelin-Sterne, ein Haus aus dem 19. Jahrhundert, ein Blick über den Douro. Für den Abend, an den Sie sich erinnern wollen.',
+  porto_antiqvvm_tips: '<li>Reservieren Sie weit im Voraus.</li><li>Das Degustationsmenü ist der richtige Weg.</li><li>Smart-casual — es ist ein Anlass.</li>',
+});
+
+Object.assign(translations.it, {
+  checkin_late_desc: 'Inviateci un messaggio in anticipo e vi invieremo le istruzioni per l\'ingresso.',
+  rule_condo_h: 'Aree comuni dell\'edificio',
+  rule_c1: 'Affittiamo questo spazio in un edificio residenziale privato — vi preghiamo di trattare l\'ascensore, l\'ingresso e i corridoi con particolare cura.',
+  rule_c2: 'Parlate a voce bassa nelle aree comuni dell\'edificio, soprattutto la mattina presto e la sera tardi — dietro quelle porte vivono dei vicini.',
+  rule_c3: 'È questa piccola attenzione che ci mantiene benvenuti nell\'edificio.',
+  nb_pharmacy_2: 'Farmacia (fino alle 20)',
+  em_alt_note: 'Se non rispondiamo subito, provate la linea di riserva:',
+  back_porto: '← Scopri Porto',
+  tr_bus_h: 'Autobus & tram',
+  k_eq3: '🗑️ Gettate i rifiuti negli appositi sacchi forniti. I sacchi chiusi vanno alla raccolta rifiuti dell\'edificio — scriveteci se volete sapere il punto esatto.',
+  k_eq4: '♻️ Differenziate i rifiuti — giallo per plastica e metallo, blu per la carta, verde per il vetro — usando i contenitori pubblici per strada.',
+  place_tips_h: 'Buono a sapersi',
+  place_go: 'Indicazioni da Porto Peace Haven',
+  place_hours_always: 'Aperto a qualsiasi ora',
+  place_review_h: 'Vi piace Porto?',
+  place_review_p: 'Se la nostra piccola guida ha reso migliore la vostra giornata, una recensione aiuta il prossimo viaggiatore a trovarci.',
+  place_review_btn: 'Lascia una recensione ⭐',
+  porto_g3_title: 'Dove mangiare',
+  porto_lello_intro: 'Potremmo descrivere la scala. Non lo faremo — certe cose bisogna salirle da soli.',
+  porto_lello_tips: '<li>Acquistate il biglietto con orario online; la fila all\'ingresso è brutale.</li><li>Andate all\'apertura o nell\'ultima ora per foto quasi vuote.</li><li>Il prezzo del biglietto viene scontato da qualsiasi libro acquistato.</li>',
+  porto_wondersense_intro: 'Un museo che si assapora, si ascolta e si tocca. Non sveleremo una sola sala — bisogna davvero andarci.',
+  porto_wondersense_tips: '<li>Prenotate una fascia oraria in anticipo — l\'ingresso avviene in piccoli gruppi a orari fissi.</li><li>Calcolate almeno un\'ora; si sviluppa su cinque piani.</li><li>Un piano perfetto per un pomeriggio di pioggia.</li>',
+  porto_morro_intro: 'Tutti dicono che ha il tramonto più bello di Porto. Per una volta, hanno tutti ragione.',
+  porto_morro_tips: '<li>Attraversate sul ponte superiore — la vista vi ferma a metà passo.</li><li>Arrivate 30–40 min prima del tramonto per un posto sull\'erba.</li><li>Portate qualcosa da bere; ci sono chioschi nelle vicinanze.</li>',
+  porto_gaia_intro: 'Il vino Porto invecchia su questa riva da 300 anni. Dedicate un\'ora a scoprire perché.',
+  porto_gaia_tips: '<li>Scegliete una cantina più piccola per una degustazione tranquilla e personale.</li><li>Prenotate in anticipo d\'estate — le cantine famose si riempiono.</li><li>Chiedete la differenza tra un tawny e un ruby; non la dimenticherete mai.</li>',
+  porto_capela_intro: 'Un wine bar dentro una vera ex cappella. Diremo solo questo: ordinate un bicchiere e guardate in alto.',
+  porto_capela_tips: '<li>Andate per un bicchiere tranquillo, non per una grande serata — è piccolo e intimo.</li><li>Vini portoghesi al bicchiere; fatevi guidare dal personale.</li><li>Meglio presto la sera, prima che si riempia.</li>',
+  porto_virtudes_intro: 'Il tramonto che i locali tengono per sé. Ora lo conoscete anche voi.',
+  porto_virtudes_tips: '<li>Portate qualcosa da bere e su cui sedervi — è un pendio erboso a terrazze.</li><li>Arrivate circa 30 minuti prima del tramonto per la luce migliore.</li><li>Più tranquillo del Jardim do Morro dall\'altra parte del fiume.</li>',
+  porto_guindais_intro: 'Una scalinata, non un monumento — ma vi consegna il ponte Dom Luís come nient\'altro.',
+  porto_guindais_tips: '<li>È ripida — indossate scarpe comode e prendetevi il vostro tempo.</li><li>Abbinatela a una passeggiata lungo il lungofiume della Ribeira più in basso.</li><li>C\'è una funicolare nelle vicinanze se preferite non risalire a piedi.</li>',
+  porto_almas_intro: 'Sedicimila piastrelle azzurre, nel mezzo della via dello shopping più affollata. La maggior parte le manca. Voi no.',
+  porto_almas_tips: '<li>Guardate in alto — tutta la facciata è l\'opera d\'arte.</li><li>La luce del mattino fa risplendere gli azulejos azzurri.</li><li>È in Rua de Santa Catarina — abbinatela a un caffè in un locale classico.</li>',
+  porto_foto_intro: 'Un museo della fotografia dentro una prigione dell\'Ottocento. Sì, si vedono le vecchie celle. Sì, è gratis.',
+  porto_foto_tips: '<li>Ingresso gratuito — una delle ore più convenienti di Porto.</li><li>L\'edificio stesso è metà della visita; cercate le porte delle celle.</li><li>Raramente affollato — una scelta tranquilla per un pomeriggio caldo o piovoso.</li>',
+  porto_rib_intro: 'Turistico? Un po\'. L\'anima di Porto? Completamente. Andate presto e lasciatevi perdere.',
+  porto_rib_tips: '<li>Andate la mattina, prima della folla e dei tour in barca.</li><li>Perdetevi nei vicoli dietro il lungofiume — quella è la vera Ribeira.</li><li>Un ottimo punto di partenza per attraversare il ponte verso Gaia.</li>',
+  porto_conga_tag: '🥪 Mangiare economico',
+  porto_conga_h: 'Conga — la bifana leggendaria',
+  porto_conga_p: 'Un\'istituzione minuscola e senza fronzoli dal 1976. La bifana — maiale stufato in un panino morbido — è uno dei migliori pasti economici di Porto.',
+  porto_conga_intro: 'Un panino al maiale così buono da essere famoso da quasi 50 anni. Ordinate una bifana e una bevanda fresca — è tutto qui il piano.',
+  porto_conga_tips: '<li>Non aspettatevi arredamento — aspettatevi sapore.</li><li>Perfetto per un pranzo veloce e molto economico.</li><li>Affollato nelle ore di punta, ma scorre veloce.</li>',
+  porto_capanegra_tag: '🍽️ Vicino e tradizionale',
+  porto_capanegra_h: 'Capa Negra II — cena vicino a casa',
+  porto_capanegra_p: 'Un ristorante locale affidabile e frequentato, a pochi passi dall\'appartamento. Carni alla griglia, pesce e una vera francesinha.',
+  porto_capanegra_intro: 'La cena portoghese vera più vicina alla vostra porta — e sì, fanno una francesinha come si deve.',
+  porto_capanegra_tips: '<li>La francesinha è enorme — valutate di condividerla.</li><li>Affollato nei weekend; andate un po\' prima.</li><li>Una passeggiata facile dall\'appartamento.</li>',
+  porto_tapabento_tag: '🍷 Gioiello di fascia media',
+  porto_tapabento_h: 'Tapabento — posto piccolo, grande reputazione',
+  porto_tapabento_p: 'Cucina portoghese moderna e petiscos preparati con vera cura. Piccolo, accogliente e sempre eccellente.',
+  porto_tapabento_intro: 'Proprio dietro la stazione di São Bento, un posto minuscolo che i locali prenotano con giorni di anticipo. C\'è un motivo.',
+  porto_tapabento_tips: '<li>Prenotate in anticipo — è piccolo e molto richiesto.</li><li>Ottimo per una cena speciale ma rilassata.</li><li>A pochi passi dalla stazione di São Bento.</li>',
+  porto_antiqvvm_tag: '✨ Occasione speciale',
+  porto_antiqvvm_h: 'Antiqvvm — una serata con due stelle Michelin',
+  porto_antiqvvm_p: 'Alta cucina portoghese in una romantica casa dell\'Ottocento con vista sul Douro. Una vera occasione.',
+  porto_antiqvvm_intro: 'Due stelle Michelin, una casa dell\'Ottocento, una vista sul Douro. Per la serata che volete ricordare.',
+  porto_antiqvvm_tips: '<li>Prenotate con largo anticipo.</li><li>Il menu degustazione è la scelta giusta.</li><li>Elegante-informale — è un\'occasione.</li>',
+});

@@ -26,6 +26,12 @@
   ═══════════════════════════════════════════════════ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
+  <!-- ═══════════════════════════════════════════════════
+       Leaflet — interactive map (free, no API key · OpenStreetMap)
+  ═══════════════════════════════════════════════════ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 </head>
@@ -73,6 +79,7 @@
             <button class="lang-option" data-lang="es" data-flag="🇪🇸" role="menuitem">🇪🇸 Español</button>
             <button class="lang-option" data-lang="de" data-flag="🇩🇪" role="menuitem">🇩🇪 Deutsch</button>
             <button class="lang-option" data-lang="it" data-flag="🇮🇹" role="menuitem">🇮🇹 Italiano</button>
+            <button class="lang-option" data-lang="nl" data-flag="🇳🇱" role="menuitem">🇳🇱 Nederlands</button>
           </div>
         </div>
         <!-- Dark Mode Toggle -->
@@ -179,6 +186,7 @@
           <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
           <p data-i18n="home_review_p">Your review means the world to us — and it only takes a minute.</p>
           <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
+          <p class="review-proof review-proof--light" data-review-proof></p>
         </a>
 
         <!-- Wi-Fi (full info on home — quick essential) -->
@@ -276,6 +284,16 @@
           </div>
         </div>
 
+        <!-- Quick check-out CTA — leads straight to the check-out funnel -->
+        <a href="#checkout" class="checkout-cta">
+          <span class="checkout-cta-ico" aria-hidden="true">🧳</span>
+          <span class="checkout-cta-text">
+            <strong data-i18n="checkout_cta_h">Checking out?</strong>
+            <span data-i18n="checkout_cta_p">Start your check-out — it only takes a minute</span>
+          </span>
+          <span class="checkout-cta-arrow" aria-hidden="true">→</span>
+        </a>
+
         <!-- Check-in & Check-out entry -->
         <a href="#checkin" class="entry-card">
           <div class="entry-icon" aria-hidden="true">🔑</div>
@@ -323,7 +341,7 @@
           <div class="home-porto-grid">
 
             <!-- 1. Lello — the well-known classic -->
-            <div class="porto-card">
+            <div class="porto-card" data-place="lello">
               <div class="porto-img">
                 <img src="assets/fotos/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
               </div>
@@ -336,7 +354,7 @@
             </div>
 
             <!-- 2. Wondersense — the different one -->
-            <div class="porto-card">
+            <div class="porto-card" data-place="wondersense">
               <div class="porto-img">
                 <img src="assets/fotos/porto-wondersense.jpg" alt="Wondersense museum Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
               </div>
@@ -349,7 +367,7 @@
             </div>
 
             <!-- 3. Ponte + Morro — the must-see sunset (free) -->
-            <div class="porto-card">
+            <div class="porto-card" data-place="morro">
               <div class="porto-img">
                 <img src="assets/fotos/porto-morro.jpg" alt="Ponte Dom Luís I and Jardim do Morro Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
               </div>
@@ -362,7 +380,7 @@
             </div>
 
             <!-- 4. Caves de Vinho do Porto — defining Porto experience -->
-            <div class="porto-card">
+            <div class="porto-card" data-place="gaia">
               <div class="porto-img">
                 <img src="assets/fotos/porto-gaia.jpg" alt="Port wine cellars Vila Nova de Gaia" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
               </div>
@@ -378,8 +396,8 @@
           <a href="#porto" class="ver-mais-btn" data-i18n="see_all_porto">See all 10 places →</a>
         </div>
 
-        <!-- Porto city map preview — taps to open the full PDF -->
-        <a href="assets/maps/mapa_porto.pdf" target="_blank" rel="noopener" class="home-map">
+        <!-- Porto city map preview — opens the interactive map screen -->
+        <a href="#mapa" class="home-map">
           <div class="home-map-img">
             <img src="assets/fotos/mapa-preview.jpg" alt="Porto tourist map preview">
             <div class="home-map-overlay" data-i18n="map_open">Open Map</div>
@@ -406,6 +424,7 @@
           <h3 data-i18n="home_review2_h">One last thing</h3>
           <p data-i18n="home_review2_p">If we made your trip a little better, a review helps the next traveller find us. Thank you.</p>
           <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
+          <p class="review-proof review-proof--light" data-review-proof></p>
         </a>
 
         <!-- Help / Emergency at the bottom — important -->
@@ -707,7 +726,15 @@
           </div>
         </div>
 
-
+        <!-- Quick check-out CTA — same funnel as the pop-up's check-out button -->
+        <a href="#checkout" class="checkout-cta checkout-cta-screen">
+          <span class="checkout-cta-ico" aria-hidden="true">🧳</span>
+          <span class="checkout-cta-text">
+            <strong data-i18n="checkout_cta_h">Checking out?</strong>
+            <span data-i18n="checkout_cta_p">Start your check-out — it only takes a minute</span>
+          </span>
+          <span class="checkout-cta-arrow" aria-hidden="true">→</span>
+        </a>
 
       </div>
     </section>
@@ -1216,7 +1243,7 @@
               <p><strong>Speed Queen Self-Service</strong><br>R. Calouste Gulbenkian 67<br>📞 +351 931 898 200<br>🕗 7h–23h todos os dias</p>
               <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Lavandaria+Speed+Queen+Rua+Calouste+Gulbenkian+67+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
-
+          </div>
 
           <div class="nearby-card">
             <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#ff6600,#ff9933)"><span aria-hidden="true">📱</span></div>
@@ -1246,7 +1273,7 @@
         <h3 class="porto-group-title" data-i18n="porto_g1_title">Porto off the beaten path</h3>
         <div class="porto-grid collapsible">
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="wondersense">
             <div class="porto-img">
               <img src="assets/fotos/porto-wondersense.jpg" alt="Wondersense museum Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1258,7 +1285,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="capela">
             <div class="porto-img">
               <img src="assets/fotos/porto-capela-incomum.jpg" alt="Capela Incomum wine bar Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1270,7 +1297,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="virtudes">
             <div class="porto-img">
               <img src="assets/fotos/porto-virtudes.jpg" alt="Jardim das Virtudes Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1282,7 +1309,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="guindais">
             <div class="porto-img">
               <img src="assets/fotos/porto-guindais.jpg" alt="Escadas dos Guindais Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1294,7 +1321,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="almas">
             <div class="porto-img">
               <img src="assets/fotos/porto-almas.jpg" alt="Capela das Almas Porto azulejos" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1306,7 +1333,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="foto">
             <div class="porto-img">
               <img src="assets/fotos/porto-fotografia.jpg" alt="Centro Português de Fotografia Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1323,7 +1350,7 @@
         <h3 class="porto-group-title" data-i18n="porto_g2_title">The classics, taken slowly</h3>
         <div class="porto-grid collapsible">
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="lello">
             <div class="porto-img">
               <img src="assets/fotos/porto-lello.jpg" alt="Livraria Lello Porto bookshop" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1335,7 +1362,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="morro">
             <div class="porto-img">
               <img src="assets/fotos/porto-morro.jpg" alt="Ponte Dom Luís I and Jardim do Morro Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1347,7 +1374,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="rib">
             <div class="porto-img">
               <img src="assets/fotos/porto-ribeira.jpg" alt="Ribeira Porto waterfront" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1359,7 +1386,7 @@
             </div>
           </div>
 
-          <div class="porto-card">
+          <div class="porto-card" data-place="gaia">
             <div class="porto-img">
               <img src="assets/fotos/porto-gaia.jpg" alt="Port wine cellars Vila Nova de Gaia" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
             </div>
@@ -1368,6 +1395,59 @@
               <h4 data-i18n="porto_gaia_h">Cross to Gaia for a port tasting</h4>
               <p data-i18n="porto_gaia_p">The port wine cellars line the Gaia bank, ten minutes' walk over the bridge. Pick one of the smaller houses for an unhurried tasting — they'll explain the difference between a tawny and a ruby, and you'll never forget it.</p>
               <a href="https://maps.google.com/?q=Caves+Vinho+do+Porto+Vila+Nova+de+Gaia" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 class="porto-group-title" data-i18n="porto_g3_title">Where to eat</h3>
+        <div class="porto-grid">
+
+          <div class="porto-card" data-place="conga">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-conga-1.jpg" alt="Conga Casa das Bifanas Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_conga_tag">🥪 Cheap eats</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$$$</span></span>
+              <h4 data-i18n="porto_conga_h">Conga — the legendary bifana</h4>
+              <p data-i18n="porto_conga_p">A tiny, no-frills institution since 1976. The bifana — slow-cooked pork in a soft roll — is one of the cheapest great meals in Porto.</p>
+              <a href="https://maps.google.com/?q=Conga+Casa+das+Bifanas+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card" data-place="capanegra">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-capanegra-1.jpg" alt="Capa Negra II Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_capanegra_tag">🍽️ Near &amp; traditional</span> <span class="ppx" aria-label="Price level 2 of 5">$$<span class="ppx-dim">$$$</span></span>
+              <h4 data-i18n="porto_capanegra_h">Capa Negra II — dinner near your door</h4>
+              <p data-i18n="porto_capanegra_p">A reliable, busy local restaurant a short walk from the apartment. Grilled meats, fish, and a serious francesinha.</p>
+              <a href="https://maps.google.com/?q=Capa+Negra+II+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card" data-place="tapabento">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-tapabento-1.jpg" alt="Tapabento restaurant Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_tapabento_tag">🍷 Mid-range gem</span> <span class="ppx" aria-label="Price level 3 of 5">$$$<span class="ppx-dim">$$</span></span>
+              <h4 data-i18n="porto_tapabento_h">Tapabento — small place, big reputation</h4>
+              <p data-i18n="porto_tapabento_p">Modern Portuguese cooking and petiscos done with real care. Small, warm, and consistently excellent.</p>
+              <a href="https://maps.google.com/?q=Tapabento+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card" data-place="antiqvvm">
+            <div class="porto-img">
+              <img src="assets/fotos/porto-antiqvvm-1.jpg" alt="Antiqvvm restaurant Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_antiqvvm_tag">✨ Special occasion</span> <span class="ppx" aria-label="Price level 4 of 5">$$$$<span class="ppx-dim">$</span></span>
+              <h4 data-i18n="porto_antiqvvm_h">Antiqvvm — a Michelin-starred evening</h4>
+              <p data-i18n="porto_antiqvvm_p">Fine-dining Portuguese cuisine in a romantic 19th-century house with a Douro view. A genuine occasion.</p>
+              <a href="https://maps.google.com/?q=Antiqvvm+Restaurante+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
@@ -1384,13 +1464,60 @@
 
 
     <!-- ─────────────────────────────────────────────────
+         PLACE DETAIL — data-driven page (#place-<id>)
+    ───────────────────────────────────────────────── -->
+    <section id="place" class="section screen place-detail">
+      <a href="#porto" class="screen-back" data-i18n="back_porto">← Get to Know Porto</a>
+      <div class="container">
+        <div class="place-carousel" id="place-carousel">
+          <div class="place-track" id="place-track"></div>
+          <div class="place-dots" id="place-dots"></div>
+        </div>
+        <div class="place-head">
+          <span class="ptag" id="place-tag"></span>
+          <span class="ppx" id="place-price"></span>
+          <span class="place-rating" id="place-rating"></span>
+        </div>
+        <h2 class="place-title" id="place-title"></h2>
+        <p class="place-intro" id="place-intro"></p>
+        <p class="place-desc" id="place-desc"></p>
+
+        <div class="place-tips" id="place-tips-wrap">
+          <h3 data-i18n="place_tips_h">Good to know</h3>
+          <ul class="ficha-list" id="place-tips"></ul>
+        </div>
+
+        <div class="place-info" id="place-info"></div>
+
+        <a class="ver-mais-btn" id="place-go" href="#" target="_blank" rel="noopener">
+          <span data-i18n="place_go">Get directions from Porto Peace Haven</span> →
+        </a>
+
+        <div class="review-box place-review">
+          <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+          <h3 data-i18n="place_review_h">Enjoying Porto?</h3>
+          <p data-i18n="place_review_p">If our little guide made your day better, a review helps the next traveller find us too.</p>
+          <a href="#avaliar" class="btn btn-gold" data-i18n="place_review_btn">Leave a review ⭐</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─────────────────────────────────────────────────
          12b. PORTO MAP
     ───────────────────────────────────────────────── -->
     <section id="mapa" class="section screen">
       <a href="#home" class="screen-back" data-i18n="back_home">← Home</a>
       <div class="container">
         <h2 class="section-title" data-i18n="map_title">Porto City Map</h2>
-        <p class="section-sub" data-i18n="map_sub">Official tourist map of Porto — click to open full screen</p>
+        <p class="section-sub" data-i18n="map_sub">Our favourite places, pinned — tap any pin for details and directions</p>
+
+        <!-- Interactive map — Leaflet + OpenStreetMap (free, no API key) -->
+        <div class="map-interactive">
+          <div id="porto-map" role="application" aria-label="Interactive map of Porto"></div>
+          <p class="map-pins-note" data-i18n="map_pins_note">Tap a pin to open the place and get directions. Pin positions are approximate.</p>
+        </div>
+
+        <h3 class="map-pdf-h" data-i18n="map_pdf_h">Official tourist map (PDF)</h3>
 
         <div class="map-card">
           <div class="map-preview-wrap">
@@ -1456,6 +1583,7 @@
           <h3 data-i18n="bye_ask_h">Before you go</h3>
           <p data-i18n="bye_ask_p">If we became part of a good memory of your trip, your review means the world to us — and helps other travellers find their way to this little corner of Porto.</p>
           <a href="#avaliar" class="btn btn-gold" data-i18n="bye_review_btn">Leave a review ⭐</a>
+          <p class="review-proof review-proof--light" data-review-proof></p>
           <p class="bye-private"><a href="#avaliar" data-i18n="bye_note_link">Or tell us privately first — what could have been better?</a></p>
         </div>
       </div>
@@ -1484,6 +1612,7 @@
               <button type="button" class="av-feel" data-v="Ruim" data-path="improve"><span class="av-emo" aria-hidden="true">☹️</span><span data-i18n="av_feel_ruim">Poor</span></button>
             </div>
             <p class="av-hint" data-i18n="av_hint1">Booked through Booking? You can still leave your review on Airbnb or Google — it helps us even more.</p>
+            <p class="review-proof" data-review-proof></p>
           </div>
 
           <!-- STEP 2 · positive → platform routing -->
