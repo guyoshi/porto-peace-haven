@@ -596,6 +596,7 @@ strong { color: var(--text); font-weight: 600; }
   inset: 0;
   overflow: hidden;
   z-index: 0;
+  background: linear-gradient(160deg, #1B2A4A 0%, #2E4070 55%, #4E6090 100%);
 }
 
 .hero-gradient {
@@ -1247,16 +1248,21 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 
 .kitchen-etiquette {
   background: var(--sand);
-  border-radius: var(--r-lg);
+  border-left: 4px solid var(--douro);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
   padding: 1.5rem 1.3rem;
   margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .kitchen-etiquette h4 {
   font-family: var(--font-body);
   font-weight: 700;
-  color: var(--text);
+  color: var(--douro);
   margin-bottom: 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
 }
 
 /* ───────────────────────────────────────────────────────────────
@@ -2115,7 +2121,7 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
 }
 
 .hero-gradient {
@@ -2123,9 +2129,9 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   inset: 0;
   background: linear-gradient(
     160deg,
-    rgba(27, 42, 74, 0.78) 0%,
-    rgba(46, 64, 112, 0.65) 40%,
-    rgba(78, 144, 168, 0.45) 100%
+    rgba(27, 42, 74, 0.52) 0%,
+    rgba(46, 64, 112, 0.38) 40%,
+    rgba(78, 144, 168, 0.18) 100%
   );
 }
 
@@ -3620,4 +3626,33 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   display: block;
 }
 [data-theme="dark"] #porto-map { filter: brightness(0.85) contrast(1.05); }
+
+/* ═══════════════════════════════════════════════════════════════
+   53. BATHROOM FLUSH CALLOUT
+   ═══════════════════════════════════════════════════════════════ */
+.bath-flush-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fff8e8;
+  border-left: 4px solid #C8922A;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.bath-flush-callout p {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.5;
+}
+.bath-flush-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+[data-theme="dark"] .bath-flush-callout {
+  background: rgba(200, 146, 42, 0.12);
+}
 

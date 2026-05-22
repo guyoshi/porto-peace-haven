@@ -116,7 +116,6 @@ const translations = {
     g_c1: '✔ Switch off all lights',
     g_c2: '✔ Close all windows',
     g_c3: '✔ Turn off all appliances',
-    g_c4: '✔ Check the toilet flush stopped',
     g_c5: '✔ Return your key at check-out',
     g_quiet_h: 'Quiet Living',
     g_quiet_p: 'This is a residential building. Please keep voices and sounds low, especially early mornings and evenings. Your neighbours will thank you.',
@@ -167,7 +166,7 @@ const translations = {
     k_utensils_p: 'Plates, bowls, glasses, mugs, cups, cutlery, pots, pans, cutting boards, knives, colander, grater, and cooking utensils.',
     k_clean_h: 'Cleaning Supplies',
     k_clean_p: 'Bin bags, sponge, cloths, and washing-up liquid are under the sink. Extra supplies are in the storage cabinet near the bathroom.',
-    k_etiquette_h: 'Kitchen Etiquette',
+    k_etiquette_h: 'Kitchen Rules',
     k_eq1: '🍽️ Wash and dry all dishes immediately after every use.',
     k_eq2: '🧹 Wipe down the hob, surfaces and sink after use.',
     k_eq3: '🗑️ Dispose of rubbish in the bin bags provided.',
@@ -208,9 +207,10 @@ const translations = {
     atlantico_led_p: '⚠️ To change only the bedside lamp colour without affecting the TV: first switch the TV off, then point the LED remote directly at the bedside lamp.',
     atlantico_desk_h: 'Desk / Work Area',
     atlantico_desk_p: 'Atlântico includes a dedicated desk area — perfect for remote work or longer stays in the city.',
+    bath_flush_callout: 'After flushing — wait a few seconds and confirm the water has stopped completely before leaving the bathroom.',
     bath_title: 'Bathroom Guide',
     bath_shared_h: 'Shared Bathroom',
-    bath_shared_p: 'The bathroom is shared between all guests. Please be considerate and leave it clean and ready for the next person after every use.',
+    bath_shared_p: 'A shared bathroom with a compact walk-in shower — simple and functional, like the old houses of Porto. We\'ve made sure you have everything you need for a comfortable stay.',
     bath_shower_h: 'Shower Duration',
     bath_shower_p: 'Please avoid very long showers, especially during peak morning hours, so all guests have access to hot water.',
     bath_toilet_h: 'Toilet',
@@ -385,7 +385,6 @@ const translations = {
     g_c1: '✔ Apagar todas as luzes',
     g_c2: '✔ Fechar todas as janelas',
     g_c3: '✔ Desligar todos os electrodomésticos',
-    g_c4: '✔ Verificar que o autoclismo parou',
     g_c5: '✔ Devolver a chave no check-out',
     g_quiet_h: 'Vida Tranquila',
     g_quiet_p: 'Este é um edifício residencial. Por favor mantenha vozes e sons baixos, especialmente de manhã cedo e à noite.',
@@ -436,7 +435,7 @@ const translations = {
     k_utensils_p: 'Pratos, tigelas, copos, canecas, chávenas, talheres, panelas, frigideiras, tábuas de corte, facas, coador e utensílios de cozinha.',
     k_clean_h: 'Material de Limpeza',
     k_clean_p: 'Sacos do lixo, esponja, panos e detergente estão debaixo do lava-louça. Materiais extra no armário de arrumos.',
-    k_etiquette_h: 'Etiqueta na Cozinha',
+    k_etiquette_h: 'Regras da Cozinha',
     k_eq1: '🍽️ Lave e seque a louça imediatamente após usar.',
     k_eq2: '🧹 Limpe a placa, as superfícies e o lava-louça após usar.',
     k_eq3: '🗑️ Deite o lixo nos sacos fornecidos.',
@@ -477,9 +476,10 @@ const translations = {
     atlantico_led_p: '⚠️ Para mudar apenas a cor da lâmpada de cabeceira sem afectar a TV: primeiro desligue a TV, depois aponte o comando LED directamente para a lâmpada.',
     atlantico_desk_h: 'Secretária / Área de Trabalho',
     atlantico_desk_p: 'O Atlântico inclui uma secretária dedicada — perfeita para trabalho remoto.',
+    bath_flush_callout: 'Depois de puxar o autoclismo — espere alguns segundos e confirme que a água parou completamente antes de sair da casa de banho.',
     bath_title: 'Guia da Casa de Banho',
     bath_shared_h: 'Casa de Banho Partilhada',
-    bath_shared_p: 'A casa de banho é partilhada entre todos os hóspedes. Por favor seja considerado e deixe-a limpa após cada utilização.',
+    bath_shared_p: 'Casa de banho partilhada com duche em box — simples e funcional, como as casas antigas do Porto. Garantimos que tem tudo o que precisa para uma estadia confortável.',
     bath_shower_h: 'Duração do Duche',
     bath_shower_p: 'Por favor evite duches muito longos, especialmente de manhã, para que todos os hóspedes tenham acesso a água quente.',
     bath_toilet_h: 'Autoclismo',
@@ -654,7 +654,6 @@ const translations = {
     g_c1: '✔ Éteindre toutes les lumières',
     g_c2: '✔ Fermer toutes les fenêtres',
     g_c3: '✔ Éteindre tous les appareils',
-    g_c4: '✔ Vérifier que la chasse d\'eau s\'est arrêtée',
     g_c5: '✔ Rendre la clé au départ',
     g_quiet_h: 'Vie Tranquille',
     g_quiet_p: 'C\'est un bâtiment résidentiel. Gardez les voix et les sons bas, surtout le matin tôt et le soir.',
@@ -705,7 +704,7 @@ const translations = {
     k_utensils_p: 'Assiettes, bols, verres, mugs, tasses, couverts, casseroles, poêles, planches à découper, couteaux, passoire, râpe et ustensiles de cuisine.',
     k_clean_h: 'Produits d\'Entretien',
     k_clean_p: 'Sacs poubelle, éponge, chiffons et liquide vaisselle sous l\'évier.',
-    k_etiquette_h: 'Étiquette en Cuisine',
+    k_etiquette_h: 'Règles de la cuisine',
     k_eq1: '🍽️ Lavez et séchez la vaisselle immédiatement après chaque utilisation.',
     k_eq2: '🧹 Nettoyez la plaque, les surfaces et l\'évier après utilisation.',
     k_eq3: '🗑️ Jetez les déchets dans les sacs poubelle fournis.',
@@ -746,9 +745,10 @@ const translations = {
     atlantico_led_p: '⚠️ Pour changer uniquement la couleur de la lampe de chevet sans affecter la TV : éteignez d\'abord la TV, puis pointez la télécommande LED directement vers la lampe.',
     atlantico_desk_h: 'Bureau / Espace de Travail',
     atlantico_desk_p: 'Atlântico comprend un espace bureau dédié — parfait pour le travail à distance.',
+    bath_flush_callout: 'Après la chasse d\'eau — attendez quelques secondes et vérifiez que l\'eau s\'est bien arrêtée avant de quitter la salle de bain.',
     bath_title: 'Guide de la Salle de Bain',
     bath_shared_h: 'Salle de Bain Partagée',
-    bath_shared_p: 'La salle de bain est partagée. Soyez attentionné et laissez-la propre après chaque utilisation.',
+    bath_shared_p: 'Une salle de bain partagée avec une douche à l\'italienne compacte — simple et fonctionnelle, comme les vieilles maisons de Porto. Nous avons veillé à ce que vous ayez tout le nécessaire pour un séjour confortable.',
     bath_shower_h: 'Durée de la Douche',
     bath_shower_p: 'Évitez les douches très longues, surtout le matin, pour que tous les hôtes aient accès à l\'eau chaude.',
     bath_toilet_h: 'Toilettes',
@@ -923,7 +923,6 @@ const translations = {
     g_c1: '✔ Apagar todas las luces',
     g_c2: '✔ Cerrar todas las ventanas',
     g_c3: '✔ Apagar todos los electrodomésticos',
-    g_c4: '✔ Comprobar que la cisterna se ha vaciado',
     g_c5: '✔ Devolver la llave al hacer check-out',
     g_quiet_h: 'Vida Tranquila',
     g_quiet_p: 'Es un edificio residencial. Por favor mantén voces y sonidos bajos, especialmente de madrugada y por las noches.',
@@ -974,7 +973,7 @@ const translations = {
     k_utensils_p: 'Platos, boles, vasos, tazas, cubiertos, ollas, sartenes, tablas, cuchillos, colador, rallador y utensilios de cocina.',
     k_clean_h: 'Productos de Limpieza',
     k_clean_p: 'Bolsas de basura, esponja, trapos y lavavajillas bajo el fregadero.',
-    k_etiquette_h: 'Etiqueta en la Cocina',
+    k_etiquette_h: 'Normas de la cocina',
     k_eq1: '🍽️ Lava y seca los platos inmediatamente tras cada uso.',
     k_eq2: '🧹 Limpia la vitro, superficies y fregadero tras usar.',
     k_eq3: '🗑️ Desecha la basura en las bolsas proporcionadas.',
@@ -1015,9 +1014,10 @@ const translations = {
     atlantico_led_p: '⚠️ Para cambiar solo el color de la lámpara de mesita sin afectar a la TV: primero apaga la TV, luego apunta el mando LED directamente hacia la lámpara.',
     atlantico_desk_h: 'Escritorio / Zona de Trabajo',
     atlantico_desk_p: 'Atlântico incluye una zona de escritorio dedicada — perfecta para trabajo remoto.',
+    bath_flush_callout: 'Después de tirar de la cadena — espera unos segundos y confirma que el agua se ha parado completamente antes de salir del baño.',
     bath_title: 'Guía del Baño',
     bath_shared_h: 'Baño Compartido',
-    bath_shared_p: 'El baño es compartido. Sé considerado y déjalo limpio tras cada uso.',
+    bath_shared_p: 'Baño compartido con ducha de cabina compacta — sencillo y funcional, como las casas antiguas de Oporto. Nos hemos asegurado de que tengas todo lo necesario para una estancia cómoda.',
     bath_shower_h: 'Duración de la Ducha',
     bath_shower_p: 'Evita duchas muy largas, especialmente por las mañanas, para que todos tengan agua caliente.',
     bath_toilet_h: 'Inodoro',
@@ -1192,7 +1192,6 @@ const translations = {
     g_c1: '✔ Alle Lichter ausschalten',
     g_c2: '✔ Alle Fenster schließen',
     g_c3: '✔ Alle Geräte ausschalten',
-    g_c4: '✔ Prüfen, dass die Toilettenspülung gestoppt hat',
     g_c5: '✔ Schlüssel beim Check-out zurückgeben',
     g_quiet_h: 'Ruhiges Zusammenleben',
     g_quiet_p: 'Dies ist ein Wohngebäude. Bitte halten Sie Stimmen und Geräusche niedrig, besonders früh morgens und abends.',
@@ -1284,9 +1283,10 @@ const translations = {
     atlantico_led_p: '⚠️ Um nur die Farbe der Nachttischlampe zu ändern ohne den TV zu beeinflussen: zuerst TV ausschalten, dann LED-Fernbedienung direkt auf die Lampe richten.',
     atlantico_desk_h: 'Schreibtisch / Arbeitsbereich',
     atlantico_desk_p: 'Atlântico hat einen eigenen Schreibtischbereich — ideal für mobiles Arbeiten.',
+    bath_flush_callout: 'Nach dem Spülen — warten Sie einige Sekunden und bestätigen Sie, dass das Wasser vollständig gestoppt hat, bevor Sie das Badezimmer verlassen.',
     bath_title: 'Badezimmerführer',
     bath_shared_h: 'Gemeinsames Badezimmer',
-    bath_shared_p: 'Das Badezimmer wird geteilt. Bitte seien Sie rücksichtsvoll und hinterlassen Sie es sauber.',
+    bath_shared_p: 'Ein gemeinsames Badezimmer mit kompakter Duschkabine — schlicht und funktional, wie die alten Häuser Portos. Wir haben dafür gesorgt, dass Sie alles haben, was Sie für einen angenehmen Aufenthalt brauchen.',
     bath_shower_h: 'Duschdauer',
     bath_shower_p: 'Bitte vermeiden Sie sehr lange Duschen, besonders morgens, damit alle Gäste Zugang zu warmem Wasser haben.',
     bath_toilet_h: 'Toilette',
@@ -1461,7 +1461,6 @@ const translations = {
     g_c1: '✔ Spegnere tutte le luci',
     g_c2: '✔ Chiudere tutte le finestre',
     g_c3: '✔ Spegnere tutti gli elettrodomestici',
-    g_c4: '✔ Verificare che lo sciacquone si sia fermato',
     g_c5: '✔ Riconsegnare la chiave al check-out',
     g_quiet_h: 'Vita Tranquilla',
     g_quiet_p: 'È un edificio residenziale. Mantenete voci e suoni bassi, soprattutto di mattina presto e di sera.',
@@ -1512,7 +1511,7 @@ const translations = {
     k_utensils_p: 'Piatti, ciotole, bicchieri, tazze, posate, pentole, padelle, taglieri, coltelli, scolapasta, grattugia e utensili da cucina.',
     k_clean_h: 'Prodotti per la Pulizia',
     k_clean_p: 'Sacchi per l\'immondizia, spugna, stracci e detersivo sotto il lavello.',
-    k_etiquette_h: 'Galateo in Cucina',
+    k_etiquette_h: 'Regole della cucina',
     k_eq1: '🍽️ Lavate e asciugate i piatti immediatamente dopo ogni utilizzo.',
     k_eq2: '🧹 Pulite il piano, le superfici e il lavello dopo l\'uso.',
     k_eq3: '🗑️ Smaltite i rifiuti nei sacchi forniti.',
@@ -1553,9 +1552,10 @@ const translations = {
     atlantico_led_p: '⚠️ Per cambiare solo il colore della lampada comodino senza influenzare la TV: prima spegnete la TV, poi puntate il telecomando LED direttamente sulla lampada.',
     atlantico_desk_h: 'Scrivania / Area di Lavoro',
     atlantico_desk_p: 'Atlântico include un\'area scrivania dedicata — perfetta per il lavoro da remoto.',
+    bath_flush_callout: 'Dopo aver tirato lo sciacquone — aspettate qualche secondo e verificate che l\'acqua si sia fermata completamente prima di uscire dal bagno.',
     bath_title: 'Guida del Bagno',
     bath_shared_h: 'Bagno Condiviso',
-    bath_shared_p: 'Il bagno è condiviso. Siate premurosi e lasciatelo pulito dopo ogni utilizzo.',
+    bath_shared_p: 'Un bagno condiviso con doccia a cabina compatta — semplice e funzionale, come le vecchie case di Porto. Abbiamo fatto in modo che abbiate tutto il necessario per un soggiorno confortevole.',
     bath_shower_h: 'Durata della Doccia',
     bath_shower_p: 'Evitate docce molto lunghe, soprattutto di mattina, affinché tutti gli ospiti abbiano accesso all\'acqua calda.',
     bath_toilet_h: 'WC',
@@ -4860,7 +4860,7 @@ Object.assign(translations.nl, {
   g_bath_p: 'De badkamer wordt gedeeld tussen gasten. Wees attent en laat hem na elk gebruik brandschoon achter.',
   g_leave_h: 'Voordat u vertrekt',
   g_c1: '✔ Doe alle lichten uit', g_c2: '✔ Sluit alle ramen',
-  g_c3: '✔ Schakel alle apparaten uit', g_c4: '✔ Controleer of het toilet is uitgespoeld',
+  g_c3: '✔ Schakel alle apparaten uit',
   g_c5: '✔ Lever uw sleutel in bij check-out',
   g_quiet_h: 'Rustig samenleven',
   g_quiet_p: 'Dit is een woongebouw. Houd stemmen en geluiden zacht, vooral vroeg in de ochtend en ’s avonds. Uw buren zullen u dankbaar zijn.',
@@ -4910,7 +4910,7 @@ Object.assign(translations.nl, {
   k_utensils_p: 'Borden, kommen, glazen, mokken, kopjes, bestek, potten, pannen, snijplanken, messen, vergiet, rasp en keukengerei.',
   k_clean_h: 'Schoonmaakmiddelen',
   k_clean_p: 'Vuilniszakken, spons, doekjes en afwasmiddel liggen onder de gootsteen. Extra voorraad ligt in de bergkast bij de badkamer.',
-  k_etiquette_h: 'Keuken-etiquette',
+  k_etiquette_h: 'Keukenregels',
   k_eq1: '🍽️ Was en droog alle vaat direct na elk gebruik.',
   k_eq2: '🧹 Veeg de kookplaat, het aanrecht en de gootsteen na gebruik schoon.',
   k_eq3: '🗑️ Gooi afval in de meegeleverde vuilniszakken. Dichtgeknoopte zakken gaan naar de afvalinzameling van het gebouw — stuur ons een bericht als u de exacte plek wilt weten.',
@@ -4949,8 +4949,9 @@ Object.assign(translations.nl, {
   atlantico_led_p: '⚠️ Om alleen de kleur van de bedlamp te wijzigen zonder de tv te beïnvloeden: zet eerst de tv uit en richt daarna de LED-afstandsbediening rechtstreeks op de bedlamp.',
   atlantico_desk_h: 'Bureau / werkplek',
   atlantico_desk_p: 'Atlântico heeft een eigen bureauruimte — perfect voor thuiswerk of langere verblijven in de stad.',
+  bath_flush_callout: 'Na het doortrekken — wacht een paar seconden en controleer of het water volledig gestopt is voordat u de badkamer verlaat.',
   bath_title: 'Badkamergids', bath_shared_h: 'Gedeelde badkamer',
-  bath_shared_p: 'De badkamer wordt door alle gasten gedeeld. Wees attent en laat hem na elk gebruik schoon en klaar achter voor de volgende persoon.',
+  bath_shared_p: 'Een gedeelde badkamer met een compacte inloopdouche — eenvoudig en functioneel, zoals de oude huizen van Porto. We hebben ervoor gezorgd dat u alles heeft wat u nodig heeft voor een comfortabel verblijf.',
   bath_shower_h: 'Doucheduur',
   bath_shower_p: 'Vermijd zeer lange douches, vooral tijdens de drukke ochtenduren, zodat alle gasten warm water hebben.',
   bath_toilet_h: 'Toilet',
@@ -5488,40 +5489,37 @@ const CHECKLIST_HINT_I18N = {
   it: { bye_checklist_hint: 'Tocca ogni voce man mano — ricorda cosa hai spuntato.' },
   nl: { bye_checklist_hint: 'Tik elk item aan terwijl u bezig bent — wat u afvinkt wordt onthouden.' },
 };
-['en', 'pt', 'fr', 'es', 'de', 'it', 'nl'].forEach(function (l) {
-  if (translations[l]) Object.assign(translations[l], CHECKLIST_HINT_I18N[l]);
+['en', 'pt', 'fr', 'es', 'de', 'it', 'nl'].forEach(function(l) {
+  Object.assign(translations[l], CHECKLIST_HINT_I18N[l] || {});
 });
 
-/* Interactive checkout checklist — tap an item to tick it off.
-   State persists in localStorage and survives a language switch
-   (applyLanguage rewrites the <li>s, so we repaint afterwards). */
+/* ─────────────────────────────────────────────────────────────
+   INTERACTIVE CHECKOUT CHECKLIST
+   Tap any item to tick/untick. State is kept for the session.
+─────────────────────────────────────────────────────────────── */
 (function () {
-  const ul = document.querySelector('.checklist-interactive[data-i18n="bye_checklist"]');
-  if (!ul) return;
-  const KEY = 'pph-checkout-checklist';
-  let state = [];
-  try { state = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { state = []; }
+  function initChecklist(ul) {
+    if (!ul || ul.dataset.clInit) return;
+    ul.dataset.clInit = '1';
+    Array.prototype.forEach.call(ul.querySelectorAll('li'), function (li) {
+      li.style.cursor = 'pointer';
+      li.addEventListener('click', function () {
+        li.classList.toggle('checked');
+      });
+    });
+  }
 
-  function save() {
-    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  function initAll() {
+    document.querySelectorAll('.checklist-interactive').forEach(initChecklist);
   }
-  function paint() {
-    const items = ul.children;
-    for (let i = 0; i < items.length; i++) {
-      items[i].classList.toggle('checked', !!state[i]);
-    }
-  }
-  ul.addEventListener('click', function (e) {
-    const li = e.target.closest('li');
-    if (!li || li.parentElement !== ul) return;
-    const idx = Array.prototype.indexOf.call(ul.children, li);
-    if (idx < 0) return;
-    state[idx] = !state[idx];
-    li.classList.toggle('checked', !!state[idx]);
-    save();
+
+  document.addEventListener('DOMContentLoaded', initAll);
+
+  // Re-run after language switches (innerHTML is rewritten by applyLanguage)
+  var clObserver = new MutationObserver(function () { initAll(); });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.checklist-interactive').forEach(function (ul) {
+      clObserver.observe(ul, { childList: true });
+    });
   });
-
-  const _applyChecklist = applyLanguage;
-  applyLanguage = function (l) { _applyChecklist(l); paint(); };
-  paint();
 })();
