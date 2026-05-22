@@ -1972,7 +1972,7 @@ const BYE_I18N = {
     bye_title: 'Before You Leave',
     bye_sub: 'A short list, a small ask, and a thank you.',
     bye_checklist_h: 'A small checklist for the room',
-    bye_checklist: '<li>Close the windows — Porto rain finds its way in through the old window frames.</li><li>Switch off all the lights and the LED lamps.</li><li>Wait a few seconds and make sure the toilet flush has stopped.</li><li>Log out of Netflix, HBO Max, Prime Video and Disney+ on the TV — your accounts, your privacy.</li><li>Turn off the fan, the TV and the mini fridge if you used it.</li><li>Leave the key as we agreed.</li>',
+    bye_checklist: '<li>Close the windows — Porto rain finds its way in through the old window frames.</li><li>Switch off all the lights and the LED lamps.</li><li>Wait a few seconds and make sure the toilet flush has stopped.</li><li>Log out of Netflix, HBO Max, Prime Video and Disney+ on the TV — your accounts, your privacy.</li><li>Turn off the fan, the TV and the mini fridge if you used it.</li><li>Building and apartment keys: leave them in the outdoor safe or your room safe. Room key: always in your room safe.</li>',
     bye_ask_h: 'Before you go',
     bye_ask_p: 'If we became part of a good memory of your trip, your review means the world to us — and helps other travellers find their way to this little corner of Porto.',
     bye_review_btn: 'Leave a review ⭐',
@@ -1984,7 +1984,7 @@ const BYE_I18N = {
     bye_title: 'Antes de Partir',
     bye_sub: 'Uma pequena lista, um pedido pequeno, e um obrigado.',
     bye_checklist_h: 'Uma pequena lista para o quarto',
-    bye_checklist: '<li>Feche as janelas — a chuva do Porto entra pelas armações antigas se as deixar abertas.</li><li>Apague todas as luzes e os candeeiros LED.</li><li>Espere uns segundos e confirme que o autoclismo parou.</li><li>Termine sessão em Netflix, HBO Max, Prime Video e Disney+ na TV — as contas são suas, a privacidade também.</li><li>Desligue o ventilador, a TV e o frigorífico se o usou.</li><li>Deixe a chave como combinámos.</li>',
+    bye_checklist: '<li>Feche as janelas — a chuva do Porto entra pelas armações antigas se as deixar abertas.</li><li>Apague todas as luzes e os candeeiros LED.</li><li>Espere uns segundos e confirme que o autoclismo parou.</li><li>Termine sessão em Netflix, HBO Max, Prime Video e Disney+ na TV — as contas são suas, a privacidade também.</li><li>Desligue o ventilador, a TV e o frigorífico se o usou.</li><li>Chaves do prédio e da casa: deixe-as no cofre exterior ou no cofre do quarto. Chave do quarto: sempre no cofre do quarto.</li>',
     bye_ask_h: 'Antes de partir',
     bye_ask_p: 'Se fizemos parte de uma boa memória da sua viagem, a sua avaliação significa muito para nós — e ajuda outros viajantes a encontrar o caminho até este cantinho do Porto.',
     bye_review_btn: 'Deixar uma avaliação ⭐',
@@ -2817,7 +2817,7 @@ Object.assign(translations.fr, {
   bye_title: 'Avant de partir',
   bye_sub: 'Une petite liste, une petite demande, et un merci.',
   bye_checklist_h: 'Une petite liste pour la chambre',
-  bye_checklist: "<li>Fermez les fenêtres — la pluie de Porto trouve son chemin par les vieux châssis.</li><li>Éteignez toutes les lumières et les lampes LED.</li><li>Attendez quelques secondes et vérifiez que la chasse d'eau s'est bien arrêtée.</li><li>Déconnectez-vous de Netflix, HBO Max, Prime Video et Disney+ sur la TV — vos comptes, votre vie privée.</li><li>Éteignez le ventilateur, la TV et le mini-frigo si vous l'avez utilisé.</li><li>Laissez la clé comme convenu.</li>",
+  bye_checklist: "<li>Fermez les fenêtres — la pluie de Porto trouve son chemin par les vieux châssis.</li><li>Éteignez toutes les lumières et les lampes LED.</li><li>Attendez quelques secondes et vérifiez que la chasse d'eau s'est bien arrêtée.</li><li>Déconnectez-vous de Netflix, HBO Max, Prime Video et Disney+ sur la TV — vos comptes, votre vie privée.</li><li>Éteignez le ventilateur, la TV et le mini-frigo si vous l'avez utilisé.</li><li>Clés de l'immeuble et de l'appartement : dans le coffre extérieur ou celui de votre chambre. Clé de la chambre : toujours dans le coffre de la chambre.</li>",
   bye_ask_h: 'Avant de partir',
   bye_ask_p: "Si nous avons fait partie d'un bon souvenir de votre voyage, votre avis compte beaucoup pour nous — et aide d'autres voyageurs à trouver le chemin de ce petit coin de Porto.",
   bye_review_btn: 'Laisser un avis ⭐',
@@ -2966,7 +2966,7 @@ Object.assign(translations.es, {
   bye_title: 'Antes de irte',
   bye_sub: 'Una pequeña lista, una pequeña petición, y un gracias.',
   bye_checklist_h: 'Una pequeña lista para la habitación',
-  bye_checklist: '<li>Cierra las ventanas — la lluvia de Oporto se cuela por los marcos antiguos.</li><li>Apaga todas las luces y las lámparas LED.</li><li>Espera unos segundos y comprueba que la cisterna ha parado.</li><li>Cierra sesión en Netflix, HBO Max, Prime Video y Disney+ en la TV — tus cuentas, tu privacidad.</li><li>Apaga el ventilador, la TV y la mini nevera si la has usado.</li><li>Deja la llave como acordamos.</li>',
+  bye_checklist: '<li>Cierra las ventanas — la lluvia de Oporto se cuela por los marcos antiguos.</li><li>Apaga todas las luces y las lámparas LED.</li><li>Espera unos segundos y comprueba que la cisterna ha parado.</li><li>Cierra sesión en Netflix, HBO Max, Prime Video y Disney+ en la TV — tus cuentas, tu privacidad.</li><li>Apaga el ventilador, la TV y la mini nevera si la has usado.</li><li>Llaves del edificio y del piso: déjalas en la caja fuerte exterior o en la de tu habitación. Llave de la habitación: siempre en la caja de la habitación.</li>',
   bye_ask_h: 'Antes de irte',
   bye_ask_p: 'Si formamos parte de un buen recuerdo de tu viaje, tu reseña significa muchísimo para nosotros — y ayuda a otros viajeros a encontrar el camino a este rinconcito de Oporto.',
   bye_review_btn: 'Dejar una reseña ⭐',
@@ -3115,7 +3115,7 @@ Object.assign(translations.de, {
   bye_title: 'Vor der Abreise',
   bye_sub: 'Eine kleine Liste, eine kleine Bitte, und ein Danke.',
   bye_checklist_h: 'Eine kleine Liste für das Zimmer',
-  bye_checklist: '<li>Schließen Sie die Fenster — Portos Regen findet seinen Weg durch die alten Fensterrahmen.</li><li>Schalten Sie alle Lichter und die LED-Lampen aus.</li><li>Warten Sie ein paar Sekunden und stellen Sie sicher, dass die Spülung aufgehört hat.</li><li>Melden Sie sich auf dem Fernseher von Netflix, HBO Max, Prime Video und Disney+ ab — Ihre Konten, Ihre Privatsphäre.</li><li>Schalten Sie den Ventilator, den Fernseher und den Minikühlschrank aus, falls Sie ihn genutzt haben.</li><li>Lassen Sie den Schlüssel wie vereinbart.</li>',
+  bye_checklist: '<li>Schließen Sie die Fenster — Portos Regen findet seinen Weg durch die alten Fensterrahmen.</li><li>Schalten Sie alle Lichter und die LED-Lampen aus.</li><li>Warten Sie ein paar Sekunden und stellen Sie sicher, dass die Spülung aufgehört hat.</li><li>Melden Sie sich auf dem Fernseher von Netflix, HBO Max, Prime Video und Disney+ ab — Ihre Konten, Ihre Privatsphäre.</li><li>Schalten Sie den Ventilator, den Fernseher und den Minikühlschrank aus, falls Sie ihn genutzt haben.</li><li>Gebäude- und Wohnungsschlüssel: in den Außensafe oder Ihren Zimmersafe legen. Zimmerschlüssel: immer in den Zimmersafe.</li>',
   bye_ask_h: 'Bevor Sie gehen',
   bye_ask_p: 'Wenn wir Teil einer schönen Erinnerung Ihrer Reise geworden sind, bedeutet uns Ihre Bewertung die Welt — und sie hilft anderen Reisenden, den Weg in diesen kleinen Winkel von Porto zu finden.',
   bye_review_btn: 'Bewertung hinterlassen ⭐',
@@ -3264,7 +3264,7 @@ Object.assign(translations.it, {
   bye_title: 'Prima di partire',
   bye_sub: 'Una piccola lista, una piccola richiesta, e un grazie.',
   bye_checklist_h: 'Una piccola lista per la camera',
-  bye_checklist: "<li>Chiudi le finestre — la pioggia di Porto si insinua attraverso i vecchi telai.</li><li>Spegni tutte le luci e le lampade LED.</li><li>Aspetta qualche secondo e assicurati che lo scarico si sia fermato.</li><li>Disconnettiti da Netflix, HBO Max, Prime Video e Disney+ sul TV — i tuoi account, la tua privacy.</li><li>Spegni il ventilatore, il TV e il mini frigo se l'hai usato.</li><li>Lascia la chiave come concordato.</li>",
+  bye_checklist: "<li>Chiudi le finestre — la pioggia di Porto si insinua attraverso i vecchi telai.</li><li>Spegni tutte le luci e le lampade LED.</li><li>Aspetta qualche secondo e assicurati che lo scarico si sia fermato.</li><li>Disconnettiti da Netflix, HBO Max, Prime Video e Disney+ sul TV — i tuoi account, la tua privacy.</li><li>Spegni il ventilatore, il TV e il mini frigo se l'hai usato.</li><li>Chiavi dell'edificio e dell'appartamento: nella cassaforte esterna o in quella della camera. Chiave della camera: sempre nella cassaforte della camera.</li>",
   bye_ask_h: 'Prima di partire',
   bye_ask_p: 'Se siamo entrati a far parte di un bel ricordo del tuo viaggio, la tua recensione significa moltissimo per noi — e aiuta altri viaggiatori a trovare la strada per questo angolino di Porto.',
   bye_review_btn: 'Lascia una recensione ⭐',
@@ -3292,7 +3292,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Help',
     key_1: 'The entrance key is in the external safe — use the code we sent you with your check-in instructions.',
     key_2: 'Your room key waits for you in the small safe right outside your room door — same code we sent you.',
-    key_3: 'Please return both keys to their safes on departure.',
+    key_3: 'When you check out, the building-door and apartment-door keys can go in the outdoor safe or in your room safe — whichever is easier. The room key should always be left in your room safe.',
   },
   pt: {
     back_home: '← Início',
@@ -3308,7 +3308,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Ajuda',
     key_1: 'A chave da entrada está no cofre externo — use o código que enviámos com as instruções de check-in.',
     key_2: 'A chave do seu quarto espera por si no pequeno cofre mesmo à porta do quarto — mesmo código.',
-    key_3: 'Por favor, devolva ambas as chaves aos cofres no check-out.',
+    key_3: 'Ao fazer check-out, as chaves da porta do prédio e da porta da casa podem ficar no cofre exterior ou no cofre do quarto — o que for mais prático. A chave do quarto deve ficar sempre no cofre do quarto.',
   },
   fr: {
     back_home: '← Accueil',
@@ -3324,7 +3324,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Aide',
     key_1: "La clé de l'entrée est dans le coffre extérieur — utilisez le code que nous vous avons envoyé avec les instructions d'arrivée.",
     key_2: 'La clé de votre chambre vous attend dans le petit coffre juste à la porte de votre chambre — même code.',
-    key_3: 'Veuillez remettre les deux clés dans leurs coffres au départ.',
+    key_3: "Au moment du départ, les clés de la porte de l'immeuble et de la porte de l'appartement peuvent être laissées dans le coffre extérieur ou dans le coffre de votre chambre. La clé de la chambre doit toujours être laissée dans le coffre de la chambre.",
   },
   es: {
     back_home: '← Inicio',
@@ -3340,7 +3340,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Ayuda',
     key_1: 'La llave de la entrada está en la caja fuerte exterior — usa el código que te enviamos con las instrucciones de check-in.',
     key_2: 'La llave de tu habitación te espera en la pequeña caja fuerte justo en la puerta de tu habitación — mismo código.',
-    key_3: 'Por favor, devuelve ambas llaves a las cajas fuertes al hacer check-out.',
+    key_3: 'Al hacer el check-out, las llaves de la puerta del edificio y de la puerta del piso pueden dejarse en la caja fuerte exterior o en la de tu habitación. La llave de la habitación debe dejarse siempre en la caja fuerte de la habitación.',
   },
   de: {
     back_home: '← Start',
@@ -3356,7 +3356,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Hilfe',
     key_1: 'Der Eingangsschlüssel liegt im externen Safe — verwenden Sie den Code, den wir Ihnen mit den Check-in-Anweisungen geschickt haben.',
     key_2: 'Ihr Zimmerschlüssel wartet im kleinen Safe direkt vor Ihrer Zimmertür auf Sie — derselbe Code.',
-    key_3: 'Bitte legen Sie beide Schlüssel beim Auschecken in die Safes zurück.',
+    key_3: 'Beim Check-out können die Schlüssel für die Gebäudetür und die Wohnungstür im Außensafe oder im Zimmersafe abgelegt werden. Der Zimmerschlüssel gehört immer in den Zimmersafe.',
   },
   it: {
     back_home: '← Inizio',
@@ -3372,7 +3372,7 @@ const HUB_KEYS_I18N = {
     hub_help: 'Aiuto',
     key_1: "La chiave dell'ingresso è nella cassaforte esterna — usa il codice che ti abbiamo inviato con le istruzioni di check-in.",
     key_2: 'La chiave della tua camera ti aspetta nella piccola cassaforte proprio fuori dalla porta della camera — stesso codice.',
-    key_3: 'Per favore, riponi entrambe le chiavi nelle casseforti al check-out.',
+    key_3: "Al check-out, le chiavi della porta dell'edificio e della porta dell'appartamento possono essere lasciate nella cassaforte esterna o in quella della camera. La chiave della camera va sempre lasciata nella cassaforte della camera.",
   },
 };
 Object.keys(HUB_KEYS_I18N).forEach(function (l) {
@@ -3682,39 +3682,39 @@ Object.keys(AV_ROOM_PICK_I18N).forEach(function (l) {
 /* Checkout flow — "Notify host" copy + pre-filled WhatsApp message */
 const CO_NOTIFY_I18N = {
   en: {
-    co_notify_h: "Let us know you're heading out",
-    co_notify_p: 'A quick message so we know the room is ready to be turned around — and so we can wish you a great trip back.',
-    co_notify_btn: '📩 Notify by WhatsApp',
+    co_notify_h: 'Ready to check out?',
+    co_notify_p: "We'll let your host know the room is free — then take a quick moment to tell us how your stay was.",
+    co_notify_btn: 'Check out →',
     co_wa_msg: "Hello! I'm checking out of room {room} now. Everything is in place. Thank you for the stay 💛",
   },
   pt: {
-    co_notify_h: 'Diga-nos que vai a caminho',
-    co_notify_p: 'Uma mensagem rápida para sabermos que o quarto está pronto a ser preparado — e para lhe desejarmos uma boa viagem de volta.',
-    co_notify_btn: '📩 Avisar por WhatsApp',
+    co_notify_h: 'Pronto para o check-out?',
+    co_notify_p: 'Avisamos o seu anfitrião de que o quarto está livre — e depois conte-nos rapidamente como foi a sua estadia.',
+    co_notify_btn: 'Fazer check-out →',
     co_wa_msg: 'Olá! Estou a fazer checkout do quarto {room}. Está tudo no sítio. Obrigado pela hospedagem 💛',
   },
   fr: {
-    co_notify_h: 'Dites-nous que vous partez',
-    co_notify_p: "Un petit message pour qu'on sache que la chambre est prête à être préparée — et pour vous souhaiter un bon retour.",
-    co_notify_btn: '📩 Prévenir par WhatsApp',
+    co_notify_h: 'Prêt pour le départ ?',
+    co_notify_p: "Nous prévenons votre hôte que la chambre est libre — puis dites-nous en un instant comment s'est passé votre séjour.",
+    co_notify_btn: 'Faire le départ →',
     co_wa_msg: 'Bonjour ! Je libère la chambre {room} maintenant. Tout est en ordre. Merci pour le séjour 💛',
   },
   es: {
-    co_notify_h: 'Avísanos que ya te vas',
-    co_notify_p: 'Un mensaje rápido para que sepamos que la habitación está lista para ser preparada — y para desearte buen viaje de vuelta.',
-    co_notify_btn: '📩 Avisar por WhatsApp',
+    co_notify_h: '¿Listo para el check-out?',
+    co_notify_p: 'Avisamos a tu anfitrión de que la habitación está libre — y luego cuéntanos en un momento qué tal tu estancia.',
+    co_notify_btn: 'Hacer el check-out →',
     co_wa_msg: '¡Hola! Estoy haciendo check-out de la habitación {room}. Todo está en su sitio. Gracias por la estancia 💛',
   },
   de: {
-    co_notify_h: 'Sagen Sie uns Bescheid, dass Sie gehen',
-    co_notify_p: 'Eine kurze Nachricht, damit wir wissen, dass das Zimmer für die Vorbereitung bereit ist — und damit wir Ihnen eine gute Rückreise wünschen können.',
-    co_notify_btn: '📩 Per WhatsApp benachrichtigen',
+    co_notify_h: 'Bereit zum Check-out?',
+    co_notify_p: 'Wir sagen Ihrem Gastgeber Bescheid, dass das Zimmer frei ist — und dann erzählen Sie uns kurz, wie Ihr Aufenthalt war.',
+    co_notify_btn: 'Check-out machen →',
     co_wa_msg: 'Hallo! Ich checke jetzt aus Zimmer {room} aus. Alles ist an seinem Platz. Danke für den Aufenthalt 💛',
   },
   it: {
-    co_notify_h: 'Facci sapere che stai uscendo',
-    co_notify_p: 'Un messaggio rapido per sapere che la camera è pronta per essere preparata — e per augurarti un buon viaggio di ritorno.',
-    co_notify_btn: '📩 Avvisa via WhatsApp',
+    co_notify_h: 'Pronto per il check-out?',
+    co_notify_p: "Avvisiamo il tuo host che la camera è libera — e poi raccontaci in un attimo com'è andato il soggiorno.",
+    co_notify_btn: 'Fai il check-out →',
     co_wa_msg: 'Ciao! Sto facendo il check-out dalla camera {room}. È tutto a posto. Grazie per il soggiorno 💛',
   },
 };
@@ -3744,6 +3744,16 @@ Object.keys(CO_NOTIFY_I18N).forEach(function (l) {
     refreshCheckoutWa();
   };
   refreshCheckoutWa();
+
+  // "Fazer check-out": notify the host AND funnel the guest straight
+  // into the review flow — a check-out should always end at a review,
+  // never dead-end at a WhatsApp message.
+  const coBtn = document.getElementById('co-wa-notify');
+  if (coBtn) {
+    coBtn.addEventListener('click', function () {
+      setTimeout(function () { location.hash = '#avaliar'; }, 80);
+    });
+  }
 })();
 
 /* Deep-link support: ?checkout=1 (or ?phase=checkout) goes straight
@@ -4677,13 +4687,11 @@ const MAP_I18N = {
 ═══════════════════════════════════════════════════════════════ */
 (function () {
   /* ── CONFIG ──────────────────────────────────────────────────
-     TODO (host): the apartment's exact coordinates.
-     How to get them: open Google Maps, right-click the building at
-     Rua da Paz 66, Porto, then click the lat/long shown to copy it.
-     Paste it below as [lat, lng] — e.g. [41.1570, -8.6380].
-     While this stays null, the map centres on Porto and the
-     "home" marker is simply skipped (nothing is invented).        */
-  var APARTMENT_COORDS = null;
+     The apartment's coordinates (Rua da Paz 66, Porto), supplied
+     by the host. The map opens centred here with the 🏠 pin.
+     To adjust: right-click the building in Google Maps, click the
+     lat/long to copy, and replace the pair below as [lat, lng].   */
+  var APARTMENT_COORDS = [41.1543938, -8.6251233];
 
   var PORTO_CENTER = [41.1455, -8.6110]; // central Porto fallback
 
@@ -4810,7 +4818,7 @@ Object.assign(translations.nl, {
   key_title: 'Sleutels & toegang',
   key_1: 'De toegangssleutel ligt in de externe kluis — gebruik de code die we u met uw check-in-instructies hebben gestuurd.',
   key_2: 'Uw kamersleutel ligt klaar in het kleine kluisje direct buiten uw kamerdeur — dezelfde code die we u hebben gestuurd.',
-  key_3: 'Leg bij vertrek beide sleutels terug in hun kluisjes.',
+  key_3: 'Bij het uitchecken kunnen de sleutels van de gebouwdeur en de woningdeur in de buitenkluis of in uw kamerkluis worden gelegd. De kamersleutel hoort altijd in de kamerkluis.',
   safe_title: 'Kluis op de kamer',
   safe_1: 'Op uw kamer is een kluis aanwezig — gebruik die voor paspoorten, waardevolle spullen en pasjes.',
   safe_2: 'Stel bij aankomst uw eigen pincode in en wis die weer bij vertrek.',
@@ -5104,7 +5112,7 @@ Object.assign(translations.nl, {
   nav_bye: '🧳 Voordat u vertrekt', bye_title: 'Voordat u vertrekt',
   bye_sub: 'Een kort lijstje, een klein verzoek, en een dankjewel.',
   bye_checklist_h: 'Een klein checklijstje voor de kamer',
-  bye_checklist: '<li>Sluit de ramen — Porto-regen vindt zijn weg naar binnen via de oude raamkozijnen.</li><li>Doe alle lichten en de LED-lampen uit.</li><li>Wacht een paar seconden en controleer of het toilet is uitgespoeld.</li><li>Log uit bij Netflix, HBO Max, Prime Video en Disney+ op de tv — uw accounts, uw privacy.</li><li>Zet de ventilator, de tv en de mini-koelkast uit als u die heeft gebruikt.</li><li>Laat de sleutel achter zoals afgesproken.</li>',
+  bye_checklist: '<li>Sluit de ramen — Porto-regen vindt zijn weg naar binnen via de oude raamkozijnen.</li><li>Doe alle lichten en de LED-lampen uit.</li><li>Wacht een paar seconden en controleer of het toilet is uitgespoeld.</li><li>Log uit bij Netflix, HBO Max, Prime Video en Disney+ op de tv — uw accounts, uw privacy.</li><li>Zet de ventilator, de tv en de mini-koelkast uit als u die heeft gebruikt.</li><li>Sleutels van gebouw en woning: in de buitenkluis of uw kamerkluis. Kamersleutel: altijd in de kamerkluis.</li>',
   bye_ask_h: 'Voordat u gaat',
   bye_ask_p: 'Als we deel werden van een mooie herinnering aan uw reis, betekent uw review de wereld voor ons — en helpt het andere reizigers de weg te vinden naar dit hoekje van Porto.',
   bye_review_btn: 'Laat een review achter ⭐',
@@ -5143,9 +5151,9 @@ Object.assign(translations.nl, {
   home_help_more: 'Alle noodinformatie →',
   ppx_free: 'GRATIS', home_map_h: 'Ontdek Porto op de kaart',
   av_which_room: 'In welke kamer verblijft u?',
-  co_notify_h: 'Laat ons weten dat u vertrekt',
-  co_notify_p: 'Een kort bericht zodat we weten dat de kamer klaar is om gereedgemaakt te worden — en zodat we u een goede terugreis kunnen wensen.',
-  co_notify_btn: '📩 Laat het weten via WhatsApp',
+  co_notify_h: 'Klaar om uit te checken?',
+  co_notify_p: 'We laten uw gastheer weten dat de kamer vrij is — en daarna vertelt u ons even hoe uw verblijf was.',
+  co_notify_btn: 'Uitchecken →',
   co_wa_msg: 'Hallo! Ik check nu uit van kamer {room}. Alles is in orde. Bedankt voor het verblijf 💛',
   phase_q: 'Waar bent u in uw verblijf?',
   phase_checkin: 'Net aangekomen', phase_mid: 'Midden in verblijf', phase_checkout: 'Aan het uitchecken',
@@ -5467,3 +5475,53 @@ Object.assign(translations.it, {
   porto_antiqvvm_intro: 'Due stelle Michelin, una casa dell\'Ottocento, una vista sul Douro. Per la serata che volete ricordare.',
   porto_antiqvvm_tips: '<li>Prenotate con largo anticipo.</li><li>Il menu degustazione è la scelta giusta.</li><li>Elegante-informale — è un\'occasione.</li>',
 });
+
+/* ═══════════════════════════════════════════════════════════════
+   CHECKOUT CHECKLIST hint i18n + interactive tick behaviour
+═══════════════════════════════════════════════════════════════ */
+const CHECKLIST_HINT_I18N = {
+  en: { bye_checklist_hint: "Tap each item as you go — it remembers what you've ticked." },
+  pt: { bye_checklist_hint: 'Toque em cada item à medida que avança — fica guardado o que já marcou.' },
+  fr: { bye_checklist_hint: 'Touchez chaque élément au fur et à mesure — vos coches sont mémorisées.' },
+  es: { bye_checklist_hint: 'Toca cada elemento a medida que avanzas — recuerda lo que has marcado.' },
+  de: { bye_checklist_hint: 'Tippen Sie jeden Punkt an — Ihre Häkchen werden gemerkt.' },
+  it: { bye_checklist_hint: 'Tocca ogni voce man mano — ricorda cosa hai spuntato.' },
+  nl: { bye_checklist_hint: 'Tik elk item aan terwijl u bezig bent — wat u afvinkt wordt onthouden.' },
+};
+['en', 'pt', 'fr', 'es', 'de', 'it', 'nl'].forEach(function (l) {
+  if (translations[l]) Object.assign(translations[l], CHECKLIST_HINT_I18N[l]);
+});
+
+/* Interactive checkout checklist — tap an item to tick it off.
+   State persists in localStorage and survives a language switch
+   (applyLanguage rewrites the <li>s, so we repaint afterwards). */
+(function () {
+  const ul = document.querySelector('.checklist-interactive[data-i18n="bye_checklist"]');
+  if (!ul) return;
+  const KEY = 'pph-checkout-checklist';
+  let state = [];
+  try { state = JSON.parse(localStorage.getItem(KEY) || '[]') || []; } catch (e) { state = []; }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+  function paint() {
+    const items = ul.children;
+    for (let i = 0; i < items.length; i++) {
+      items[i].classList.toggle('checked', !!state[i]);
+    }
+  }
+  ul.addEventListener('click', function (e) {
+    const li = e.target.closest('li');
+    if (!li || li.parentElement !== ul) return;
+    const idx = Array.prototype.indexOf.call(ul.children, li);
+    if (idx < 0) return;
+    state[idx] = !state[idx];
+    li.classList.toggle('checked', !!state[idx]);
+    save();
+  });
+
+  const _applyChecklist = applyLanguage;
+  applyLanguage = function (l) { _applyChecklist(l); paint(); };
+  paint();
+})();
