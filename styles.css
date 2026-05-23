@@ -436,23 +436,49 @@ strong { color: var(--text); font-weight: 600; }
   pointer-events: all;
 }
 
+/* ── Nav Drawer — frosted glass panel ── */
 .nav-drawer {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   width: min(320px, 88vw);
-  background: var(--white);
   z-index: 940;
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
   box-shadow: var(--shadow-lg);
+  overflow: hidden; /* contain the blur layer */
 }
 
 .nav-drawer.open {
   transform: translateX(0);
+}
+
+/* Frosted glass background layer */
+.nav-drawer-bg {
+  position: absolute;
+  inset: -10%;        /* extend past edges so blur doesn't show gaps */
+  z-index: 0;
+  background-image: url('assets/fotos/area-comum-1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px) brightness(1.05) saturate(0.9);
+}
+/* Light mode glass overlay */
+.nav-drawer-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(252, 250, 247, 0.82);
+}
+
+/* Scrollable content sits above blur */
+.nav-drawer-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .nav-drawer-header {
@@ -460,7 +486,7 @@ strong { color: var(--text); font-weight: 600; }
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 1.4rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .nav-drawer-logo {
@@ -481,35 +507,89 @@ strong { color: var(--text); font-weight: 600; }
 .nav-close:hover { color: var(--text); }
 
 .nav-list {
-  padding: 1rem 0 2rem;
+  padding: 0.6rem 0 2rem;
+  list-style: none;
 }
 
-.nav-list li + li {
-  border-top: 1px solid rgba(0,0,0,0.04);
+.nav-list > li + li {
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 .nav-link {
   display: block;
-  padding: 0.9rem 1.4rem;
+  padding: 0.85rem 1.4rem;
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-mid);
   transition: all 0.15s;
 }
 
+.nav-link--home {
+  font-weight: 600;
+  color: var(--text);
+}
+
 .nav-link:hover {
   color: var(--text);
-  background: var(--sand);
+  background: rgba(0,0,0,0.04);
   padding-left: 1.8rem;
 }
 
-.nav-group-label {
-  padding: 1rem 1.4rem 0.4rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-light);
+/* Collapsible nav groups */
+.nav-group { }
+
+.nav-group-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-mid);
+  text-align: left;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-group-toggle:hover {
+  color: var(--text);
+  background: rgba(0,0,0,0.04);
+}
+
+.nav-group-toggle[aria-expanded="true"] {
+  color: var(--text);
+}
+
+.nav-toggle-arrow {
+  font-size: 1.1rem;
+  font-weight: 400;
+  transition: transform 0.22s ease;
+  display: inline-block;
+  line-height: 1;
+}
+
+.nav-group-toggle[aria-expanded="true"] .nav-toggle-arrow {
+  transform: rotate(90deg);
+}
+
+.nav-sub-list {
+  list-style: none;
+  padding: 0;
+  background: rgba(0,0,0,0.025);
+  border-top: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.nav-sub-list li + li {
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+.nav-sub {
+  padding-left: 2.2rem !important;
+  font-size: 0.93rem;
 }
 
 .nav-room {
@@ -585,7 +665,7 @@ strong { color: var(--text); font-weight: 600; }
 .hero-section {
   padding: 0;
   position: relative;
-  min-height: min(100svh, 700px);
+  min-height: min(60svh, 480px);
   display: flex;
   flex-direction: column;
 }
@@ -613,26 +693,7 @@ strong { color: var(--text); font-weight: 600; }
 }
 
 /* Decorative azulejo-inspired tile pattern */
-.hero-tiles {
-  position: absolute;
-  inset: 0;
-  opacity: 0.07;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.5) 0px,
-      rgba(255,255,255,0.5) 1px,
-      transparent 1px,
-      transparent 20px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      rgba(255,255,255,0.5) 0px,
-      rgba(255,255,255,0.5) 1px,
-      transparent 1px,
-      transparent 20px
-    );
-}
+/* .hero-tiles removed — crosshatch pattern replaced by frosted glass effect */
 
 /* When you add a real background photo, add this:
 .hero-bg-img {
@@ -645,7 +706,7 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 5;   /* above all hero-bg layers */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1832,8 +1893,22 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   border-top-color: var(--border);
 }
 
-[data-theme="dark"] .nav-drawer {
-  background: var(--off-white);
+[data-theme="dark"] .nav-drawer-bg::after {
+  background: rgba(12, 12, 18, 0.86);
+}
+[data-theme="dark"] .nav-drawer-header {
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+[data-theme="dark"] .nav-group-toggle:hover,
+[data-theme="dark"] .nav-link:hover {
+  background: rgba(255,255,255,0.06);
+}
+[data-theme="dark"] .nav-sub-list {
+  background: rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .nav-list > li + li,
+[data-theme="dark"] .nav-sub-list li + li {
+  border-color: rgba(255,255,255,0.06);
 }
 
 [data-theme="dark"] .lang-dropdown {
@@ -1883,6 +1958,13 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 [data-theme="dark"] .ribeira-body { background: #1a3060; }
 [data-theme="dark"] .douro-body   { background: #5a3800; }
 [data-theme="dark"] .atlantico-body { background: #1a4060; }
+
+[data-theme="dark"] .hero-glass {
+  background: rgba(8, 12, 28, 0.45);
+}
+[data-theme="dark"] .hero-bg-blur {
+  filter: blur(24px) brightness(0.55) saturate(1.1);
+}
 
 [data-theme="dark"] .hero-gradient {
   background: linear-gradient(
@@ -2113,16 +2195,41 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   34. HERO BG IMAGE
+   34. HERO BG IMAGE — frosted glass layers
    ═══════════════════════════════════════════════════════════════ */
+
+/* Layer 0 — blurred fill (same photo, softer blur fills the edges) */
+.hero-bg-blur {
+  position: absolute;
+  inset: -6%;
+  z-index: 0;
+  background-image: url('assets/fotos/hero-porto.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(14px) brightness(0.80) saturate(1.1);
+}
+
+/* Layer 1 — frosted glass overlay (light tint, keeps painting visible) */
+.hero-glass {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(18, 28, 52, 0.18);
+}
+
+/* Layer 2 — clear painting, fully visible, no crop */
 .hero-bg-img {
   position: absolute;
   inset: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
 }
+
+/* Layer 3 — gradient (already in HTML as .hero-gradient, z-index 3) */
+.hero-gradient { z-index: 3; }
 
 .hero-gradient {
   position: absolute;
@@ -2871,12 +2978,12 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 /* ═══════════════════════════════════════════════════════════════
    39. ROOM "FICHA DE CUIDADO"
    ═══════════════════════════════════════════════════════════════ */
-.ficha { margin-top: 1.6rem; }
+.ficha { margin-top: 1.6rem; padding: 0 1.5rem; }
 .ficha-intro {
   font-family: var(--font-display); font-size: 1.3rem; line-height: 1.45;
   font-style: italic; color: var(--room-color, var(--ribeira));
   border-left: 3px solid var(--room-color, var(--ribeira));
-  padding-left: 1rem; margin-bottom: 1.8rem;
+  padding-left: 1.4rem; margin-bottom: 1.8rem;
 }
 .ficha-group { margin-bottom: 1.4rem; }
 .ficha-group h5 {
@@ -2886,7 +2993,7 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 .ficha-ico { font-size: 1.15rem; line-height: 1; }
 .ficha-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
 .ficha-list li {
-  position: relative; padding-left: 1.15rem;
+  position: relative; padding-left: 1.3rem;
   color: var(--text-mid); font-size: 0.93rem; line-height: 1.6;
 }
 .ficha-list li::before {
@@ -2918,7 +3025,7 @@ And add overlay with .hero-gradient at opacity ~0.65 */
 /* ═══════════════════════════════════════════════════════════════
    40. ROOM PHOTO GALLERY + LIGHTBOX
    ═══════════════════════════════════════════════════════════════ */
-.room-gallery-section { margin: 1.3rem 0 0.4rem; }
+.room-gallery-section { margin: 1.3rem 0 0.4rem; padding: 0 1.5rem; }
 .room-gallery-title {
   display: flex; align-items: center; gap: 0.45rem;
   font-size: 1.05rem; color: var(--text); margin-bottom: 0.7rem;
@@ -3656,3 +3763,318 @@ And add overlay with .hero-gradient at opacity ~0.65 */
   background: rgba(200, 146, 42, 0.12);
 }
 
+
+/* ═══════════════════════════════════════════════════════════════
+   53. BATH FLUSH CALLOUT
+   ═══════════════════════════════════════════════════════════════ */
+.bath-flush-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background: #fff8e8;
+  border-left: 4px solid #C8922A;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.bath-flush-callout p { margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--text); line-height: 1.5; }
+.bath-flush-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.05rem; }
+[data-theme="dark"] .bath-flush-callout { background: rgba(200, 146, 42, 0.12); }
+
+/* ═══════════════════════════════════════════════════════════════
+   54. CASA SCREEN — combined kitchen / bathroom / rules
+   ═══════════════════════════════════════════════════════════════ */
+/* sticky wrapper for back-button + casa tabs — keeps them stacked as one unit */
+.casa-sticky-header {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 42;
+  background: var(--surface);
+}
+/* inside the wrapper, neither child is independently sticky */
+.casa-sticky-header .screen-back {
+  position: relative;
+  top: auto;
+  z-index: auto;
+}
+.casa-tabs {
+  display: flex;
+  gap: 0;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border);
+  position: relative; /* no longer independently sticky */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.casa-tab {
+  flex: 1;
+  min-width: max-content;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.casa-tab:hover { color: var(--navy); border-bottom-color: var(--douro); }
+.casa-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.casa-section:last-child { border-bottom: none; }
+.casa-section .section-title { margin-top: 0; }
+
+/* ═══════════════════════════════════════════════════════════════
+   55. ENTRY CARD VARIANTS
+   ═══════════════════════════════════════════════════════════════ */
+.entry-card--casa .entry-icon { background: linear-gradient(135deg, var(--navy) 0%, #2e4070 100%); color: #fff; }
+.entry-card--departure .entry-icon { background: linear-gradient(135deg, #7c5c2e 0%, var(--douro) 100%); color: #fff; }
+
+/* ═══════════════════════════════════════════════════════════════
+   56. CONTACT CARD EXTRAS
+   ═══════════════════════════════════════════════════════════════ */
+.contact-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin: 0.1rem 0 0.75rem;
+}
+.contact-emergency-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   57. NAV DRAWER SUB-ITEMS
+   ═══════════════════════════════════════════════════════════════ */
+.nav-sub {
+  font-size: 0.82rem;
+  padding-left: 2rem;
+  color: var(--text-muted) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   58. ROOM SELECTION POPUP
+   ═══════════════════════════════════════════════════════════════ */
+.room-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(10, 18, 40, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: roomPopupIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.room-popup[hidden] { display: none !important; }
+.room-popup-hide { animation: roomPopupOut 0.35s ease forwards; }
+@keyframes roomPopupIn  { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes roomPopupOut { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.97); } }
+
+.room-popup-inner {
+  text-align: center;
+  width: 100%;
+  max-width: 520px;
+}
+.room-popup-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: #fff;
+  margin: 0 0 0.3rem;
+}
+.room-popup-sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.88rem;
+  margin: 0 0 1.5rem;
+}
+
+.room-popup-choices {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.room-choice {
+  flex: 1;
+  max-width: 150px;
+  background: none;
+  border: 2px solid rgba(255,255,255,0.18);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.room-choice:hover, .room-choice:focus-visible {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+.room-choice-img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255,255,255,0.08);
+}
+.room-choice-label {
+  padding: 0.6rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  align-items: center;
+}
+.room-choice-emoji { font-size: 1.1rem; }
+.room-choice-name {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+.room-popup-skip {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  text-decoration: underline;
+}
+.room-popup-skip:hover { color: rgba(255,255,255,0.75); }
+
+/* ═══════════════════════════════════════════════════════════════
+   59. WELCOME
+   59. WELCOME OVERLAY
+   ═══════════════════════════════════════════════════════════════ */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  background: rgba(10, 18, 40, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.welcome-overlay[hidden] { display: none !important; }
+.welcome-in  { animation: welcomeFadeIn  0.6s ease forwards; }
+.welcome-out { animation: welcomeFadeOut 0.6s ease forwards; }
+@keyframes welcomeFadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes welcomeFadeOut { from { opacity: 1; } to { opacity: 0; } }
+
+.welcome-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.welcome-logo { opacity: 0.9; }
+.welcome-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  color: #fff;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+.welcome-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.85rem;
+  margin: 0;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   60. DARK MODE CONTRAST FIXES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* checkout-cta: in dark mode --ribeira becomes medium blue → keep it dark */
+[data-theme="dark"] .checkout-cta {
+  background: linear-gradient(135deg, #1a3060 0%, #1e2d50 100%);
+  color: #fff;
+}
+
+/* btn-primary: keep dark navy in dark mode for legibility */
+[data-theme="dark"] .btn-primary {
+  background: #1a3060;
+  color: #fff;
+}
+[data-theme="dark"] .btn-primary:hover {
+  background: #243870;
+}
+
+/* contact-btn.phone: same — keep dark navy */
+[data-theme="dark"] .contact-btn.phone {
+  background: #1a3060;
+  color: #fff;
+}
+
+/* pm-btn: explicit light text in dark mode */
+[data-theme="dark"] .pm-btn {
+  color: var(--text);
+}
+
+/* entry-card heading: ensure visibility */
+[data-theme="dark"] .entry-body h3 {
+  color: var(--text);
+}
+
+/* section-title: ensure visibility on sand backgrounds in dark mode */
+[data-theme="dark"] .section-title {
+  color: var(--text);
+}
+
+/* bye-section title: explicit contrast */
+[data-theme="dark"] #checkout .section-title,
+[data-theme="dark"] #checkout .section-sub {
+  color: var(--text);
+}
+
+/* guide-card--report btn-primary: always clearly visible */
+[data-theme="dark"] .guide-card--report .btn-primary {
+  background: #1a3060;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   61. FIRST-VISIT REVIEW CTA — subtle on first visit
+   ═══════════════════════════════════════════════════════════════ */
+/* On first visit the big review CTA shrinks to a quiet link-style bar */
+.home-review-cta.review-cta-first-visit {
+  background: var(--off-white);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  padding: 0.75rem 1rem;
+}
+.home-review-cta.review-cta-first-visit .hrc-stars {
+  display: none;
+}
+.home-review-cta.review-cta-first-visit h3 {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+.home-review-cta.review-cta-first-visit p {
+  display: none;
+}
+.home-review-cta.review-cta-first-visit .hrc-btn {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+[data-theme="dark"] .home-review-cta.review-cta-first-visit {
+  background: var(--off-white);
+  border-color: var(--border);
+}
+[data-theme="dark"] .home-review-cta.review-cta-first-visit h3 {
+  color: var(--text);
+}
+[data-theme="dark"] .home-review-cta.review-cta-first-v

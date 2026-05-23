@@ -31,7 +31,7 @@ const translations = {
     nav_bathroom: 'Bathroom',
     nav_transport: 'Transport',
     nav_nearby: 'Nearby Places',
-    nav_porto: 'Porto Guide',
+    nav_porto: 'Porto Guide', nav_explore_label: '🗺️ Explore Porto',
     nav_emergency: '🆘 Emergency',
     bnav_home: 'Home',
     bnav_info: 'Info',
@@ -300,7 +300,7 @@ const translations = {
     nav_bathroom: 'Casa de Banho',
     nav_transport: 'Transportes',
     nav_nearby: 'Lugares Próximos',
-    nav_porto: 'Guia do Porto',
+    nav_porto: 'Guia do Porto', nav_explore_label: '🗺️ Explorar Porto',
     nav_emergency: '🆘 Emergência',
     bnav_home: 'Início',
     bnav_info: 'Info',
@@ -569,7 +569,7 @@ const translations = {
     nav_bathroom: 'Salle de Bain',
     nav_transport: 'Transports',
     nav_nearby: 'À Proximité',
-    nav_porto: 'Guide Porto',
+    nav_porto: 'Guide Porto', nav_explore_label: '🗺️ Explorer Porto',
     nav_emergency: '🆘 Urgence',
     bnav_home: 'Accueil',
     bnav_info: 'Infos',
@@ -838,7 +838,7 @@ const translations = {
     nav_bathroom: 'Baño',
     nav_transport: 'Transporte',
     nav_nearby: 'Lugares Cercanos',
-    nav_porto: 'Guía de Oporto',
+    nav_porto: 'Guía de Oporto', nav_explore_label: '🗺️ Explorar Oporto',
     nav_emergency: '🆘 Emergencia',
     bnav_home: 'Inicio',
     bnav_info: 'Info',
@@ -1107,7 +1107,7 @@ const translations = {
     nav_bathroom: 'Badezimmer',
     nav_transport: 'Transport',
     nav_nearby: 'In der Nähe',
-    nav_porto: 'Porto-Guide',
+    nav_porto: 'Porto-Guide', nav_explore_label: '🗺️ Porto erkunden',
     nav_emergency: '🆘 Notfall',
     bnav_home: 'Start',
     bnav_info: 'Info',
@@ -1376,7 +1376,7 @@ const translations = {
     nav_bathroom: 'Bagno',
     nav_transport: 'Trasporti',
     nav_nearby: 'Luoghi Vicini',
-    nav_porto: 'Guida Porto',
+    nav_porto: 'Guida Porto', nav_explore_label: '🗺️ Esplora Porto',
     nav_emergency: '🆘 Emergenza',
     bnav_home: 'Home',
     bnav_info: 'Info',
@@ -1651,8 +1651,11 @@ const AV_I18N = {
     av_feel_boa: 'Good',
     av_feel_regular: 'Could be better',
     av_feel_ruim: 'Poor',
-    av_hint1: 'Booked through Booking? You can still leave your review on Airbnb or Google — it helps us even more.',
+  av_hint1: 'Booked via Airbnb? Review there. Booked via Booking.com? Review on Google.',
     av_eyebrow2: 'What a joy',
+  av_eyebrow_room: 'One quick thing',
+  av_title_room: 'Which room is yours?',
+  av_lead_room: 'So we can take you straight to the right place to leave your review.',
     av_title2: 'Wonderful to hear 💛',
     av_lead2: "It stays with us. If you'd like, leave a review where you booked — it's what helps other travellers find this little corner of Porto.",
     av_q_platform: 'Where did you book your stay?',
@@ -1664,7 +1667,6 @@ const AV_I18N = {
     av_booking_h: 'Thank you for staying with us',
     av_booking_p: "On Booking, your review arrives by email after check-out. If you'd like to help us even more right now, a review on Google makes all the difference.",
     av_booking_btn: 'Review on Google',
-    av_booking_alt: 'Have an Airbnb account? You can review there too',
     av_outra_h: 'Your review helps us so much',
     av_outra_p: 'A review on Google takes less than a minute and helps other travellers discover us.',
     av_outra_btn: 'Review on Google',
@@ -1724,8 +1726,10 @@ const AV_I18N = {
     av_feel_boa: 'Boa',
     av_feel_regular: 'Pode melhorar',
     av_feel_ruim: 'Má',
-    av_hint1: 'Reservou pelo Booking? Pode na mesma deixar a sua avaliação no Airbnb ou no Google — ajuda-nos ainda mais.',
-    av_eyebrow2: 'Que alegria',
+  av_hint1: 'Reservou pelo Airbnb? Avalie lá. Reservou pelo Booking? Avalie no Google.',
+  av_eyebrow_room: 'Uma coisa rápida',
+  av_title_room: 'Qual é o seu quarto?',
+  av_lead_room: 'Assim levamo-lo directo ao sítio certo para deixar a sua avaliação.',
     av_title2: 'Que bom saber 💛',
     av_lead2: 'Fica connosco. Se quiser, deixe uma avaliação onde reservou — é o que ajuda outros viajantes a encontrar este cantinho do Porto.',
     av_q_platform: 'Onde reservou a sua estadia?',
@@ -1737,7 +1741,6 @@ const AV_I18N = {
     av_booking_h: 'Obrigado por ficar connosco',
     av_booking_p: 'No Booking, a avaliação chega por email depois do check-out. Se quiser ajudar-nos ainda mais agora, uma avaliação no Google faz toda a diferença.',
     av_booking_btn: 'Avaliar no Google',
-    av_booking_alt: 'Tem conta no Airbnb? Também pode avaliar por lá',
     av_outra_h: 'A sua avaliação ajuda-nos imenso',
     av_outra_p: 'Uma avaliação no Google leva menos de um minuto e ajuda outros viajantes a descobrir-nos.',
     av_outra_btn: 'Avaliar no Google',
@@ -1873,7 +1876,7 @@ translations.pt.wa_msg_contact = 'Olá! Estou hospedado no Porto Peace Haven —
 ───────────────────────────────────────────────────────────────── */
 const PORTO_I18N = {
   en: {
-    nav_porto: 'Get to Know Porto',
+    nav_porto: 'Get to Know Porto', nav_explore_label: '🗺️ Explore Porto',
     porto_title: 'Get to Know Porto',
     porto_sub: 'Beyond the postcards — the places that make us love living here',
     porto_intro: "Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.",
@@ -1914,7 +1917,7 @@ const PORTO_I18N = {
     porto_cta_btn: 'Leave a review ⭐',
   },
   pt: {
-    nav_porto: 'Conheça o Porto',
+    nav_porto: 'Conheça o Porto', nav_explore_label: '🗺️ Explorar Porto',
     porto_title: 'Conheça o Porto',
     porto_sub: 'Para lá dos postais — os lugares que nos fazem gostar de viver aqui',
     porto_intro: 'O Porto não é uma cidade para riscar de uma lista. Recompensa quem se perde — quem desce a rua mais estreita, quem se senta um bocado nas escadas, quem pede aquilo que não sabe pronunciar. Estes são os sítios para onde mandaríamos um amigo: alguns que toda a gente conhece, e outros por onde a maioria passa ao lado.',
@@ -1969,6 +1972,7 @@ Object.assign(translations.pt, PORTO_I18N.pt);
 const BYE_I18N = {
   en: {
     nav_bye: '🧳 Before You Leave',
+  nav_checkout: '🧳 Checkout',
     bye_title: 'Before You Leave',
     bye_sub: 'A short list, a small ask, and a thank you.',
     bye_checklist_h: 'A small checklist for the room',
@@ -1981,6 +1985,7 @@ const BYE_I18N = {
   },
   pt: {
     nav_bye: '🧳 Antes de Partir',
+  nav_checkout: '🧳 Checkout',
     bye_title: 'Antes de Partir',
     bye_sub: 'Uma pequena lista, um pedido pequeno, e um obrigado.',
     bye_checklist_h: 'Uma pequena lista para o quarto',
@@ -2374,7 +2379,7 @@ initTheme();
       douro:     'https://www.airbnb.pt/rooms/1684934509981187232',
       atlantico: 'https://www.airbnb.com.br/rooms/1684880628111075712',
     },
-    google: 'COLAR_LINK_GOOGLE',
+    google: 'https://g.page/r/CdaQ5D78VxLHEBM/review',
   };
   const WHATSAPP_URGENTE = '351913874921';
 
@@ -2427,7 +2432,12 @@ initTheme();
     btn.addEventListener('click', function () {
       const expEl = document.getElementById('av-f-experiencia');
       if (expEl) expEl.value = btn.dataset.v;
-      show(btn.dataset.path === 'positive' ? 'av-step-platform' : 'av-step-form');
+      if (btn.dataset.path === 'positive') {
+        // If room is unknown, gate before the platform step
+        show(getRoom() ? 'av-step-platform' : 'av-step-room-gate');
+      } else {
+        show('av-step-form');
+      }
     });
   });
 
@@ -2448,6 +2458,17 @@ initTheme();
     b.addEventListener('click', function () {
       setRoom(b.dataset.room);
       applyAirbnbForRoom();
+    });
+  });
+
+  /* Room gate — room picker before the platform step */
+  section.querySelectorAll('.av-rgc-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var room = b.dataset.room;
+      setRoom(room);
+      try { localStorage.setItem('pph-room-ts', String(Date.now())); } catch(e) {}
+      applyAirbnbForRoom();
+      show('av-step-platform');
     });
   });
 
@@ -2690,8 +2711,9 @@ Object.assign(translations.fr, {
   av_feel_boa: 'Bien',
   av_feel_regular: 'Peut mieux faire',
   av_feel_ruim: 'Mauvais',
-  av_hint1: 'Réservé sur Booking ? Vous pouvez tout de même laisser votre avis sur Airbnb ou Google — cela nous aide encore plus.',
-  av_eyebrow2: 'Quelle joie',
+  av_hint1: 'Réservé via Airbnb ? Évaluez là-bas. Via Booking ? Évaluez sur Google.',
+  av_title_room: 'Quelle est votre chambre ?',
+  av_lead_room: 'Pour vous amener directement au bon endroit pour laisser votre avis.',
   av_title2: 'Quel bonheur 💛',
   av_lead2: "Cela nous touche. Si vous le souhaitez, laissez un avis là où vous avez réservé — c'est ce qui aide d'autres voyageurs à trouver ce petit coin de Porto.",
   av_q_platform: 'Où avez-vous réservé votre séjour ?',
@@ -2703,7 +2725,6 @@ Object.assign(translations.fr, {
   av_booking_h: "Merci d'avoir séjourné chez nous",
   av_booking_p: "Sur Booking, votre avis arrive par e-mail après le départ. Si vous souhaitez nous aider encore plus dès maintenant, un avis sur Google fait toute la différence.",
   av_booking_btn: 'Évaluer sur Google',
-  av_booking_alt: 'Vous avez un compte Airbnb ? Vous pouvez aussi y laisser un avis',
   av_outra_h: 'Votre avis nous aide énormément',
   av_outra_p: "Un avis sur Google prend moins d'une minute et aide d'autres voyageurs à nous découvrir.",
   av_outra_btn: 'Évaluer sur Google',
@@ -2774,7 +2795,7 @@ Object.assign(translations.fr, {
   atl_work: '<li>Une chaise de bureau et une petite table de travail — assez pour répondre à quelques e-mails avec une vue paisible.</li>',
   atl_light: "<li>Deux lampes LED RGB et une bande LED derrière la TV, toutes avec télécommande.</li><li>Une TV avec lecteur Android : Netflix, HBO Max, Prime Video, Disney+ avec vos propres comptes — merci de vous déconnecter avant le départ.</li><li><strong>Bon à savoir :</strong> pour changer uniquement la couleur de la lampe sans affecter la TV, éteignez d'abord la TV, puis pointez la télécommande LED directement vers la lampe.</li>",
   atl_storage: '<li>Un portant à vêtements pour suspendre vos affaires.</li><li>Une toile encadrée sur le thème de la chambre, des prises avec USB-A et USB-C, et un miroir.</li>',
-  nav_porto: 'Découvrez Porto',
+  nav_porto: 'Découvrez Porto', nav_explore_label: '🗺️ Explorer Porto',
   porto_title: 'Découvrez Porto',
   porto_sub: 'Au-delà des cartes postales — les endroits qui nous font aimer vivre ici',
   porto_intro: "Porto n'est pas une ville qu'on coche sur une liste. Elle récompense les flâneurs — ceux qui prennent la rue étroite, qui s'asseyent un moment sur les marches, qui commandent ce qu'ils ne savent pas prononcer. Voici les endroits où nous enverrions un ami : quelques-uns que tout le monde connaît, et quelques-uns devant lesquels la plupart des visiteurs passent sans s'arrêter.",
@@ -2814,6 +2835,7 @@ Object.assign(translations.fr, {
   porto_cta_p: "Si Porto — et notre petit endroit dedans — est devenu une bonne mémoire, un avis aide le prochain voyageur à trouver son chemin jusqu'ici aussi.",
   porto_cta_btn: 'Laisser un avis ⭐',
   nav_bye: '🧳 Avant de partir',
+  nav_checkout: '🧳 Départ',
   bye_title: 'Avant de partir',
   bye_sub: 'Une petite liste, une petite demande, et un merci.',
   bye_checklist_h: 'Une petite liste pour la chambre',
@@ -2839,8 +2861,8 @@ Object.assign(translations.es, {
   av_feel_boa: 'Bien',
   av_feel_regular: 'Puede mejorar',
   av_feel_ruim: 'Mal',
-  av_hint1: '¿Reservaste por Booking? También puedes dejar tu reseña en Airbnb o Google — nos ayuda aún más.',
-  av_eyebrow2: 'Qué alegría',
+  av_hint1: '¿Reservaste por Airbnb? Deja tu opinión allí. ¿Por Booking? Hazlo en Google.',
+  av_lead_room: 'Para llevarte directamente al lugar correcto donde dejar tu reseña.',
   av_title2: '¡Qué bueno saberlo! 💛',
   av_lead2: 'Se nos queda dentro. Si quieres, deja una reseña donde reservaste — es lo que ayuda a otros viajeros a encontrar este rinconcito de Oporto.',
   av_q_platform: '¿Dónde reservaste tu estancia?',
@@ -2852,7 +2874,6 @@ Object.assign(translations.es, {
   av_booking_h: 'Gracias por quedarte con nosotros',
   av_booking_p: 'En Booking, tu reseña llega por email después del check-out. Si quieres ayudarnos aún más ahora mismo, una reseña en Google marca toda la diferencia.',
   av_booking_btn: 'Reseñar en Google',
-  av_booking_alt: '¿Tienes cuenta en Airbnb? También puedes reseñar allí',
   av_outra_h: 'Tu reseña nos ayuda muchísimo',
   av_outra_p: 'Una reseña en Google lleva menos de un minuto y ayuda a otros viajeros a descubrirnos.',
   av_outra_btn: 'Reseñar en Google',
@@ -2923,7 +2944,7 @@ Object.assign(translations.es, {
   atl_work: '<li>Una silla de oficina y una mesita de trabajo — lo justo para responder unos correos con vistas tranquilas.</li>',
   atl_light: '<li>Dos lámparas LED RGB y una tira LED detrás de la TV, todas con mando.</li><li>TV con reproductor Android: Netflix, HBO Max, Prime Video, Disney+ con tus propias cuentas — por favor cierra sesión antes del check-out.</li><li><strong>Bueno saber:</strong> para cambiar solo el color de la lámpara sin afectar la TV, apaga primero la TV y apunta el mando LED directamente a la lámpara.</li>',
   atl_storage: '<li>Un perchero para colgar tus cosas.</li><li>Una lámina enmarcada con el tema de la habitación, enchufes con USB-A y USB-C, y un espejo.</li>',
-  nav_porto: 'Conoce Oporto',
+  nav_porto: 'Conoce Oporto', nav_explore_label: '🗺️ Explorar Oporto',
   porto_title: 'Conoce Oporto',
   porto_sub: 'Más allá de las postales — los lugares que nos hacen amar vivir aquí',
   porto_intro: 'Oporto no es una ciudad para tachar de una lista. Premia a quien se pierde — al que baja por la calle estrecha, al que se sienta un rato en las escaleras, al que pide eso que no sabe pronunciar. Estos son los sitios donde mandaríamos a un amigo: algunos que todo el mundo conoce, y otros por los que la mayoría pasa de largo.',
@@ -2963,6 +2984,7 @@ Object.assign(translations.es, {
   porto_cta_p: 'Si Oporto — y nuestro rinconcito en él — entró en una buena memoria, una reseña ayuda al próximo viajero a encontrar también el camino hasta aquí.',
   porto_cta_btn: 'Dejar una reseña ⭐',
   nav_bye: '🧳 Antes de irte',
+  nav_checkout: '🧳 Checkout',
   bye_title: 'Antes de irte',
   bye_sub: 'Una pequeña lista, una pequeña petición, y un gracias.',
   bye_checklist_h: 'Una pequeña lista para la habitación',
@@ -2988,8 +3010,7 @@ Object.assign(translations.de, {
   av_feel_boa: 'Gut',
   av_feel_regular: 'Könnte besser sein',
   av_feel_ruim: 'Schlecht',
-  av_hint1: 'Über Booking gebucht? Sie können Ihre Bewertung trotzdem auf Airbnb oder Google hinterlassen — das hilft uns noch mehr.',
-  av_eyebrow2: 'Was für eine Freude',
+  av_hint1: 'Über Airbnb gebucht? Dort bewerten. Über Booking? Auf Google bewerten.',
   av_title2: 'Schön, das zu hören 💛',
   av_lead2: 'Das bleibt bei uns. Wenn Sie mögen, hinterlassen Sie eine Bewertung dort, wo Sie gebucht haben — das hilft anderen Reisenden, diesen kleinen Winkel von Porto zu finden.',
   av_q_platform: 'Wo haben Sie Ihren Aufenthalt gebucht?',
@@ -3001,7 +3022,6 @@ Object.assign(translations.de, {
   av_booking_h: 'Danke, dass Sie bei uns gewohnt haben',
   av_booking_p: 'Auf Booking kommt Ihre Bewertung nach dem Check-out per E-Mail. Wenn Sie uns jetzt noch mehr helfen möchten, macht eine Bewertung auf Google den ganzen Unterschied.',
   av_booking_btn: 'Auf Google bewerten',
-  av_booking_alt: 'Haben Sie ein Airbnb-Konto? Dort können Sie auch bewerten',
   av_outra_h: 'Ihre Bewertung hilft uns enorm',
   av_outra_p: 'Eine Bewertung auf Google dauert weniger als eine Minute und hilft anderen Reisenden, uns zu entdecken.',
   av_outra_btn: 'Auf Google bewerten',
@@ -3072,7 +3092,7 @@ Object.assign(translations.de, {
   atl_work: '<li>Ein Bürostuhl und ein kleiner Arbeitstisch — genug, um mit ruhigem Ausblick ein paar E-Mails zu beantworten.</li>',
   atl_light: '<li>Zwei RGB-LED-Lampen plus ein LED-Streifen hinter dem Fernseher, alle mit Fernbedienung.</li><li>Ein Fernseher mit Android-Player: Netflix, HBO Max, Prime Video, Disney+ mit Ihren eigenen Konten — bitte melden Sie sich vor dem Check-out ab.</li><li><strong>Gut zu wissen:</strong> Um nur die Lampenfarbe ohne Einfluss auf den Fernseher zu ändern, schalten Sie zuerst den Fernseher aus und richten dann die LED-Fernbedienung direkt auf die Lampe.</li>',
   atl_storage: '<li>Eine Kleiderstange zum Aufhängen Ihrer Sachen.</li><li>Ein gerahmter Druck zum Thema des Zimmers, Steckdosen mit USB-A und USB-C, und ein Spiegel.</li>',
-  nav_porto: 'Porto entdecken',
+  nav_porto: 'Porto entdecken', nav_explore_label: '🗺️ Porto erkunden',
   porto_title: 'Porto entdecken',
   porto_sub: 'Jenseits der Postkarten — die Orte, die uns das Leben hier lieben lassen',
   porto_intro: 'Porto ist keine Stadt, die man von einer Liste hakt. Sie belohnt die Bummler — die, die in die enge Gasse einbiegen, die sich eine Weile auf die Stufen setzen, die das bestellen, was sie nicht aussprechen können. Hier sind die Orte, an die wir einen Freund schicken würden: ein paar, die jeder kennt, und ein paar, an denen die meisten Besucher direkt vorbeigehen.',
@@ -3112,6 +3132,7 @@ Object.assign(translations.de, {
   porto_cta_p: 'Wenn Porto — und unser kleiner Platz darin — Teil einer schönen Erinnerung wurde, hilft eine Bewertung dem nächsten Reisenden, auch hierherzufinden.',
   porto_cta_btn: 'Bewertung hinterlassen ⭐',
   nav_bye: '🧳 Vor der Abreise',
+  nav_checkout: '🧳 Abreise',
   bye_title: 'Vor der Abreise',
   bye_sub: 'Eine kleine Liste, eine kleine Bitte, und ein Danke.',
   bye_checklist_h: 'Eine kleine Liste für das Zimmer',
@@ -3137,8 +3158,9 @@ Object.assign(translations.it, {
   av_feel_boa: 'Bene',
   av_feel_regular: 'Si può migliorare',
   av_feel_ruim: 'Male',
-  av_hint1: 'Hai prenotato su Booking? Puoi comunque lasciare la tua recensione su Airbnb o Google — ci aiuta ancora di più.',
+  av_hint1: 'Prenotato su Airbnb? Recensisci lì. Su Booking? Fallo su Google.',
   av_eyebrow2: 'Che gioia',
+  av_hint1: 'Geboekt via Airbnb? Beoordeel daar. Via Booking? Beoordeel op Google.',
   av_title2: 'Che bello sentirlo 💛',
   av_lead2: 'Rimane con noi. Se vuoi, lascia una recensione dove hai prenotato — è ciò che aiuta altri viaggiatori a trovare questo angolino di Porto.',
   av_q_platform: 'Dove hai prenotato il tuo soggiorno?',
@@ -3150,7 +3172,6 @@ Object.assign(translations.it, {
   av_booking_h: 'Grazie per essere stato con noi',
   av_booking_p: 'Su Booking, la tua recensione arriva via email dopo il check-out. Se vuoi aiutarci ancora di più ora, una recensione su Google fa tutta la differenza.',
   av_booking_btn: 'Recensisci su Google',
-  av_booking_alt: 'Hai un account Airbnb? Puoi recensire anche lì',
   av_outra_h: 'La tua recensione ci aiuta tantissimo',
   av_outra_p: 'Una recensione su Google richiede meno di un minuto e aiuta altri viaggiatori a scoprirci.',
   av_outra_btn: 'Recensisci su Google',
@@ -3221,7 +3242,7 @@ Object.assign(translations.it, {
   atl_work: '<li>Una sedia da ufficio e un tavolino da lavoro — quanto basta per rispondere a qualche email con una vista tranquilla.</li>',
   atl_light: '<li>Due lampade LED RGB e una striscia LED dietro il TV, tutte con telecomando.</li><li>Un TV con lettore Android: Netflix, HBO Max, Prime Video, Disney+ con i tuoi account — per favore disconnettiti prima del check-out.</li><li><strong>Buono a sapersi:</strong> per cambiare solo il colore della lampada senza interferire con il TV, spegni prima il TV e punta il telecomando LED direttamente verso la lampada.</li>',
   atl_storage: '<li>Un appendiabiti per appendere le tue cose.</li><li>Una stampa incorniciata con il tema della camera, prese con USB-A e USB-C, e uno specchio.</li>',
-  nav_porto: 'Scopri Porto',
+  nav_porto: 'Scopri Porto', nav_explore_label: '🗺️ Esplora Porto',
   porto_title: 'Scopri Porto',
   porto_sub: 'Oltre le cartoline — i luoghi che ci fanno amare vivere qui',
   porto_intro: "Porto non è una città da spuntare da una lista. Premia chi si lascia perdere — chi imbocca la via stretta, chi si siede un po' sui gradini, chi ordina quello che non sa pronunciare. Ecco i posti dove manderemmo un amico: alcuni che tutti conoscono, e altri davanti ai quali la maggior parte dei visitatori passa senza fermarsi.",
@@ -3261,6 +3282,7 @@ Object.assign(translations.it, {
   porto_cta_p: 'Se Porto — e il nostro piccolo posto al suo interno — è entrato in un buon ricordo, una recensione aiuta il prossimo viaggiatore a trovare anche lui la strada fino a qui.',
   porto_cta_btn: 'Lascia una recensione ⭐',
   nav_bye: '🧳 Prima di partire',
+  nav_checkout: '🧳 Checkout',
   bye_title: 'Prima di partire',
   bye_sub: 'Una piccola lista, una piccola richiesta, e un grazie.',
   bye_checklist_h: 'Una piccola lista per la camera',
@@ -3388,7 +3410,7 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
    scroll to that sub-element.
 ═══════════════════════════════════════════════════════════════ */
 (function () {
-  const SCREENS = ['home','rooms','essential-info','checkin','guide','kitchen','bathroom','rules','transport','nearby','porto','place','mapa','checkout','avaliar','emergency'];
+  const SCREENS = ['home','rooms','checkin','casa','transport','nearby','porto','place','mapa','checkout','avaliar','emergency'];
 
   function setActiveTab(screenId) {
     document.querySelectorAll('.bnav-item').forEach(function (it) {
@@ -3403,6 +3425,8 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
     });
     setActiveTab(screenId);
     closeNav && closeNav();
+    // Notify nav groups to auto-expand when relevant screen is active
+    document.dispatchEvent(new CustomEvent('pph:screenchange', { detail: { id: scrollTargetId || screenId } }));
     if (scrollTargetId) {
       // Wait a tick so the screen is in flow before measuring offset.
       setTimeout(function () {
@@ -3531,6 +3555,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Check-in &amp; Check-out',
     entry_checkin_p: 'Check-in from 16:00 · Check-out by 11:00. Keys in external safes.',
     entry_kitchen_h: 'Kitchen Guide',
+  entry_casa_h: 'House Guide',
+  entry_casa_p: 'Kitchen · Bathroom · House Rules',
+  entry_departure_h: 'Check-in · Check-out · Before Leaving',
+  entry_departure_p: 'Check-in from 16:00 · Check-out by 11:00 · Do check-out here',
+  contact_sub: "We're here. For real emergencies, dial 112.",
+  home_help_more: 'All emergency info →',
+  popup_title: 'Which room is yours?',
+  popup_sub: "We'll personalise your guide.",
+  popup_skip: 'Skip',
+  addr_supermarket_desc: 'Supermarket · ~5 min walk',
+  addr_bus_desc: 'STCP bus stop · < 2 min walk',
+  addr_metro1_desc: 'Metro Line D · ~12 min walk',
+  addr_metro2_desc: 'Metro Lines A/B/C · ~15 min walk',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 House Guide',
     entry_kitchen_p: 'Everything you need to cook safely and use the shared kitchen.',
     entry_bathroom_h: 'Bathroom Guide',
     entry_bathroom_p: 'How to use the shared bathroom, the hair dryer and the universal adapter.',
@@ -3552,6 +3591,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Check-in &amp; Check-out',
     entry_checkin_p: 'Check-in a partir das 16:00 · Check-out até às 11:00. Chaves nos cofres externos.',
     entry_kitchen_h: 'Guia da Cozinha',
+  entry_casa_h: 'Guia da Casa',
+  entry_casa_p: 'Cozinha · Casa de Banho · Regras',
+  entry_departure_h: 'Check-in · Check-out · Antes de Partir',
+  entry_departure_p: 'Check-in a partir das 16h · Check-out até às 11h · Fazer check-out aqui',
+  contact_sub: 'Estamos aqui. Para emergências, ligue 112.',
+  home_help_more: 'Toda a info de emergência →',
+  popup_title: 'Qual é o seu quarto?',
+  popup_sub: 'Vamos personalizar o seu guia.',
+  popup_skip: 'Saltar',
+  addr_supermarket_desc: 'Supermercado · ~5 min a pé',
+  addr_bus_desc: 'Paragem STCP · < 2 min a pé',
+  addr_metro1_desc: 'Metro Linha D · ~12 min a pé',
+  addr_metro2_desc: 'Metro Linhas A/B/C · ~15 min a pé',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Guia da Casa',
     entry_kitchen_p: 'Tudo o que precisa para cozinhar em segurança e usar a cozinha partilhada.',
     entry_bathroom_h: 'Guia da Casa de Banho',
     entry_bathroom_p: 'Como usar a casa de banho partilhada, o secador e o adaptador universal.',
@@ -3573,6 +3627,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Arrivée &amp; Départ',
     entry_checkin_p: 'Arrivée à partir de 16h00 · Départ avant 11h00. Clés dans les coffres extérieurs.',
     entry_kitchen_h: 'Guide de la cuisine',
+  entry_casa_h: 'Guide de la Maison',
+  entry_casa_p: 'Cuisine · Salle de bain · Règles',
+  entry_departure_h: 'Check-in · Check-out · Avant de partir',
+  entry_departure_p: 'Check-in à partir de 16h · Check-out avant 11h · Faire le check-out ici',
+  contact_sub: 'Nous sommes là. Pour les urgences, composez le 112.',
+  home_help_more: "Toutes les infos d'urgence →",
+  popup_title: 'Quelle est votre chambre ?',
+  popup_sub: 'Nous personnaliserons votre guide.',
+  popup_skip: 'Passer',
+  addr_supermarket_desc: 'Supermarché · ~5 min à pied',
+  addr_bus_desc: 'Arrêt de bus STCP · < 2 min à pied',
+  addr_metro1_desc: 'Métro Ligne D · ~12 min à pied',
+  addr_metro2_desc: 'Métro Lignes A/B/C · ~15 min à pied',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Guide Maison',
     entry_kitchen_p: "Tout ce qu'il vous faut pour cuisiner en toute sécurité et utiliser la cuisine partagée.",
     entry_bathroom_h: 'Guide de la salle de bain',
     entry_bathroom_p: "Comment utiliser la salle de bain partagée, le sèche-cheveux et l'adaptateur universel.",
@@ -3594,6 +3663,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Check-in &amp; Check-out',
     entry_checkin_p: 'Check-in desde las 16:00 · Check-out hasta las 11:00. Llaves en cajas fuertes exteriores.',
     entry_kitchen_h: 'Guía de la cocina',
+  entry_casa_h: 'Guía de la Casa',
+  entry_casa_p: 'Cocina · Baño · Normas',
+  entry_departure_h: 'Check-in · Check-out · Antes de salir',
+  entry_departure_p: 'Check-in desde las 16h · Check-out antes de las 11h · Hacer el check-out aquí',
+  contact_sub: 'Estamos aquí. Para emergencias, llama al 112.',
+  home_help_more: 'Toda la info de emergencia →',
+  popup_title: '¿Cuál es tu habitación?',
+  popup_sub: 'Personalizaremos tu guía.',
+  popup_skip: 'Omitir',
+  addr_supermarket_desc: 'Supermercado · ~5 min a pie',
+  addr_bus_desc: 'Parada de autobús STCP · < 2 min a pie',
+  addr_metro1_desc: 'Metro Línea D · ~12 min a pie',
+  addr_metro2_desc: 'Metro Líneas A/B/C · ~15 min a pie',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Guía Casa',
     entry_kitchen_p: 'Todo lo que necesitas para cocinar con seguridad y usar la cocina compartida.',
     entry_bathroom_h: 'Guía del baño',
     entry_bathroom_p: 'Cómo usar el baño compartido, el secador y el adaptador universal.',
@@ -3615,6 +3699,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Check-in &amp; Check-out',
     entry_checkin_p: 'Check-in ab 16:00 · Check-out bis 11:00. Schlüssel in externen Safes.',
     entry_kitchen_h: 'Küchen-Anleitung',
+  entry_casa_h: 'Hausführer',
+  entry_casa_p: 'Küche · Bad · Hausregeln',
+  entry_departure_h: 'Check-in · Check-out · Vor der Abreise',
+  entry_departure_p: 'Check-in ab 16 Uhr · Check-out bis 11 Uhr · Check-out hier durchführen',
+  contact_sub: 'Wir sind für Sie da. Für Notfälle: 112.',
+  home_help_more: 'Alle Notfallinfos →',
+  popup_title: 'Welches Zimmer ist Ihres?',
+  popup_sub: 'Wir personalisieren Ihren Guide.',
+  popup_skip: 'Überspringen',
+  addr_supermarket_desc: 'Supermarkt · ~5 Min. zu Fuß',
+  addr_bus_desc: 'STCP-Bushaltestelle · < 2 Min. zu Fuß',
+  addr_metro1_desc: 'Metro Linie D · ~12 Min. zu Fuß',
+  addr_metro2_desc: 'Metro Linien A/B/C · ~15 Min. zu Fuß',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Hausführer',
     entry_kitchen_p: 'Alles, was Sie zum sicheren Kochen und für die gemeinsame Küche brauchen.',
     entry_bathroom_h: 'Bad-Anleitung',
     entry_bathroom_p: 'Wie Sie das gemeinsame Bad, den Föhn und den Universaladapter benutzen.',
@@ -3636,6 +3735,21 @@ const HOME_FEED_I18N = {
     entry_checkin_h: 'Check-in &amp; Check-out',
     entry_checkin_p: 'Check-in dalle 16:00 · Check-out entro le 11:00. Chiavi nelle casseforti esterne.',
     entry_kitchen_h: 'Guida della cucina',
+  entry_casa_h: 'Guida della Casa',
+  entry_casa_p: 'Cucina · Bagno · Regole',
+  entry_departure_h: 'Check-in · Check-out · Prima di partire',
+  entry_departure_p: 'Check-in dalle 16:00 · Check-out entro le 11:00 · Effettua il check-out qui',
+  contact_sub: 'Siamo qui. Per emergenze, chiama il 112.',
+  home_help_more: 'Tutte le info di emergenza →',
+  popup_title: 'Qual è la tua camera?',
+  popup_sub: 'Personalizzeremo la tua guida.',
+  popup_skip: 'Salta',
+  addr_supermarket_desc: 'Supermercato · ~5 min a piedi',
+  addr_bus_desc: 'Fermata bus STCP · < 2 min a piedi',
+  addr_metro1_desc: 'Metro Linea D · ~12 min a piedi',
+  addr_metro2_desc: 'Metro Linee A/B/C · ~15 min a piedi',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Guida Casa',
     entry_kitchen_p: 'Tutto ciò che ti serve per cucinare in sicurezza e usare la cucina condivisa.',
     entry_bathroom_h: 'Guida del bagno',
     entry_bathroom_p: "Come usare il bagno condiviso, il phon e l'adattatore universale.",
@@ -3763,241 +3877,6 @@ Object.keys(CO_NOTIFY_I18N).forEach(function (l) {
   const p = new URLSearchParams(location.search);
   if (p.get('checkout') === '1' || p.get('phase') === 'checkout') {
     if (location.hash !== '#checkout') location.hash = '#checkout';
-  }
-})();
-
-/* ═══════════════════════════════════════════════════════════════
-   PHASE AWARENESS — banner + welcome modal
-   Detects which moment of the stay the guest is in (check-in /
-   mid-stay / checkout) via URL param ?phase=X, stored answer,
-   or a discreet banner on the home. Acts on the answer.
-═══════════════════════════════════════════════════════════════ */
-const PHASE_I18N = {
-  en: {
-    phase_q: 'Where are you in your stay?',
-    phase_checkin: 'Just arrived',
-    phase_mid: 'Mid stay',
-    phase_checkout: 'Checking out',
-    welcome_h: 'Welcome to Porto Peace Haven',
-    welcome_p: 'A quick tour of what you can do here:',
-    welcome_rules_h: 'House rules',
-    welcome_rules_p: 'A 30-second read — keeps everyone happy in the building.',
-    welcome_porto_h: 'Discover Porto',
-    welcome_porto_p: 'Curated places off the tourist track + classics worth your time.',
-    welcome_go: 'Got it — explore the guide →',
-  },
-  pt: {
-    phase_q: 'Em que momento da estadia está?',
-    phase_checkin: 'Acabei de chegar',
-    phase_mid: 'A meio',
-    phase_checkout: 'A fazer checkout',
-    welcome_h: 'Bem-vindo ao Porto Peace Haven',
-    welcome_p: 'Uma volta rápida pelo que pode fazer aqui:',
-    welcome_rules_h: 'Regras da casa',
-    welcome_rules_p: 'Leitura de 30 segundos — mantém toda a gente feliz no prédio.',
-    welcome_porto_h: 'Descobrir o Porto',
-    welcome_porto_p: 'Lugares com curadoria, fora do roteiro turístico, e os clássicos que valem o tempo.',
-    welcome_go: 'Entendido — explorar o guia →',
-  },
-  fr: {
-    phase_q: 'Où en êtes-vous dans votre séjour ?',
-    phase_checkin: "Je viens d'arriver",
-    phase_mid: 'Au milieu',
-    phase_checkout: 'Je pars',
-    welcome_h: 'Bienvenue à Porto Peace Haven',
-    welcome_p: 'Un petit tour de ce que vous pouvez faire ici :',
-    welcome_rules_h: 'Règles de la maison',
-    welcome_rules_p: '30 secondes de lecture — tout le monde reste content dans l\'immeuble.',
-    welcome_porto_h: 'Découvrir Porto',
-    welcome_porto_p: 'Lieux choisis hors des sentiers battus + les classiques qui valent votre temps.',
-    welcome_go: 'Compris — explorer le guide →',
-  },
-  es: {
-    phase_q: '¿En qué momento de tu estancia estás?',
-    phase_checkin: 'Acabo de llegar',
-    phase_mid: 'A mitad',
-    phase_checkout: 'Haciendo check-out',
-    welcome_h: 'Bienvenido a Porto Peace Haven',
-    welcome_p: 'Un repaso rápido de lo que puedes hacer aquí:',
-    welcome_rules_h: 'Normas de la casa',
-    welcome_rules_p: 'Lectura de 30 segundos — todos contentos en el edificio.',
-    welcome_porto_h: 'Descubrir Oporto',
-    welcome_porto_p: 'Lugares con curaduría, fuera de la ruta turística, y los clásicos que valen tu tiempo.',
-    welcome_go: 'Entendido — explorar la guía →',
-  },
-  de: {
-    phase_q: 'Wo sind Sie gerade in Ihrem Aufenthalt?',
-    phase_checkin: 'Gerade angekommen',
-    phase_mid: 'Mittendrin',
-    phase_checkout: 'Beim Auschecken',
-    welcome_h: 'Willkommen im Porto Peace Haven',
-    welcome_p: 'Eine kurze Tour, was Sie hier tun können:',
-    welcome_rules_h: 'Hausregeln',
-    welcome_rules_p: '30 Sekunden Lesen — alle bleiben im Gebäude zufrieden.',
-    welcome_porto_h: 'Porto entdecken',
-    welcome_porto_p: 'Ausgewählte Orte abseits der Touristenpfade + Klassiker, die Ihre Zeit wert sind.',
-    welcome_go: 'Verstanden — die Anleitung entdecken →',
-  },
-  it: {
-    phase_q: 'In che momento del soggiorno sei?',
-    phase_checkin: 'Sono appena arrivato',
-    phase_mid: 'A metà',
-    phase_checkout: 'Sto facendo il check-out',
-    welcome_h: 'Benvenuto al Porto Peace Haven',
-    welcome_p: 'Un giro veloce di cosa puoi fare qui:',
-    welcome_rules_h: 'Regole della casa',
-    welcome_rules_p: '30 secondi di lettura — tutti contenti nel palazzo.',
-    welcome_porto_h: 'Scoprire Porto',
-    welcome_porto_p: 'Luoghi curati fuori dal circuito turistico + i classici che valgono il tuo tempo.',
-    welcome_go: 'Capito — esplorare la guida →',
-  },
-};
-Object.keys(PHASE_I18N).forEach(function (l) {
-  Object.assign(translations[l], PHASE_I18N[l]);
-});
-
-(function () {
-  const VALID = ['checkin', 'mid', 'checkout'];
-  const DAY = 24 * 3600 * 1000;
-  const WELCOME_COOLDOWN = 8 * 3600 * 1000;
-
-  function getPhase() {
-    try {
-      const raw = localStorage.getItem('pph-phase');
-      if (!raw) return null;
-      const o = JSON.parse(raw);
-      if (Date.now() - o.ts > DAY) return null;
-      return o.phase;
-    } catch (e) { return null; }
-  }
-  function setPhase(p) {
-    try { localStorage.setItem('pph-phase', JSON.stringify({ phase: p, ts: Date.now() })); } catch (e) {}
-  }
-  function bannerDismissedRecently() {
-    try {
-      const t = parseInt(localStorage.getItem('pph-phase-dismissed') || '0', 10);
-      return (Date.now() - t) < DAY;
-    } catch (e) { return false; }
-  }
-  function dismissBanner24h() {
-    try { localStorage.setItem('pph-phase-dismissed', String(Date.now())); } catch (e) {}
-  }
-  function bumpVisits() {
-    try {
-      const n = parseInt(localStorage.getItem('pph-visits') || '0', 10) + 1;
-      localStorage.setItem('pph-visits', String(n));
-      return n;
-    } catch (e) { return 1; }
-  }
-
-  const phaseModal = document.getElementById('phase-modal');
-  const modal = document.getElementById('welcome-modal');
-
-  function showPhaseModal() {
-    if (!phaseModal) return;
-    phaseModal.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-  function hidePhaseModal() {
-    if (!phaseModal) return;
-    phaseModal.hidden = true;
-    document.body.style.overflow = '';
-  }
-  function showWelcome() {
-    if (!modal) return;
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-  function hideWelcome() {
-    if (!modal) return;
-    modal.hidden = true;
-    document.body.style.overflow = '';
-  }
-
-  function applyPhase(phase) {
-    if (phase === 'checkin') {
-      try {
-        const last = parseInt(localStorage.getItem('pph-welcome-shown') || '0', 10);
-        if (Date.now() - last > WELCOME_COOLDOWN) {
-          showWelcome();
-          localStorage.setItem('pph-welcome-shown', String(Date.now()));
-        }
-      } catch (e) { showWelcome(); }
-    } else if (phase === 'checkout') {
-      if (location.hash !== '#checkout') location.hash = '#checkout';
-    }
-    // mid: silent
-  }
-
-  // Phase modal — button clicks
-  document.querySelectorAll('[data-phase]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      const phase = b.dataset.phase;
-      if (VALID.indexOf(phase) < 0) return;
-      setPhase(phase);
-      hidePhaseModal();
-      applyPhase(phase);
-    });
-  });
-
-  // Phase modal — close (dismiss for 24h)
-  const pmClose = document.getElementById('pm-close');
-  if (pmClose) pmClose.addEventListener('click', function () {
-    hidePhaseModal();
-    dismissBanner24h();
-  });
-  if (phaseModal) phaseModal.addEventListener('click', function (e) {
-    if (e.target === phaseModal) {
-      hidePhaseModal();
-      dismissBanner24h();
-    }
-  });
-
-  // Welcome modal — close + auto-close on inner navigation links
-  const wmClose = document.getElementById('wm-close');
-  const wmGo = document.getElementById('wm-go');
-  if (wmClose) wmClose.addEventListener('click', hideWelcome);
-  if (wmGo) wmGo.addEventListener('click', hideWelcome);
-  ['wm-rules', 'wm-porto'].forEach(function (id) {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('click', hideWelcome);
-  });
-  if (modal) modal.addEventListener('click', function (e) {
-    if (e.target === modal) hideWelcome();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      if (modal && !modal.hidden) hideWelcome();
-      if (phaseModal && !phaseModal.hidden) hidePhaseModal();
-    }
-  });
-
-  // INIT
-  function init() {
-    const visits = bumpVisits();
-
-    // URL param wins
-    const p = new URLSearchParams(location.search);
-    const urlPhase = p.get('phase');
-    if (urlPhase && VALID.indexOf(urlPhase) >= 0) {
-      setPhase(urlPhase);
-      applyPhase(urlPhase);
-      return;
-    }
-
-    // Stored phase: respect it but don't re-trigger applyPhase
-    const stored = getPhase();
-    if (stored) return;
-
-    // Phase modal: appears after 5s on first visit, 1.5s from 2nd visit on
-    if (bannerDismissedRecently()) return;
-    const delay = visits >= 2 ? 1500 : 5000;
-    setTimeout(showPhaseModal, delay);
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
   }
 })();
 
@@ -4795,7 +4674,7 @@ Object.assign(translations.nl, {
   nav_home: 'Start', nav_info: 'Essentiële info', nav_checkin: 'Check-in / Check-out',
   nav_rules: 'Huisregels', nav_guide: 'Huisgids', nav_kitchen: 'Keukengids',
   nav_rooms_label: 'Kamers', nav_bathroom: 'Badkamer', nav_transport: 'Vervoer',
-  nav_nearby: 'In de buurt', nav_porto: 'Ontdek Porto', nav_emergency: '🆘 Noodgeval',
+  nav_nearby: 'In de buurt', nav_porto: 'Ontdek Porto', nav_explore_label: '🗺️ Ontdek Porto', nav_emergency: '🆘 Noodgeval',
   bnav_home: 'Start', bnav_info: 'Info', bnav_rooms: 'Kamers', bnav_porto: 'Porto', bnav_help: 'Hulp',
   hero_badge: 'Porto · Portugal', hero_welcome: 'Welkom bij',
   hero_tagline: 'Uw rustige thuis in het hart van Porto',
@@ -5009,8 +4888,8 @@ Object.assign(translations.nl, {
   av_eyebrow1: 'Uw mening', av_title1: 'Hoe bevalt uw verblijf tot nu toe?',
   av_lead1: 'Uw ervaring is wat ons drijft. Vertel ons hoe u zich voelt — het kost maar een paar seconden.',
   av_feel_excelente: 'Uitstekend', av_feel_boa: 'Goed', av_feel_regular: 'Kan beter', av_feel_ruim: 'Slecht',
-  av_hint1: 'Geboekt via Booking? U kunt uw review nog steeds op Airbnb of Google achterlaten — dat helpt ons nog meer.',
   av_eyebrow2: 'Wat fijn', av_title2: 'Heerlijk om te horen 💛',
+  av_eyebrow_room: 'Eén ding snel',
   av_lead2: 'Het blijft ons bij. Laat, als u wilt, een review achter waar u heeft geboekt — dat helpt andere reizigers dit hoekje van Porto te vinden.',
   av_q_platform: 'Waar heeft u uw verblijf geboekt?', av_plat_outra: 'Een ander platform',
   av_airbnb_h: 'Een review op Airbnb is goud waard',
@@ -5019,7 +4898,6 @@ Object.assign(translations.nl, {
   av_booking_h: 'Bedankt dat u bij ons verbleef',
   av_booking_p: 'Op Booking ontvangt u na check-out per e-mail een verzoek om een review. Wilt u ons nu al nog meer helpen, dan maakt een review op Google echt het verschil.',
   av_booking_btn: 'Review op Google',
-  av_booking_alt: 'Heeft u een Airbnb-account? U kunt daar ook een review plaatsen',
   av_outra_h: 'Uw review helpt ons enorm',
   av_outra_p: 'Een review op Google kost minder dan een minuut en helpt andere reizigers ons te ontdekken.',
   av_outra_btn: 'Review op Google', av_back: '← Terug',
@@ -5110,7 +4988,8 @@ Object.assign(translations.nl, {
   porto_cta_h: 'Een hoekje gevonden waar u van hield?',
   porto_cta_p: 'Als Porto — en ons kleine plekje erin — deel werd van een mooie herinnering, helpt een review de volgende reiziger ook de weg hierheen te vinden.',
   porto_cta_btn: 'Laat een review achter ⭐',
-  nav_bye: '🧳 Voordat u vertrekt', bye_title: 'Voordat u vertrekt',
+  nav_bye: '🧳 Voordat u vertrekt',
+  nav_checkout: '🧳 Checkout', bye_title: 'Voordat u vertrekt',
   bye_sub: 'Een kort lijstje, een klein verzoek, en een dankjewel.',
   bye_checklist_h: 'Een klein checklijstje voor de kamer',
   bye_checklist: '<li>Sluit de ramen — Porto-regen vindt zijn weg naar binnen via de oude raamkozijnen.</li><li>Doe alle lichten en de LED-lampen uit.</li><li>Wacht een paar seconden en controleer of het toilet is uitgespoeld.</li><li>Log uit bij Netflix, HBO Max, Prime Video en Disney+ op de tv — uw accounts, uw privacy.</li><li>Zet de ventilator, de tv en de mini-koelkast uit als u die heeft gebruikt.</li><li>Sleutels van gebouw en woning: in de buitenkluis of uw kamerkluis. Kamersleutel: altijd in de kamerkluis.</li>',
@@ -5139,6 +5018,21 @@ Object.assign(translations.nl, {
   entry_checkin_h: 'Check-in &amp; Check-out',
   entry_checkin_p: 'Check-in vanaf 16:00 · Check-out vóór 11:00. Sleutels in externe kluisjes.',
   entry_kitchen_h: 'Keukengids',
+  entry_casa_h: 'Huisgids',
+  entry_casa_p: 'Keuken · Badkamer · Huisregels',
+  entry_departure_h: 'Check-in · Check-out · Voor vertrek',
+  entry_departure_p: 'Check-in vanaf 16:00 · Check-out voor 11:00 · Doe hier de check-out',
+  contact_sub: 'We zijn er voor u. Voor noodgevallen: 112.',
+  home_help_more: 'Alle noodinfo →',
+  popup_title: 'Welke kamer is van jou?',
+  popup_sub: 'We personaliseren jouw gids.',
+  popup_skip: 'Overslaan',
+  addr_supermarket_desc: 'Supermarkt · ~5 min lopen',
+  addr_bus_desc: 'STCP bushalte · < 2 min lopen',
+  addr_metro1_desc: 'Metro Lijn D · ~12 min lopen',
+  addr_metro2_desc: 'Metro Lijnen A/B/C · ~15 min lopen',
+  welcome_sub: 'Welcome · Bem-vindo · Bienvenue',
+  nav_casa: '🏠 Huisgids',
   entry_kitchen_p: 'Alles wat u nodig heeft om veilig te koken en de gedeelde keuken te gebruiken.',
   entry_bathroom_h: 'Badkamergids',
   entry_bathroom_p: 'Hoe u de gedeelde badkamer, de föhn en de universele adapter gebruikt.',
@@ -5522,4 +5416,189 @@ const CHECKLIST_HINT_I18N = {
       clObserver.observe(ul, { childList: true });
     });
   });
+})();
+
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SMART VISIT DETECTION
+   Visit 1 = first-time (just arrived, review CTAs hidden on home)
+   Visit 2+ = returning / mid-stay (review CTAs shown normally)
+   Keys: pph-visit-count (int), pph-first-visit-ts (timestamp)
+═══════════════════════════════════════════════════════════════ */
+(function () {
+  var VISIT_KEY = 'pph-visit-count';
+  var FIRST_TS_KEY = 'pph-first-visit-ts';
+
+  function getVisitCount() {
+    return parseInt(localStorage.getItem(VISIT_KEY) || '0', 10);
+  }
+
+  function recordVisit() {
+    var count = getVisitCount();
+    count += 1;
+    localStorage.setItem(VISIT_KEY, String(count));
+    if (count === 1) {
+      localStorage.setItem(FIRST_TS_KEY, String(Date.now()));
+    }
+  }
+
+  function isFirstVisit() {
+    return getVisitCount() <= 1;
+  }
+
+  // Apply visual treatment based on visit
+  function applyVisitMode() {
+    var first = isFirstVisit();
+    // On first visit: hide big review CTAs on home; keep only the subtle bottom one
+    var primaryCtas = document.querySelectorAll('.home-review-cta:not(.home-review-cta--soft)');
+    primaryCtas.forEach(function (el) {
+      if (first) {
+        el.classList.add('review-cta-first-visit');
+      } else {
+        el.classList.remove('review-cta-first-visit');
+      }
+    });
+  }
+
+  // Record this visit and apply mode
+  recordVisit();
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyVisitMode);
+  } else {
+    applyVisitMode();
+  }
+
+  // Expose for other scripts
+  window.pphIsFirstVisit = isFirstVisit;
+  window.pphGetVisitCount = getVisitCount;
+})();
+
+/* ═══════════════════════════════════════════════════════════════
+   ROOM SELECTION POPUP — first visit, resets every 30 days
+═══════════════════════════════════════════════════════════════ */
+(function () {
+  var ROOM_KEY = 'pph-room';
+  var ROOM_TS_KEY = 'pph-room-ts';
+  var WELCOME_KEY = 'pph-welcome-shown';
+  var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+
+  function isRoomFresh() {
+    var ts = parseInt(localStorage.getItem(ROOM_TS_KEY) || '0', 10);
+    return Date.now() - ts < THIRTY_DAYS;
+  }
+
+  function saveRoom(roomId) {
+    localStorage.setItem(ROOM_KEY, roomId);
+    localStorage.setItem(ROOM_TS_KEY, String(Date.now()));
+  }
+
+  function showWelcome() {
+    if (localStorage.getItem(WELCOME_KEY)) return;
+    localStorage.setItem(WELCOME_KEY, '1');
+    var ov = document.getElementById('welcome-overlay');
+    if (!ov) return;
+    ov.removeAttribute('hidden');
+    ov.classList.add('welcome-in');
+    setTimeout(function () {
+      ov.classList.add('welcome-out');
+      setTimeout(function () { ov.setAttribute('hidden', ''); }, 700);
+    }, 2500);
+  }
+
+  function hidePopup() {
+    var pop = document.getElementById('room-popup');
+    if (pop) {
+      pop.classList.add('room-popup-hide');
+      setTimeout(function () { pop.setAttribute('hidden', ''); }, 400);
+    }
+    // Show welcome after popup closes (or immediately if skipped)
+    setTimeout(showWelcome, 500);
+  }
+
+  function initPopup() {
+    if (isRoomFresh()) return; // already chosen recently
+    var pop = document.getElementById('room-popup');
+    if (!pop) return;
+    pop.removeAttribute('hidden');
+    // Room buttons
+    pop.querySelectorAll('.room-choice').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var room = btn.dataset.room;
+        saveRoom(room);
+        hidePopup();
+        // Navigate to home after room selection
+        location.hash = '#home';
+      });
+    });
+    // Skip button
+    var skipBtn = document.getElementById('room-popup-skip');
+    if (skipBtn) skipBtn.addEventListener('click', hidePopup);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPopup);
+  } else {
+    // Small delay so the SPA router runs first
+    setTimeout(initPopup, 300);
+  }
+
+  // Expose current room for other scripts if needed
+  window.pphGetRoom = function () {
+    return isRoomFresh() ? localStorage.getItem(ROOM_KEY) : null;
+  };
+})();
+
+/* =================================================================
+   NAV DRAWER — collapsible group toggles
+   ================================================================= */
+(function () {
+  function initNavGroups() {
+    document.querySelectorAll('.nav-group-toggle').forEach(function (btn) {
+      var targetId = btn.getAttribute('aria-controls');
+      var subList = targetId ? document.getElementById(targetId) : null;
+      if (!subList) return;
+
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          btn.setAttribute('aria-expanded', 'false');
+          subList.hidden = true;
+        } else {
+          btn.setAttribute('aria-expanded', 'true');
+          subList.hidden = false;
+        }
+      });
+    });
+
+    // Auto-expand the group containing the active screen
+    document.addEventListener('pph:screenchange', function (e) {
+      var screenId = e.detail && e.detail.id;
+      if (!screenId) return;
+      var roomIds = ['ribeira', 'douro', 'atlantico'];
+      var casaIds = ['kitchen', 'bathroom', 'rules', 'casa'];
+      var exploreIds = ['transport', 'nearby', 'porto', 'mapa', 'place'];
+      var groupMap = {
+        'navs-rooms': roomIds.includes(screenId),
+        'navs-casa': casaIds.includes(screenId),
+        'navs-explore': exploreIds.includes(screenId),
+      };
+      Object.keys(groupMap).forEach(function (subId) {
+        var sub = document.getElementById(subId);
+        var toggle = sub && sub.previousElementSibling;
+        if (!sub || !toggle) return;
+        if (groupMap[subId]) {
+          toggle.setAttribute('aria-expanded', 'true');
+          sub.hidden = false;
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initNavGroups);
+  } else {
+    initNavGroups();
+  }
 })();
