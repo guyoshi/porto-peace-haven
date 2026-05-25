@@ -36,6 +36,8 @@ const translations = {
     bnav_home: 'Home',
     bnav_info: 'Info',
     bnav_rooms: 'Rooms',
+    bnav_casa: 'House',
+    bnav_checkout: 'Check-out',
     bnav_porto: 'Porto',
     bnav_help: 'Help',
     hero_badge: 'Porto · Portugal',
@@ -46,16 +48,27 @@ const translations = {
     douro_mood_short: 'Warm · Cosy · Golden',
     atlantico_mood_short: 'Calm · Coastal · Airy',
     room_discover: 'Discover →',
+    your_room_title: 'Your Room',
+    see_other_rooms: 'See other rooms →',
     info_title: 'Essential Information',
     info_subtitle: 'Everything you need, right here',
     address_title: 'Address',
+    useful_places_title: 'Useful Places',
+    addr_home_label: 'Your address',
+    addr_supermarket_label: 'Nearest supermarket',
+    addr_metro_label: 'Nearest metro',
+    addr_supermarket_walk: '~5 min walk',
+    addr_metro1_walk: 'Line D · ~12 min walk',
+    addr_metro2_walk: 'Lines A/B/C · ~15 min walk',
     open_maps: 'Open in Google Maps',
     wifi_title: 'Wi-Fi',
     wifi_network: 'Network',
     wifi_password: 'Password',
     tap_copy: 'tap to copy',
     wifi_scan: '📷 Scan to connect automatically',
-    contact_title: 'Contact Host',
+    wifi_show_qr: '📷 Show QR code',
+    wifi_hide_qr: '✕ Hide QR',
+    contact_title: 'Need Help?',
     contact_urgent: 'Urgent Line',
     contact_note: '⚠️ Replace contact placeholders in index.html before publishing',
     guide_qr_title: 'This Guest Guide',
@@ -266,12 +279,14 @@ const translations = {
     em_112_h: 'Emergency Services',
     em_112_sub: 'Police · Fire · Ambulance',
     em_call: 'Call',
-    em_host_h: 'Contact Host',
+    em_host_h: 'Management Team',
     em_host_sub: 'For any property issue',
     em_hospital_h: 'Nearest Hospital',
     em_pharmacy_h: '24h Pharmacy',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Taxi',
+    em_suggest_p: 'Something we could improve? We\'d love to hear it.',
+    em_suggest_btn: 'Make a suggestion →',
     footer_rights: 'All rights reserved',
     copied: '✓ Copied!',
     nav_mapa: '🗺️ Porto Map',
@@ -292,7 +307,7 @@ const translations = {
     logo_sub: 'Guia do Hóspede',
     nav_home: 'Início',
     nav_info: 'Informações',
-    nav_checkin: 'Check-in / Check-out',
+    nav_checkin: 'Check-in / Fazer Checkout',
     nav_rules: 'Regras da Casa',
     nav_guide: 'Guia da Casa',
     nav_kitchen: 'Cozinha',
@@ -305,6 +320,8 @@ const translations = {
     bnav_home: 'Início',
     bnav_info: 'Info',
     bnav_rooms: 'Quartos',
+    bnav_casa: 'Casa',
+    bnav_checkout: 'Check-out',
     bnav_porto: 'Porto',
     bnav_help: 'Ajuda',
     hero_badge: 'Porto · Portugal',
@@ -315,16 +332,27 @@ const translations = {
     douro_mood_short: 'Acolhedor · Quente · Dourado',
     atlantico_mood_short: 'Calmo · Costeiro · Luminoso',
     room_discover: 'Descobrir →',
+    your_room_title: 'O seu Quarto',
+    see_other_rooms: 'Ver outros quartos →',
     info_title: 'Informações Essenciais',
     info_subtitle: 'Tudo o que precisa, aqui mesmo',
     address_title: 'Morada',
+    useful_places_title: 'Lugares Úteis',
+    addr_home_label: 'A vossa morada',
+    addr_supermarket_label: 'Supermercado mais próximo',
+    addr_metro_label: 'Metro mais próximo',
+    addr_supermarket_walk: '~5 min a pé',
+    addr_metro1_walk: 'Linha D · ~12 min a pé',
+    addr_metro2_walk: 'Linhas A/B/C · ~15 min a pé',
     open_maps: 'Abrir no Google Maps',
     wifi_title: 'Wi-Fi',
     wifi_network: 'Rede',
     wifi_password: 'Palavra-passe',
     tap_copy: 'toque para copiar',
     wifi_scan: '📷 Scan para ligar automaticamente',
-    contact_title: 'Contactar o Anfitrião',
+    wifi_show_qr: '📷 Mostrar QR',
+    wifi_hide_qr: '✕ Ocultar QR',
+    contact_title: 'Precisa de Ajuda?',
     contact_urgent: 'Linha Urgente',
     contact_note: '⚠️ Substitua os contactos no index.html antes de publicar',
     guide_qr_title: 'Este Guia do Hóspede',
@@ -535,12 +563,14 @@ const translations = {
     em_112_h: 'Serviços de Emergência',
     em_112_sub: 'Polícia · Bombeiros · Ambulância',
     em_call: 'Ligar',
-    em_host_h: 'Contactar Anfitrião',
+    em_host_h: 'Equipa de Gestão',
     em_host_sub: 'Para qualquer problema na propriedade',
     em_hospital_h: 'Hospital Mais Próximo',
     em_pharmacy_h: 'Farmácia 24h',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Táxi',
+    em_suggest_p: 'Algo que possamos melhorar? Adorávamos saber.',
+    em_suggest_btn: 'Fazer uma sugestão →',
     footer_rights: 'Todos os direitos reservados',
     copied: '✓ Copiado!',
     nav_mapa: '🗺️ Mapa do Porto',
@@ -574,6 +604,8 @@ const translations = {
     bnav_home: 'Accueil',
     bnav_info: 'Infos',
     bnav_rooms: 'Chambres',
+    bnav_casa: 'Maison',
+    bnav_checkout: 'Départ',
     bnav_porto: 'Porto',
     bnav_help: 'Aide',
     hero_badge: 'Porto · Portugal',
@@ -584,16 +616,27 @@ const translations = {
     douro_mood_short: 'Chaleureux · Douillet · Doré',
     atlantico_mood_short: 'Calme · Côtier · Lumineux',
     room_discover: 'Découvrir →',
+    your_room_title: 'Votre Chambre',
+    see_other_rooms: 'Voir les autres chambres →',
     info_title: 'Informations Essentielles',
     info_subtitle: 'Tout ce dont vous avez besoin, ici',
     address_title: 'Adresse',
+    useful_places_title: 'Lieux Utiles',
+    addr_home_label: 'Votre adresse',
+    addr_supermarket_label: 'Supermarché le plus proche',
+    addr_metro_label: 'Métro le plus proche',
+    addr_supermarket_walk: '~5 min à pied',
+    addr_metro1_walk: 'Ligne D · ~12 min à pied',
+    addr_metro2_walk: 'Lignes A/B/C · ~15 min à pied',
     open_maps: 'Ouvrir dans Google Maps',
     wifi_title: 'Wi-Fi',
     wifi_network: 'Réseau',
     wifi_password: 'Mot de passe',
     tap_copy: 'appuyer pour copier',
     wifi_scan: '📷 Scanner pour se connecter automatiquement',
-    contact_title: "Contacter l'Hôte",
+    wifi_show_qr: '📷 Afficher le QR',
+    wifi_hide_qr: '✕ Masquer le QR',
+    contact_title: "Besoin d'aide ?",
     contact_urgent: 'Ligne Urgence',
     contact_note: '⚠️ Remplacez les contacts dans index.html avant de publier',
     guide_qr_title: 'Ce Guide du Voyageur',
@@ -804,12 +847,14 @@ const translations = {
     em_112_h: 'Services d\'Urgence',
     em_112_sub: 'Police · Pompiers · Ambulance',
     em_call: 'Appeler',
-    em_host_h: "Contacter l'Hôte",
+    em_host_h: "Équipe de Gestion",
     em_host_sub: 'Pour tout problème lié à la propriété',
     em_hospital_h: 'Hôpital le Plus Proche',
     em_pharmacy_h: 'Pharmacie 24h',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Taxi',
+    em_suggest_p: 'Quelque chose à améliorer ? Nous serions ravis de le savoir.',
+    em_suggest_btn: 'Faire une suggestion →',
     footer_rights: 'Tous droits réservés',
     copied: '✓ Copié !',
     nav_mapa: '🗺️ Plan de Porto',
@@ -843,6 +888,8 @@ const translations = {
     bnav_home: 'Inicio',
     bnav_info: 'Info',
     bnav_rooms: 'Habitac.',
+    bnav_casa: 'Casa',
+    bnav_checkout: 'Salida',
     bnav_porto: 'Oporto',
     bnav_help: 'Ayuda',
     hero_badge: 'Oporto · Portugal',
@@ -853,16 +900,27 @@ const translations = {
     douro_mood_short: 'Cálido · Acogedor · Dorado',
     atlantico_mood_short: 'Tranquilo · Costero · Luminoso',
     room_discover: 'Descubrir →',
+    your_room_title: 'Tu Habitación',
+    see_other_rooms: 'Ver otras habitaciones →',
     info_title: 'Información Esencial',
     info_subtitle: 'Todo lo que necesitas, aquí mismo',
     address_title: 'Dirección',
+    useful_places_title: 'Lugares de Interés',
+    addr_home_label: 'Vuestra dirección',
+    addr_supermarket_label: 'Supermercado más cercano',
+    addr_metro_label: 'Metro más cercano',
+    addr_supermarket_walk: '~5 min a pie',
+    addr_metro1_walk: 'Línea D · ~12 min a pie',
+    addr_metro2_walk: 'Líneas A/B/C · ~15 min a pie',
     open_maps: 'Abrir en Google Maps',
     wifi_title: 'Wi-Fi',
     wifi_network: 'Red',
     wifi_password: 'Contraseña',
     tap_copy: 'toca para copiar',
     wifi_scan: '📷 Escanea para conectarte automáticamente',
-    contact_title: 'Contactar al Anfitrión',
+    wifi_show_qr: '📷 Mostrar QR',
+    wifi_hide_qr: '✕ Ocultar QR',
+    contact_title: '¿Necesitas ayuda?',
     contact_urgent: 'Línea Urgente',
     contact_note: '⚠️ Reemplaza los contactos en index.html antes de publicar',
     guide_qr_title: 'Esta Guía del Huésped',
@@ -1073,12 +1131,14 @@ const translations = {
     em_112_h: 'Servicios de Emergencia',
     em_112_sub: 'Policía · Bomberos · Ambulancia',
     em_call: 'Llamar',
-    em_host_h: 'Contactar Anfitrión',
+    em_host_h: 'Equipo de Gestión',
     em_host_sub: 'Para cualquier problema en la propiedad',
     em_hospital_h: 'Hospital Más Cercano',
     em_pharmacy_h: 'Farmacia 24h',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Taxi',
+    em_suggest_p: '¿Algo que podamos mejorar? Nos encantaría saberlo.',
+    em_suggest_btn: 'Hacer una sugerencia →',
     footer_rights: 'Todos los derechos reservados',
     copied: '✓ ¡Copiado!',
     nav_mapa: '🗺️ Mapa de Oporto',
@@ -1112,6 +1172,8 @@ const translations = {
     bnav_home: 'Start',
     bnav_info: 'Info',
     bnav_rooms: 'Zimmer',
+    bnav_casa: 'Haus',
+    bnav_checkout: 'Abreise',
     bnav_porto: 'Porto',
     bnav_help: 'Hilfe',
     hero_badge: 'Porto · Portugal',
@@ -1122,16 +1184,27 @@ const translations = {
     douro_mood_short: 'Warm · Gemütlich · Golden',
     atlantico_mood_short: 'Ruhig · Küstennahe · Hell',
     room_discover: 'Entdecken →',
+    your_room_title: 'Ihr Zimmer',
+    see_other_rooms: 'Andere Zimmer ansehen →',
     info_title: 'Wichtige Informationen',
     info_subtitle: 'Alles, was Sie brauchen, direkt hier',
     address_title: 'Adresse',
+    useful_places_title: 'Praktische Adressen',
+    addr_home_label: 'Eure Adresse',
+    addr_supermarket_label: 'Nächster Supermarkt',
+    addr_metro_label: 'Nächste Metro-Station',
+    addr_supermarket_walk: '~5 Min. zu Fuß',
+    addr_metro1_walk: 'Linie D · ~12 Min. zu Fuß',
+    addr_metro2_walk: 'Linien A/B/C · ~15 Min. zu Fuß',
     open_maps: 'In Google Maps öffnen',
     wifi_title: 'WLAN',
     wifi_network: 'Netzwerk',
     wifi_password: 'Passwort',
     tap_copy: 'tippen zum Kopieren',
     wifi_scan: '📷 Scannen für automatische Verbindung',
-    contact_title: 'Gastgeber kontaktieren',
+    wifi_show_qr: '📷 QR anzeigen',
+    wifi_hide_qr: '✕ QR ausblenden',
+    contact_title: 'Hilfe benötigt?',
     contact_urgent: 'Notfallnummer',
     contact_note: '⚠️ Ersetzen Sie die Kontaktdaten in index.html vor der Veröffentlichung',
     guide_qr_title: 'Dieser Gästeguide',
@@ -1342,12 +1415,14 @@ const translations = {
     em_112_h: 'Notfalldienste',
     em_112_sub: 'Polizei · Feuerwehr · Krankenwagen',
     em_call: 'Anrufen',
-    em_host_h: 'Gastgeber kontaktieren',
+    em_host_h: 'Verwaltungsteam',
     em_host_sub: 'Bei jedem Problem mit der Unterkunft',
     em_hospital_h: 'Nächstgelegenes Krankenhaus',
     em_pharmacy_h: '24h-Apotheke',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Taxi',
+    em_suggest_p: 'Etwas, das wir verbessern können? Wir würden es gerne wissen.',
+    em_suggest_btn: 'Vorschlag machen →',
     footer_rights: 'Alle Rechte vorbehalten',
     copied: '✓ Kopiert!',
     nav_mapa: '🗺️ Porto-Karte',
@@ -1381,6 +1456,8 @@ const translations = {
     bnav_home: 'Home',
     bnav_info: 'Info',
     bnav_rooms: 'Camere',
+    bnav_casa: 'Casa',
+    bnav_checkout: 'Partenza',
     bnav_porto: 'Porto',
     bnav_help: 'Aiuto',
     hero_badge: 'Porto · Portogallo',
@@ -1391,16 +1468,27 @@ const translations = {
     douro_mood_short: 'Caldo · Accogliente · Dorato',
     atlantico_mood_short: 'Calmo · Costiero · Luminoso',
     room_discover: 'Scopri →',
+    your_room_title: 'La Tua Camera',
+    see_other_rooms: 'Vedi le altre camere →',
     info_title: 'Informazioni Essenziali',
     info_subtitle: 'Tutto ciò di cui avete bisogno, qui',
     address_title: 'Indirizzo',
+    useful_places_title: 'Indirizzi Utili',
+    addr_home_label: 'Il vostro indirizzo',
+    addr_supermarket_label: 'Supermercato più vicino',
+    addr_metro_label: 'Metro più vicina',
+    addr_supermarket_walk: '~5 min a piedi',
+    addr_metro1_walk: 'Linea D · ~12 min a piedi',
+    addr_metro2_walk: 'Linee A/B/C · ~15 min a piedi',
     open_maps: 'Apri in Google Maps',
     wifi_title: 'Wi-Fi',
     wifi_network: 'Rete',
     wifi_password: 'Password',
     tap_copy: 'tocca per copiare',
     wifi_scan: '📷 Scansiona per connetterti automaticamente',
-    contact_title: "Contatta l'Host",
+    wifi_show_qr: '📷 Mostra QR',
+    wifi_hide_qr: '✕ Nascondi QR',
+    contact_title: 'Hai bisogno di aiuto?',
     contact_urgent: 'Linea Urgente',
     contact_note: '⚠️ Sostituire i contatti in index.html prima della pubblicazione',
     guide_qr_title: 'Questa Guida degli Ospiti',
@@ -1611,12 +1699,14 @@ const translations = {
     em_112_h: 'Servizi di Emergenza',
     em_112_sub: 'Polizia · Pompieri · Ambulanza',
     em_call: 'Chiama',
-    em_host_h: "Contatta l'Host",
+    em_host_h: 'Team di Gestione',
     em_host_sub: 'Per qualsiasi problema alla proprietà',
     em_hospital_h: 'Ospedale più Vicino',
     em_pharmacy_h: 'Farmacia 24h',
     em_ride_h: 'Uber / Bolt',
     em_taxi_h: 'Taxi',
+    em_suggest_p: 'Qualcosa che potremmo migliorare? Ci piacerebbe saperlo.',
+    em_suggest_btn: 'Fare un suggerimento →',
     footer_rights: 'Tutti i diritti riservati',
     copied: '✓ Copiato!',
     nav_mapa: '🗺️ Mappa di Porto',
@@ -2112,6 +2202,17 @@ function applyLanguage(lang) {
   if (flagEl) flagEl.textContent = flags[lang] || '🇬🇧';
   if (codeEl) codeEl.textContent = codes[lang] || 'EN';
 
+  // Update WiFi QR toggle button text (keep current show/hide state)
+  const qrToggleBtn = document.getElementById('qr-toggle');
+  const qrBlockEl   = document.getElementById('qr-block');
+  if (qrToggleBtn && qrBlockEl) {
+    if (!qrBlockEl.hasAttribute('hidden')) {
+      qrToggleBtn.textContent = t.wifi_hide_qr || '✕ Hide QR';
+    } else {
+      qrToggleBtn.textContent = t.wifi_show_qr || '📷 Show QR code';
+    }
+  }
+
   // Update guide download button
   updateGuideDownload(lang);
 
@@ -2310,6 +2411,29 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 });
 
 /* ─────────────────────────────────────────────────────────────
+   WIFI QR TOGGLE — hidden by default, reveal on request
+───────────────────────────────────────────────────────────────── */
+(function () {
+  var qrToggle = document.getElementById('qr-toggle');
+  var qrBlock  = document.getElementById('qr-block');
+  if (!qrToggle || !qrBlock) return;
+
+  qrToggle.addEventListener('click', function () {
+    var isHidden = qrBlock.hasAttribute('hidden');
+    var t = translations[currentLang] || translations['en'];
+    if (isHidden) {
+      qrBlock.removeAttribute('hidden');
+      qrToggle.setAttribute('aria-expanded', 'true');
+      qrToggle.textContent = t.wifi_hide_qr || '✕ Hide QR';
+    } else {
+      qrBlock.setAttribute('hidden', '');
+      qrToggle.setAttribute('aria-expanded', 'false');
+      qrToggle.textContent = t.wifi_show_qr || '📷 Show QR code';
+    }
+  });
+})();
+
+/* ─────────────────────────────────────────────────────────────
    SMOOTH SCROLL — offset for fixed header
 ───────────────────────────────────────────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -2331,7 +2455,88 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
   applyLanguage(currentLang);
   generateQRCodes();
+  initRoomsPreview();
 });
+
+/* ─────────────────────────────────────────────────────────────
+   HOME ROOM PREVIEW — show only selected room
+───────────────────────────────────────────────────────────────── */
+function initRoomsPreview() {
+  var selectedRoom = localStorage.getItem('pph-room');
+  // If no room or skipped, keep all 3 cards as-is
+  if (!selectedRoom || selectedRoom === 'skipped' || selectedRoom === '') return;
+
+  var roomsPreview  = document.querySelector('.rooms-preview');
+  if (!roomsPreview) return;
+
+  var allCards = roomsPreview.querySelectorAll('.room-card');
+  var titleEl  = roomsPreview.querySelector('[data-i18n="rooms_preview_title"]');
+
+  // Map room key → which card to keep (by href)
+  var roomMap = {
+    ribeira:   '#ribeira',
+    douro:     '#douro',
+    atlantico: '#atlantico'
+  };
+
+  var targetHref = roomMap[selectedRoom];
+  if (!targetHref) return;
+
+  // Hide other cards, mark selected as solo
+  allCards.forEach(function (card) {
+    if (card.getAttribute('href') !== targetHref) {
+      card.style.display = 'none';
+    } else {
+      card.classList.add('room-card--solo');
+    }
+  });
+
+  // Make grid single-column so the solo card fills full width
+  var grid = roomsPreview.querySelector('.rooms-grid');
+  if (grid) grid.classList.add('rooms-grid--solo');
+
+  // Show the tagline inside the selected card (add it if not there)
+  var selectedCard = roomsPreview.querySelector('.room-card[href="' + targetHref + '"]');
+  if (selectedCard) {
+    var body = selectedCard.querySelector('.room-card-body');
+    if (body) {
+      // Insert tagline key after the mood-short paragraph
+      var taglineKey = selectedRoom + '_tagline';
+      var moodP = body.querySelector('[data-i18n$="_mood_short"]');
+      var taglineEl = body.querySelector('.room-card-tagline');
+      if (!taglineEl) {
+        taglineEl = document.createElement('p');
+        taglineEl.className = 'room-card-tagline';
+        taglineEl.setAttribute('data-i18n', taglineKey);
+        var t = translations[currentLang] || translations['en'];
+        taglineEl.textContent = t[taglineKey] || '';
+        if (moodP) {
+          moodP.insertAdjacentElement('afterend', taglineEl);
+        } else {
+          body.appendChild(taglineEl);
+        }
+      }
+    }
+  }
+
+  // Update section title to "Your Room"
+  if (titleEl) {
+    titleEl.setAttribute('data-i18n', 'your_room_title');
+    var tCur = translations[currentLang] || translations['en'];
+    titleEl.textContent = tCur.your_room_title || 'Your Room';
+  }
+
+  // Add small "See other rooms" link below the cards grid
+  if (!roomsPreview.querySelector('.see-other-rooms-btn')) {
+    var seeOtherBtn = document.createElement('a');
+    seeOtherBtn.href = '#rooms';
+    seeOtherBtn.className = 'see-other-rooms-btn';
+    seeOtherBtn.setAttribute('data-i18n', 'see_other_rooms');
+    var tBtn = translations[currentLang] || translations['en'];
+    seeOtherBtn.textContent = tBtn.see_other_rooms || 'See other rooms →';
+    roomsPreview.appendChild(seeOtherBtn);
+  }
+}
 
 /* ─────────────────────────────────────────────────────────────
    DARK MODE TOGGLE
@@ -2426,6 +2631,8 @@ initTheme();
     const top = section.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top: top, behavior: 'smooth' });
   }
+  // Expose so external links with data-av-goto can jump to a specific step
+  window.__pphAvaliarShow = show;
 
   /* Step 1 — the feeling chosen decides the path */
   section.querySelectorAll('.av-feel').forEach(function (btn) {
@@ -3467,6 +3674,19 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
     // Skip anchors that explicitly say target=_blank or have other protocols.
     if (a.target === '_blank') return;
     e.preventDefault();
+
+    // data-av-goto: navigate to #avaliar then jump to a specific step
+    const avStep = a.dataset.avGoto;
+    if (avStep) {
+      location.hash = '#avaliar';
+      setTimeout(function () {
+        if (typeof window.__pphAvaliarShow === 'function') {
+          window.__pphAvaliarShow(avStep);
+        }
+      }, 80);
+      return;
+    }
+
     if (location.hash === href) {
       // same hash — manual route (hashchange would not fire)
       routeFromHash();
@@ -3559,8 +3779,8 @@ const HOME_FEED_I18N = {
   entry_casa_p: 'Kitchen · Bathroom · House Rules',
   entry_departure_h: 'Check-in · Check-out · Before Leaving',
   entry_departure_p: 'Check-in from 16:00 · Check-out by 11:00 · Do check-out here',
-  contact_sub: "We're here. For real emergencies, dial 112.",
-  home_help_more: 'All emergency info →',
+  contact_sub: 'Our team is here for you. For emergencies, dial 112.',
+  home_help_more: 'Emergency contacts →',
   popup_title: 'Which room is yours?',
   popup_sub: "We'll personalise your guide.",
   popup_skip: 'Skip',
@@ -3580,7 +3800,7 @@ const HOME_FEED_I18N = {
     see_all_porto: 'See all 14 places →',
     home_help_h: 'Need help?',
     home_help_p: 'We are one tap away. For real emergencies, dial 112.',
-    home_help_more: 'All emergency info →',
+    home_help_more: 'Emergency contacts →',
   },
   pt: {
     home_review_h: 'A gostar da estadia?',
@@ -3595,8 +3815,8 @@ const HOME_FEED_I18N = {
   entry_casa_p: 'Cozinha · Casa de Banho · Regras',
   entry_departure_h: 'Check-in · Check-out · Antes de Partir',
   entry_departure_p: 'Check-in a partir das 16h · Check-out até às 11h · Fazer check-out aqui',
-  contact_sub: 'Estamos aqui. Para emergências, ligue 112.',
-  home_help_more: 'Toda a info de emergência →',
+  contact_sub: 'A nossa equipa está aqui. Para emergências, ligue 112.',
+  home_help_more: 'Contactos de emergência →',
   popup_title: 'Qual é o seu quarto?',
   popup_sub: 'Vamos personalizar o seu guia.',
   popup_skip: 'Saltar',
@@ -3793,81 +4013,188 @@ Object.keys(AV_ROOM_PICK_I18N).forEach(function (l) {
   translations[l].av_which_room = AV_ROOM_PICK_I18N[l];
 });
 
-/* Checkout flow — "Notify host" copy + pre-filled WhatsApp message */
+/* Checkout flow — step-by-step: checklist → review → WhatsApp send */
 const CO_NOTIFY_I18N = {
   en: {
     co_notify_h: 'Ready to check out?',
     co_notify_p: "We'll let your host know the room is free — then take a quick moment to tell us how your stay was.",
     co_notify_btn: 'Check out →',
     co_wa_msg: "Hello! I'm checking out of room {room} now. Everything is in place. Thank you for the stay 💛",
+    co_next_step: 'Next →',
+    co_continue: 'Continue →',
+    co_wa_final_h: 'One last step',
+    co_wa_final_p: 'Send us a quick message to let us know you\'ve left — it helps us prepare the room for the next guest.',
+    co_wa_final_btn: '📩 Send on WhatsApp',
+    co_done_h: 'You\'re all checked out! 🎉',
+    co_done_p: 'Thank you for staying at Porto Peace Haven. We hope to welcome you back soon. 💛',
+    co_done_btn: '← Back to home',
   },
   pt: {
     co_notify_h: 'Pronto para o check-out?',
     co_notify_p: 'Avisamos o seu anfitrião de que o quarto está livre — e depois conte-nos rapidamente como foi a sua estadia.',
     co_notify_btn: 'Fazer check-out →',
     co_wa_msg: 'Olá! Estou a fazer checkout do quarto {room}. Está tudo no sítio. Obrigado pela hospedagem 💛',
+    co_next_step: 'Seguinte →',
+    co_continue: 'Continuar →',
+    co_wa_final_h: 'Um último passo',
+    co_wa_final_p: 'Envie-nos uma mensagem rápida a confirmar a sua saída — assim preparamos o quarto para o próximo hóspede.',
+    co_wa_final_btn: '📩 Enviar no WhatsApp',
+    co_done_h: 'Check-out concluído! 🎉',
+    co_done_p: 'Obrigado por ficar no Porto Peace Haven. Esperamos recebê-lo novamente em breve. 💛',
+    co_done_btn: '← Voltar ao início',
   },
   fr: {
     co_notify_h: 'Prêt pour le départ ?',
     co_notify_p: "Nous prévenons votre hôte que la chambre est libre — puis dites-nous en un instant comment s'est passé votre séjour.",
     co_notify_btn: 'Faire le départ →',
     co_wa_msg: 'Bonjour ! Je libère la chambre {room} maintenant. Tout est en ordre. Merci pour le séjour 💛',
+    co_next_step: 'Suivant →',
+    co_continue: 'Continuer →',
+    co_wa_final_h: 'Une dernière étape',
+    co_wa_final_p: 'Envoyez-nous un message rapide pour confirmer votre départ — cela nous aide à préparer la chambre.',
+    co_wa_final_btn: '📩 Envoyer sur WhatsApp',
+    co_done_h: 'Départ complété ! 🎉',
+    co_done_p: 'Merci de votre séjour à Porto Peace Haven. Nous espérons vous revoir bientôt. 💛',
+    co_done_btn: '← Retour à l\'accueil',
   },
   es: {
     co_notify_h: '¿Listo para el check-out?',
     co_notify_p: 'Avisamos a tu anfitrión de que la habitación está libre — y luego cuéntanos en un momento qué tal tu estancia.',
     co_notify_btn: 'Hacer el check-out →',
     co_wa_msg: '¡Hola! Estoy haciendo check-out de la habitación {room}. Todo está en su sitio. Gracias por la estancia 💛',
+    co_next_step: 'Siguiente →',
+    co_continue: 'Continuar →',
+    co_wa_final_h: 'Un último paso',
+    co_wa_final_p: 'Envíanos un mensaje rápido para confirmar tu salida — así preparamos la habitación para el próximo huésped.',
+    co_wa_final_btn: '📩 Enviar por WhatsApp',
+    co_done_h: '¡Check-out completado! 🎉',
+    co_done_p: 'Gracias por alojarte en Porto Peace Haven. Esperamos verte de nuevo pronto. 💛',
+    co_done_btn: '← Volver al inicio',
   },
   de: {
     co_notify_h: 'Bereit zum Check-out?',
     co_notify_p: 'Wir sagen Ihrem Gastgeber Bescheid, dass das Zimmer frei ist — und dann erzählen Sie uns kurz, wie Ihr Aufenthalt war.',
     co_notify_btn: 'Check-out machen →',
     co_wa_msg: 'Hallo! Ich checke jetzt aus Zimmer {room} aus. Alles ist an seinem Platz. Danke für den Aufenthalt 💛',
+    co_next_step: 'Weiter →',
+    co_continue: 'Weiter →',
+    co_wa_final_h: 'Ein letzter Schritt',
+    co_wa_final_p: 'Schicken Sie uns eine kurze Nachricht zur Bestätigung Ihrer Abreise — so können wir das Zimmer vorbereiten.',
+    co_wa_final_btn: '📩 Per WhatsApp senden',
+    co_done_h: 'Check-out abgeschlossen! 🎉',
+    co_done_p: 'Vielen Dank für Ihren Aufenthalt im Porto Peace Haven. Wir hoffen, Sie bald wiederzusehen. 💛',
+    co_done_btn: '← Zurück zur Startseite',
   },
   it: {
     co_notify_h: 'Pronto per il check-out?',
     co_notify_p: "Avvisiamo il tuo host che la camera è libera — e poi raccontaci in un attimo com'è andato il soggiorno.",
     co_notify_btn: 'Fai il check-out →',
     co_wa_msg: 'Ciao! Sto facendo il check-out dalla camera {room}. È tutto a posto. Grazie per il soggiorno 💛',
+    co_next_step: 'Avanti →',
+    co_continue: 'Continua →',
+    co_wa_final_h: 'Un ultimo passo',
+    co_wa_final_p: 'Inviaci un messaggio rapido per confermare la tua partenza — così prepariamo la camera per il prossimo ospite.',
+    co_wa_final_btn: '📩 Invia su WhatsApp',
+    co_done_h: 'Check-out completato! 🎉',
+    co_done_p: 'Grazie per aver soggiornato al Porto Peace Haven. Speriamo di rivederti presto. 💛',
+    co_done_btn: '← Torna alla home',
   },
 };
 Object.keys(CO_NOTIFY_I18N).forEach(function (l) {
   Object.assign(translations[l], CO_NOTIFY_I18N[l]);
 });
 
-/* Wire the "Notify by WhatsApp" link with the localised message
-   and the current room substituted, refreshed on language change. */
+/* ─────────────────────────────────────────────────────────────
+   CHECKOUT FLOW — step-based: Checklist → Review → WhatsApp
+───────────────────────────────────────────────────────────────── */
 (function () {
   const PHONE = '351913874921';
   const ROOM_LABELS = { ribeira: 'Ribeira', douro: 'Douro', atlantico: 'Atlântico' };
+
   function refreshCheckoutWa() {
-    const a = document.getElementById('co-wa-notify');
+    var a = document.getElementById('co-wa-notify');
     if (!a) return;
-    let room = '';
+    var room = '';
     try { room = localStorage.getItem('pph-room') || ''; } catch (e) {}
-    const roomLabel = ROOM_LABELS[room] || '—';
-    const tmpl = (translations[currentLang] && translations[currentLang].co_wa_msg) ||
+    var roomLabel = ROOM_LABELS[room] || '—';
+    var tmpl = (translations[currentLang] && translations[currentLang].co_wa_msg) ||
       "Hello! I'm checking out of room {room} now. Everything is in place. Thank you 💛";
-    const msg = tmpl.replace('{room}', roomLabel);
+    var msg = tmpl.replace('{room}', roomLabel);
     a.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   }
-  const _apply = applyLanguage;
+
+  // Patch applyLanguage to refresh WA link on language change
+  var _apply = applyLanguage;
   applyLanguage = function (lang) {
     _apply(lang);
     refreshCheckoutWa();
   };
   refreshCheckoutWa();
 
-  // "Fazer check-out": notify the host AND funnel the guest straight
-  // into the review flow — a check-out should always end at a review,
-  // never dead-end at a WhatsApp message.
-  const coBtn = document.getElementById('co-wa-notify');
-  if (coBtn) {
-    coBtn.addEventListener('click', function () {
-      setTimeout(function () { location.hash = '#avaliar'; }, 80);
+  // Step navigation helper
+  function goToStep(n) {
+    [1, 2, 3].forEach(function (i) {
+      var panel = document.getElementById('co-step-' + i);
+      var dot   = document.getElementById('co-dot-' + i);
+      if (!panel) return;
+      if (i === n) {
+        panel.classList.remove('co-panel--hidden');
+      } else {
+        panel.classList.add('co-panel--hidden');
+      }
+      if (dot) {
+        dot.classList.toggle('active', i <= n);
+        dot.classList.toggle('done',   i < n);
+      }
+    });
+    // Scroll checkout section into view
+    var sec = document.getElementById('checkout');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // "Next" buttons
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.co-next-btn');
+    if (!btn) return;
+    var goto = parseInt(btn.getAttribute('data-goto'), 10);
+    if (goto) goToStep(goto);
+  });
+
+  // Clicking any review link in step 2 moves to step 3 after a small delay
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('.co-review-link');
+    if (!link) return;
+    setTimeout(function () { goToStep(3); }, 300);
+  });
+
+  // WA button — mark checkout complete
+  var waBtn = document.getElementById('co-wa-notify');
+  if (waBtn) {
+    waBtn.addEventListener('click', function () {
+      setTimeout(function () {
+        // Hide step 3, show done panel
+        var step3 = document.getElementById('co-step-3');
+        var done  = document.getElementById('co-done');
+        var dot3  = document.getElementById('co-dot-3');
+        if (step3) step3.classList.add('co-panel--hidden');
+        if (done)  done.classList.remove('co-panel--hidden');
+        if (dot3)  dot3.classList.add('done');
+        var sec = document.getElementById('checkout');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 400);
     });
   }
+
+  // Reset flow to step 1 whenever the checkout section is navigated to
+  var _show = typeof show === 'function' ? show : null;
+  window.addEventListener('hashchange', function () {
+    if (location.hash === '#checkout') {
+      goToStep(1);
+      // Also reset done panel
+      var done = document.getElementById('co-done');
+      if (done) done.classList.add('co-panel--hidden');
+    }
+  });
 })();
 
 /* Deep-link support: ?checkout=1 (or ?phase=checkout) goes straight
@@ -4581,24 +4908,12 @@ const MAP_I18N = {
 
   var map = null;
   var built = false;
+  var inlineMap = null;
+  var inlineBuilt = false;
 
-  function buildMap() {
-    if (built) return;
-    var mapEl = document.getElementById('porto-map');
-    if (!mapEl || typeof L === 'undefined') return; // Leaflet not ready yet
-    built = true;
-
-    var start = APARTMENT_COORDS || PORTO_CENTER;
-    map = L.map('porto-map', { scrollWheelZoom: false }).setView(start, 14);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 19,
-    }).addTo(map);
-
+  // Shared helper: populate a Leaflet map instance with all place pins + home pin
+  function populateMap(m) {
     var bounds = [];
-
-    // Apartment marker — the main pin (shown once APARTMENT_COORDS is set)
     if (APARTMENT_COORDS) {
       var homeIcon = L.divIcon({
         className: 'map-pin map-pin-home',
@@ -4610,12 +4925,9 @@ const MAP_I18N = {
         '<a href="https://www.google.com/maps/dir/?api=1&destination=Rua+da+Paz+66+4050-461+Porto" target="_blank" rel="noopener">' +
         tr('go_btn') + '</a></span>';
       L.marker(APARTMENT_COORDS, { icon: homeIcon, zIndexOffset: 1000 })
-        .addTo(map).bindPopup(homePopup);
+        .addTo(m).bindPopup(homePopup);
       bounds.push(APARTMENT_COORDS);
     }
-
-    // Place markers — skipped cleanly if a place has no coords.
-    // Each popup offers "see details" + a one-tap directions button.
     Object.keys(PLACES).forEach(function (id) {
       var pl = PLACES[id];
       if (!pl || !pl.coords) return;
@@ -4629,32 +4941,61 @@ const MAP_I18N = {
         '<a href="#place-' + pl.slug + '">' + tr('map_see_place') + '</a>' +
         '<a class="map-popup-go" href="' + pl.maps + '" target="_blank" rel="noopener">📍 ' +
         tr('go_btn') + '</a></span>';
-      L.marker(pl.coords, { icon: icon }).addTo(map).bindPopup(popup);
+      L.marker(pl.coords, { icon: icon }).addTo(m).bindPopup(popup);
       bounds.push(pl.coords);
     });
-
-    // Opening view: centred on the apartment when we know where it is,
-    // otherwise framed to show every place pin.
     if (APARTMENT_COORDS) {
-      map.setView(APARTMENT_COORDS, 15);
+      m.setView(APARTMENT_COORDS, 15);
     } else if (bounds.length > 1) {
-      map.fitBounds(bounds, { padding: [38, 38] });
+      m.fitBounds(bounds, { padding: [38, 38] });
     }
-    setTimeout(function () { if (map) map.invalidateSize(); }, 220);
+    setTimeout(function () { m.invalidateSize(); }, 220);
   }
 
-  // Build (and re-measure) when the #mapa screen becomes active.
-  // If Leaflet is still downloading, keep retrying until it is ready.
+  function buildMap() {
+    if (built) return;
+    var mapEl = document.getElementById('porto-map');
+    if (!mapEl || typeof L === 'undefined') return;
+    built = true;
+    map = L.map('porto-map', { scrollWheelZoom: false }).setView(APARTMENT_COORDS || PORTO_CENTER, 14);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map);
+    populateMap(map);
+  }
+
+  // Inline map in the #porto section — same pins, smaller height
+  function buildInlineMap() {
+    if (inlineBuilt) return;
+    var mapEl = document.getElementById('porto-inline-map');
+    if (!mapEl || typeof L === 'undefined') return;
+    inlineBuilt = true;
+    inlineMap = L.map('porto-inline-map', { scrollWheelZoom: false }).setView(APARTMENT_COORDS || PORTO_CENTER, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(inlineMap);
+    populateMap(inlineMap);
+  }
+
   function maybeBuild() {
-    if (location.hash !== '#mapa') return;
-    if (typeof L === 'undefined') {
-      setTimeout(maybeBuild, 200); // Leaflet not loaded yet — try again
-      return;
+    var hash = location.hash;
+    if (hash === '#mapa') {
+      if (typeof L === 'undefined') { setTimeout(maybeBuild, 200); return; }
+      buildMap();
+      if (map) {
+        setTimeout(function () { map.invalidateSize(); }, 160);
+        setTimeout(function () { map.invalidateSize(); }, 500);
+      }
     }
-    buildMap();
-    if (map) {
-      setTimeout(function () { map.invalidateSize(); }, 160);
-      setTimeout(function () { map.invalidateSize(); }, 500);
+    if (hash === '#porto') {
+      if (typeof L === 'undefined') { setTimeout(maybeBuild, 200); return; }
+      buildInlineMap();
+      if (inlineMap) {
+        setTimeout(function () { inlineMap.invalidateSize(); }, 160);
+        setTimeout(function () { inlineMap.invalidateSize(); }, 500);
+      }
     }
   }
   window.addEventListener('hashchange', maybeBuild);
@@ -4675,7 +5016,7 @@ Object.assign(translations.nl, {
   nav_rules: 'Huisregels', nav_guide: 'Huisgids', nav_kitchen: 'Keukengids',
   nav_rooms_label: 'Kamers', nav_bathroom: 'Badkamer', nav_transport: 'Vervoer',
   nav_nearby: 'In de buurt', nav_porto: 'Ontdek Porto', nav_explore_label: '🗺️ Ontdek Porto', nav_emergency: '🆘 Noodgeval',
-  bnav_home: 'Start', bnav_info: 'Info', bnav_rooms: 'Kamers', bnav_porto: 'Porto', bnav_help: 'Hulp',
+  bnav_home: 'Start', bnav_info: 'Info', bnav_rooms: 'Kamers', bnav_casa: 'Huis', bnav_checkout: 'Vertrek', bnav_porto: 'Porto', bnav_help: 'Hulp',
   hero_badge: 'Porto · Portugal', hero_welcome: 'Welkom bij',
   hero_tagline: 'Uw rustige thuis in het hart van Porto',
   rooms_preview_title: 'Kies uw kamer',
@@ -4683,11 +5024,21 @@ Object.assign(translations.nl, {
   douro_mood_short: 'Warm · Knus · Goudkleurig',
   atlantico_mood_short: 'Kalm · Kustsfeer · Licht',
   room_discover: 'Ontdek →',
+  your_room_title: 'Uw Kamer',
+  see_other_rooms: 'Andere kamers bekijken →',
   info_title: 'Essentiële informatie', info_subtitle: 'Alles wat u nodig heeft, hier bij elkaar',
   address_title: 'Adres', open_maps: 'Openen in Google Maps',
+  useful_places_title: 'Handige Adressen',
+  addr_home_label: 'Uw adres',
+  addr_supermarket_label: 'Dichtstbijzijnde supermarkt',
+  addr_metro_label: 'Dichtstbijzijnde metro',
+  addr_supermarket_walk: '~5 min lopen',
+  addr_metro1_walk: 'Lijn D · ~12 min lopen',
+  addr_metro2_walk: 'Lijnen A/B/C · ~15 min lopen',
   wifi_title: 'Wi-Fi', wifi_network: 'Netwerk', wifi_password: 'Wachtwoord',
   tap_copy: 'tik om te kopiëren', wifi_scan: '📷 Scan om automatisch verbinding te maken',
-  contact_title: 'Contact met de gastheer', contact_urgent: 'Spoedlijn',
+  wifi_show_qr: '📷 QR tonen', wifi_hide_qr: '✕ QR verbergen',
+  contact_title: 'Hulp nodig?', contact_urgent: 'Spoedlijn',
   guide_qr_title: 'Deze gastengids',
   guide_qr_desc: 'Deel deze link met uw gasten of scan de QR-code',
   checkin_title: 'Check-in & Check-out', checkin_label: 'Check-in',
@@ -4870,9 +5221,11 @@ Object.assign(translations.nl, {
   em_title: 'Noodgevallen & ondersteuning',
   em_sub: 'We hopen dat u dit nooit nodig heeft — maar het staat hier voor de zekerheid',
   em_112_h: 'Hulpdiensten', em_112_sub: 'Politie · Brandweer · Ambulance', em_call: 'Bel',
-  em_host_h: 'Contact met de gastheer', em_host_sub: 'Voor elk probleem met de woning',
+  em_host_h: 'Beheerdsteam', em_host_sub: 'Voor elk probleem met de woning',
   em_hospital_h: 'Dichtstbijzijnde ziekenhuis', em_pharmacy_h: 'Apotheek 24 uur',
   em_ride_h: 'Uber / Bolt', em_taxi_h: 'Taxi',
+  em_suggest_p: 'Iets dat we kunnen verbeteren? We horen het graag.',
+  em_suggest_btn: 'Een suggestie doen →',
   footer_rights: 'Alle rechten voorbehouden', copied: '✓ Gekopieerd!',
   nav_mapa: '🗺️ Kaart van Porto', nb_nos: 'NOS-winkel (simkaarten)',
   dl_guide_title: 'Offline gids downloaden',
@@ -5050,6 +5403,14 @@ Object.assign(translations.nl, {
   co_notify_p: 'We laten uw gastheer weten dat de kamer vrij is — en daarna vertelt u ons even hoe uw verblijf was.',
   co_notify_btn: 'Uitchecken →',
   co_wa_msg: 'Hallo! Ik check nu uit van kamer {room}. Alles is in orde. Bedankt voor het verblijf 💛',
+  co_next_step: 'Volgende →',
+  co_continue: 'Doorgaan →',
+  co_wa_final_h: 'Laatste stap',
+  co_wa_final_p: 'Stuur ons een kort berichtje om uw vertrek te bevestigen — zo kunnen we de kamer voorbereiden voor de volgende gast.',
+  co_wa_final_btn: '📩 Versturen via WhatsApp',
+  co_done_h: 'Check-out voltooid! 🎉',
+  co_done_p: 'Bedankt voor uw verblijf bij Porto Peace Haven. We hopen u snel weer te verwelkomen. 💛',
+  co_done_btn: '← Terug naar start',
   phase_q: 'Waar bent u in uw verblijf?',
   phase_checkin: 'Net aangekomen', phase_mid: 'Midden in verblijf', phase_checkout: 'Aan het uitchecken',
   welcome_h: 'Welkom bij Porto Peace Haven',
@@ -5368,237 +5729,116 @@ Object.assign(translations.it, {
   porto_antiqvvm_h: 'Antiqvvm — una serata con due stelle Michelin',
   porto_antiqvvm_p: 'Alta cucina portoghese in una romantica casa dell\'Ottocento con vista sul Douro. Una vera occasione.',
   porto_antiqvvm_intro: 'Due stelle Michelin, una casa dell\'Ottocento, una vista sul Douro. Per la serata che volete ricordare.',
-  porto_antiqvvm_tips: '<li>Prenotate con largo anticipo.</li><li>Il menu degustazione è la scelta giusta.</li><li>Elegante-informale — è un\'occasione.</li>',
-});
-
-/* ═══════════════════════════════════════════════════════════════
-   CHECKOUT CHECKLIST hint i18n + interactive tick behaviour
-═══════════════════════════════════════════════════════════════ */
-const CHECKLIST_HINT_I18N = {
-  en: { bye_checklist_hint: "Tap each item as you go — it remembers what you've ticked." },
-  pt: { bye_checklist_hint: 'Toque em cada item à medida que avança — fica guardado o que já marcou.' },
-  fr: { bye_checklist_hint: 'Touchez chaque élément au fur et à mesure — vos coches sont mémorisées.' },
-  es: { bye_checklist_hint: 'Toca cada elemento a medida que avanzas — recuerda lo que has marcado.' },
-  de: { bye_checklist_hint: 'Tippen Sie jeden Punkt an — Ihre Häkchen werden gemerkt.' },
-  it: { bye_checklist_hint: 'Tocca ogni voce man mano — ricorda cosa hai spuntato.' },
-  nl: { bye_checklist_hint: 'Tik elk item aan terwijl u bezig bent — wat u afvinkt wordt onthouden.' },
-};
-['en', 'pt', 'fr', 'es', 'de', 'it', 'nl'].forEach(function(l) {
-  Object.assign(translations[l], CHECKLIST_HINT_I18N[l] || {});
+  porto_antiqvvm_tips: '<li>Prenotate con largo anticipo.</li><li>Il menu degustazione \xe8 la scelta giusta.</li><li>Abbigliamento elegante-informale \u2014 \xe8 un\'occasione speciale.</li>',
 });
 
 /* ─────────────────────────────────────────────────────────────
-   INTERACTIVE CHECKOUT CHECKLIST
-   Tap any item to tick/untick. State is kept for the session.
-─────────────────────────────────────────────────────────────── */
+   REVIEW CTA VISIBILITY
+   Subtle on first hour; full gold after 1 hour since first visit.
+   This catches guests who only open the site once: they see the
+   soft banner on arrival but the full CTA if they return later.
+───────────────────────────────────────────────────────────────── */
 (function () {
-  function initChecklist(ul) {
-    if (!ul || ul.dataset.clInit) return;
-    ul.dataset.clInit = '1';
-    Array.prototype.forEach.call(ul.querySelectorAll('li'), function (li) {
-      li.style.cursor = 'pointer';
-      li.addEventListener('click', function () {
-        li.classList.toggle('checked');
-      });
+  var FIRST_SEEN_KEY = 'pph-first-seen';
+  var ONE_HOUR = 60 * 60 * 1000;
+
+  // Record the very first time the guest opens the site
+  var firstSeen = 0;
+  try { firstSeen = parseInt(localStorage.getItem(FIRST_SEEN_KEY) || '0', 10); } catch(e) {}
+  if (!firstSeen) {
+    firstSeen = Date.now();
+    try { localStorage.setItem(FIRST_SEEN_KEY, String(firstSeen)); } catch(e) {}
+  }
+
+  // Show soft CTA only within the first hour
+  var isEarly = (Date.now() - firstSeen) < ONE_HOUR;
+  if (isEarly) {
+    document.querySelectorAll('.home-review-cta').forEach(function (el) {
+      el.classList.add('home-review-cta--soft');
+    });
+  }
+})();
+
+/* ─────────────────────────────────────────────────────────────
+   ROOM SELECTION POPUP — shown on first visit or if room unset
+───────────────────────────────────────────────────────────────── */
+(function () {
+  var popup   = document.getElementById('room-popup');
+  var skipBtn = document.getElementById('room-popup-skip');
+  if (!popup) return;
+
+  function closePopup() {
+    popup.setAttribute('hidden', '');
+    popup.classList.remove('room-popup--visible');
+  }
+
+  function openPopup() {
+    popup.removeAttribute('hidden');
+    requestAnimationFrame(function () {
+      popup.classList.add('room-popup--visible');
     });
   }
 
-  function initAll() {
-    document.querySelectorAll('.checklist-interactive').forEach(initChecklist);
+  function shouldShow() {
+    var room = '';
+    var ts   = 0;
+    try { room = localStorage.getItem('pph-room') || ''; } catch(e) {}
+    try { ts   = parseInt(localStorage.getItem('pph-room-ts') || '0', 10); } catch(e) {}
+    // Show if no room saved, or if saved more than 30 days ago
+    if (!room) return true;
+    var thirtyDays = 30 * 24 * 60 * 60 * 1000;
+    return (Date.now() - ts) > thirtyDays;
   }
 
-  document.addEventListener('DOMContentLoaded', initAll);
-
-  // Re-run after language switches (innerHTML is rewritten by applyLanguage)
-  var clObserver = new MutationObserver(function () { initAll(); });
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.checklist-interactive').forEach(function (ul) {
-      clObserver.observe(ul, { childList: true });
+  // Room choice buttons
+  popup.querySelectorAll('.room-choice').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var room = btn.dataset.room;
+      try { localStorage.setItem('pph-room', room); } catch(e) {}
+      try { localStorage.setItem('pph-room-ts', String(Date.now())); } catch(e) {}
+      closePopup();
+      // Refresh homepage room preview
+      if (typeof initRoomsPreview === 'function') initRoomsPreview();
     });
   });
-})();
 
-
-
-/* ═══════════════════════════════════════════════════════════════
-   SMART VISIT DETECTION
-   Visit 1 = first-time (just arrived, review CTAs hidden on home)
-   Visit 2+ = returning / mid-stay (review CTAs shown normally)
-   Keys: pph-visit-count (int), pph-first-visit-ts (timestamp)
-═══════════════════════════════════════════════════════════════ */
-(function () {
-  var VISIT_KEY = 'pph-visit-count';
-  var FIRST_TS_KEY = 'pph-first-visit-ts';
-
-  function getVisitCount() {
-    return parseInt(localStorage.getItem(VISIT_KEY) || '0', 10);
-  }
-
-  function recordVisit() {
-    var count = getVisitCount();
-    count += 1;
-    localStorage.setItem(VISIT_KEY, String(count));
-    if (count === 1) {
-      localStorage.setItem(FIRST_TS_KEY, String(Date.now()));
-    }
-  }
-
-  function isFirstVisit() {
-    return getVisitCount() <= 1;
-  }
-
-  // Apply visual treatment based on visit
-  function applyVisitMode() {
-    var first = isFirstVisit();
-    // On first visit: hide big review CTAs on home; keep only the subtle bottom one
-    var primaryCtas = document.querySelectorAll('.home-review-cta:not(.home-review-cta--soft)');
-    primaryCtas.forEach(function (el) {
-      if (first) {
-        el.classList.add('review-cta-first-visit');
-      } else {
-        el.classList.remove('review-cta-first-visit');
-      }
+  // Skip button
+  if (skipBtn) {
+    skipBtn.addEventListener('click', function () {
+      try { localStorage.setItem('pph-room', 'skipped'); } catch(e) {}
+      try { localStorage.setItem('pph-room-ts', String(Date.now())); } catch(e) {}
+      closePopup();
     });
   }
 
-  // Record this visit and apply mode
-  recordVisit();
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyVisitMode);
-  } else {
-    applyVisitMode();
+  // Show after short delay on first/fresh visit
+  if (shouldShow()) {
+    setTimeout(openPopup, 700);
   }
-
-  // Expose for other scripts
-  window.pphIsFirstVisit = isFirstVisit;
-  window.pphGetVisitCount = getVisitCount;
 })();
 
-/* ═══════════════════════════════════════════════════════════════
-   ROOM SELECTION POPUP — first visit, resets every 30 days
-═══════════════════════════════════════════════════════════════ */
+/* ─────────────────────────────────────────────────────────────
+   WELCOME OVERLAY — shown once on very first visit, auto-dismisses
+───────────────────────────────────────────────────────────────── */
 (function () {
-  var ROOM_KEY = 'pph-room';
-  var ROOM_TS_KEY = 'pph-room-ts';
   var WELCOME_KEY = 'pph-welcome-shown';
-  var THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000;
+  var overlay = document.getElementById('welcome-overlay');
+  if (!overlay) return;
 
-  function isRoomFresh() {
-    var ts = parseInt(localStorage.getItem(ROOM_TS_KEY) || '0', 10);
-    return Date.now() - ts < THIRTY_DAYS;
-  }
-
-  function saveRoom(roomId) {
-    localStorage.setItem(ROOM_KEY, roomId);
-    localStorage.setItem(ROOM_TS_KEY, String(Date.now()));
-  }
-
-  function showWelcome() {
-    if (localStorage.getItem(WELCOME_KEY)) return;
-    localStorage.setItem(WELCOME_KEY, '1');
-    var ov = document.getElementById('welcome-overlay');
-    if (!ov) return;
-    ov.removeAttribute('hidden');
-    ov.classList.add('welcome-in');
+  function dismiss() {
+    overlay.classList.add('welcome-overlay--out');
     setTimeout(function () {
-      ov.classList.add('welcome-out');
-      setTimeout(function () { ov.setAttribute('hidden', ''); }, 700);
-    }, 2500);
+      overlay.setAttribute('hidden', '');
+    }, 600);
+    try { localStorage.setItem(WELCOME_KEY, '1'); } catch(e) {}
   }
 
-  function hidePopup() {
-    var pop = document.getElementById('room-popup');
-    if (pop) {
-      pop.classList.add('room-popup-hide');
-      setTimeout(function () { pop.setAttribute('hidden', ''); }, 400);
-    }
-    // Show welcome after popup closes (or immediately if skipped)
-    setTimeout(showWelcome, 500);
-  }
+  var shown = false;
+  try { shown = !!localStorage.getItem(WELCOME_KEY); } catch(e) {}
 
-  function initPopup() {
-    if (isRoomFresh()) return; // already chosen recently
-    var pop = document.getElementById('room-popup');
-    if (!pop) return;
-    pop.removeAttribute('hidden');
-    // Room buttons
-    pop.querySelectorAll('.room-choice').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var room = btn.dataset.room;
-        saveRoom(room);
-        hidePopup();
-        // Navigate to home after room selection
-        location.hash = '#home';
-      });
-    });
-    // Skip button
-    var skipBtn = document.getElementById('room-popup-skip');
-    if (skipBtn) skipBtn.addEventListener('click', hidePopup);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPopup);
-  } else {
-    // Small delay so the SPA router runs first
-    setTimeout(initPopup, 300);
-  }
-
-  // Expose current room for other scripts if needed
-  window.pphGetRoom = function () {
-    return isRoomFresh() ? localStorage.getItem(ROOM_KEY) : null;
-  };
-})();
-
-/* =================================================================
-   NAV DRAWER — collapsible group toggles
-   ================================================================= */
-(function () {
-  function initNavGroups() {
-    document.querySelectorAll('.nav-group-toggle').forEach(function (btn) {
-      var targetId = btn.getAttribute('aria-controls');
-      var subList = targetId ? document.getElementById(targetId) : null;
-      if (!subList) return;
-
-      btn.addEventListener('click', function () {
-        var isOpen = btn.getAttribute('aria-expanded') === 'true';
-        if (isOpen) {
-          btn.setAttribute('aria-expanded', 'false');
-          subList.hidden = true;
-        } else {
-          btn.setAttribute('aria-expanded', 'true');
-          subList.hidden = false;
-        }
-      });
-    });
-
-    // Auto-expand the group containing the active screen
-    document.addEventListener('pph:screenchange', function (e) {
-      var screenId = e.detail && e.detail.id;
-      if (!screenId) return;
-      var roomIds = ['ribeira', 'douro', 'atlantico'];
-      var casaIds = ['kitchen', 'bathroom', 'rules', 'casa'];
-      var exploreIds = ['transport', 'nearby', 'porto', 'mapa', 'place'];
-      var groupMap = {
-        'navs-rooms': roomIds.includes(screenId),
-        'navs-casa': casaIds.includes(screenId),
-        'navs-explore': exploreIds.includes(screenId),
-      };
-      Object.keys(groupMap).forEach(function (subId) {
-        var sub = document.getElementById(subId);
-        var toggle = sub && sub.previousElementSibling;
-        if (!sub || !toggle) return;
-        if (groupMap[subId]) {
-          toggle.setAttribute('aria-expanded', 'true');
-          sub.hidden = false;
-        }
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNavGroups);
-  } else {
-    initNavGroups();
+  if (!shown) {
+    overlay.removeAttribute('hidden');
+    // Auto-dismiss after 2s (no button needed)
+    setTimeout(dismiss, 2000);
   }
 })();

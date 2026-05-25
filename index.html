@@ -150,7 +150,7 @@
             <li><a href="#mapa" class="nav-link nav-sub" data-i18n="nav_mapa">↳ Mapa do Porto</a></li>
           </ul>
         </li>
-        <li><a href="#checkout" class="nav-link nav-checkout" data-i18n="nav_checkout">🧳 Checkout</a></li>
+
         <li><a href="#avaliar" class="nav-link nav-avaliar" data-i18n="nav_avaliar">⭐ Review Your Stay</a></li>
         <li><a href="#emergency" class="nav-link nav-emergency" data-i18n="nav_emergency">🆘 Emergency</a></li>
 
@@ -167,9 +167,13 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
       <span data-i18n="bnav_home">Home</span>
     </a>
-    <a href="#rooms" class="bnav-item" data-section="rooms">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-      <span data-i18n="bnav_rooms">Rooms</span>
+    <a href="#casa" class="bnav-item" data-section="casa">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3-3 3 3"/><path d="M14 22V12a2 2 0 0 0-4 0v10"/><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M2 10l10-7 10 7"/></svg>
+      <span data-i18n="bnav_casa">Casa</span>
+    </a>
+    <a href="#checkout" class="bnav-item bnav-checkout" data-section="checkout">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      <span data-i18n="bnav_checkout">Check-out</span>
     </a>
     <a href="#porto" class="bnav-item" data-section="porto">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -216,9 +220,11 @@
       </div>
 
       <!-- ── HOME FEED — condensed view, each block opens its full guide ── -->
+      <!-- ORDER: help guest first → add value → review at the end -->
+      <!-- On 2nd+ visit the review CTA (top + bottom) shows large via JS visit detection -->
       <div class="container home-feed">
 
-        <!-- Featured: Review CTA (the primary conversion goal — top of home) -->
+        <!-- Review CTA TOP — subtle on 1st visit, full gold on 2nd+ visit -->
         <a href="#avaliar" class="home-review-cta">
           <div class="hrc-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
           <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
@@ -227,7 +233,7 @@
           <p class="review-proof review-proof--light" data-review-proof></p>
         </a>
 
-        <!-- Wi-Fi (full info on home — quick essential) -->
+        <!-- 1. Wi-Fi — first thing every guest needs -->
         <div class="info-card" id="wifi">
           <div class="info-icon" aria-hidden="true">📶</div>
           <div class="info-body">
@@ -248,84 +254,16 @@
                 </button>
               </div>
             </div>
-            <div class="qr-block">
+            <button class="qr-toggle-btn" id="qr-toggle" aria-expanded="false" data-i18n="wifi_show_qr">📷 Show QR code</button>
+            <div class="qr-block" id="qr-block" hidden>
               <p class="qr-label" data-i18n="wifi_scan">📷 Scan to connect automatically</p>
               <img src="assets/fotos/QR-wifi.png" alt="Wi-Fi QR code" class="qr-img" loading="lazy">
             </div>
           </div>
         </div>
 
-        <!-- Contact Host + Help (merged) -->
-        <div class="info-card" id="contact">
-          <div class="info-icon" aria-hidden="true">💬</div>
-          <div class="info-body">
-            <h3 data-i18n="contact_title">Contact Host</h3>
-            <p class="contact-sub" data-i18n="contact_sub">We're here. For real emergencies, dial 112.</p>
-            <div class="contact-grid">
-              <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="contact-btn whatsapp">
-                <span aria-hidden="true">💬</span> WhatsApp
-              </a>
-              <a href="tel:+351913874921" class="contact-btn phone">
-                <span aria-hidden="true">📞</span>
-                <span data-i18n="contact_urgent">Urgent Line</span>
-              </a>
-            </div>
-            <div class="contact-emergency-row">
-              <a href="tel:112" class="btn btn-emergency btn-sm">📞 112 — Emergência</a>
-              <a href="#emergency" class="btn btn-outline btn-sm" data-i18n="home_help_more">All emergency info →</a>
-            </div>
-          </div>
-        </div>
 
-        <!-- Address -->
-        <div class="info-card">
-          <div class="info-icon" aria-hidden="true">📍</div>
-          <div class="info-body">
-            <h3 data-i18n="address_title">Address &amp; Neighbourhood</h3>
-            <address style="margin-bottom:0.8rem;">
-              Rua da Paz, 66 · 3º andar, sala 34<br>
-              Porto · 4050-461 · Portugal
-            </address>
-            <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="open_maps" style="margin-bottom:1rem;display:inline-block;">Open in Google Maps</a>
-
-            <div class="addr-nearby">
-              <div class="addr-nearby-row">
-                <span class="addr-nearby-ico">🛒</span>
-                <div class="addr-nearby-body">
-                  <strong>Mercado Froiz</strong>
-                  <span data-i18n="addr_supermarket_desc">Supermarket · ~5 min walk</span>
-                </div>
-                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Mercado+Froiz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
-              </div>
-              <div class="addr-nearby-row">
-                <span class="addr-nearby-ico">🚌</span>
-                <div class="addr-nearby-body">
-                  <strong>Bonfim / Rua da Paz</strong>
-                  <span data-i18n="addr_bus_desc">Bus stop STCP · &lt; 2 min walk</span>
-                </div>
-                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Paragem+Bonfim+Rua+da+Paz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
-              </div>
-              <div class="addr-nearby-row">
-                <span class="addr-nearby-ico">🚇</span>
-                <div class="addr-nearby-body">
-                  <strong>Carolina Michaelis</strong>
-                  <span data-i18n="addr_metro1_desc">Metro Line D · ~12 min walk</span>
-                </div>
-                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Estação+Carolina+Michaelis+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
-              </div>
-              <div class="addr-nearby-row">
-                <span class="addr-nearby-ico">🚇</span>
-                <div class="addr-nearby-body">
-                  <strong>Casa da Música</strong>
-                  <span data-i18n="addr_metro2_desc">Metro Lines A/B/C · ~15 min walk</span>
-                </div>
-                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Estação+Casa+da+Música+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Choose Your Room — preview cards (each card opens its room) -->
+        <!-- 3. Choose Your Room — personal, helps them navigate their own space -->
         <div class="rooms-preview">
           <h2 class="section-title centered" data-i18n="rooms_preview_title">Choose Your Room</h2>
           <div class="rooms-grid">
@@ -362,30 +300,67 @@
           </div>
         </div>
 
-        <!-- Merged: Check-in / Check-out / Before Leaving -->
+        <!-- 4. Check-in / Check-out -->
         <a href="#checkin" class="entry-card entry-card--departure">
           <div class="entry-icon" aria-hidden="true">🔑</div>
           <div class="entry-body">
             <h3 data-i18n="entry_departure_h">Check-in · Check-out · Before Leaving</h3>
-            <p data-i18n="entry_departure_p">Keys in safes · Check-in from 16:00 · Check-out by 11:00</p>
+            <p data-i18n="entry_departure_p">Keys in safes · Check-in from 16:00 · <strong>Check-out by 11:00</strong></p>
           </div>
           <div class="entry-arrow" aria-hidden="true">→</div>
         </a>
 
-        <!-- Casa Guide — kitchen + bathroom + house rules in one screen -->
-        <a href="#casa" class="entry-card entry-card--casa">
-          <div class="entry-icon" aria-hidden="true">🏠</div>
-          <div class="entry-body">
-            <h3 data-i18n="entry_casa_h">House Guide</h3>
-            <p data-i18n="entry_casa_p">Kitchen · Bathroom · House Rules</p>
-          </div>
-          <div class="entry-arrow" aria-hidden="true">→</div>
-        </a>
+        <!-- 5. Useful Places — compact address + nearby landmarks -->
+        <div class="info-card addr-card">
+          <div class="info-body">
+            <h3 data-i18n="useful_places_title">Useful Places</h3>
 
-        <!-- Conheça o Porto preview — 3 of 10 places, Ver mais opens the full screen -->
+            <div class="addr-nearby">
+              <!-- Address row -->
+              <div class="addr-nearby-row">
+                <div class="addr-nearby-body">
+                  <span class="addr-nearby-tag" data-i18n="addr_home_label">Your address</span>
+                  <strong class="addr-nearby-name">Rua da Paz, 66 · 3º andar, sala 34</strong>
+                  <span class="addr-nearby-walk">Porto · 4050-461</span>
+                </div>
+                <a href="https://maps.google.com/?q=Rua+da+Paz+66+Porto+4050-461" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+              <!-- Supermarket -->
+              <div class="addr-nearby-row">
+                <div class="addr-nearby-body">
+                  <span class="addr-nearby-tag" data-i18n="addr_supermarket_label">Nearest supermarket</span>
+                  <strong class="addr-nearby-name">Mercado Froiz</strong>
+                  <span class="addr-nearby-walk" data-i18n="addr_supermarket_walk">~5 min walk</span>
+                </div>
+                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Mercado+Froiz+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+              <!-- Metro 1 -->
+              <div class="addr-nearby-row">
+                <div class="addr-nearby-body">
+                  <span class="addr-nearby-tag" data-i18n="addr_metro_label">Nearest metro</span>
+                  <strong class="addr-nearby-name">Carolina Michaelis</strong>
+                  <span class="addr-nearby-walk" data-i18n="addr_metro1_walk">Line D · ~12 min walk</span>
+                </div>
+                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Esta%C3%A7%C3%A3o+Carolina+Michaelis+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+              <!-- Metro 2 -->
+              <div class="addr-nearby-row">
+                <div class="addr-nearby-body">
+                  <span class="addr-nearby-tag" data-i18n="addr_metro_label">Nearest metro</span>
+                  <strong class="addr-nearby-name">Casa da Música</strong>
+                  <span class="addr-nearby-walk" data-i18n="addr_metro2_walk">Lines A/B/C · ~15 min walk</span>
+                </div>
+                <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Esta%C3%A7%C3%A3o+Casa+da+M%C3%BAsica+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Get to Know Porto — add value, inspire the guest -->
         <div class="home-porto-preview">
           <h2 class="section-title centered" data-i18n="porto_title">Get to Know Porto</h2>
           <p class="section-sub home-porto-sub" data-i18n="porto_sub">Beyond the postcards — the places that make us love living here</p>
+
           <div class="home-porto-grid">
 
             <!-- 1. Lello — the well-known classic -->
@@ -444,7 +419,7 @@
           <a href="#porto" class="ver-mais-btn" data-i18n="see_all_porto">See all 10 places →</a>
         </div>
 
-        <!-- Porto city map preview — opens the interactive map screen -->
+        <!-- Porto city map card — opens the map screen -->
         <a href="#mapa" class="home-map">
           <div class="home-map-img">
             <img src="assets/fotos/mapa-card.jpg" alt="Interactive map of Porto — tap to open">
@@ -456,15 +431,46 @@
           </div>
         </a>
 
+        <!-- 7. Need Help? — Contact & Emergency (available when needed) -->
+        <div class="info-card" id="contact">
+          <div class="info-icon" aria-hidden="true">💬</div>
+          <div class="info-body">
+            <h3 data-i18n="contact_title">Need Help?</h3>
+            <p class="contact-sub" data-i18n="contact_sub">Our team is here for you. For emergencies, dial 112.</p>
+            <div class="contact-grid">
+              <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="contact-btn whatsapp">
+                <span aria-hidden="true">💬</span> WhatsApp
+              </a>
+              <a href="tel:+351913874921" class="contact-btn phone">
+                <span aria-hidden="true">📞</span>
+                <span data-i18n="contact_urgent">Urgent Line</span>
+              </a>
+            </div>
+            <div class="contact-emergency-row">
+              <a href="tel:112" class="btn btn-emergency btn-sm">📞 112 — Emergência</a>
+              <a href="#emergency" class="btn btn-outline btn-sm" data-i18n="home_help_more">Emergency contacts →</a>
+            </div>
+          </div>
+        </div>
 
-        <!-- Second Review nudge (always guide to the goal) -->
-        <a href="#avaliar" class="home-review-cta home-review-cta--soft">
-          <h3 data-i18n="home_review2_h">One last thing</h3>
-          <p data-i18n="home_review2_p">If we made your trip a little better, a review helps the next traveller find us. Thank you.</p>
+        <!-- 8. Checkout CTA — primary action driving reviews -->
+        <a href="#checkout" class="checkout-cta checkout-cta-screen checkout-cta--highlight checkout-cta--home">
+          <span class="checkout-cta-ico">🧳</span>
+          <span class="checkout-cta-text">
+            <strong data-i18n="checkout_cta_h">Checking out?</strong>
+            <span data-i18n="checkout_cta_p">Start your check-out — it only takes a minute</span>
+          </span>
+          <span class="checkout-cta-arrow">→</span>
+        </a>
+
+        <!-- 9. Review CTA — the goal, earnt by helping first -->
+        <a href="#avaliar" class="home-review-cta">
+          <div class="hrc-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+          <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
+          <p data-i18n="home_review_p">Your review means the world to us — and it only takes a minute.</p>
           <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
           <p class="review-proof review-proof--light" data-review-proof></p>
         </a>
-
 
       </div>
     </section>
@@ -529,7 +535,7 @@
             <div class="ficha-cta">
               <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
               <div class="ficha-cta-btns">
-                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" data-av-goto="av-step-form" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
                 <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
               </div>
             </div>
@@ -595,7 +601,7 @@
             <div class="ficha-cta">
               <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
               <div class="ficha-cta-btns">
-                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" data-av-goto="av-step-form" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
                 <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
               </div>
             </div>
@@ -658,7 +664,7 @@
             <div class="ficha-cta">
               <p data-i18n="ficha_cta_p">We prepared this room down to the smallest detail, so you would rest better. If anything is not the way you hoped, tell us now — we would rather put it right during your stay than after it.</p>
               <div class="ficha-cta-btns">
-                <a href="#avaliar" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
+                <a href="#avaliar" data-av-goto="av-step-form" class="btn btn-outline btn-sm" data-i18n="ficha_cta_suggest">Could something here be better?</a>
                 <a href="#avaliar" class="btn btn-gold btn-sm" data-i18n="ficha_cta_review">Review my stay ⭐</a>
               </div>
             </div>
@@ -725,11 +731,11 @@
         </div>
 
         <!-- Quick check-out CTA — same funnel as the pop-up's check-out button -->
-        <a href="#checkout" class="checkout-cta checkout-cta-screen">
+        <a href="#checkout" class="checkout-cta checkout-cta-screen checkout-cta--highlight">
           <span class="checkout-cta-ico" aria-hidden="true">🧳</span>
           <span class="checkout-cta-text">
-            <strong data-i18n="checkout_cta_h">Checking out?</strong>
-            <span data-i18n="checkout_cta_p">Start your check-out — it only takes a minute</span>
+            <strong data-i18n="checkout_cta_h">✓ Do your check-out here</strong>
+            <span data-i18n="checkout_cta_p">Tap to start — it only takes a minute</span>
           </span>
           <span class="checkout-cta-arrow" aria-hidden="true">→</span>
         </a>
@@ -1180,6 +1186,12 @@
 
         <p class="porto-intro" data-i18n="porto_intro">Porto isn't a city you tick off a list. It rewards the wanderers — the ones who turn down the narrow street, who sit on the steps a while, who order the thing they can't pronounce. Here are the places we'd send a friend to: a few that everyone knows, and a few that most visitors walk straight past.</p>
 
+        <!-- Interactive Leaflet map — same pins as #mapa, shown right above the places -->
+        <div class="porto-inline-map-wrap">
+          <div id="porto-inline-map" role="application" aria-label="Interactive map of Porto places"></div>
+          <p class="map-pins-note" data-i18n="map_pins_note">Tap a pin to open the place and get directions.</p>
+        </div>
+
         <h3 class="porto-group-title" data-i18n="porto_g1_title">Porto off the beaten path</h3>
         <div class="porto-grid collapsible">
 
@@ -1470,33 +1482,61 @@
         <h2 class="section-title" data-i18n="bye_title">Before You Leave</h2>
         <p class="section-sub" data-i18n="bye_sub">A short list, a small ask, and a thank you.</p>
 
-        <!-- Step 1 of checkout: let Filipa know -->
-        <div class="info-card checkout-notify">
-          <div class="info-icon" aria-hidden="true">🧳</div>
-          <div class="info-body">
-            <h3 data-i18n="co_notify_h">Let us know you're heading out</h3>
-            <p data-i18n="co_notify_p">A quick message so we know the room is ready to be turned around — and so we can wish you a great trip back.</p>
-            <a id="co-wa-notify" class="btn av-btn-wa" href="#" target="_blank" rel="noopener" data-i18n="co_notify_btn">📩 Notify by WhatsApp</a>
+        <!-- Step indicator -->
+        <div class="co-steps-bar" aria-hidden="true">
+          <span class="co-step-dot active" id="co-dot-1">1</span>
+          <span class="co-step-line"></span>
+          <span class="co-step-dot" id="co-dot-2">2</span>
+          <span class="co-step-line"></span>
+          <span class="co-step-dot" id="co-dot-3">3</span>
+        </div>
+
+        <!-- Step 1: Checklist -->
+        <div class="co-panel" id="co-step-1">
+          <div class="info-card">
+            <div class="info-icon" aria-hidden="true">✅</div>
+            <div class="info-body">
+              <h3 data-i18n="bye_checklist_h">A small checklist for the room</h3>
+              <p class="checklist-hint" data-i18n="bye_checklist_hint">Tap each item as you go — it remembers what you've ticked.</p>
+              <ul class="checklist checklist-interactive" data-i18n="bye_checklist"><li>Close the windows — Porto rain finds its way in through the old window frames.</li><li>Switch off all the lights and the LED lamps.</li><li>Wait a few seconds and make sure the toilet flush has stopped.</li><li>Log out of Netflix, HBO Max, Prime Video and Disney+ on the TV — your accounts, your privacy.</li><li>Turn off the fan, the TV and the mini fridge if you used it.</li><li>Leave the key as we agreed.</li></ul>
+            </div>
+          </div>
+          <button class="btn btn-gold co-next-btn" data-goto="2" data-i18n="co_next_step">Next →</button>
+        </div>
+
+        <!-- Step 2: Review -->
+        <div class="co-panel co-panel--hidden" id="co-step-2">
+          <div class="review-box bye-review">
+            <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+            <h3 data-i18n="bye_ask_h">Before you go</h3>
+            <p data-i18n="bye_ask_p">If we became part of a good memory of your trip, your review means the world to us — and helps other travellers find their way to this little corner of Porto.</p>
+            <a href="#avaliar" class="btn btn-gold co-review-link" data-i18n="bye_review_btn">Leave a review ⭐</a>
+            <p class="review-proof review-proof--light" data-review-proof></p>
+            <p class="bye-private"><a href="#avaliar" data-av-goto="av-step-form" class="co-review-link" data-i18n="bye_note_link">Or tell us privately first — what could have been better?</a></p>
+          </div>
+          <button class="btn btn-outline co-next-btn co-skip-review-btn" data-goto="3" data-i18n="co_continue">Continue →</button>
+        </div>
+
+        <!-- Step 3: WhatsApp — completes the checkout -->
+        <div class="co-panel co-panel--hidden" id="co-step-3">
+          <div class="info-card checkout-wa-card">
+            <div class="info-icon" aria-hidden="true">💬</div>
+            <div class="info-body">
+              <h3 data-i18n="co_wa_final_h">One last step</h3>
+              <p data-i18n="co_wa_final_p">Send us a quick message to confirm you've left — it lets us prepare the room for the next guest.</p>
+              <a id="co-wa-notify" class="btn av-btn-wa co-wa-complete-btn" href="#" target="_blank" rel="noopener" data-i18n="co_wa_final_btn">📩 Send on WhatsApp</a>
+            </div>
           </div>
         </div>
 
-        <div class="info-card">
-          <div class="info-icon" aria-hidden="true">✅</div>
-          <div class="info-body">
-            <h3 data-i18n="bye_checklist_h">A small checklist for the room</h3>
-            <p class="checklist-hint" data-i18n="bye_checklist_hint">Tap each item as you go — it remembers what you've ticked.</p>
-            <ul class="checklist checklist-interactive" data-i18n="bye_checklist"><li>Close the windows — Porto rain finds its way in through the old window frames.</li><li>Switch off all the lights and the LED lamps.</li><li>Wait a few seconds and make sure the toilet flush has stopped.</li><li>Log out of Netflix, HBO Max, Prime Video and Disney+ on the TV — your accounts, your privacy.</li><li>Turn off the fan, the TV and the mini fridge if you used it.</li><li>Leave the key as we agreed.</li></ul>
-          </div>
+        <!-- Done! -->
+        <div class="co-panel co-panel--hidden co-done-panel" id="co-done">
+          <div class="co-done-ico" aria-hidden="true">✅</div>
+          <h3 class="co-done-h" data-i18n="co_done_h">You're all checked out!</h3>
+          <p class="co-done-p" data-i18n="co_done_p">Thank you for staying with us. We hope to welcome you back to Porto soon. 💛</p>
+          <a href="#home" class="btn btn-outline" data-i18n="co_done_btn">Back to home</a>
         </div>
 
-        <div class="review-box bye-review">
-          <div class="review-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
-          <h3 data-i18n="bye_ask_h">Before you go</h3>
-          <p data-i18n="bye_ask_p">If we became part of a good memory of your trip, your review means the world to us — and helps other travellers find their way to this little corner of Porto.</p>
-          <a href="#avaliar" class="btn btn-gold" data-i18n="bye_review_btn">Leave a review ⭐</a>
-          <p class="review-proof review-proof--light" data-review-proof></p>
-          <p class="bye-private"><a href="#avaliar" data-i18n="bye_note_link">Or tell us privately first — what could have been better?</a></p>
-        </div>
       </div>
     </section>
 
@@ -1535,15 +1575,15 @@
             <div class="av-room-gate-choices">
               <button type="button" class="av-rgc-btn" data-room="ribeira">
                 <div class="av-rgc-img" style="background-image:url('assets/fotos/ribeira-preview.jpg')"></div>
-                <span class="av-rgc-label">🌉 Ribeira</span>
+                <span class="av-rgc-label">Ribeira</span>
               </button>
               <button type="button" class="av-rgc-btn" data-room="douro">
                 <div class="av-rgc-img" style="background-image:url('assets/fotos/douro-preview.jpg')"></div>
-                <span class="av-rgc-label">🌅 Douro</span>
+                <span class="av-rgc-label">Douro</span>
               </button>
               <button type="button" class="av-rgc-btn" data-room="atlantico">
                 <div class="av-rgc-img" style="background-image:url('assets/fotos/atlantico-preview.jpg')"></div>
-                <span class="av-rgc-label">🌊 Atlântico</span>
+                <span class="av-rgc-label">Atlântico</span>
               </button>
             </div>
             <button type="button" class="av-back" data-goto="av-step-feeling" data-i18n="av_back">← Back</button>
@@ -1724,7 +1764,7 @@
 
           <div class="em-card">
             <span class="em-icon" aria-hidden="true">💬</span>
-            <h4 data-i18n="em_host_h">Contact Host</h4>
+            <h4 data-i18n="em_host_h">Management Team</h4>
             <p data-i18n="em_host_sub">For any property issue</p>
             <div class="em-btns">
               <a href="https://wa.me/351913874921" target="_blank" rel="noopener" class="btn btn-primary btn-sm">WhatsApp</a>
@@ -1773,6 +1813,13 @@
           </div>
 
         </div>
+
+        <!-- Suggestion CTA -->
+        <div class="em-suggest-cta">
+          <p data-i18n="em_suggest_p">Something we could improve? We'd love to hear it.</p>
+          <a href="#avaliar" data-av-goto="av-step-form" class="btn btn-outline" data-i18n="em_suggest_btn">Make a suggestion →</a>
+        </div>
+
       </div>
     </section>
 
@@ -1784,7 +1831,7 @@
   <footer class="site-footer">
     <div class="footer-inner container">
       <div class="footer-logo">
-        <span aria-hidden="true">⚓</span>
+        
         Porto Peace Haven
       </div>
       <address class="footer-address">
@@ -1851,21 +1898,21 @@
         <button class="room-choice" data-room="ribeira" aria-label="Quarto Ribeira">
           <div class="room-choice-img" style="background-image:url('assets/fotos/ribeira-preview.jpg')"></div>
           <div class="room-choice-label">
-            <span class="room-choice-emoji" aria-hidden="true">🌉</span>
+            
             <span class="room-choice-name">Ribeira</span>
           </div>
         </button>
         <button class="room-choice" data-room="douro" aria-label="Quarto Douro">
           <div class="room-choice-img" style="background-image:url('assets/fotos/douro-preview.jpg')"></div>
           <div class="room-choice-label">
-            <span class="room-choice-emoji" aria-hidden="true">🌅</span>
+            
             <span class="room-choice-name">Douro</span>
           </div>
         </button>
         <button class="room-choice" data-room="atlantico" aria-label="Quarto Atlântico">
           <div class="room-choice-img" style="background-image:url('assets/fotos/atlantico-preview.jpg')"></div>
           <div class="room-choice-label">
-            <span class="room-choice-emoji" aria-hidden="true">🌊</span>
+            
             <span class="room-choice-name">Atlântico</span>
           </div>
         </button>
@@ -1879,34 +1926,13 @@
   ═══════════════════════════════════════════════════════════════ -->
   <div id="welcome-overlay" class="welcome-overlay" hidden>
     <div class="welcome-content">
-      <div class="welcome-logo" aria-hidden="true">
-        <svg viewBox="0 0 64 64" width="56" height="56">
-          <rect width="64" height="64" rx="14" fill="#1B2A4A"/>
-          <g stroke="#C8922A" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none">
-            <path d="M 14 30 L 32 16 L 50 30"/>
-            <path d="M 17 30 L 17 50 L 47 50 L 47 30"/>
-          </g>
-          <rect x="22" y="33" width="7" height="7" rx="1" fill="#F5C76A"/>
-          <rect x="35" y="33" width="7" height="7" rx="1" fill="#F5C76A"/>
-          <rect x="29" y="42" width="6" height="8" rx="1" fill="#C8922A"/>
-        </svg>
-      </div>
+      <div class="welcome-logo" aria-hidden="true">🏠</div>
       <h1 class="welcome-title">Porto Peace Haven</h1>
       <p class="welcome-sub" data-i18n="welcome_sub">Welcome · Bem-vindo · Bienvenue</p>
     </div>
   </div>
 
   <div class="toast" id="toast" role="alert" aria-live="polite"></div>
-
-  <!-- ═══════════════════════════════════════════════════════════════
-       VISITOR ANALYTICS — Cloudflare Web Analytics (active)
-       Privacy-friendly, no cookies, GDPR-friendly, free tier.
-       View stats at dash.cloudflare.com → Web Analytics. The
-       "Top pages" view shows entries like /?src=ribeira-qr —
-       that is how QR-code scans are counted per room.
-  ═════════════════════════════════════════════════════════════
-  ═══════════════════════════════════ -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "9f573801998143ec8e755410bd3359cb"}'></script>
 
   <script src="script.js"></script>
 </body>
