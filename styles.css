@@ -4312,10 +4312,33 @@ And add overlay with .hero-gradient at opacity ~0.65 */
    60. DARK MODE CONTRAST FIXES
    ═══════════════════════════════════════════════════════════════ */
 
+/* checkout-cta: force white text on both themes (blue bg) */
+.checkout-cta,
+.checkout-cta strong,
+.checkout-cta span {
+  color: #fff !important;
+}
+
 /* checkout-cta: in dark mode --ribeira becomes medium blue → keep it dark */
 [data-theme="dark"] .checkout-cta {
   background: linear-gradient(135deg, #1a3060 0%, #1e2d50 100%);
-  color: #fff;
+}
+
+/* Leaflet popup: dark mode — white balloon with white text fix */
+[data-theme="dark"] .leaflet-popup-content-wrapper,
+[data-theme="dark"] .leaflet-popup-tip {
+  background: #1e2535;
+  color: #e8e4de;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+[data-theme="dark"] .leaflet-popup-content {
+  color: #e8e4de;
+}
+[data-theme="dark"] .leaflet-popup-content a {
+  color: var(--gold);
+}
+[data-theme="dark"] .leaflet-popup-close-button {
+  color: #e8e4de !important;
 }
 
 /* bt

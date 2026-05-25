@@ -5842,3 +5842,46 @@ Object.assign(translations.it, {
     setTimeout(dismiss, 2000);
   }
 })();
+
+/* ─────────────────────────────────────────────────────────────
+   SIDE NAV GROUP TOGGLES — Guia da Casa / Explorar Porto / Quartos
+───────────────────────────────────────────────────────────────── */
+(function () {
+  document.querySelectorAll('.nav-group-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      var targetId = btn.getAttribute('aria-controls');
+      var subList  = targetId ? document.getElementById(targetId) : null;
+
+      // Collapse all other groups first
+      document.querySelectorAll('.nav-group-toggle').forEach(function (other) {
+        if (other === btn) return;
+        other.setAttribute('aria-expanded', 'false');
+        var otherId = other.getAttribute('aria-controls');
+        var otherList = otherId ? document.getElementById(otherId) : null;
+        if (otherList) otherList.hidden = true;
+      });
+
+      // Toggle this group
+      var nowExpanded = !expanded;
+      btn.setAttribute('aria-expanded', String(nowExpanded));
+      if (subList) subList.hidden = !nowExpanded;
+    });
+  });
+
+  // Auto-expand the group that contains the active screen
+  document.addEventListener('pph:screenchange', function (e) {
+    var screenId = e.detail && e.detail.id;
+    if (!screenId) return;
+    document.querySelectorAll('.nav-group-toggle').forEach(function (btn) {
+      var targetId = btn.getAttribute('aria-controls');
+      var subList  = targetId ? document.getElementById(targetId) : null;
+      if (!subList) return;
+      var hasActive = subList.querySelector('a[href="#' + screenId + '"]');
+      if (hasActive) {
+        btn.setAttribute('aria-expanded', 'true');
+        subList.hidden = false;
+      }
+    });
+  });
+})();
