@@ -40,7 +40,7 @@
     const signature = eventName + ':' + (key || 'default');
     const now = Date.now();
     const last = recentEvents.get(signature) || 0;
-    if (now - last < (delay || 800)) return;
+    if (now - last < (delay || 1200)) return;
     recentEvents.set(signature, now);
     pushEvent(eventName, parameters);
   }
@@ -59,17 +59,17 @@
     const hash = location.hash || '#home';
 
     if (hash === '#avaliar') {
-      pushDeduplicated('review_open', hash, { open_source: source || 'navigation' });
+      pushDeduplicated('review_open', '#avaliar', { open_source: source || 'navigation' });
       return;
     }
 
     if (hash === '#porto') {
-      pushDeduplicated('tourism_open', hash, { open_source: source || 'navigation' });
+      pushDeduplicated('tourism_open', '#porto', { open_source: source || 'navigation' });
       return;
     }
 
     if (hash === '#mapa') {
-      pushDeduplicated('tourism_map_open', hash, { open_source: source || 'navigation' });
+      pushDeduplicated('tourism_map_open', '#mapa', { open_source: source || 'navigation' });
       return;
     }
 
@@ -82,7 +82,7 @@
     }
 
     if (hash === '#checkout') {
-      pushDeduplicated('checkout_start', hash, { open_source: source || 'navigation' });
+      pushDeduplicated('checkout_start', '#checkout', { open_source: source || 'navigation' });
     }
   }
 
@@ -92,7 +92,7 @@
 
     const reviewNavigation = target.closest('a[href="#avaliar"], #fab-review');
     if (reviewNavigation) {
-      pushDeduplicated('review_open', 'click', {
+      pushDeduplicated('review_open', '#avaliar', {
         open_source: reviewNavigation.id || reviewNavigation.className || 'review_cta'
       });
     }
@@ -137,22 +137,23 @@
 
     const tourismLink = target.closest('a[href="#porto"]');
     if (tourismLink) {
-      pushDeduplicated('tourism_open', 'click', {
+      pushDeduplicated('tourism_open', '#porto', {
         open_source: tourismLink.className || 'tourism_cta'
       });
     }
 
     const mapLink = target.closest('a[href="#mapa"]');
     if (mapLink) {
-      pushDeduplicated('tourism_map_open', 'click', {
+      pushDeduplicated('tourism_map_open', '#mapa', {
         open_source: mapLink.className || 'map_cta'
       });
     }
 
     const placeCard = target.closest('.porto-card[data-place]');
     if (placeCard) {
-      pushEvent('tourism_place_open', {
-        place_name: placeCard.dataset.place || 'unknown',
+      const placeName = placeCard.dataset.place || 'unknown';
+      pushDeduplicated('tourism_place_open', '#place-' + placeName, {
+        place_name: placeName,
         open_source: 'place_card'
       });
     }
