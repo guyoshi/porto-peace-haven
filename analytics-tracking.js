@@ -1,12 +1,15 @@
-/* PORTO PEACE HAVEN — ANALYTICS TRACKING V2
+/* PORTO PEACE HAVEN — ANALYTICS TRACKING V3
    Behavioural events for GA4 via Google Tag Manager.
-   No free-text feedback, names, phone numbers or other personal data are sent. */
+   Source events use the pph_ prefix so GTM Preview distinguishes them from
+   the final GA4 events. No free-text feedback, names, phone numbers or other
+   personal data are sent. */
 (function () {
   'use strict';
 
   window.dataLayer = window.dataLayer || [];
 
   const recentEvents = new Map();
+  const RIBEIRA_AIRBNB_URL = 'https://www.airbnb.com/rooms/1713694529061236191';
 
   function getRoom() {
     try {
@@ -29,7 +32,7 @@
 
   function pushEvent(eventName, parameters) {
     window.dataLayer.push(Object.assign({
-      event: eventName,
+      event: 'pph_' + eventName,
       pph_source: 'site',
       room: getRoom(),
       language: getLanguage(),
@@ -54,6 +57,12 @@
       Ruim: 'poor'
     };
     return feelings[value] || String(value || 'unknown').toLowerCase();
+  }
+
+  function applyRibeiraAirbnbLink() {
+    if (getRoom() !== 'ribeira') return;
+    const link = document.getElementById('av-link-airbnb');
+    if (link) link.href = RIBEIRA_AIRBNB_URL;
   }
 
   function trackSectionFromHash(source) {
@@ -113,6 +122,14 @@
       pushEvent('review_platform_selected', {
         review_platform: platformButton.dataset.plat || 'unknown'
       });
+      if (platformButton.dataset.plat === 'airbnb') {
+        setTimeout(applyRibeiraAirbnbLink, 0);
+      }
+    }
+
+    const roomButton = target.closest('[data-room="ribeira"]');
+    if (roomButton) {
+      setTimeout(applyRibeiraAirbnbLink, 0);
     }
 
     const externalReviewLink = target.closest(
@@ -162,6 +179,7 @@
 
   window.addEventListener('hashchange', function () {
     trackSectionFromHash('hash_change');
+    setTimeout(applyRibeiraAirbnbLink, 0);
   });
 
   const nativeFetch = window.fetch ? window.fetch.bind(window) : null;
@@ -205,11 +223,14 @@
     };
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      trackSectionFromHash('initial_load');
-    }, { once: true });
-  } else {
+  function initialiseTracking() {
     trackSectionFromHash('initial_load');
+    setTimeout(applyRibeiraAirbnbLink, 0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialiseTracking, { once: true });
+  } else {
+    initialiseTracking();
   }
 })();
