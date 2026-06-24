@@ -1,4 +1,4 @@
-/* PORTO PEACE HAVEN — ANALYTICS TRACKING V1
+/* PORTO PEACE HAVEN — ANALYTICS TRACKING V2
    Behavioural events for GA4 via Google Tag Manager.
    No free-text feedback, names, phone numbers or other personal data are sent. */
 (function () {
@@ -30,6 +30,7 @@
   function pushEvent(eventName, parameters) {
     window.dataLayer.push(Object.assign({
       event: eventName,
+      pph_source: 'site',
       room: getRoom(),
       language: getLanguage(),
       site_section: currentSection()
