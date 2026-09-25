@@ -4469,3 +4469,49 @@ And add overlay with .hero-gradient at opacity ~0.65 */
     text-align: center;
   }
 }
+
+
+/* Room-specific landing hubs */
+.room-stay-hub {
+  margin: 1rem auto 1.5rem;
+  padding: 0 1rem;
+  max-width: 680px;
+}
+.room-stay-hub-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+}
+.porto-grid-night {
+  margin-bottom: 2rem;
+}
+.porto-img {
+  position: relative;
+}
+.porto-photo-credit {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.4rem;
+  z-index: 2;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(0,0,0,0.62);
+  color: rgba(255,255,255,0.92);
+  text-decoration: none;
+  font-size: 0.58rem;
+  line-height: 1.2;
+}
+.place-photo-credit {
+  margin: 0.35rem 0 0;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-light);
+}
+.place-photo-credit a {
+  color: inherit;
+}
+.map-pin-utility span {
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.22));
+}
