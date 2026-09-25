@@ -3608,6 +3608,19 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
   Object.assign(translations[l], HUB_KEYS_I18N[l]);
 });
 
+const HOME_HUB_I18N = {
+  en: { home_hub_subtitle: 'Everything you need for your stay.', home_hub_doors: 'Doors', home_hub_tv: 'TV', home_hub_kitchen: 'Kitchen', home_hub_bathroom: 'Bathroom', home_hub_laundry: 'Laundry', home_hub_checkout: 'Check-out', home_hub_help: 'Help', home_hub_explore: 'Explore Porto' },
+  pt: { home_hub_subtitle: 'Tudo o que precisa para a sua estadia.', home_hub_doors: 'Portas', home_hub_tv: 'TV', home_hub_kitchen: 'Cozinha', home_hub_bathroom: 'Casa de banho', home_hub_laundry: 'Lavandaria', home_hub_checkout: 'Check-out', home_hub_help: 'Ajuda', home_hub_explore: 'Conhecer o Porto' },
+  fr: { home_hub_subtitle: 'Tout ce dont vous avez besoin pour votre séjour.', home_hub_doors: 'Portes', home_hub_tv: 'TV', home_hub_kitchen: 'Cuisine', home_hub_bathroom: 'Salle de bain', home_hub_laundry: 'Laverie', home_hub_checkout: 'Départ', home_hub_help: 'Aide', home_hub_explore: 'Explorer Porto' },
+  es: { home_hub_subtitle: 'Todo lo que necesitas para tu estancia.', home_hub_doors: 'Puertas', home_hub_tv: 'TV', home_hub_kitchen: 'Cocina', home_hub_bathroom: 'Baño', home_hub_laundry: 'Lavandería', home_hub_checkout: 'Salida', home_hub_help: 'Ayuda', home_hub_explore: 'Explorar Oporto' },
+  de: { home_hub_subtitle: 'Alles, was Sie für Ihren Aufenthalt brauchen.', home_hub_doors: 'Türen', home_hub_tv: 'TV', home_hub_kitchen: 'Küche', home_hub_bathroom: 'Bad', home_hub_laundry: 'Wäscherei', home_hub_checkout: 'Abreise', home_hub_help: 'Hilfe', home_hub_explore: 'Porto erkunden' },
+  it: { home_hub_subtitle: 'Tutto ciò che serve per il vostro soggiorno.', home_hub_doors: 'Porte', home_hub_tv: 'TV', home_hub_kitchen: 'Cucina', home_hub_bathroom: 'Bagno', home_hub_laundry: 'Lavanderia', home_hub_checkout: 'Check-out', home_hub_help: 'Aiuto', home_hub_explore: 'Esplora Porto' },
+  nl: { home_hub_subtitle: 'Alles wat u nodig heeft voor uw verblijf.', home_hub_doors: 'Deuren', home_hub_tv: 'TV', home_hub_kitchen: 'Keuken', home_hub_bathroom: 'Badkamer', home_hub_laundry: 'Wasserette', home_hub_checkout: 'Vertrek', home_hub_help: 'Hulp', home_hub_explore: 'Ontdek Porto' }
+};
+Object.keys(HOME_HUB_I18N).forEach(function (l) {
+  if (translations[l]) Object.assign(translations[l], HOME_HUB_I18N[l]);
+});
+
 /* ═══════════════════════════════════════════════════════════════
    APP SHELL — screen routing (single-file SPA)
    Each top-level <section.screen> is a "page". Only one is visible
