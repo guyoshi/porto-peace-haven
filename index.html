@@ -223,14 +223,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="hero-gradient"></div>
       </div>
 
-      <div class="hero-content">
+      <div class="hero-content hero-content--hub">
         <div class="hero-badge" data-i18n="hero_badge">Porto · Portugal</div>
-        <h1 class="hero-title">
-          <span class="hero-welcome" data-i18n="hero_welcome">Welcome to</span>
+        <h1 class="hero-title hero-title--hub">
           <em class="hero-name">Porto Peace Haven</em>
         </h1>
-        <p class="hero-tagline" data-i18n="hero_tagline">Your peaceful home in the heart of Porto</p>
-
+        <p class="hero-tagline hero-tagline--hub" data-i18n="home_hub_subtitle">Everything you need for your stay.</p>
       </div>
 
       <!-- ── HOME FEED — condensed view, each block opens its full guide ── -->
@@ -238,14 +236,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <!-- On 2nd+ visit the review CTA (top + bottom) shows large via JS visit detection -->
       <div class="container home-feed">
 
-        <!-- Review CTA TOP — subtle on 1st visit, full gold on 2nd+ visit -->
-        <a href="#avaliar" class="home-review-cta">
-          <div class="hrc-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
-          <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
-          <p data-i18n="home_review_p">Your review means the world to us — and it only takes a minute.</p>
-          <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
-          <p class="review-proof review-proof--light" data-review-proof></p>
-        </a>
+        <!-- Guest essentials hub — first actions a guest needs on mobile -->
+        <nav class="stay-hub" aria-label="Guest essentials">
+          <div class="stay-hub-grid">
+            <a href="#wifi" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">📶</span>
+              <span data-i18n="wifi_title">Wi-Fi</span>
+            </a>
+            <a href="#checkin" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">🔐</span>
+              <span data-i18n="home_hub_doors">Doors</span>
+            </a>
+            <a href="#rooms" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">📺</span>
+              <span data-i18n="home_hub_tv">TV</span>
+            </a>
+            <a href="#kitchen" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">🍳</span>
+              <span data-i18n="home_hub_kitchen">Kitchen</span>
+            </a>
+            <a href="#bathroom" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">🚿</span>
+              <span data-i18n="home_hub_bathroom">Bathroom</span>
+            </a>
+            <a href="#nearby" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">🧺</span>
+              <span data-i18n="home_hub_laundry">Laundry</span>
+            </a>
+            <a href="#checkout" class="stay-hub-btn">
+              <span class="stay-hub-icon" aria-hidden="true">🧳</span>
+              <span data-i18n="home_hub_checkout">Check-out</span>
+            </a>
+            <a href="#emergency" class="stay-hub-btn stay-hub-btn--help">
+              <span class="stay-hub-icon" aria-hidden="true">🆘</span>
+              <span data-i18n="home_hub_help">Help</span>
+            </a>
+          </div>
+          <a href="#porto" class="stay-hub-explore">
+            <span data-i18n="home_hub_explore">Explore Porto</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </nav>
 
         <!-- 1. Wi-Fi — first thing every guest needs -->
         <div class="info-card" id="wifi">
