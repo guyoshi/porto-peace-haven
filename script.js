@@ -3675,6 +3675,83 @@ Object.keys(HUB_KEYS_I18N).forEach(function (l) {
   Object.assign(translations[l], HUB_KEYS_I18N[l]);
 });
 
+const HOME_HUB_I18N = {
+  en: { home_hub_subtitle: 'Everything you need for your stay.', home_hub_doors: 'Doors', home_hub_tv: 'TV', home_hub_kitchen: 'Kitchen', home_hub_bathroom: 'Bathroom', home_hub_laundry: 'Laundry', home_hub_checkout: 'Check-out', home_hub_help: 'Help', home_hub_explore: 'Explore Porto' },
+  pt: { home_hub_subtitle: 'Tudo o que precisa para a sua estadia.', home_hub_doors: 'Portas', home_hub_tv: 'TV', home_hub_kitchen: 'Cozinha', home_hub_bathroom: 'Casa de banho', home_hub_laundry: 'Lavandaria', home_hub_checkout: 'Check-out', home_hub_help: 'Ajuda', home_hub_explore: 'Conhecer o Porto' },
+  fr: { home_hub_subtitle: 'Tout ce dont vous avez besoin pour votre séjour.', home_hub_doors: 'Portes', home_hub_tv: 'TV', home_hub_kitchen: 'Cuisine', home_hub_bathroom: 'Salle de bain', home_hub_laundry: 'Laverie', home_hub_checkout: 'Départ', home_hub_help: 'Aide', home_hub_explore: 'Explorer Porto' },
+  es: { home_hub_subtitle: 'Todo lo que necesitas para tu estancia.', home_hub_doors: 'Puertas', home_hub_tv: 'TV', home_hub_kitchen: 'Cocina', home_hub_bathroom: 'Baño', home_hub_laundry: 'Lavandería', home_hub_checkout: 'Salida', home_hub_help: 'Ayuda', home_hub_explore: 'Explorar Oporto' },
+  de: { home_hub_subtitle: 'Alles, was Sie für Ihren Aufenthalt brauchen.', home_hub_doors: 'Türen', home_hub_tv: 'TV', home_hub_kitchen: 'Küche', home_hub_bathroom: 'Bad', home_hub_laundry: 'Wäscherei', home_hub_checkout: 'Abreise', home_hub_help: 'Hilfe', home_hub_explore: 'Porto erkunden' },
+  it: { home_hub_subtitle: 'Tutto ciò che serve per il vostro soggiorno.', home_hub_doors: 'Porte', home_hub_tv: 'TV', home_hub_kitchen: 'Cucina', home_hub_bathroom: 'Bagno', home_hub_laundry: 'Lavanderia', home_hub_checkout: 'Check-out', home_hub_help: 'Aiuto', home_hub_explore: 'Esplora Porto' },
+  nl: { home_hub_subtitle: 'Alles wat u nodig heeft voor uw verblijf.', home_hub_doors: 'Deuren', home_hub_tv: 'TV', home_hub_kitchen: 'Keuken', home_hub_bathroom: 'Badkamer', home_hub_laundry: 'Wasserette', home_hub_checkout: 'Vertrek', home_hub_help: 'Hulp', home_hub_explore: 'Ontdek Porto' }
+};
+Object.keys(HOME_HUB_I18N).forEach(function (l) {
+  if (translations[l]) Object.assign(translations[l], HOME_HUB_I18N[l]);
+});
+
+/* Room pages: same essential actions as the mobile-first home.
+   Stable /room/<name>/ URLs redirect into these room anchors. */
+function initRoomStayHubs() {
+  var roomTvLists = {
+    ribeira: '[data-i18n="rib_light"]',
+    douro: '[data-i18n="dou_light"]',
+    atlantico: '[data-i18n="atl_light"]'
+  };
+
+  ['ribeira', 'douro', 'atlantico'].forEach(function (roomId) {
+    var room = document.getElementById(roomId);
+    if (!room || room.querySelector('.room-stay-hub')) return;
+
+    var tvList = room.querySelector(roomTvLists[roomId]);
+    if (tvList) {
+      var tvGroup = tvList.closest('.ficha-group');
+      if (tvGroup) tvGroup.id = roomId + '-tv';
+    }
+
+    var nav = document.createElement('nav');
+    nav.className = 'stay-hub room-stay-hub';
+    nav.setAttribute('aria-label', 'Room quick guide');
+    nav.innerHTML =
+      '<div class="room-stay-hub-title" data-i18n="room_hub_title">Everything for your stay</div>' +
+      '<div class="stay-hub-grid">' +
+        '<a href="#wifi" class="stay-hub-btn"><span class="stay-hub-icon">📶</span><span data-i18n="wifi_title">Wi-Fi</span></a>' +
+        '<a href="#checkin" class="stay-hub-btn"><span class="stay-hub-icon">🔐</span><span data-i18n="home_hub_doors">Doors</span></a>' +
+        '<a href="#' + roomId + '-tv" class="stay-hub-btn"><span class="stay-hub-icon">📺</span><span data-i18n="home_hub_tv">TV</span></a>' +
+        '<a href="#kitchen" class="stay-hub-btn"><span class="stay-hub-icon">🍳</span><span data-i18n="home_hub_kitchen">Kitchen</span></a>' +
+        '<a href="#bathroom" class="stay-hub-btn"><span class="stay-hub-icon">🚿</span><span data-i18n="home_hub_bathroom">Bathroom</span></a>' +
+        '<a href="#laundry" class="stay-hub-btn"><span class="stay-hub-icon">🧺</span><span data-i18n="home_hub_laundry">Laundry</span></a>' +
+        '<a href="#rules" class="stay-hub-btn"><span class="stay-hub-icon">📋</span><span data-i18n="hub_rules">House Rules</span></a>' +
+        '<a href="#checkout" class="stay-hub-btn"><span class="stay-hub-icon">🧳</span><span data-i18n="home_hub_checkout">Check-out</span></a>' +
+        '<a href="#emergency" class="stay-hub-btn stay-hub-btn--help"><span class="stay-hub-icon">🆘</span><span data-i18n="home_hub_help">Help</span></a>' +
+      '</div>' +
+      '<a href="#porto" class="stay-hub-explore"><span data-i18n="home_hub_explore">Explore Porto</span><span aria-hidden="true">→</span></a>';
+
+    var header = room.querySelector('.room-header');
+    if (header) header.insertAdjacentElement('afterend', nav);
+    else room.insertBefore(nav, room.firstChild);
+  });
+
+  applyLanguage(currentLang);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initRoomStayHubs);
+} else {
+  initRoomStayHubs();
+}
+
+const ROOM_HUB_I18N = {
+  en: { room_hub_title: 'Everything for your stay' },
+  pt: { room_hub_title: 'Tudo para a sua estadia' },
+  fr: { room_hub_title: 'Tout pour votre séjour' },
+  es: { room_hub_title: 'Todo para tu estancia' },
+  de: { room_hub_title: 'Alles für Ihren Aufenthalt' },
+  it: { room_hub_title: 'Tutto per il vostro soggiorno' },
+  nl: { room_hub_title: 'Alles voor uw verblijf' }
+};
+Object.keys(ROOM_HUB_I18N).forEach(function (l) {
+  if (translations[l]) Object.assign(translations[l], ROOM_HUB_I18N[l]);
+});
+applyLanguage(currentLang);
+
 /* ═══════════════════════════════════════════════════════════════
    APP SHELL — screen routing (single-file SPA)
    Each top-level <section.screen> is a "page". Only one is visible
@@ -4544,7 +4621,7 @@ Object.assign(translations.pt, PLACE_I18N.pt);
     const n = pl.photos || 1;
     for (let i = 1; i <= n; i++) {
       const img = document.createElement('img');
-      img.src = 'assets/fotos/porto-' + pl.slug + '-' + i + '.jpg';
+      img.src = (pl.photoUrls && pl.photoUrls[i - 1]) ? pl.photoUrls[i - 1] : ('assets/fotos/porto-' + pl.slug + '-' + i + '.jpg');
       img.alt = t(pl.titleKey);
       img.loading = 'lazy';
       img.onerror = function () {
@@ -4557,6 +4634,16 @@ Object.assign(translations.pt, PLACE_I18N.pt);
       const dot = document.createElement('span');
       dot.className = 'place-dot' + (i === 1 ? ' active' : '');
       dots.appendChild(dot);
+    }
+    var creditEl = document.getElementById('place-photo-credit');
+    if (creditEl) {
+      if (pl.photoCredit && pl.photoCreditUrl) {
+        creditEl.innerHTML = 'Photo: <a href="' + pl.photoCreditUrl + '" target="_blank" rel="noopener">' + pl.photoCredit + '</a>';
+        creditEl.hidden = false;
+      } else {
+        creditEl.textContent = '';
+        creditEl.hidden = true;
+      }
     }
     track.onscroll = function () {
       const idx = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
@@ -4751,6 +4838,36 @@ Object.assign(PLACES, {
   },
 });
 
+/* Nightlife areas requested for the guest guide */
+Object.assign(PLACES, {
+  galerias: {
+    slug: 'galerias', emoji: '🌙',
+    tagKey: 'porto_galerias_tag', titleKey: 'porto_galerias_h', descKey: 'porto_galerias_p',
+    price: 2, cats: ['couple', 'group'], photos: 1,
+    photoUrls: ['https://commons.wikimedia.org/wiki/Special:Redirect/file/Galeria_de_Paris.jpg?width=1280'],
+    photoCredit: 'Alegna13 · Wikimedia Commons · CC BY-SA 3.0',
+    photoCreditUrl: 'https://commons.wikimedia.org/wiki/File:Galeria_de_Paris.jpg',
+    address: 'Rua da Galeria de Paris, 4050-284 Porto',
+    hours: 'Best atmosphere late evening · especially Fri–Sat',
+    website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Rua+Galeria+de+Paris+Porto',
+    walk: 24, transit: 16, ride: 6,
+  },
+  cordoaria: {
+    slug: 'cordoaria', emoji: '🍻',
+    tagKey: 'porto_cordoaria_tag', titleKey: 'porto_cordoaria_h', descKey: 'porto_cordoaria_p',
+    price: 1, cats: ['solo', 'couple', 'group'], photos: 1,
+    photoUrls: ['https://commons.wikimedia.org/wiki/Special:Redirect/file/Cordoaria_(35717167146).jpg?width=1280'],
+    photoCredit: 'Francisco Restivo · Wikimedia Commons · CC BY 2.0',
+    photoCreditUrl: 'https://commons.wikimedia.org/wiki/File:Cordoaria_(35717167146).jpg',
+    address: 'Jardim da Cordoaria / Campo dos Mártires da Pátria, Porto',
+    hours: 'Bars around the area are busiest in the evening',
+    website: '',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Jardim+da+Cordoaria+Porto',
+    walk: 22, transit: 15, ride: 6,
+  },
+});
+
 /* ───────────────────────────────────────────────────────────────
    PLACE COORDINATES — [lat, lng] for the interactive Leaflet map.
    These are approximate pins for well-known Porto landmarks, taken
@@ -4774,9 +4891,45 @@ const PLACE_COORDS = {
   capanegra:   [41.1535, -8.6330],
   tapabento:   [41.1455, -8.6092],
   antiqvvm:    [41.1471, -8.6228],
+  galerias:    [41.14717, -8.61438],
+  cordoaria:   [41.14590, -8.61662],
 };
 Object.keys(PLACE_COORDS).forEach(function (k) {
   if (PLACES[k]) PLACES[k].coords = PLACE_COORDS[k];
+});
+
+const NIGHT_I18N = {
+  en: {
+    porto_g4_title: 'Porto after dark',
+    porto_galerias_tag: '🌙 Nightlife',
+    porto_galerias_h: 'Galerias de Paris — Porto after midnight',
+    porto_galerias_p: 'One of the best-known nightlife streets in the city centre: bars, music and people moving between venues, especially on Friday and Saturday nights.',
+    porto_galerias_intro: 'A whole street that changes personality after dinner. Start with one drink and let the night choose the next doorway.',
+    porto_galerias_tips: '<li>Friday and Saturday are the liveliest nights.</li><li>The street is easy to combine with Clérigos and Praça de Lisboa.</li><li>As anywhere late at night, keep your phone and wallet close in crowded areas.</li>',
+    porto_cordoaria_tag: '🍻 Local bars',
+    porto_cordoaria_h: 'Cordoaria — drinks around the garden',
+    porto_cordoaria_p: 'A relaxed night-out area around Cordoaria and Campo dos Mártires da Pátria, with inexpensive bars and terraces such as Adega Leonor nearby.',
+    porto_cordoaria_intro: 'Less polished than a cocktail bar, more Porto: students, terraces, inexpensive drinks and a garden at the centre of it all.',
+    porto_cordoaria_tips: '<li>Good for a casual first drink before heading towards Galerias de Paris.</li><li>Adega Leonor is one of the best-known inexpensive stops nearby.</li><li>The area is also pleasant in daylight for the garden and the Photography Centre.</li>',
+  },
+  pt: {
+    porto_g4_title: 'Porto à noite',
+    porto_galerias_tag: '🌙 Vida noturna',
+    porto_galerias_h: 'Galerias de Paris — o Porto depois da meia-noite',
+    porto_galerias_p: 'Uma das zonas de noite mais conhecidas do centro: bares, música e gente a circular entre espaços, sobretudo à sexta e ao sábado.',
+    porto_galerias_intro: 'Uma rua inteira que muda de personalidade depois do jantar. Comece com um copo e deixe a noite escolher a próxima porta.',
+    porto_galerias_tips: '<li>Sexta e sábado são as noites mais animadas.</li><li>É fácil combinar com Clérigos e Praça de Lisboa.</li><li>Como em qualquer zona cheia à noite, mantenha telemóvel e carteira por perto.</li>',
+    porto_cordoaria_tag: '🍻 Bares locais',
+    porto_cordoaria_h: 'Cordoaria — copos à volta do jardim',
+    porto_cordoaria_p: 'Uma zona descontraída à volta da Cordoaria e do Campo dos Mártires da Pátria, com bares e esplanadas baratos, incluindo a conhecida Adega Leonor.',
+    porto_cordoaria_intro: 'Menos cocktail sofisticado, mais Porto: estudantes, esplanadas, bebidas baratas e um jardim no meio de tudo.',
+    porto_cordoaria_tips: '<li>Boa para começar a noite antes de seguir para as Galerias de Paris.</li><li>A Adega Leonor é uma das paragens baratas mais conhecidas por perto.</li><li>De dia, a zona também vale pelo jardim e pelo Centro Português de Fotografia.</li>',
+  },
+};
+Object.assign(translations.en, NIGHT_I18N.en);
+Object.assign(translations.pt, NIGHT_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], NIGHT_I18N.en);
 });
 
 const REST_I18N = {
@@ -4940,6 +5093,53 @@ const CHECKOUT_CTA_I18N = {
 /* ═══════════════════════════════════════════════════════════════
    INTERACTIVE MAP i18n
 ═══════════════════════════════════════════════════════════════ */
+const MAP_UTILITY_I18N = {
+  en: {
+    map_util_froiz: 'Froiz · supermarket',
+    map_util_continente: 'Continente Bom Dia · supermarket',
+    map_util_pharmacy: 'Farmácia da Boa Hora · pharmacy',
+    map_util_laundry: 'UrbanWash · self-service laundry',
+  },
+  pt: {
+    map_util_froiz: 'Froiz · supermercado',
+    map_util_continente: 'Continente Bom Dia · supermercado',
+    map_util_pharmacy: 'Farmácia da Boa Hora · farmácia',
+    map_util_laundry: 'UrbanWash · lavandaria self-service',
+  }
+};
+Object.assign(translations.en, MAP_UTILITY_I18N.en);
+Object.assign(translations.pt, MAP_UTILITY_I18N.pt);
+['fr', 'es', 'de', 'it'].forEach(function (l) {
+  Object.assign(translations[l], MAP_UTILITY_I18N.en);
+});
+
+const MAP_UTILITIES = [
+  {
+    nameKey: 'map_util_froiz', emoji: '🛒',
+    coords: [41.15524, -8.62972],
+    address: 'Praça do Bom Sucesso 61 · Shopping Cidade do Porto',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Froiz+Bom+Sucesso+Porto'
+  },
+  {
+    nameKey: 'map_util_continente', emoji: '🛒',
+    coords: [41.15561, -8.62931],
+    address: 'Praça do Bom Sucesso 74-90',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Continente+Bom+Dia+Bom+Sucesso+Porto'
+  },
+  {
+    nameKey: 'map_util_pharmacy', emoji: '💊',
+    coords: [41.15233, -8.62078],
+    address: 'Rua da Boa Hora 80',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Farmácia+da+Boa+Hora+Porto'
+  },
+  {
+    nameKey: 'map_util_laundry', emoji: '🧺',
+    coords: [41.1564441, -8.619853],
+    address: 'R. da Boavista 558 · 4050-273 Porto · 06:00–00:00',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/UrbanWash+Rua+da+Boavista+558+Porto'
+  }
+];
+
 const MAP_I18N = {
   en: { map_pins_note: 'Tap a pin to open the place and get directions. Pin positions are approximate.', map_pdf_h: 'Official tourist map (PDF)', map_see_place: 'See details', map_home_pin: 'Porto Peace Haven · your stay' },
   pt: { map_pins_note: 'Toque num pin para abrir o lugar e ver como chegar. As posições dos pins são aproximadas.', map_pdf_h: 'Mapa turístico oficial (PDF)', map_see_place: 'Ver detalhes', map_home_pin: 'Porto Peace Haven · a sua estadia' },
@@ -5011,6 +5211,21 @@ const MAP_I18N = {
       L.marker(pl.coords, { icon: icon }).addTo(m).bindPopup(popup);
       bounds.push(pl.coords);
     });
+    MAP_UTILITIES.forEach(function (u) {
+      if (!u || !u.coords) return;
+      var utilityIcon = L.divIcon({
+        className: 'map-pin map-pin-utility',
+        html: '<span>' + (u.emoji || '📍') + '</span>',
+        iconSize: [34, 34], iconAnchor: [17, 17],
+      });
+      var utilityPopup = '<strong>' + tr(u.nameKey) + '</strong>' +
+        '<span class="map-popup-links">' + u.address +
+        '<a class="map-popup-go" href="' + u.maps + '" target="_blank" rel="noopener">📍 ' +
+        tr('go_btn') + '</a></span>';
+      L.marker(u.coords, { icon: utilityIcon }).addTo(m).bindPopup(utilityPopup);
+      bounds.push(u.coords);
+    });
+
     if (APARTMENT_COORDS) {
       m.setView(APARTMENT_COORDS, 15);
     } else if (bounds.length > 1) {

@@ -223,14 +223,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="hero-gradient"></div>
       </div>
 
-      <div class="hero-content">
+      <div class="hero-content hero-content--hub">
         <div class="hero-badge" data-i18n="hero_badge">Porto · Portugal</div>
-        <h1 class="hero-title">
-          <span class="hero-welcome" data-i18n="hero_welcome">Welcome to</span>
+        <h1 class="hero-title hero-title--hub">
           <em class="hero-name">Porto Peace Haven</em>
         </h1>
-        <p class="hero-tagline" data-i18n="hero_tagline">Your peaceful home in the heart of Porto</p>
-
+        <p class="hero-tagline hero-tagline--hub" data-i18n="home_hub_subtitle">Everything you need for your stay.</p>
       </div>
 
       <!-- Essential actions: the first useful screen on mobile -->
@@ -1199,12 +1197,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </div>
 
-          <div class="nearby-card">
+          <div class="nearby-card" id="laundry">
             <div class="nearby-img nearby-emoji-bg" style="background:linear-gradient(135deg,#f0e8ff,#cdb8f0)"><span aria-hidden="true">👕</span></div>
             <div class="nearby-body">
               <h4 data-i18n="nb_laundry">Lavandaria</h4>
-              <p><strong>Speed Queen Self-Service</strong><br>R. Calouste Gulbenkian 67<br>📞 +351 931 898 200<br>🕗 7h–23h todos os dias</p>
-              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Lavandaria+Speed+Queen+Rua+Calouste+Gulbenkian+67+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+              <p><strong>UrbanWash · Self-Service</strong><br>R. da Boavista 558<br>📞 +351 220 132 553<br>🕗 6h–00h todos os dias</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/UrbanWash+Rua+da+Boavista+558+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
             </div>
           </div>
 
@@ -1369,6 +1367,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         </div>
 
+        <h3 class="porto-group-title" data-i18n="porto_g4_title">Porto after dark</h3>
+        <div class="porto-grid porto-grid-night">
+
+          <div class="porto-card" data-place="galerias">
+            <div class="porto-img">
+              <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Galeria_de_Paris.jpg?width=960" alt="Rua da Galeria de Paris, Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <a class="porto-photo-credit" href="https://commons.wikimedia.org/wiki/File:Galeria_de_Paris.jpg" target="_blank" rel="noopener">Photo: Alegna13 · CC BY-SA 3.0</a>
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_galerias_tag">🌙 Nightlife</span> <span class="ppx" aria-label="Price level 2 of 5">$<span class="ppx-dim">$$</span></span>
+              <h4 data-i18n="porto_galerias_h">Galerias de Paris — Porto after midnight</h4>
+              <p data-i18n="porto_galerias_p">One of the best-known nightlife streets in the city centre: bars, music and people moving between venues, especially on Friday and Saturday nights.</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Rua+Galeria+de+Paris+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+          <div class="porto-card" data-place="cordoaria">
+            <div class="porto-img">
+              <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cordoaria_(35717167146).jpg?width=960" alt="Cordoaria, Porto" class="porto-img-photo" loading="lazy" onerror="this.parentElement.classList.add('ph-img-lg')">
+              <a class="porto-photo-credit" href="https://commons.wikimedia.org/wiki/File:Cordoaria_(35717167146).jpg" target="_blank" rel="noopener">Photo: Francisco Restivo · CC BY 2.0</a>
+            </div>
+            <div class="porto-body">
+              <span class="ptag" data-i18n="porto_cordoaria_tag">🍻 Local bars</span> <span class="ppx" aria-label="Price level 1 of 5">$<span class="ppx-dim">$$</span></span>
+              <h4 data-i18n="porto_cordoaria_h">Cordoaria — drinks around the garden</h4>
+              <p data-i18n="porto_cordoaria_p">A relaxed night-out area around Cordoaria and Campo dos Mártires da Pátria, with inexpensive bars and terraces such as Adega Leonor nearby.</p>
+              <a href="https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Jardim+da+Cordoaria+Porto" target="_blank" rel="noopener" class="btn btn-outline btn-sm" data-i18n="go_btn">Go →</a>
+            </div>
+          </div>
+
+        </div>
+
         <h3 class="porto-group-title" data-i18n="porto_g3_title">Where to eat</h3>
         <div class="porto-grid">
 
@@ -1441,6 +1470,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="place-carousel" id="place-carousel">
           <div class="place-track" id="place-track"></div>
           <div class="place-dots" id="place-dots"></div>
+          <p class="place-photo-credit" id="place-photo-credit" hidden></p>
         </div>
         <div class="place-head">
           <span class="ptag" id="place-tag"></span>
