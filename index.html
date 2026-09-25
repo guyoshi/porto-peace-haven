@@ -233,19 +233,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       </div>
 
+      <!-- Essential actions: the first useful screen on mobile -->
+      <div class="container guest-start" aria-labelledby="guest-start-title">
+        <div class="guest-start-heading">
+          <p class="guest-start-kicker" data-i18n="quick_kicker">Tudo o que precisa, sem procurar</p>
+          <h2 id="guest-start-title" data-i18n="quick_title">Como podemos ajudar?</h2>
+        </div>
+        <div class="quick-actions" role="list">
+          <a href="#wifi" class="quick-action quick-action--wifi" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">📶</span>
+            <span><strong data-i18n="quick_wifi">Wi-Fi</strong><small data-i18n="quick_wifi_sub">Ligar e copiar senha</small></span>
+          </a>
+          <a href="#checkin" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🔑</span>
+            <span><strong data-i18n="quick_doors">Entrada e portas</strong><small data-i18n="quick_doors_sub">Chaves e novas fechaduras</small></span>
+          </a>
+          <a href="#bathroom" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🚿</span>
+            <span><strong data-i18n="quick_bathroom">Casa de banho</strong><small data-i18n="quick_bathroom_sub">Partilha e água quente</small></span>
+          </a>
+          <a href="#kitchen" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🍳</span>
+            <span><strong data-i18n="quick_kitchen">Cozinha</strong><small data-i18n="quick_kitchen_sub">Equipamentos e ventilação</small></span>
+          </a>
+          <a href="#rules" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🏠</span>
+            <span><strong data-i18n="quick_rules">Regras</strong><small data-i18n="quick_rules_sub">Convivência simples</small></span>
+          </a>
+          <a href="#checkout" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🧳</span>
+            <span><strong data-i18n="quick_checkout">Check-out</strong><small data-i18n="quick_checkout_sub">Passos antes de sair</small></span>
+          </a>
+          <a href="#emergency" class="quick-action quick-action--help" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">💬</span>
+            <span><strong data-i18n="quick_help">Problema ou ajuda</strong><small data-i18n="quick_help_sub">Fale connosco agora</small></span>
+          </a>
+          <a href="#porto" class="quick-action" role="listitem">
+            <span class="quick-action-icon" aria-hidden="true">🗺️</span>
+            <span><strong data-i18n="quick_porto">Guia do Porto</strong><small data-i18n="quick_porto_sub">Comer, ver e chegar</small></span>
+          </a>
+        </div>
+      </div>
+
       <!-- ── HOME FEED — condensed view, each block opens its full guide ── -->
       <!-- ORDER: help guest first → add value → review at the end -->
       <!-- On 2nd+ visit the review CTA (top + bottom) shows large via JS visit detection -->
       <div class="container home-feed">
-
-        <!-- Review CTA TOP — subtle on 1st visit, full gold on 2nd+ visit -->
-        <a href="#avaliar" class="home-review-cta">
-          <div class="hrc-stars" aria-hidden="true">⭐⭐⭐⭐⭐</div>
-          <h3 data-i18n="home_review_h">Enjoying your stay?</h3>
-          <p data-i18n="home_review_p">Your review means the world to us — and it only takes a minute.</p>
-          <span class="hrc-btn" data-i18n="home_review_btn">Leave a Review →</span>
-          <p class="review-proof review-proof--light" data-review-proof></p>
-        </a>
 
         <!-- 1. Wi-Fi — first thing every guest needs -->
         <div class="info-card" id="wifi">

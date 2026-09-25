@@ -2433,6 +2433,73 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
   });
 })();
 
+/* Essential home actions — intentionally short for small screens. */
+Object.assign(translations.en, {
+  quick_kicker: 'Everything you need, without searching', quick_title: 'How can we help?',
+  quick_wifi: 'Wi-Fi', quick_wifi_sub: 'Connect and copy password',
+  quick_doors: 'Entry & doors', quick_doors_sub: 'Keys and new locks',
+  quick_bathroom: 'Bathroom', quick_bathroom_sub: 'Sharing and hot water',
+  quick_kitchen: 'Kitchen', quick_kitchen_sub: 'Appliances and ventilation',
+  quick_rules: 'House rules', quick_rules_sub: 'Simple shared living',
+  quick_checkout: 'Check-out', quick_checkout_sub: 'Steps before leaving',
+  quick_help: 'Problem or help', quick_help_sub: 'Contact us now',
+  quick_porto: 'Porto guide', quick_porto_sub: 'Eat, see and get around'
+});
+Object.assign(translations.pt, {
+  quick_kicker: 'Tudo o que precisa, sem procurar', quick_title: 'Como podemos ajudar?',
+  quick_wifi: 'Wi-Fi', quick_wifi_sub: 'Ligar e copiar senha',
+  quick_doors: 'Entrada e portas', quick_doors_sub: 'Chaves e novas fechaduras',
+  quick_bathroom: 'Casa de banho', quick_bathroom_sub: 'Partilha e água quente',
+  quick_kitchen: 'Cozinha', quick_kitchen_sub: 'Equipamentos e ventilação',
+  quick_rules: 'Regras', quick_rules_sub: 'Convivência simples',
+  quick_checkout: 'Check-out', quick_checkout_sub: 'Passos antes de sair',
+  quick_help: 'Problema ou ajuda', quick_help_sub: 'Fale connosco agora',
+  quick_porto: 'Guia do Porto', quick_porto_sub: 'Comer, ver e chegar'
+});
+Object.assign(translations.fr, {
+  quick_kicker: 'Tout ce dont vous avez besoin', quick_title: 'Comment pouvons-nous aider ?',
+  quick_wifi: 'Wi-Fi', quick_wifi_sub: 'Connexion et mot de passe',
+  quick_doors: 'Entrée et portes', quick_doors_sub: 'Clés et nouvelles serrures',
+  quick_bathroom: 'Salle de bains', quick_bathroom_sub: 'Partage et eau chaude',
+  quick_kitchen: 'Cuisine', quick_kitchen_sub: 'Équipements et aération',
+  quick_rules: 'Règles', quick_rules_sub: 'Bien vivre ensemble',
+  quick_checkout: 'Départ', quick_checkout_sub: 'Étapes avant de partir',
+  quick_help: 'Problème ou aide', quick_help_sub: 'Contactez-nous',
+  quick_porto: 'Guide de Porto', quick_porto_sub: 'Manger, voir et se déplacer'
+});
+Object.assign(translations.es, {
+  quick_kicker: 'Todo lo que necesita, sin buscar', quick_title: '¿Cómo podemos ayudar?',
+  quick_wifi: 'Wi-Fi', quick_wifi_sub: 'Conectar y copiar clave',
+  quick_doors: 'Entrada y puertas', quick_doors_sub: 'Llaves y cerraduras nuevas',
+  quick_bathroom: 'Baño', quick_bathroom_sub: 'Uso compartido y agua caliente',
+  quick_kitchen: 'Cocina', quick_kitchen_sub: 'Equipos y ventilación',
+  quick_rules: 'Normas', quick_rules_sub: 'Convivencia sencilla',
+  quick_checkout: 'Salida', quick_checkout_sub: 'Pasos antes de salir',
+  quick_help: 'Problema o ayuda', quick_help_sub: 'Contáctenos ahora',
+  quick_porto: 'Guía de Oporto', quick_porto_sub: 'Comer, ver y moverse'
+});
+Object.assign(translations.de, {
+  quick_kicker: 'Alles Wichtige ohne Suchen', quick_title: 'Wie können wir helfen?',
+  quick_wifi: 'WLAN', quick_wifi_sub: 'Verbinden und Passwort kopieren',
+  quick_doors: 'Eingang und Türen', quick_doors_sub: 'Schlüssel und neue Schlösser',
+  quick_bathroom: 'Badezimmer', quick_bathroom_sub: 'Gemeinsame Nutzung und Warmwasser',
+  quick_kitchen: 'Küche', quick_kitchen_sub: 'Geräte und Lüftung',
+  quick_rules: 'Hausregeln', quick_rules_sub: 'Einfaches Miteinander',
+  quick_checkout: 'Check-out', quick_checkout_sub: 'Schritte vor der Abreise',
+  quick_help: 'Problem oder Hilfe', quick_help_sub: 'Jetzt kontaktieren',
+  quick_porto: 'Porto-Guide', quick_porto_sub: 'Essen, sehen und unterwegs sein'
+});
+Object.assign(translations.it, {
+  quick_kicker: 'Tutto ciò che serve, senza cercare', quick_title: 'Come possiamo aiutare?',
+  quick_wifi: 'Wi-Fi', quick_wifi_sub: 'Connetti e copia password',
+  quick_doors: 'Ingresso e porte', quick_doors_sub: 'Chiavi e nuove serrature',
+  quick_bathroom: 'Bagno', quick_bathroom_sub: 'Condivisione e acqua calda',
+  quick_kitchen: 'Cucina', quick_kitchen_sub: 'Elettrodomestici e aerazione',
+  quick_rules: 'Regole', quick_rules_sub: 'Convivenza semplice',
+  quick_checkout: 'Check-out', quick_checkout_sub: 'Passi prima di partire',
+  quick_help: 'Problema o aiuto', quick_help_sub: 'Contattaci ora',
+  quick_porto: 'Guida di Porto', quick_porto_sub: 'Mangiare, vedere e muoversi'
+});
 /* ─────────────────────────────────────────────────────────────
    SMOOTH SCROLL — offset for fixed header
 ───────────────────────────────────────────────────────────────── */
@@ -5011,6 +5078,15 @@ const MAP_I18N = {
 ═══════════════════════════════════════════════════════════════ */
 translations.nl = Object.assign({}, translations.en);
 Object.assign(translations.nl, {
+  quick_kicker: 'Alles wat u nodig hebt', quick_title: 'Hoe kunnen we helpen?',
+  quick_wifi: 'Wifi', quick_wifi_sub: 'Verbinden en wachtwoord kopiëren',
+  quick_doors: 'Entree en deuren', quick_doors_sub: 'Sleutels en nieuwe sloten',
+  quick_bathroom: 'Badkamer', quick_bathroom_sub: 'Delen en warm water',
+  quick_kitchen: 'Keuken', quick_kitchen_sub: 'Apparaten en ventilatie',
+  quick_rules: 'Huisregels', quick_rules_sub: 'Prettig samen verblijven',
+  quick_checkout: 'Uitchecken', quick_checkout_sub: 'Stappen voor vertrek',
+  quick_help: 'Probleem of hulp', quick_help_sub: 'Neem nu contact op',
+  quick_porto: 'Porto-gids', quick_porto_sub: 'Eten, zien en reizen',
   logo_sub: 'Gastengids',
   nav_home: 'Start', nav_info: 'Essentiële info', nav_checkin: 'Check-in / Check-out',
   nav_rules: 'Huisregels', nav_guide: 'Huisgids', nav_kitchen: 'Keukengids',
