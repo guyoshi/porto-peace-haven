@@ -3682,6 +3682,7 @@ const ROOM_HUB_I18N = {
 Object.keys(ROOM_HUB_I18N).forEach(function (l) {
   if (translations[l]) Object.assign(translations[l], ROOM_HUB_I18N[l]);
 });
+applyLanguage(currentLang);
 
 /* ═══════════════════════════════════════════════════════════════
    APP SHELL — screen routing (single-file SPA)
