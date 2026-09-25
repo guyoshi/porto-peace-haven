@@ -3651,6 +3651,7 @@ function initRoomStayHubs() {
         '<a href="#' + roomId + '-tv" class="stay-hub-btn"><span class="stay-hub-icon">📺</span><span data-i18n="home_hub_tv">TV</span></a>' +
         '<a href="#kitchen" class="stay-hub-btn"><span class="stay-hub-icon">🍳</span><span data-i18n="home_hub_kitchen">Kitchen</span></a>' +
         '<a href="#bathroom" class="stay-hub-btn"><span class="stay-hub-icon">🚿</span><span data-i18n="home_hub_bathroom">Bathroom</span></a>' +
+        '<a href="#laundry" class="stay-hub-btn"><span class="stay-hub-icon">🧺</span><span data-i18n="home_hub_laundry">Laundry</span></a>' +
         '<a href="#rules" class="stay-hub-btn"><span class="stay-hub-icon">📋</span><span data-i18n="hub_rules">House Rules</span></a>' +
         '<a href="#checkout" class="stay-hub-btn"><span class="stay-hub-icon">🧳</span><span data-i18n="home_hub_checkout">Check-out</span></a>' +
         '<a href="#emergency" class="stay-hub-btn stay-hub-btn--help"><span class="stay-hub-icon">🆘</span><span data-i18n="home_hub_help">Help</span></a>' +
@@ -5030,11 +5031,13 @@ const MAP_UTILITY_I18N = {
     map_util_froiz: 'Froiz · supermarket',
     map_util_continente: 'Continente Bom Dia · supermarket',
     map_util_pharmacy: 'Farmácia da Boa Hora · pharmacy',
+    map_util_laundry: 'UrbanWash · self-service laundry',
   },
   pt: {
     map_util_froiz: 'Froiz · supermercado',
     map_util_continente: 'Continente Bom Dia · supermercado',
     map_util_pharmacy: 'Farmácia da Boa Hora · farmácia',
+    map_util_laundry: 'UrbanWash · lavandaria self-service',
   }
 };
 Object.assign(translations.en, MAP_UTILITY_I18N.en);
@@ -5061,6 +5064,12 @@ const MAP_UTILITIES = [
     coords: [41.15233, -8.62078],
     address: 'Rua da Boa Hora 80',
     maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/Farmácia+da+Boa+Hora+Porto'
+  },
+  {
+    nameKey: 'map_util_laundry', emoji: '🧺',
+    coords: [41.1564441, -8.619853],
+    address: 'R. da Boavista 558 · 4050-273 Porto · 06:00–00:00',
+    maps: 'https://www.google.com/maps/dir/Rua+da+Paz+66+Porto/UrbanWash+Rua+da+Boavista+558+Porto'
   }
 ];
 
