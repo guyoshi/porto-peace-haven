@@ -1,16 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=/?room=douro#douro">
+  <meta http-equiv="refresh" content="0;url=/?room=douro#home">
+  <meta name="robots" content="noindex">
   <title>Douro · Porto Peace Haven</title>
 </head>
 <body>
 <script>
-try { localStorage.setItem('pph-room','douro'); } catch (e) {}
-location.replace('/?room=douro#douro');
+try {
+  localStorage.setItem('pph-room','douro');
+  localStorage.setItem('pph-room-ts', String(Date.now()));
+} catch (e) {}
+location.replace('/?room=douro#home');
 </script>
-<p><a href="/?room=douro#douro">Open Douro guest guide</a></p>
+<p><a href="/?room=douro#home">Open Douro guest portal</a></p>
 </body>
 </html>
