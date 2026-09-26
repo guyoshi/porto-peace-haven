@@ -1,16 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=/?room=atlantico#atlantico">
+  <meta http-equiv="refresh" content="0;url=/?room=atlantico#home">
+  <meta name="robots" content="noindex">
   <title>Atlântico · Porto Peace Haven</title>
 </head>
 <body>
 <script>
-try { localStorage.setItem('pph-room','atlantico'); } catch (e) {}
-location.replace('/?room=atlantico#atlantico');
+try {
+  localStorage.setItem('pph-room','atlantico');
+  localStorage.setItem('pph-room-ts', String(Date.now()));
+} catch (e) {}
+location.replace('/?room=atlantico#home');
 </script>
-<p><a href="/?room=atlantico#atlantico">Open Atlântico guest guide</a></p>
+<p><a href="/?room=atlantico#home">Open Atlântico guest portal</a></p>
 </body>
 </html>
