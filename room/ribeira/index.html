@@ -1,16 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta http-equiv="refresh" content="0;url=/?room=ribeira#ribeira">
+  <meta http-equiv="refresh" content="0;url=/?room=ribeira#home">
+  <meta name="robots" content="noindex">
   <title>Ribeira · Porto Peace Haven</title>
 </head>
 <body>
 <script>
-try { localStorage.setItem('pph-room','ribeira'); } catch (e) {}
-location.replace('/?room=ribeira#ribeira');
+try {
+  localStorage.setItem('pph-room','ribeira');
+  localStorage.setItem('pph-room-ts', String(Date.now()));
+} catch (e) {}
+location.replace('/?room=ribeira#home');
 </script>
-<p><a href="/?room=ribeira#ribeira">Open Ribeira guest guide</a></p>
+<p><a href="/?room=ribeira#home">Open Ribeira guest portal</a></p>
 </body>
 </html>
