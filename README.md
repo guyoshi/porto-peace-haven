@@ -55,6 +55,22 @@ Para editar uma tradução, procurar a chave no `script.js` e actualizar o valor
 
 ---
 
+## Portais personalizados por quarto
+
+Cada quarto tem uma entrada própria para a estadia:
+
+- `/room/ribeira/`
+- `/room/douro/`
+- `/room/atlantico/`
+
+Essas URLs entram no mesmo guia compartilhado, mas ativam o **contexto daquele quarto**. O hóspede vê o seu quarto como ponto de partida e continua a ter acesso, na mesma experiência, a Wi-Fi, casa, cozinha, casa de banho, regras, ajuda, check-out e guia do Porto.
+
+A arquitetura evita duplicar o conteúdo comum três vezes. O quarto escolhido fica guardado em `localStorage`, os outros quartos deixam de aparecer durante aquela experiência e o endereço visível permanece no portal do quarto.
+
+O botão/cartão de cada quarto na página principal deve levar ao respetivo portal, em vez de apenas saltar para a seção do quarto.
+
+---
+
 ## Navegação (bottom nav)
 
 A barra de navegação inferior tem 6 separadores:
