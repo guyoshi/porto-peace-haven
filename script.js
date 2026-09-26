@@ -2519,10 +2519,104 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 /* ─────────────────────────────────────────────────────────────
    INITIALISE
 ───────────────────────────────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────────
+   ROOM PORTAL CONTEXT
+   /room/ribeira/, /room/douro/ and /room/atlantico/ are guest
+   portals, not isolated room-only pages. They keep the complete
+   house + Porto guide while personalising the experience to the
+   guest's selected room.
+───────────────────────────────────────────────────────────────── */
+const PPH_ROOM_KEYS = ['ribeira', 'douro', 'atlantico'];
+
+function resolveRoomPortalContext() {
+  var params = new URLSearchParams(window.location.search);
+  var queryRoom = (params.get('room') || '').toLowerCase();
+  var pathMatch = window.location.pathname.match(/\/room\/(ribeira|douro|atlantico)\/?$/i);
+  var pathRoom = pathMatch ? pathMatch[1].toLowerCase() : '';
+  var room = PPH_ROOM_KEYS.includes(pathRoom) ? pathRoom :
+             (PPH_ROOM_KEYS.includes(queryRoom) ? queryRoom : '');
+
+  if (!room) return null;
+
+  try {
+    localStorage.setItem('pph-room', room);
+    localStorage.setItem('pph-room-ts', String(Date.now()));
+  } catch (e) {}
+
+  return room;
+}
+
+function prepareRoomPortal(room) {
+  if (!room) return;
+
+  var roomNames = { ribeira: 'Ribeira', douro: 'Douro', atlantico: 'Atlântico' };
+  var roomName = roomNames[room] || room;
+
+  document.body.classList.add('room-context-page');
+  document.body.setAttribute('data-room-context', room);
+  document.title = roomName + ' · Porto Peace Haven · Guest Guide';
+
+  var heroBadge = document.querySelector('.hero-badge');
+  if (heroBadge) {
+    heroBadge.removeAttribute('data-i18n');
+    heroBadge.textContent = roomName + ' · Porto Peace Haven';
+  }
+
+  var guestStart = document.querySelector('.guest-start');
+  if (guestStart && !guestStart.querySelector('.room-context-banner')) {
+    var banner = document.createElement('a');
+    banner.className = 'room-context-banner';
+    banner.href = '#' + room;
+    banner.innerHTML =
+      '<span class="room-context-label" data-i18n="your_room_title">Your Room</span>' +
+      '<strong>' + roomName + '</strong>' +
+      '<span class="room-context-open" data-i18n="room_discover">Discover →</span>';
+    guestStart.insertBefore(banner, guestStart.firstChild);
+  }
+
+  var roomsLabel = document.querySelector('#navg-rooms [data-i18n="nav_rooms_label"]');
+  if (roomsLabel) roomsLabel.setAttribute('data-i18n', 'your_room_title');
+
+  document.querySelectorAll('.nav-room').forEach(function (link) {
+    var href = link.getAttribute('href') || '';
+    var isSelected = href.indexOf('/room/' + room + '/') !== -1 || href === '#' + room;
+    var li = link.closest('li');
+    if (li) li.style.display = isSelected ? '' : 'none';
+    if (isSelected) link.setAttribute('href', '#' + room);
+  });
+
+  PPH_ROOM_KEYS.forEach(function (key) {
+    if (key === room) return;
+    var section = document.getElementById(key);
+    if (section) section.style.display = 'none';
+  });
+
+  var logo = document.querySelector('.logo');
+  if (logo) logo.setAttribute('href', '#home');
+
+  var desiredPath = '/room/' + room + '/' + (window.location.hash || '#home');
+  if (window.location.pathname !== '/room/' + room + '/' || window.location.search) {
+    try { window.history.replaceState({ pphRoom: room }, '', desiredPath); } catch (e) {}
+  }
+}
+
+function finishRoomPortal(room) {
+  if (!room) return;
+
+  var seeOther = document.querySelector('.see-other-rooms-btn');
+  if (seeOther) seeOther.style.display = 'none';
+
+  var selectedCard = document.querySelector('.rooms-preview .room-card[href="/room/' + room + '/"]');
+  if (selectedCard) selectedCard.setAttribute('href', '#' + room);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  const roomPortal = resolveRoomPortalContext();
+  prepareRoomPortal(roomPortal);
   applyLanguage(currentLang);
   generateQRCodes();
   initRoomsPreview();
+  finishRoomPortal(roomPortal);
 });
 
 /* ─────────────────────────────────────────────────────────────
@@ -2541,9 +2635,9 @@ function initRoomsPreview() {
 
   // Map room key → which card to keep (by href)
   var roomMap = {
-    ribeira:   '#ribeira',
-    douro:     '#douro',
-    atlantico: '#atlantico'
+    ribeira:   '/room/ribeira/',
+    douro:     '/room/douro/',
+    atlantico: '/room/atlantico/'
   };
 
   var targetHref = roomMap[selectedRoom];
