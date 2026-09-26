@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Porto Peace Haven · Stay Guide Preview</title>
+  <style>
+    :root{--navy:#17324a;--teal:#0d6a64;--paper:#fbfaf7;--line:#e2ddd4;--muted:#60707a;--soft:#eef7f5;--accent:#0d6a64}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--navy);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{text-decoration:none;color:inherit}button{font:inherit}.shell{width:min(980px,calc(100% - 28px));margin:auto}
+    header{position:sticky;top:0;z-index:80;background:rgba(251,250,247,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(23,50,74,.08)}
+    .top{min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:.02em}.brand span{color:var(--teal)}
+    .preview-pill{font-size:.76rem;font-weight:850;padding:7px 10px;border-radius:999px;background:#fff1d6;border:1px solid #ecd39c}
+    .room-tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0 14px;scrollbar-width:none}.room-tabs::-webkit-scrollbar{display:none}
+    .room-tab{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--navy);padding:10px 14px;border-radius:999px;font-weight:850;cursor:pointer}
+    .room-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    main{padding:22px 0 68px}.room{display:none}.room.active{display:block}
+    .room.ribeira{--accent:#425b7a;--room-soft:#eef2f7}.room.douro{--accent:#a96f1f;--room-soft:#fbf3e5}.room.atlantico{--accent:#4e8fa8;--room-soft:#edf7fb}
+    .hero{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 18px 45px rgba(23,50,74,.08)}
+    .hero-image{position:relative;min-height:390px;overflow:hidden}.hero-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,24,36,.04) 22%,rgba(10,24,36,.74) 100%)}
+    .hero-copy{position:absolute;z-index:1;left:28px;right:28px;bottom:25px;color:#fff}.eyebrow{margin:0 0 7px;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:900;color:var(--teal)}
+    .hero-copy .eyebrow{color:rgba(255,255,255,.82)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3rem,9vw,5.4rem);line-height:.95;margin-bottom:8px}.hero-copy p:last-child{margin:0;max-width:650px;font-weight:750;color:rgba(255,255,255,.9)}
+    .hero-note{padding:20px 24px 22px;border-top:4px solid var(--accent)}.hero-note>p{max-width:740px;margin-bottom:0}
+    .facts{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.facts span{display:inline-flex;align-items:center;min-height:34px;padding:0 11px;border-radius:999px;background:var(--room-soft);font-size:.82rem;font-weight:850}
+    .quickbar{position:sticky;top:66px;z-index:50;display:flex;gap:8px;overflow-x:auto;margin:14px 0 18px;padding:8px;border:1px solid var(--line);border-radius:14px;background:rgba(251,250,247,.96);backdrop-filter:blur(12px);scrollbar-width:none}.quickbar::-webkit-scrollbar{display:none}
+    .quickbar a{flex:0 0 auto;min-height:38px;padding:9px 12px;border-radius:9px;background:#fff;font-size:.82rem;font-weight:850;white-space:nowrap}
+    .wifi{padding:22px;border-radius:18px;background:var(--accent);color:#fff}.wifi-head{display:flex;justify-content:space-between;align-items:center}.wifi .eyebrow{color:rgba(255,255,255,.8)}.wifi-head>span{font-size:2rem}
+    .wifi-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.wifi-box{padding:14px;border-radius:13px;background:rgba(255,255,255,.1)}.wifi-box small{display:block;color:rgba(255,255,255,.72)}
+    .wifi-value{display:block;margin:5px 0 9px;font-weight:900;overflow-wrap:anywhere}.copy{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;border-radius:8px;padding:7px 10px;font-weight:850;cursor:pointer}
+    .section-head{margin-top:34px}.section-head h2{font-size:clamp(1.75rem,5vw,2.5rem);margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .card{position:relative;overflow:hidden;padding:20px;border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:18px;background:#fff;box-shadow:0 10px 28px rgba(23,50,74,.045)}.icon{font-size:1.6rem}.card h3{margin:8px 0}.card ul{margin:8px 0 0;padding-left:20px;color:var(--muted)}.card li+li{margin-top:7px}
+    .tip{margin-top:16px;padding:18px 20px;border-left:4px solid var(--accent);border-radius:12px;background:var(--room-soft)}
+    .photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo{min-height:220px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff}.photo img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block}
+    .reminder{margin-top:26px;padding:20px 22px;border-left:4px solid var(--accent);border-radius:14px;background:#fff8ee}.reminder ul{margin:10px 0 0;padding-left:20px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:9px;background:var(--accent);color:#fff;font-weight:850}.btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--line)}
+    .home-card{margin-bottom:18px;padding:22px;border-radius:18px;background:linear-gradient(145deg,#fff,#f6f1e9);border:1px solid var(--line)}.home-card h2{font-size:clamp(2rem,7vw,3.5rem);margin-bottom:8px}
+    .home-rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.home-room{cursor:pointer;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}.home-room img{width:100%;aspect-ratio:4/3;object-fit:cover}.home-room div{padding:14px}.home-room strong{display:block}
+    footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.hero-image{min-height:350px}.hero-copy{left:20px;right:20px;bottom:20px}.wifi-grid{grid-template-columns:1fr}.home-rooms{grid-template-columns:1fr}.quickbar{top:66px}.photos{grid-template-columns:1fr}.actions .btn{flex:1 1 140px}}
+    @media(max-width:520px){main{padding-top:16px}.hero{border-radius:18px}.hero-image{min-height:310px}.hero-copy h1{font-size:clamp(2.7rem,16vw,4rem)}.preview-pill{display:none}.photo,.photo img{min-height:190px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="shell">
+    <div class="top"><div class="brand">PORTO <span>PEACE HAVEN</span></div><div class="preview-pill">PREVIEW · não é a página final</div></div>
+    <div class="room-tabs">
+      <button class="room-tab active" data-room="home">Início</button>
+      <button class="room-tab" data-room="ribeira">Ribeira</button>
+      <button class="room-tab" data-room="douro">Douro</button>
+      <button class="room-tab" data-room="atlantico">Atlântico</button>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="shell">
+    <section id="home" class="room active">
+      <div class="home-card">
+        <p class="eyebrow">Guia da estadia</p>
+        <h2>Tudo o que você precisa, sem ficar procurando.</h2>
+        <p>Prévia visual da nova área do hóspede. Escolha um quarto abaixo para ver a experiência individual.</p>
+      </div>
+      <div class="wifi" style="margin-bottom:22px">
+        <div class="wifi-head"><div><p class="eyebrow">Primeiro: Wi-Fi</p><strong>Porto Peace Haven</strong></div><span>📶</span></div>
+        <div class="wifi-grid">
+          <div class="wifi-box"><small>Rede</small><span class="wifi-value">PORTO PEACE HAVEN</span><button class="copy" data-copy="PORTO PEACE HAVEN">Copiar</button></div>
+          <div class="wifi-box"><small>Senha</small><span class="wifi-value">CAHMCTUM</span><button class="copy" data-copy="CAHMCTUM">Copiar</button></div>
+        </div>
+      </div>
+      <div class="home-rooms">
+        <article class="home-room" data-go="ribeira"><img src="https://portopeacehaven.com/images/property/ribeira-2.jpg" alt="Ribeira"><div><strong>Ribeira</strong><span>Espaçoso, azul profundo e prático.</span></div></article>
+        <article class="home-room" data-go="douro"><img src="https://portopeacehaven.com/images/property/douro-2.jpg" alt="Douro"><div><strong>Douro</strong><span>Quente, dourado e voltado ao descanso.</span></div></article>
+        <article class="home-room" data-go="atlantico"><img src="https://portopeacehaven.com/images/property/atlantico-1.jpg" alt="Atlântico"><div><strong>Atlântico</strong><span>Claro, leve e tranquilo.</span></div></article>
+      </div>
+    </section>
+
+    
+    <section id="ribeira" class="room ribeira">
+      <div class="hero">
+        <div class="hero-image">
+          <img src="https://portopeacehaven.com/images/property/ribeira-2.jpg" alt="Ribeira">
+          <div class="shade"></div>
+          <div class="hero-copy"><p class="eyebrow">Seu quarto</p><h1>Ribeira</h1><p>Elegante, espaçoso e urbano · a alma do Porto antigo</p></div>
+        </div>
+        <div class="hero-note"><p>O maior dos três quartos: mais armazenamento, mais espaço e uma área de trabalho de verdade quando você precisar.</p><div class="facts"><span>👥 2 hóspedes</span><span>📶 Wi-Fi</span><span>📺 TV</span><span>🧊 Mini frigorífico</span><span>🌬️ Ventoinha</span></div></div>
+      </div>
+      <nav class="quickbar"><a href="#ribeira-wifi">📶 Wi-Fi</a><a href="#ribeira-details">🛏️ Meu quarto</a><a href="#ribeira-photos">📷 Fotos</a><a href="#ribeira-checkout">🧳 Checkout</a></nav>
+      <section id="ribeira-wifi" class="wifi">
+        <div class="wifi-head"><div><p class="eyebrow">Primeiro: Wi-Fi</p><strong>Porto Peace Haven</strong></div><span>📶</span></div>
+        <div class="wifi-grid">
+          <div class="wifi-box"><small>Rede</small><span class="wifi-value">PORTO PEACE HAVEN</span><button class="copy" data-copy="PORTO PEACE HAVEN">Copiar</button></div>
+          <div class="wifi-box"><small>Senha</small><span class="wifi-value">CAHMCTUM</span><button class="copy" data-copy="CAHMCTUM">Copiar</button></div>
+        </div>
+      </section>
+      <div id="ribeira-details" class="section-head"><p class="eyebrow">Ribeira</p><h2>Meu quarto</h2></div>
+      <div class="grid"><article class="card"><span class="icon">🛏️</span><h3>Conforto</h3><ul><li>Duas almofadas com alturas diferentes.</li><li>Ventoinha e janelas para ventilação; não há ar-condicionado.</li><li>Mini frigorífico para uso pessoal.</li></ul></article><article class="card"><span class="icon">💻</span><h3>Área de trabalho</h3><ul><li>Cadeira própria de escritório.</li><li>Prateleira larga que funciona como escrivaninha.</li><li>Prático para trabalho remoto ou estadias longas.</li></ul></article><article class="card"><span class="icon">💡</span><h3>Luz, TV e streaming</h3><ul><li>Iluminação RGB por comando.</li><li>TV com Android TV para seus próprios serviços de streaming.</li><li>Saia das contas antes do checkout.</li></ul></article><article class="card"><span class="icon">🧳</span><h3>Armazenamento e detalhes</h3><ul><li>Bastante espaço e cabideiro.</li><li>USB-A e USB-C.</li><li>Espelho de corpo inteiro.</li><li>Manta extra no baú aos pés da cama.</li></ul></article></div>
+      
+      <div id="ribeira-photos" class="section-head"><p class="eyebrow">Ribeira</p><h2>Fotos</h2></div>
+      <div class="photos"><div class="photo"><img src="https://portopeacehaven.com/images/property/ribeira-2.jpg" alt="Ribeira 1"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/ribeira-3.jpg" alt="Ribeira 2"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/ribeira-1.jpg" alt="Ribeira 3"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/ribeira-4.jpg" alt="Ribeira 4"></div></div>
+      <section id="ribeira-checkout" class="reminder"><strong>Antes de sair do quarto</strong><ul><li>Feche todas as janelas.</li><li>Desligue luzes, TV, ventoinha e outros aparelhos.</li><li>Confira carregadores e objetos pessoais.</li></ul></section>
+      <div class="actions"><a class="btn" href="#home">Início</a><a class="btn secondary" href="#ribeira-details">Meu quarto</a><a class="btn secondary" href="#ribeira-wifi">Wi-Fi</a></div>
+    </section>
+    <section id="douro" class="room douro">
+      <div class="hero">
+        <div class="hero-image">
+          <img src="https://portopeacehaven.com/images/property/douro-2.jpg" alt="Douro">
+          <div class="shade"></div>
+          <div class="hero-copy"><p class="eyebrow">Seu quarto</p><h1>Douro</h1><p>Quente, dourado e acolhedor · como um pôr do sol no Porto</p></div>
+        </div>
+        <div class="hero-note"><p>O quarto feito para desligar: luz quente, ambiente calmo e menos distrações de trabalho.</p><div class="facts"><span>👥 2 hóspedes</span><span>📶 Wi-Fi</span><span>📺 TV</span><span>🧊 Mini frigorífico</span><span>🌬️ Ventoinha</span></div></div>
+      </div>
+      <nav class="quickbar"><a href="#douro-wifi">📶 Wi-Fi</a><a href="#douro-details">🛏️ Meu quarto</a><a href="#douro-photos">📷 Fotos</a><a href="#douro-checkout">🧳 Checkout</a></nav>
+      <section id="douro-wifi" class="wifi">
+        <div class="wifi-head"><div><p class="eyebrow">Primeiro: Wi-Fi</p><strong>Porto Peace Haven</strong></div><span>📶</span></div>
+        <div class="wifi-grid">
+          <div class="wifi-box"><small>Rede</small><span class="wifi-value">PORTO PEACE HAVEN</span><button class="copy" data-copy="PORTO PEACE HAVEN">Copiar</button></div>
+          <div class="wifi-box"><small>Senha</small><span class="wifi-value">CAHMCTUM</span><button class="copy" data-copy="CAHMCTUM">Copiar</button></div>
+        </div>
+      </section>
+      <div id="douro-details" class="section-head"><p class="eyebrow">Douro</p><h2>Meu quarto</h2></div>
+      <div class="grid"><article class="card"><span class="icon">🛏️</span><h3>Conforto</h3><ul><li>Duas almofadas com alturas diferentes.</li><li>Ventoinha e janelas; não há ar-condicionado.</li><li>Mini frigorífico para uso pessoal.</li></ul></article><article class="card"><span class="icon">🌙</span><h3>Feito para descansar</h3><ul><li>Sem escrivaninha dedicada.</li><li>Tons quentes e luz suave deixam o ambiente mais relaxante à noite.</li></ul></article><article class="card"><span class="icon">💡</span><h3>Luz, TV e streaming</h3><ul><li>Luzes RGB e fita LED controladas por comando.</li><li>TV com Android TV usando suas próprias contas.</li><li>Saia das contas antes do checkout.</li></ul></article><article class="card"><span class="icon">🧳</span><h3>Armazenamento e detalhes</h3><ul><li>Área dedicada para guardar pertences.</li><li>USB-A e USB-C.</li><li>Espelho e quadros temáticos.</li></ul></article></div>
+      <div class="tip"><strong>A luz principal alterna entre três temperaturas. Desligue e ligue novamente para mudar entre luz quente, branca e mista.</strong></div>
+      <div id="douro-photos" class="section-head"><p class="eyebrow">Douro</p><h2>Fotos</h2></div>
+      <div class="photos"><div class="photo"><img src="https://portopeacehaven.com/images/property/douro-2.jpg" alt="Douro 1"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/douro-1.jpg" alt="Douro 2"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/douro-3.jpg" alt="Douro 3"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/douro-4.jpg" alt="Douro 4"></div></div>
+      <section id="douro-checkout" class="reminder"><strong>Antes de sair do quarto</strong><ul><li>Feche todas as janelas.</li><li>Desligue luzes, TV, ventoinha e outros aparelhos.</li><li>Confira carregadores e objetos pessoais.</li></ul></section>
+      <div class="actions"><a class="btn" href="#home">Início</a><a class="btn secondary" href="#douro-details">Meu quarto</a><a class="btn secondary" href="#douro-wifi">Wi-Fi</a></div>
+    </section>
+    <section id="atlantico" class="room atlantico">
+      <div class="hero">
+        <div class="hero-image">
+          <img src="https://portopeacehaven.com/images/property/atlantico-1.jpg" alt="Atlântico">
+          <div class="shade"></div>
+          <div class="hero-copy"><p class="eyebrow">Seu quarto</p><h1>Atlântico</h1><p>Claro, tranquilo e arejado · um refúgio costeiro na cidade</p></div>
+        </div>
+        <div class="hero-note"><p>Claro e calmo, com uma pequena área de trabalho para responder alguns e-mails sem transformar o quarto em escritório.</p><div class="facts"><span>👥 2 hóspedes</span><span>📶 Wi-Fi</span><span>📺 TV</span><span>🧊 Mini frigorífico</span><span>🌬️ Ventoinha</span></div></div>
+      </div>
+      <nav class="quickbar"><a href="#atlantico-wifi">📶 Wi-Fi</a><a href="#atlantico-details">🛏️ Meu quarto</a><a href="#atlantico-photos">📷 Fotos</a><a href="#atlantico-checkout">🧳 Checkout</a></nav>
+      <section id="atlantico-wifi" class="wifi">
+        <div class="wifi-head"><div><p class="eyebrow">Primeiro: Wi-Fi</p><strong>Porto Peace Haven</strong></div><span>📶</span></div>
+        <div class="wifi-grid">
+          <div class="wifi-box"><small>Rede</small><span class="wifi-value">PORTO PEACE HAVEN</span><button class="copy" data-copy="PORTO PEACE HAVEN">Copiar</button></div>
+          <div class="wifi-box"><small>Senha</small><span class="wifi-value">CAHMCTUM</span><button class="copy" data-copy="CAHMCTUM">Copiar</button></div>
+        </div>
+      </section>
+      <div id="atlantico-details" class="section-head"><p class="eyebrow">Atlântico</p><h2>Meu quarto</h2></div>
+      <div class="grid"><article class="card"><span class="icon">🛏️</span><h3>Conforto</h3><ul><li>Duas almofadas com alturas diferentes.</li><li>Ventoinha e janelas; não há ar-condicionado.</li><li>Mini frigorífico para uso pessoal.</li></ul></article><article class="card"><span class="icon">💻</span><h3>Pequena área de trabalho</h3><ul><li>Cadeira de escritório e mesa compacta.</li><li>Boa para e-mails ou sessões curtas de trabalho.</li></ul></article><article class="card"><span class="icon">💡</span><h3>Luz, TV e streaming</h3><ul><li>Lâmpadas RGB e fita LED por comando.</li><li>TV com Android TV usando suas próprias contas.</li><li>Se o comando LED afetar a TV, desligue a TV primeiro e aponte para a lâmpada.</li></ul></article><article class="card"><span class="icon">🧳</span><h3>Armazenamento e detalhes</h3><ul><li>Cabideiro.</li><li>USB-A e USB-C.</li><li>Espelho e quadro temático.</li></ul></article></div>
+      
+      <div id="atlantico-photos" class="section-head"><p class="eyebrow">Atlântico</p><h2>Fotos</h2></div>
+      <div class="photos"><div class="photo"><img src="https://portopeacehaven.com/images/property/atlantico-1.jpg" alt="Atlântico 1"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/atlantico-2.jpg" alt="Atlântico 2"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/atlantico-3.jpg" alt="Atlântico 3"></div><div class="photo"><img src="https://portopeacehaven.com/images/property/atlantico-4.jpg" alt="Atlântico 4"></div></div>
+      <section id="atlantico-checkout" class="reminder"><strong>Antes de sair do quarto</strong><ul><li>Feche todas as janelas.</li><li>Desligue luzes, TV, ventoinha e outros aparelhos.</li><li>Confira carregadores e objetos pessoais.</li></ul></section>
+      <div class="actions"><a class="btn" href="#home">Início</a><a class="btn secondary" href="#atlantico-details">Meu quarto</a><a class="btn secondary" href="#atlantico-wifi">Wi-Fi</a></div>
+    </section>
+  </div>
+</main>
+<footer><div class="shell">Porto Peace Haven · prévia temporária da nova área do hóspede</div></footer>
+<script>
+  const tabs=[...document.querySelectorAll(".room-tab")], rooms=[...document.querySelectorAll(".room")];
+  function show(id){
+    rooms.forEach(r=>r.classList.toggle("active",r.id===id));
+    tabs.forEach(t=>t.classList.toggle("active",t.dataset.room===id));
+    window.scrollTo({top:0,behavior:"smooth"});
+    history.replaceState(null,"","#"+id);
+  }
+  tabs.forEach(t=>t.addEventListener("click",()=>show(t.dataset.room)));
+  document.querySelectorAll("[data-go]").forEach(el=>el.addEventListener("click",()=>show(el.dataset.go)));
+  document.querySelectorAll(".copy").forEach(btn=>btn.addEventListener("click",async()=>{
+    try{await navigator.clipboard.writeText(btn.dataset.copy);btn.textContent="Copiado";setTimeout(()=>btn.textContent="Copiar",1400)}catch{}
+  }));
+  const initial=location.hash.slice(1); if(["home","ribeira","douro","atlantico"].includes(initial)) show(initial);
+</script>
+</body>
+</html>
